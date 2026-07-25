@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Procedural Monster Face Generator</title>
+<style>
+  :root{
+    --paper:#f4eedf;
+    --ink:#171715;
+    --muted:#d9d0bc;
+    --panel:#fbf7ec;
+    --accent:#ef6b61;
+    --teal:#2e958f;
+    --yellow:#efc85d;
+    --purple:#7a568d;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Helvetica,Arial,sans-serif;
+    min-height:100vh;
+  }
+  button,input,select{font:inherit}
+  .app{max-width:1540px;margin:auto;padding:22px}
+  header{
+    display:grid;
+    grid-template-columns:minmax(320px,1.2fr) minmax(300px,.8fr) auto;
+    gap:24px;
+    align-items:end;
+    margin-bottom:18px;
+  }
+  .eyebrow{font-weight:800;letter-spacing:.1em;font-size:14px}
+  h1{margin:2px 0 0;font-size:clamp(42px,6vw,88px);line-height:.84;letter-spacing:-.055em;text-transform:uppercase}
+  h1 span{display:block;color:var(--accent);font-size:.47em;letter-spacing:-.025em;margin-top:10px}
+  .intro{font-size:18px;line-height:1.35;max-width:420px;padding-bottom:6px}
+  .top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .btn{
+    border:2px solid var(--ink);
+    background:var(--panel);
+    color:var(--ink);
+    padding:11px 15px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    border-radius:999px;
+    cursor:pointer;
+    box-shadow:2px 3px 0 var(--ink);
+  }
+  .btn:hover{transform:translate(-1px,-1px);box-shadow:3px 4px 0 var(--ink)}
+  .btn:active{transform:translate(1px,1px);box-shadow:1px 2px 0 var(--ink)}
+  .btn.primary{background:var(--accent)}
+  .layout{display:grid;grid-template-columns:280px minmax(420px,1fr) 310px;gap:16px;align-items:stretch}
+  .panel,.stage{
+    border:2px solid var(--ink);
+    border-radius:18px;
+    background:rgba(251,247,236,.84);
+    overflow:hidden;
+    box-shadow:5px 6px 0 rgba(23,23,21,.16);
+  }
+  .panel-title{
+    background:var(--ink);
+    color:white;
+    padding:13px 16px;
+    text-transform:uppercase;
+    font-weight:800;
+    letter-spacing:.04em;
+  }
+  .panel-body{padding:15px}
+  .control{margin-bottom:18px}
+  .control:last-child{margin-bottom:0}
+  .control label{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
+  input[type="range"]{width:100%;accent-color:var(--teal)}
+  select,input[type="number"]{width:100%;border:2px solid var(--ink);background:white;padding:9px;border-radius:9px;font-weight:700}
+  .palette-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .palette-button{border:2px solid var(--ink);background:white;border-radius:10px;padding:6px;cursor:pointer}
+  .palette-button.active{outline:4px solid var(--accent)}
+  .swatches{display:flex;height:24px;overflow:hidden;border-radius:6px}
+  .swatches i{flex:1}
+  .stage{padding:14px;display:flex;flex-direction:column;min-height:690px}
+  .stage-bar{display:flex;justify-content:space-between;align-items:center;margin:0 3px 10px;gap:12px}
+  .seed{font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em}
+  .canvas-wrap{position:relative;flex:1;display:grid;place-items:center;min-height:560px;border:2px dashed rgba(23,23,21,.28);border-radius:14px;background:#efe6d4;overflow:hidden}
+  #monsterCanvas{width:min(100%,760px);height:auto;display:block;filter:drop-shadow(0 20px 12px rgba(0,0,0,.12))}
+  .paper-noise{pointer-events:none;position:absolute;inset:0;opacity:.12;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+  .stage-footer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding-top:12px}
+  .mini-btn{border:0;background:transparent;font-weight:800;text-transform:uppercase;cursor:pointer;padding:8px}
+  .mutate{width:100%;border:2px solid var(--ink);background:var(--accent);padding:18px;border-radius:14px;font-size:26px;font-weight:900;text-transform:uppercase;box-shadow:4px 5px 0 var(--ink);cursor:pointer;margin:4px 0 18px}
+  .mutate:active{transform:translate(2px,2px);box-shadow:2px 3px 0 var(--ink)}
+  .checkrow{display:flex;justify-content:space-between;align-items:center;font-weight:800;text-transform:uppercase;font-size:13px;margin:12px 0}
+  .tip{font-size:13px;line-height:1.4;background:#eee4cf;border-left:5px solid var(--yellow);padding:10px 12px;border-radius:6px}
+  .variations{margin-top:16px;border:2px solid var(--ink);border-radius:16px;background:var(--panel);padding:12px;display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;box-shadow:5px 6px 0 rgba(23,23,21,.16)}
+  .variations-title{font-weight:900;text-transform:uppercase;font-size:18px;line-height:1.05}
+  .variation-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;overflow-x:auto;padding:2px}
+  .variation-grid button{border:2px solid var(--ink);border-radius:10px;background:#efe6d4;min-width:110px;padding:0;overflow:hidden;cursor:pointer}
+  .variation-grid canvas{width:100%;display:block}
+  .print-note{text-align:center;font-size:12px;font-weight:700;opacity:.65;margin-top:12px}
+  @media(max-width:1100px){
+    header{grid-template-columns:1fr}.top-actions{justify-content:flex-start}
+    .layout{grid-template-columns:1fr 1fr}.stage{grid-column:1/-1;grid-row:1}.left-panel{grid-column:1}.right-panel{grid-column:2}
+  }
+  @media(max-width:720px){
+    .app{padding:12px}.layout{grid-template-columns:1fr}.stage,.left-panel,.right-panel{grid-column:auto;grid-row:auto}.stage{min-height:500px}.canvas-wrap{min-height:410px}.variations{grid-template-columns:1fr}.variation-grid{grid-template-columns:repeat(8,110px)}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <div class="eyebrow">Procedural</div>
+      <h1>Monster<span>Face Generator</span></h1>
+    </div>
+    <div class="intro">Build expressive illustrated creatures with ink wobble, asymmetry, texture and print-ready export.</div>
+    <div class="top-actions">
+      <button class="btn" id="randomBtn">Random</button>
+      <button class="btn" id="resetBtn">Reset</button>
+      <button class="btn primary" id="exportBtn">Print PNG</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel left-panel">
+      <div class="panel-title">Character DNA</div>
+      <div class="panel-body">
+        <div class="control"><label><span>Head family</span></label><select id="headStyle"><option value="blob">Blob</option><option value="pear">Pear</option><option value="square">Soft square</option><option value="skull">Skull</option><option value="fuzzy">Fuzzy</option></select></div>
+        <div class="control"><label><span>Eye count</span><span id="eyeCountOut">2</span></label><input id="eyeCount" type="range" min="1" max="6" step="1" value="2"></div>
+        <div class="control"><label><span>Eye scale</span><span id="eyeScaleOut">66</span></label><input id="eyeScale" type="range" min="30" max="100" value="66"></div>
+        <div class="control"><label><span>Mouth width</span><span id="mouthWidthOut">72</span></label><input id="mouthWidth" type="range" min="25" max="100" value="72"></div>
+        <div class="control"><label><span>Teeth</span><span id="teethOut">9</span></label><input id="teeth" type="range" min="0" max="18" value="9"></div>
+        <div class="control"><label><span>Horns</span><span id="hornsOut">2</span></label><input id="horns" type="range" min="0" max="6" value="2"></div>
+        <div class="control"><label><span>Texture density</span><span id="textureOut">58</span></label><input id="texture" type="range" min="0" max="100" value="58"></div>
+        <div class="control">
+          <label><span>Print palette</span></label>
+          <div class="palette-grid" id="paletteGrid"></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="stage">
+      <div class="stage-bar"><span class="seed">Current monster — seed <b id="seedLabel"></b></span><span>1200 × 1200 preview</span></div>
+      <div class="canvas-wrap">
+        <canvas id="monsterCanvas" width="1200" height="1200" aria-label="Procedural monster preview"></canvas>
+        <div class="paper-noise"></div>
+      </div>
+      <div class="stage-footer">
+        <button class="mini-btn" id="flipBtn">Flip</button>
+        <button class="mini-btn" id="newSeedBtn">New Seed</button>
+        <button class="mini-btn" id="saveVariationBtn">Save Variation</button>
+      </div>
+    </section>
+
+    <aside class="panel right-panel">
+      <div class="panel-title">Personality Controls</div>
+      <div class="panel-body">
+        <div class="control"><label><span>Cute</span><span>Creepy</span></label><input id="creepy" type="range" min="0" max="100" value="42"></div>
+        <div class="control"><label><span>Calm</span><span>Wild</span></label><input id="wild" type="range" min="0" max="100" value="55"></div>
+        <div class="control"><label><span>Simple</span><span>Detailed</span></label><input id="detail" type="range" min="0" max="100" value="62"></div>
+        <div class="control"><label><span>Soft</span><span>Sharp</span></label><input id="sharp" type="range" min="0" max="100" value="28"></div>
+        <div class="control"><label><span>Balanced</span><span>Asymmetric</span></label><input id="asymmetry" type="range" min="0" max="100" value="66"></div>
+        <div class="control"><label><span>Clean</span><span>Printed</span></label><input id="printiness" type="range" min="0" max="100" value="72"></div>
+        <div class="checkrow"><span>Background</span><input type="checkbox" id="backgroundToggle" checked></div>
+        <button class="mutate" id="mutateBtn">Mutate!</button>
+        <div class="tip">The export is rendered at 3600 × 3600 pixels, suitable for a 12-inch square print at 300 DPI.</div>
+      </div>
+    </aside>
+  </main>
+
+  <section class="variations">
+    <div class="variations-title">Generated<br>Variations →</div>
+    <div class="variation-grid" id="variationGrid"></div>
+  </section>
+  <div class="print-note">Standalone browser app. No backend, model or API required.</div>
+</div>
+<script>
+(() => {
+  const palettes = [
+    {name:'Bog Pop', c:['#2f958f','#efd36f','#7f5b93','#ee7468','#f5ead8','#171715']},
+    {name:'Candy Rot', c:['#ef6b77','#f4bd53','#6eb8aa','#8d6aa0','#f8ead7','#1a1917']},
+    {name:'Night Mold', c:['#375b54','#d6c867','#713f5a','#d17a58','#e5dbc6','#171715']},
+    {name:'Blueberry', c:['#3f6d9d','#e9bd55','#bb6076','#6d538f','#f2e8d6','#161616']},
+    {name:'Bone Ink', c:['#d9d1bc','#b5a24d','#7d6b61','#9c4550','#f3eadb','#171715']},
+    {name:'Hot Slime', c:['#75a942','#f1c94c','#5b6cb4','#e6635b','#f6ead4','#161616']}
+  ];
+  const defaults = {
+    seed: 81542, headStyle:'blob', eyeCount:2, eyeScale:66, mouthWidth:72, teeth:9, horns:2,
+    texture:58, creepy:42, wild:55, detail:62, sharp:28, asymmetry:66, printiness:72,
+    palette:0, flipped:false, background:true
+  };
+  let state = {...defaults};
+  const $ = id => document.getElementById(id);
+  const canvas = $('monsterCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function rngFor(extra=0){return mulberry32((state.seed + extra*2654435761) >>> 0)}
+  function lerp(a,b,t){return a+(b-a)*t}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function jitter(r,n){return (r()-.5)*n}
+  function pathBlob(cx,cy,rx,ry,r,points=18,amount=.11,shape='blob'){
+    const pts=[];
+    for(let i=0;i<points;i++){
+      const a=-Math.PI/2 + i/points*Math.PI*2;
+      let mx=1,my=1;
+      if(shape==='pear'){const t=(Math.sin(a)+1)/2;mx=lerp(.78,1.18,t);my=1}
+      if(shape==='square'){mx=1-.12*Math.cos(a*4);my=1-.12*Math.cos(a*4)}
+      if(shape==='skull'){mx=1-.18*Math.max(0,Math.sin(a));if(Math.sin(a)>.15) mx*=.85}
+      const wob=1+jitter(r,amount);
+      pts.push({x:cx+Math.cos(a)*rx*wob*mx,y:cy+Math.sin(a)*ry*wob*my});
+    }
+    return pts;
+  }
+  function smoothClosedPath(g,pts){
+    g.beginPath();
+    const p0=pts[0], pLast=pts[pts.length-1];
+    g.moveTo((p0.x+pLast.x)/2,(p0.y+pLast.y)/2);
+    for(let i=0;i<pts.length;i++){
+      const p=pts[i], n=pts[(i+1)%pts.length];
+      g.quadraticCurveTo(p.x,p.y,(p.x+n.x)/2,(p.y+n.y)/2);
+    }
+    g.closePath();
+  }
+  function inkStroke(g,width=18,color='#171715'){
+    g.lineJoin='round';g.lineCap='round';g.lineWidth=width;g.strokeStyle=color;g.stroke();
+  }
+  function drawHorn(g,x,y,s,angle,flip,r,pal,sharp){
+    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
+    const bend=.2+sharp*.28;
+    g.beginPath();g.moveTo(-s*.18,s*.08);g.quadraticCurveTo(-s*.15,-s*.55,-s*bend,-s);g.quadraticCurveTo(s*.18,-s*.56,s*.2,s*.08);g.closePath();
+    g.fillStyle=pal[4];g.fill();inkStroke(g,Math.max(7,s*.075),pal[5]);
+    g.strokeStyle=pal[3];g.lineWidth=Math.max(5,s*.04);
+    for(let i=1;i<5;i++){
+      const yy=-s*i/5;g.beginPath();g.moveTo(-s*.12,yy);g.quadraticCurveTo(0,yy+s*.06,s*.1,yy+s*.02);g.stroke();
+    }
+    g.restore();
+  }
+  function drawEar(g,x,y,s,angle,flip,pal){
+    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
+    g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(s*.9,-s*.55,s*.72,s*.45);g.quadraticCurveTo(s*.36,s*.73,0,0);g.closePath();
+    g.fillStyle=pal[2];g.fill();inkStroke(g,Math.max(8,s*.09),pal[5]);
+    g.beginPath();g.moveTo(s*.12,s*.03);g.quadraticCurveTo(s*.55,-s*.22,s*.53,s*.33);g.strokeStyle=pal[3];g.lineWidth=Math.max(5,s*.055);g.stroke();
+    g.restore();
+  }
+  function drawEye(g,x,y,s,rot,type,r,pal,creepy,wild){
+    g.save();g.translate(x,y);g.rotate(rot);
+    const sx=type===1?.72:1, sy=type===2?.65:1;
+    g.scale(sx,sy);
+    g.beginPath();g.ellipse(0,0,s*.58,s*.7,0,0,Math.PI*2);g.fillStyle=pal[4];g.fill();inkStroke(g,Math.max(10,s*.11),pal[5]);
+    const iris=type===3?pal[3]:pal[1];
+    g.beginPath();g.arc(0,0,s*.36,0,Math.PI*2);g.fillStyle=iris;g.fill();g.lineWidth=Math.max(5,s*.05);g.strokeStyle=pal[5];g.stroke();
+    const px=jitter(r,s*.16)+wild*s*.12, py=jitter(r,s*.12);
+    g.beginPath();
+    if(creepy>.55){g.ellipse(px,py,s*.075,s*.25,0,0,Math.PI*2)}else{g.arc(px,py,s*.13,0,Math.PI*2)}
+    g.fillStyle=pal[5];g.fill();
+    g.beginPath();g.arc(-s*.15,-s*.2,s*.07,0,Math.PI*2);g.fillStyle='#fff';g.fill();
+    if(type===2 || creepy>.72){
+      g.beginPath();g.moveTo(-s*.55,-s*.12);g.quadraticCurveTo(0,-s*.48,s*.55,-s*.08);g.strokeStyle=pal[2];g.lineWidth=Math.max(12,s*.16);g.stroke();
+    }
+    g.restore();
+  }
+  function drawMouth(g,cx,cy,w,h,r,pal,teeth,creepy,wild,sharp){
+    g.save();g.translate(cx,cy);g.rotate(jitter(r,wild*.12));
+    g.beginPath();
+    g.moveTo(-w/2,0);
+    g.quadraticCurveTo(0,h*(.45+jitter(r,.14)),w/2,jitter(r,h*.08));
+    g.quadraticCurveTo(0,h*(1.18+jitter(r,.16)),-w/2,0);
+    g.closePath();
+    g.fillStyle=pal[5];g.fill();inkStroke(g,Math.max(14,w*.032),pal[5]);
+    g.beginPath();g.moveTo(-w*.42,h*.51);g.quadraticCurveTo(0,h*.84,w*.38,h*.45);g.quadraticCurveTo(w*.18,h*.95,-w*.18,h*.9);g.closePath();g.fillStyle=pal[3];g.fill();
+    const n=Math.max(0,teeth);
+    for(let i=0;i<n;i++){
+      const t=(i+.5)/n;
+      const x=lerp(-w*.4,w*.4,t)+jitter(r,w*.025);
+      const top=i%2===0;
+      const baseY=top?h*.18:h*.69;
+      const tw=w/(n+5)*(.7+jitter(r,.25));
+      const th=h*(.18+.16*creepy+jitter(r,.08));
+      g.beginPath();g.moveTo(x-tw/2,baseY);g.lineTo(x+tw/2,baseY);
+      const tipY=top?baseY+th:baseY-th;
+      if(sharp>.48 || creepy>.6) g.lineTo(x+jitter(r,tw*.22),tipY);
+      else g.quadraticCurveTo(x+tw*.1,tipY,x,tipY);
+      g.closePath();g.fillStyle=pal[4];g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(3,w*.006);g.stroke();
+    }
+    g.restore();
+  }
+  function stipple(g,r,clipPts,count,pal,alpha=.25,scale=1){
+    g.save();smoothClosedPath(g,clipPts);g.clip();
+    const xs=clipPts.map(p=>p.x), ys=clipPts.map(p=>p.y);const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+    for(let i=0;i<count;i++){
+      const x=lerp(minX,maxX,r()), y=lerp(minY,maxY,r());
+      const rr=(1+r()*5)*scale;g.globalAlpha=alpha*(.35+r()*.65);g.fillStyle=r()>.7?pal[1]:pal[5];g.beginPath();g.arc(x,y,rr,0,Math.PI*2);g.fill();
+    }
+    g.restore();g.globalAlpha=1;
+  }
+  function drawMonster(target, size, customState=state){
+    const g=target.getContext('2d'); target.width=size;target.height=size;
+    const oldState=state; state=customState;
+    const r=rngFor(size);
+    const pal=palettes[state.palette].c;
+    const sc=size/1200;
+    g.clearRect(0,0,size,size);
+    if(state.background){g.fillStyle=pal[4];g.fillRect(0,0,size,size)}
+    g.save();g.scale(state.flipped?-1:1,1);if(state.flipped)g.translate(-size,0);
+    // ground shadow
+    g.globalAlpha=.18;g.fillStyle=pal[5];g.beginPath();g.ellipse(size*.5,size*.91,size*.28,size*.045,0,0,Math.PI*2);g.fill();g.globalAlpha=1;
+    const asym=state.asymmetry/100, creepy=state.creepy/100, wild=state.wild/100, sharp=state.sharp/100, detail=state.detail/100;
+    const cx=size*(.5+jitter(r,.02*asym)), cy=size*.54;
+    const rx=size*(.29+jitter(r,.025)), ry=size*(.32+jitter(r,.025));
+    // horns behind
+    for(let i=0;i<state.horns;i++){
+      const side=i%2===0?-1:1, tier=Math.floor(i/2);
+      const hx=cx+side*rx*(.56-tier*.08), hy=cy-ry*(.76-tier*.05);
+      drawHorn(g,hx,hy,size*(.12-tier*.015),side*(.12+jitter(r,.08)),side,r,pal,sharp);
+    }
+    drawEar(g,cx-rx*.88,cy-ry*.12,size*.14,-.2,-1,pal);drawEar(g,cx+rx*.88,cy-ry*.08,size*.14,.2,1,pal);
+    const headPts=pathBlob(cx,cy,rx,ry,r,22,.11+wild*.10,state.headStyle);
+    smoothClosedPath(g,headPts);g.fillStyle=pal[0];g.fill();inkStroke(g,size*.018,pal[5]);
+    // cheek shadow offset print plate
+    g.save();smoothClosedPath(g,headPts);g.clip();g.globalAlpha=.22*(state.printiness/100);g.fillStyle=pal[2];g.beginPath();g.ellipse(cx+rx*.18,cy+ry*.13,rx*.9,ry*.9,.2,0,Math.PI*2);g.fill();g.restore();g.globalAlpha=1;
+    // spots / blemishes
+    const blemishes=Math.floor(lerp(3,28,detail));
+    g.save();smoothClosedPath(g,headPts);g.clip();
+    for(let i=0;i<blemishes;i++){
+      const a=r()*Math.PI*2, rad=Math.sqrt(r())*.78;const x=cx+Math.cos(a)*rx*rad,y=cy+Math.sin(a)*ry*rad;
+      const s=size*(.008+r()*.026)*(1+detail*.4);
+      g.fillStyle=r()>.55?pal[1]:pal[3];g.globalAlpha=.45+r()*.35;g.beginPath();g.arc(x,y,s,0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=size*.003;g.stroke();
+    }
+    g.restore();g.globalAlpha=1;
+    // eyes distribution
+    const n=state.eyeCount;const eyeBase=size*(.085+state.eyeScale/100*.07)/(1+Math.max(0,n-2)*.16);
+    const positions=[];
+    if(n===1)positions.push([0,-.15]);
+    else{
+      for(let i=0;i<n;i++){
+        const row=n>3 && i>=Math.ceil(n/2)?1:0;
+        const rowCount=row?n-Math.ceil(n/2):Math.ceil(n/2);
+        const idx=row?i-Math.ceil(n/2):i;
+        const spread=rowCount===1?0:(idx/(rowCount-1)-.5);
+        positions.push([spread*(.9-row*.12),-.18+row*.35]);
+      }
+    }
+    positions.forEach((p,i)=>{
+      const dx=p[0]*rx + jitter(r,size*.018*asym),dy=p[1]*ry+jitter(r,size*.014*asym);
+      const local=eyeBase*(1+jitter(r,.18*asym));drawEye(g,cx+dx,cy+dy,local,jitter(r,.18*wild),i%4,r,pal,creepy,wild);
+    });
+    // brows
+    if(wild>.25){
+      g.strokeStyle=pal[5];g.lineWidth=size*(.014+.012*wild);g.lineCap='round';
+      g.beginPath();g.moveTo(cx-rx*.48,cy-ry*.34);g.quadraticCurveTo(cx-rx*.22,cy-ry*(.5+.12*wild),cx-rx*.02,cy-ry*.38);g.stroke();
+      if(state.eyeCount>1){g.beginPath();g.moveTo(cx+rx*.08,cy-ry*.4);g.quadraticCurveTo(cx+rx*.33,cy-ry*(.32-.1*wild),cx+rx*.48,cy-ry*.28);g.stroke();}
+    }
+    // nose
+    g.fillStyle=pal[5];const noseY=cy+ry*.10;g.beginPath();g.ellipse(cx-size*.026,noseY,size*.012,size*.019,-.15,0,Math.PI*2);g.ellipse(cx+size*.026,noseY,size*.012,size*.019,.15,0,Math.PI*2);g.fill();
+    // mouth
+    drawMouth(g,cx+jitter(r,rx*.08*asym),cy+ry*.29,size*(.18+state.mouthWidth/100*.25),size*(.13+.08*creepy),r,pal,state.teeth,creepy,wild,sharp);
+    // scars
+    if(detail>.42){
+      const sx=cx+rx*.43,sy=cy+ry*.42;g.strokeStyle=pal[5];g.lineWidth=size*.006;g.beginPath();g.moveTo(sx-size*.06,sy-size*.025);g.lineTo(sx+size*.055,sy+size*.02);g.stroke();
+      for(let i=0;i<4;i++){const x=sx-size*.04+i*size*.027;g.beginPath();g.moveTo(x,sy-size*.03);g.lineTo(x-size*.01,sy+size*.035);g.stroke();}
+    }
+    const textureCount=Math.floor(state.texture*5*(.4+state.printiness/100));
+    stipple(g,r,headPts,textureCount,pal,.2,state.printiness/100);
+    // fuzzy edge
+    if(state.headStyle==='fuzzy'){
+      g.strokeStyle=pal[5];g.lineWidth=size*.006;
+      headPts.forEach((p,i)=>{if(i%2===0){const vx=p.x-cx,vy=p.y-cy,l=Math.hypot(vx,vy);g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+vx/l*size*.025,p.y+vy/l*size*.025);g.stroke()}})
+    }
+    g.restore();
+    // overall paper speckle
+    if(state.printiness>25){
+      const rr=rngFor(123);g.globalAlpha=.08*(state.printiness/100);g.fillStyle=pal[5];for(let i=0;i<size/2;i++){g.fillRect(rr()*size,rr()*size,1+rr()*2,1+rr()*2)}g.globalAlpha=1;
+    }
+    state=oldState;
+  }
+
+  function syncStateFromUI(){
+    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(id=>state[id]=+$ (id).value);
+    state.headStyle=$('headStyle').value;state.background=$('backgroundToggle').checked;
+  }
+  function updateOutputs(){
+    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture'].forEach(id=>$(id+'Out').textContent=$(id).value);
+    $('seedLabel').textContent=state.seed;
+  }
+  function render(){syncStateFromUI();updateOutputs();drawMonster(canvas,1200,state)}
+  function setUIFromState(){
+    $('headStyle').value=state.headStyle;
+    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(id=>$(id).value=state[id]);
+    $('backgroundToggle').checked=state.background;
+    [...document.querySelectorAll('.palette-button')].forEach((b,i)=>b.classList.toggle('active',i===state.palette));
+    render();
+  }
+  function randomise(full=true){
+    const r=Math.random;
+    state.seed=Math.floor(r()*999999);
+    state.headStyle=['blob','pear','square','skull','fuzzy'][Math.floor(r()*5)];
+    state.eyeCount=1+Math.floor(r()*6);state.eyeScale=35+Math.floor(r()*61);state.mouthWidth=35+Math.floor(r()*66);state.teeth=Math.floor(r()*19);state.horns=Math.floor(r()*7);
+    state.texture=Math.floor(r()*101);state.creepy=Math.floor(r()*101);state.wild=Math.floor(r()*101);state.detail=Math.floor(r()*101);state.sharp=Math.floor(r()*101);state.asymmetry=Math.floor(r()*101);state.printiness=35+Math.floor(r()*66);state.palette=Math.floor(r()*palettes.length);
+    if(full)state.flipped=false;
+    setUIFromState();
+  }
+  function mutate(){
+    const amount=.34;const n=v=>clamp(Math.round(v+(Math.random()-.5)*100*amount),0,100);
+    state.seed=(state.seed+Math.floor(Math.random()*99991))%999999;
+    state.eyeCount=clamp(state.eyeCount+(Math.random()<.35?(Math.random()<.5?-1:1):0),1,6);
+    state.eyeScale=clamp(n(state.eyeScale),30,100);state.mouthWidth=clamp(n(state.mouthWidth),25,100);state.teeth=clamp(Math.round(state.teeth+(Math.random()-.5)*8),0,18);state.horns=clamp(Math.round(state.horns+(Math.random()-.5)*3),0,6);
+    ['texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(k=>state[k]=n(state[k]));
+    if(Math.random()<.22)state.palette=Math.floor(Math.random()*palettes.length);
+    if(Math.random()<.18)state.headStyle=['blob','pear','square','skull','fuzzy'][Math.floor(Math.random()*5)];
+    setUIFromState();
+  }
+  function buildPalettes(){
+    const grid=$('paletteGrid');
+    palettes.forEach((p,i)=>{
+      const b=document.createElement('button');b.className='palette-button';b.title=p.name;b.innerHTML=`<div class="swatches">${p.c.slice(0,5).map(c=>`<i style="background:${c}"></i>`).join('')}</div>`;
+      b.onclick=()=>{state.palette=i;setUIFromState()};grid.appendChild(b);
+    });
+  }
+  function addVariation(s=state){
+    const box=document.createElement('button');const c=document.createElement('canvas');c.width=260;c.height=260;box.appendChild(c);
+    const snapshot=JSON.parse(JSON.stringify(s));drawMonster(c,520,snapshot);box.onclick=()=>{state={...snapshot};setUIFromState()};
+    const grid=$('variationGrid');grid.prepend(box);while(grid.children.length>8)grid.lastChild.remove();
+  }
+  function seedVariations(){
+    const original={...state};for(let i=0;i<8;i++){randomise();addVariation(state)}state=original;setUIFromState();
+  }
+  function exportPrint(){
+    syncStateFromUI();const out=document.createElement('canvas');drawMonster(out,3600,state);
+    const a=document.createElement('a');a.download=`monster-${state.seed}-12in-300dpi.png`;a.href=out.toDataURL('image/png');a.click();
+  }
+
+  buildPalettes();
+  document.querySelectorAll('input[type="range"],select,input[type="checkbox"]').forEach(el=>el.addEventListener('input',render));
+  $('randomBtn').onclick=()=>randomise();$('resetBtn').onclick=()=>{state={...defaults};setUIFromState()};$('mutateBtn').onclick=mutate;$('newSeedBtn').onclick=()=>{state.seed=Math.floor(Math.random()*999999);render()};$('flipBtn').onclick=()=>{state.flipped=!state.flipped;render()};$('saveVariationBtn').onclick=()=>addVariation(state);$('exportBtn').onclick=exportPrint;
+  setUIFromState();seedVariations();
+})();
+</script>
+</body>
+</html>
