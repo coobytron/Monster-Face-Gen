@@ -1,9 +1,10 @@
 {
-  "version": 6,
+  "version": 7,
   "mode": "pre-drawn-builder",
   "completeFaceType": "inline-svg",
   "composablePartType": "inline-svg-full-canvas",
   "finishType": "inline-svg-full-canvas-alpha-masked",
+  "junctionType": "inline-svg-full-canvas-authored-transition",
   "sourceOfTruth": "attached-mvp-reference-boards",
   "runtimeAnatomyGeneration": false,
   "files": {
@@ -30,6 +31,9 @@
     ],
     "finishes": [
       "assets/finishes.js"
+    ],
+    "junctions": [
+      "assets/junctions.js"
     ]
   },
   "counts": {
@@ -43,20 +47,50 @@
     "extras": 9,
     "composableAnatomyObjects": 61,
     "finishes": 5,
-    "totalAuthoredObjects": 76
+    "mouthSeams": 6,
+    "hornSeams": 8,
+    "junctions": 14,
+    "totalAuthoredObjects": 90
   },
   "layerOrder": [
     "horns",
     "bases",
+    "horn-root-seam",
     "patterns",
     "eyes",
     "noses",
-    "mouths",
+    "mouths-clipped-to-base-alpha",
+    "mouth-base-seam",
     "extras",
     "finishes"
   ],
+  "junctionContract": {
+    "selection": "deterministic lookup by stable authored targetId",
+    "mouthClip": "destination-in using selected authored base alpha",
+    "mouthSeamTransform": "same as composition; full-canvas base alignment",
+    "hornSeamTransform": "same as horn authored placement slot",
+    "mayContain": [
+      "overlap shadows",
+      "cheek-colour cover shapes",
+      "lip-edge cover shapes",
+      "horn-root contour folds",
+      "short highlight marks",
+      "authored local distress"
+    ],
+    "mustNotContain": [
+      "complete head silhouettes",
+      "complete mouths",
+      "teeth",
+      "complete horns",
+      "complete ears",
+      "eyes",
+      "noses",
+      "runtime-generated geometry",
+      "monster anatomy that reads independently"
+    ]
+  },
   "finishContract": {
-    "stage": "after-approved-art-composition",
+    "stage": "after-approved-art-and-junction-composition",
     "transform": "same-as-composition",
     "mask": "destination-in using composed artwork alpha",
     "mayContain": [
@@ -105,5 +139,25 @@
     {"id":"finish-screenprint","name":"Screenprint Pop","blendMode":"multiply","opacity":0.52},
     {"id":"finish-distressed","name":"Distressed Ink","blendMode":"multiply","opacity":0.49},
     {"id":"finish-clean","name":"Clean Asset","blendMode":"source-over","opacity":0}
-  ]
+  ],
+  "junctions": {
+    "mouthSeams": [
+      "mouth-seam-base-bog",
+      "mouth-seam-base-fuzz",
+      "mouth-seam-base-skull",
+      "mouth-seam-base-imp",
+      "mouth-seam-base-moss",
+      "mouth-seam-base-blue"
+    ],
+    "hornSeams": [
+      "horn-seam-curved",
+      "horn-seam-spiky",
+      "horn-seam-nubs",
+      "horn-seam-long",
+      "horn-seam-rams",
+      "horn-seam-bat",
+      "horn-seam-tufted",
+      "horn-seam-bent"
+    ]
+  }
 }
