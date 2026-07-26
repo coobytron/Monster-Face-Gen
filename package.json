@@ -3,7 +3,7 @@
   "private": true,
   "version": "8.1.0",
   "scripts": {
-    "qa": "node scripts/contact-sheet-qa.js",
+    "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js",
     "test": "node tests/compatibility.test.js && node scripts/contact-sheet-qa.js --validate-only"
   },
   "dependencies": {
