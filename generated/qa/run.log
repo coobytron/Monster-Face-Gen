@@ -1,9 +1,14 @@
 
 > monster-face-gen-qa@8.1.0 qa
-> node scripts/contact-sheet-qa.js
+> node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js
 
 Fontconfig warning: using without calling FcInit()
-Error: Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 42 on line 3480 column 1895 of data: Attribute stroke redefined
-    at Sharp.toFile (/home/runner/work/Monster-Face-Gen/Monster-Face-Gen/node_modules/sharp/lib/output.js:90:19)
-    at writeSheet (/home/runner/work/Monster-Face-Gen/Monster-Face-Gen/scripts/contact-sheet-qa.js:74:188)
-    at main (/home/runner/work/Monster-Face-Gen/Monster-Face-Gen/scripts/contact-sheet-qa.js:75:1058)
+[qa] normalized duplicate XML attributes in 10 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 10 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 10 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 10 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 2 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 2 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 2 SVG tag(s) for strict PNG rasterization
+[qa] normalized duplicate XML attributes in 2 SVG tag(s) for strict PNG rasterization
+{"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
