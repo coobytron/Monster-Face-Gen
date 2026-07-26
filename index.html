@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#efe2c8" />
-<title>Monster Face Library — Pre-Drawn Builder</title>
+<meta name="theme-color" content="#ead9b7" />
+<title>Monster Face Builder — Pre-Drawn v6</title>
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="v6-art-finish.css" />
 </head>
 <body>
 <div class="grain"></div>
@@ -13,12 +14,12 @@
   <header>
     <div class="brand">
       <div class="brand-copy">
-        <div class="eyebrow">Hand-crafted asset collection</div>
+        <div class="eyebrow">Pre-drawn monster asset system</div>
         <h1>Monster<span>Face Builder</span></h1>
       </div>
-      <div class="speech">Pre-drawn parts.<br>Mix by hand.<br>No invented anatomy.</div>
+      <div class="speech">Drawn once.<br>Mixed forever.<br>No invented anatomy.</div>
     </div>
-    <div class="intro">Choose a complete character or assemble one from <b>authored head, eye, nose, mouth, horn, pattern, and extra assets</b>.</div>
+    <div class="intro">A curated library of approved monster art, now finished with <b>fixed vector hatching, blackwork, halftone, and distressed-ink plates</b> inspired by the dense graphic energy of the MVP.</div>
     <div class="top-actions">
       <button class="icon-action" id="shuffleBtn"><span>⚄</span>Shuffle</button>
       <button class="icon-action" id="resetBtn"><span>↻</span>Reset</button>
@@ -31,7 +32,7 @@
     <aside class="panel left-panel">
       <div class="panel-title"><span>☠ Authored assets</span><small id="assetCount">10 faces</small></div>
       <div class="panel-body">
-        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>Canvas selects, layers, positions, and exports approved artwork. It never invents monster anatomy.</div>
+        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>Canvas may compose, position, mask, treat, and export approved assets. It never generates monster anatomy.</div>
         <div class="mode-switch" aria-label="Builder mode">
           <button class="mode-btn active" data-mode="faces">Complete faces</button>
           <button class="mode-btn" data-mode="builder">Build a monster</button>
@@ -106,7 +107,7 @@
           <div class="toggle-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle" /></div>
         </div>
         <button class="primary" id="shufflePrimary">Shuffle face</button>
-        <div class="tip">Exports a 3600 × 3600 PNG and embeds the full editable face or part recipe as JSON inside the PNG metadata.</div>
+        <div class="tip">Exports a 3600 × 3600 PNG and embeds the editable face, part, finish, and composition recipe inside the PNG metadata.</div>
       </div>
     </aside>
   </main>
@@ -115,10 +116,10 @@
     <div class="variations-title"><b>ϟ</b>Saved<br>Compositions →</div>
     <div class="variation-grid" id="variationGrid"></div>
   </section>
-  <div class="footer-note"><span>☠</span>Selected by hand. Layered by you.<span>☠</span></div>
+  <div class="footer-note"><span>☠</span>Selected by hand. Finished with authored ink.<span>☠</span></div>
 </div>
 
-<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};</script>
+<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};window.MONSTER_FINISHES=[];</script>
 <script src="assets/faces/monster-01.js"></script>
 <script src="assets/faces/monster-02.js"></script>
 <script src="assets/faces/monster-03.js"></script>
@@ -136,8 +137,10 @@
 <script src="assets/parts/horns.js"></script>
 <script src="assets/parts/patterns-compact.js"></script>
 <script src="assets/parts/extras.js"></script>
+<script src="assets/finishes.js"></script>
 <script src="png-metadata.js"></script>
 <script src="app-core.js"></script>
 <script src="app.js"></script>
+<script src="v6-art-finish.js"></script>
 </body>
 </html>
