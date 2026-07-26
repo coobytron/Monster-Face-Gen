@@ -1,0 +1,63 @@
+name: Contact Sheet QA
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_artifacts:
+        description: Commit generated review artifacts to the current branch
+        required: false
+        default: true
+        type: boolean
+  push:
+    paths:
+      - 'assets/**'
+      - 'scripts/contact-sheet-qa.js'
+      - 'schemas/qa-validation-report.schema.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/contact-sheet-qa.yml'
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'scripts/contact-sheet-qa.js'
+      - 'schemas/qa-validation-report.schema.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/contact-sheet-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install --package-lock-only
+      - run: npm ci
+      - run: npm test
+      - run: npm run qa
+      - name: Upload review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: monster-face-contact-sheet-qa
+          path: generated/qa
+          if-no-files-found: error
+      - name: Commit generated review artifacts
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.commit_artifacts)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json generated/qa
+          if git diff --cached --quiet; then
+            echo "Generated artifacts are already current."
+          else
+            git commit -m "Update deterministic QA review artifacts [skip ci]"
+            git push
+          fi
