@@ -4,7 +4,7 @@
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "sourceManifestVersion": 8,
-  "sourceDigest": "91555d00b17e6a668c70475530272e757be7d96ec0fd5c34f3456e8283b3a9ca",
+  "sourceDigest": "a5eb9845d5b976a34489b442d6de2c73aa460aceaff8c8dc8167fd1ca95de6c5",
   "summary": {
     "passed": true,
     "errorCount": 0,
@@ -48,7 +48,7 @@
     "mouths": 9,
     "horns": 9,
     "finishes": 5,
-    "recipes": 0,
+    "recipes": 16,
     "visualAssets": 80
   }
 }
