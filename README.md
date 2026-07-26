@@ -1,71 +1,75 @@
 # Monster Face Builder — Pre-Drawn v8
 
-Monster Face Builder is a static browser app for composing approved monster artwork. It supports two curated workflows:
+Monster Face Builder is a static browser app for composing approved monster artwork. It supports complete finished faces and a builder that combines fixed head, eye, nose, mouth, horn/ear, pattern, and extra assets through authored compatibility rules.
 
-1. **Complete Faces** — select one of ten finished monster illustrations.
-2. **Build a Monster** — combine fixed head, eye, nose, mouth, horn/ear, pattern, and extra assets through authored compatibility rules.
-
-Open `index.html` in a modern browser or publish the branch through GitHub Pages. No framework, server, API, or build step is required.
+Open `index.html` in a modern browser or publish the branch through GitHub Pages.
 
 ## Source-of-truth rule
 
-Every visible monster feature originates from an authored asset. Canvas may select, position, layer, transform, clip, mask, apply approved finishing and junction plates, frame, and export the artwork. It must not generate anatomy or redraw feature geometry.
+Every visible monster feature originates from an authored asset. Canvas and QA tooling may select, position, layer, transform, clip, mask, apply approved finishing and junction plates, frame, render, and export those assets. They must not generate anatomy or redraw feature geometry.
 
-Randomisation is selection, not generation.
+Randomisation is selection, not generation. QA is review of authored objects, not asset creation.
 
-## v8 compatibility and recipe pass
+## V8 compatibility and recipes
 
-V8 replaces universal mix-and-match behavior with an authored compatibility system based on the supplied MVP boards.
+`assets/compatibility.js` classifies every base × eye, base × nose, base × mouth, and base × horn pairing as `approved`, `acceptable`, or `blocked`.
 
-### Compatibility matrix
+The builder includes 16 complete hand-directed recipes and authored per-pair placement overrides. Blocked parts are disabled, filtered before composition, and excluded from compatibility-aware shuffle.
 
-`assets/compatibility.js` classifies every base × eye, base × nose, base × mouth, and base × horn pairing as:
-
-- `approved` — preferred art-directed pairing
-- `acceptable` — safe secondary pairing
-- `blocked` — visually cramped, floating, overly generic, or incompatible
-
-Blocked parts are disabled in the library for the active base and are filtered from rendering as a final safety layer. Changing the base automatically repairs any newly blocked selection.
-
-### Approved recipes
-
-The builder includes 16 complete hand-directed recipes. Builder shuffle starts from this library 76% of the time. The remaining shuffles mutate one feature while staying inside the selected base’s approved or acceptable family.
-
-The recipes preserve the silhouette and expression language of the MVP boards while keeping every visible feature fully pre-drawn.
-
-### Per-pair placement overrides
-
-Universal base slots remain the default. `placementOverrides` adds small authored x/y/scale/rotation adjustments for specific base/part pairs where the universal slot is not sufficient.
-
-These overrides only position existing full-canvas assets. They do not generate, deform, or infer anatomy.
-
-## v7 assembly refinement retained
-
-### Mouth integration
-
-- All visible mouth assets use authored aperture clipping.
-- The complete mouth layer is alpha-clipped to the selected authored head base.
-- Six fixed base-specific cheek and lower-lip seam plates cover hard mouth corners and restore local contour continuity.
-
-### Horn and ear integration
-
-- Horn and ear assets include authored root flares and root texture.
-- Eight fixed horn-root seam plates add overlap shadows and contour folds.
-- Horns remain behind the head and stay attached after horizontal flip because the complete authored composition transform is mirrored together.
+The retained v7 assembly stages clip mouths to the authored base alpha, add six base-specific mouth seam plates, and add eight authored horn/ear root seam plates. Horns remain behind the head and the complete authored composition mirrors together when flipped.
 
 ## Authored illustration finishes
 
-Five non-anatomical full-canvas finish plates remain available:
+Five fixed, non-anatomical full-canvas finish plates are available:
 
 | Finish | Purpose |
 |---|---|
-| Etched MVP | default hatching, stipple, contour accents, and highlight cuts |
-| Blackwork Punch | heavier vector shadow masses and slash hatching |
-| Screenprint Pop | halftone dots and controlled registration-colour accents |
+| Etched MVP | hatching, stipple, contour accents, and highlight cuts |
+| Blackwork Punch | heavier shadow masses and slash hatching |
+| Screenprint Pop | halftone and registration-colour accents |
 | Distressed Ink | scratches, speckle, and worn print marks |
-| Clean Asset | shows the underlying approved asset without an added finish |
+| Clean Asset | underlying approved assets without an added finish |
 
-## Included asset packs
+## Deterministic contact-sheet QA
+
+Install and run the complete review workflow with:
+
+```bash
+npm ci
+npm test
+npm run qa
+```
+
+`npm test` runs the compatibility tests and validation-only pass. `npm run qa` then writes deterministic review artifacts to `generated/qa/`.
+
+The generator produces SVG and PNG sheets for:
+
+- every mouth on every base, unflipped and flipped
+- every horn/ear on every base, unflipped and flipped
+- every authored finish on every approved recipe
+- large approved-recipe crops for junction, clipping, and finish review
+- cream, white, black, and transparent backgrounds
+
+Each cell carries stable base and asset IDs plus the compatibility state. The tooling only evaluates and composes repository-authored SVG objects.
+
+### Machine-readable validation
+
+`generated/qa/validation-report.json` follows `schemas/qa-validation-report.schema.json` and reports:
+
+- missing, duplicate, unknown, or unclassified stable IDs
+- missing metadata or `0 0 600 600` viewBox
+- blocked or unknown approved-recipe combinations
+- missing mouth/base or horn/root junction coverage
+- invalid render z-order
+- any manifest state that permits runtime anatomy generation
+
+The report uses a deterministic source digest and a fixed epoch timestamp so unchanged authored inputs produce unchanged output.
+
+### GitHub Actions
+
+`.github/workflows/contact-sheet-qa.yml` runs manually and whenever asset, compatibility, manifest, schema, or QA tooling files change. It uploads the review set as a workflow artifact. Push and manual runs can commit refreshed `package-lock.json` and `generated/qa/` artifacts back to the working branch.
+
+## Included asset pack
 
 | Family | Assets |
 |---|---:|
@@ -77,15 +81,12 @@ Five non-anatomical full-canvas finish plates remain available:
 | Horns / ears | 9 |
 | Surface patterns | 9 |
 | Extras | 9 |
-| Composable anatomy objects | 61 |
 | Illustration finishes | 5 |
 | Mouth seam plates | 6 |
 | Horn / ear root seam plates | 8 |
-| Approved complete recipes | 16 |
+| Approved recipes | 16 |
 | Pair placement overrides | 16 |
 | **Total authored visual objects** | **90** |
-
-Compatibility metadata and recipes reference the existing stable visual-object IDs and do not add generated anatomy.
 
 ## Builder render order
 
@@ -100,74 +101,20 @@ Compatibility metadata and recipes reference the existing stable visual-object I
 9. extras
 10. illustration finish
 
-## Builder behaviour
+## Key files
 
-- Switch between complete-face and authored-parts modes
-- Browse feature families through category tabs
-- See approved, acceptable, and blocked status for the active base
-- Use base slots plus authored per-pair placement overrides
-- Apply the v7 assembly integration pass
-- Select one of five authored illustration finishes
-- Shuffle from approved recipes or compatible mutations only
-- Drag, scale, rotate, flip, frame, caption, and apply print treatments
-- Save up to eight comparison versions
-- Store favourites locally
-- Export transparent or paper-backed 3600 × 3600 PNGs
-
-## PNG recipe metadata
-
-Every exported PNG receives a `tEXt` chunk with the keyword `monsterFaceState`.
-
-Version 8 builder metadata includes:
-
-- selected stable asset IDs and names
-- complete part recipe
-- approved recipe ID when applicable
-- compatibility state for each base/feature pair
-- active per-pair placement overrides
-- selected finishing-plate metadata
-- assembly version and derived mouth / horn seam IDs
-- composition position, scale, rotation, and flip
-- paper, frame, treatment, caption, and transparency settings
-- export timestamp
-
-The PNG stores a compact editable recipe pointing to canonical asset IDs. It does not duplicate raw SVG source.
-
-## Validation
-
-Run:
-
-```bash
-node tests/compatibility.test.js
-```
-
-The test verifies:
-
-- complete matrix coverage for all stable IDs
-- no duplicate classifications
-- all 16 approved recipes avoid blocked pairs
-- narrow bases block the widest mouth unless an authored exception exists
-- placement override presence for approved wide-mouth exceptions
-- 100 compatibility-aware shuffle samples contain no blocked selections
-
-## Files
-
-- `index.html` — static interface and script loading order
-- `app-core.js` — state, library, builder, history, and favourites
-- `app.js` — base Canvas composition, export, and controls
-- `v6-art-finish.js` — finish selection and alpha-masked finishing compositor
-- `v7-integration.js` — mouth/base clipping, junction-stage rendering, and v7 metadata
-- `v8-compatibility.js` — compatibility-aware selection, repair, shuffle, placement, and metadata
-- `assets/compatibility.js` — matrix, approved recipes, and pair overrides
-- `png-metadata.js` — JSON-in-PNG metadata writer
-- `assets/faces/` — ten complete pre-drawn monsters
-- `assets/parts/*.js` — seven anatomy families containing 61 composable authored objects and base slots
-- `assets/finishes.js` — five fixed non-anatomical vector finishing plates
-- `assets/junctions.js` — fourteen fixed non-anatomical transition plates
-- `assets/manifest.json` — canonical pack inventory and render contract
+- `assets/manifest.json` — canonical inventory, render contract, and QA contract
+- `assets/compatibility.js` — compatibility matrix, recipes, and pair overrides
+- `assets/parts/*.js` — authored composable objects and base slots
+- `assets/finishes.js` — fixed non-anatomical finish plates
+- `assets/junctions.js` — fixed non-anatomical transition plates
+- `scripts/contact-sheet-qa.js` — deterministic renderer and validator
+- `schemas/qa-validation-report.schema.json` — report schema
+- `generated/qa/` — generated review sheets and report
 - `tests/compatibility.test.js` — matrix and shuffle validation
-- `docs/ASSET-GUIDE.md` — production contract for future art packs
+- `docs/ASSET-GUIDE.md` — production and review contract
+- `docs/GITHUB_VECTOR_AGENT_HANDOFF.md` — agent workflow architecture
 
 ## Production direction
 
-Future production replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, pair overrides, and junction profiles remain intact.
+Future replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, placement overrides, and junction profiles remain intact.

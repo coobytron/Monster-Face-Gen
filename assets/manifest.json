@@ -34,7 +34,13 @@
     "junctions": ["assets/junctions.js"],
     "compatibility": ["assets/compatibility.js"],
     "runtime": ["v8-compatibility.js"],
-    "validation": ["tests/compatibility.test.js"]
+    "validation": [
+      "tests/compatibility.test.js",
+      "scripts/contact-sheet-qa.js",
+      "schemas/qa-validation-report.schema.json"
+    ],
+    "workflows": [".github/workflows/contact-sheet-qa.yml"],
+    "generatedReviewRoot": "generated/qa"
   },
   "counts": {
     "completeFaces": 10,
@@ -161,10 +167,33 @@
     "hornSeams": ["horn-seam-curved","horn-seam-spiky","horn-seam-nubs","horn-seam-long","horn-seam-rams","horn-seam-bat","horn-seam-tufted","horn-seam-bent"]
   },
   "validation": {
-    "command": "node tests/compatibility.test.js",
+    "commands": [
+      "node tests/compatibility.test.js",
+      "node scripts/contact-sheet-qa.js --validate-only",
+      "node scripts/contact-sheet-qa.js"
+    ],
+    "report": "generated/qa/validation-report.json",
+    "reportSchema": "schemas/qa-validation-report.schema.json",
     "shuffleSamples": 100,
     "requiresNoBlockedSelections": true,
     "requiresCompleteMatrixCoverage": true,
-    "requiresApprovedRecipes": true
+    "requiresApprovedRecipes": true,
+    "requiresStableIds": true,
+    "requiresViewBox": "0 0 600 600",
+    "requiresJunctionCoverage": true,
+    "requiresLayerOrder": true,
+    "requiresRuntimeAnatomyGenerationFalse": true
+  },
+  "contactSheetContract": {
+    "deterministic": true,
+    "authoredAssetsOnly": true,
+    "formats": ["svg", "png", "json"],
+    "backgrounds": ["cream", "white", "black", "transparent"],
+    "pairSheets": ["mouth-base", "horn-base"],
+    "variants": ["unflipped", "flipped"],
+    "recipeReview": "every finish on every approved recipe",
+    "highResolutionReview": "approved recipe crops",
+    "cellMetadata": ["stable-base-id", "stable-part-id", "compatibility-state"],
+    "outputRoot": "generated/qa"
   }
 }

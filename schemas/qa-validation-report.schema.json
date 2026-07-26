@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/qa-validation-report.schema.json",
+  "title": "Monster Face Generator QA Validation Report",
+  "type": "object",
+  "required": ["schemaVersion", "generator", "deterministic", "sourceDigest", "summary", "checks", "errors", "warnings", "counts"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "generator": {"type": "string"},
+    "deterministic": {"const": true},
+    "generatedAt": {"type": "string"},
+    "sourceManifestVersion": {"type": "integer"},
+    "sourceDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "summary": {
+      "type": "object",
+      "required": ["passed", "errorCount", "warningCount", "checkCount"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "errorCount": {"type": "integer", "minimum": 0},
+        "warningCount": {"type": "integer", "minimum": 0},
+        "checkCount": {"type": "integer", "minimum": 0}
+      }
+    },
+    "checks": {"type": "array", "items": {"type": "object", "required": ["name", "passed"]}},
+    "errors": {"type": "array", "items": {"type": "object", "required": ["code"]}},
+    "warnings": {"type": "array", "items": {"type": "object", "required": ["code"]}},
+    "counts": {"type": "object"}
+  }
+}
