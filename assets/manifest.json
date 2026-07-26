@@ -1,10 +1,11 @@
 {
-  "version": 7,
+  "version": 8,
   "mode": "pre-drawn-builder",
   "completeFaceType": "inline-svg",
   "composablePartType": "inline-svg-full-canvas",
   "finishType": "inline-svg-full-canvas-alpha-masked",
   "junctionType": "inline-svg-full-canvas-authored-transition",
+  "compatibilityType": "authored-stable-id-matrix-and-recipes",
   "sourceOfTruth": "attached-mvp-reference-boards",
   "runtimeAnatomyGeneration": false,
   "files": {
@@ -29,12 +30,11 @@
       "assets/parts/patterns-compact.js",
       "assets/parts/extras.js"
     ],
-    "finishes": [
-      "assets/finishes.js"
-    ],
-    "junctions": [
-      "assets/junctions.js"
-    ]
+    "finishes": ["assets/finishes.js"],
+    "junctions": ["assets/junctions.js"],
+    "compatibility": ["assets/compatibility.js"],
+    "runtime": ["v8-compatibility.js"],
+    "validation": ["tests/compatibility.test.js"]
   },
   "counts": {
     "completeFaces": 10,
@@ -50,7 +50,10 @@
     "mouthSeams": 6,
     "hornSeams": 8,
     "junctions": 14,
-    "totalAuthoredObjects": 90
+    "approvedRecipes": 16,
+    "pairPlacementOverrides": 16,
+    "primaryPairClassifications": 222,
+    "totalAuthoredVisualObjects": 90
   },
   "layerOrder": [
     "horns",
@@ -64,11 +67,40 @@
     "extras",
     "finishes"
   ],
+  "compatibilityContract": {
+    "version": 8,
+    "states": ["approved", "acceptable", "blocked"],
+    "primaryFamilies": ["eyes", "noses", "mouths", "horns"],
+    "coverage": "every stable primary-family ID classified exactly once for every base",
+    "manualSelection": "approved-or-acceptable-only",
+    "baseChange": "repair newly blocked selections to an approved ID",
+    "renderSafety": "filter blocked primary anatomy before composition",
+    "shuffle": "76-percent approved complete recipe; otherwise one compatible-family mutation",
+    "wideMouthRule": "narrow bases block mouth-roar unless a reviewed authored override exists",
+    "flipRule": "mirror complete authored composition and junction transforms together",
+    "runtimeGeometry": false
+  },
+  "placementOverrideContract": {
+    "key": "<base-id>|<part-id>",
+    "allowed": ["translate-x", "translate-y", "uniform-scale", "rotation"],
+    "merge": {
+      "translation": "add-to-base-slot",
+      "scale": "multiply-base-slot",
+      "rotation": "add-to-base-slot"
+    },
+    "forbidden": [
+      "path-generation",
+      "landmark-inference",
+      "nonuniform-anatomy-distortion",
+      "procedural-anatomy",
+      "asset-id-renaming"
+    ]
+  },
   "junctionContract": {
     "selection": "deterministic lookup by stable authored targetId",
     "mouthClip": "destination-in using selected authored base alpha",
     "mouthSeamTransform": "same as composition; full-canvas base alignment",
-    "hornSeamTransform": "same as horn authored placement slot",
+    "hornSeamTransform": "same as horn authored placement slot and pair override",
     "mayContain": [
       "overlap shadows",
       "cheek-colour cover shapes",
@@ -93,24 +125,8 @@
     "stage": "after-approved-art-and-junction-composition",
     "transform": "same-as-composition",
     "mask": "destination-in using composed artwork alpha",
-    "mayContain": [
-      "hatching",
-      "stipple",
-      "blackwork shadow masses",
-      "registration accents",
-      "scratches",
-      "distress"
-    ],
-    "mustNotContain": [
-      "head silhouettes",
-      "eyes",
-      "noses",
-      "mouths",
-      "teeth",
-      "horns",
-      "ears",
-      "monster anatomy"
-    ]
+    "mayContain": ["hatching", "stipple", "blackwork shadow masses", "registration accents", "scratches", "distress"],
+    "mustNotContain": ["head silhouettes", "eyes", "noses", "mouths", "teeth", "horns", "ears", "monster anatomy"]
   },
   "faces": [
     {"id":"monster-01","name":"Bog Cyclops","mood":"mischievous","eyeCount":1,"palette":"teal"},
@@ -141,23 +157,14 @@
     {"id":"finish-clean","name":"Clean Asset","blendMode":"source-over","opacity":0}
   ],
   "junctions": {
-    "mouthSeams": [
-      "mouth-seam-base-bog",
-      "mouth-seam-base-fuzz",
-      "mouth-seam-base-skull",
-      "mouth-seam-base-imp",
-      "mouth-seam-base-moss",
-      "mouth-seam-base-blue"
-    ],
-    "hornSeams": [
-      "horn-seam-curved",
-      "horn-seam-spiky",
-      "horn-seam-nubs",
-      "horn-seam-long",
-      "horn-seam-rams",
-      "horn-seam-bat",
-      "horn-seam-tufted",
-      "horn-seam-bent"
-    ]
+    "mouthSeams": ["mouth-seam-base-bog","mouth-seam-base-fuzz","mouth-seam-base-skull","mouth-seam-base-imp","mouth-seam-base-moss","mouth-seam-base-blue"],
+    "hornSeams": ["horn-seam-curved","horn-seam-spiky","horn-seam-nubs","horn-seam-long","horn-seam-rams","horn-seam-bat","horn-seam-tufted","horn-seam-bent"]
+  },
+  "validation": {
+    "command": "node tests/compatibility.test.js",
+    "shuffleSamples": 100,
+    "requiresNoBlockedSelections": true,
+    "requiresCompleteMatrixCoverage": true,
+    "requiresApprovedRecipes": true
   }
 }
