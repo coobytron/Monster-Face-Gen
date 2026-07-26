@@ -1,46 +1,78 @@
-# Pre-Drawn Asset Guide — v6
+# Pre-Drawn Asset Guide — v7
 
 ## Core rule
 
-Every visible monster feature must originate from an authored image asset. Canvas may position, layer, mask, blend, frame, transform, and export assets, but it must not synthesize monster anatomy with paths or runtime geometry.
+Every visible monster feature must originate from an authored image asset. Canvas may position, layer, clip, mask, blend, frame, transform, and export assets, but it must not synthesize monster anatomy with paths or runtime geometry.
 
 Randomisation is selection, not generation.
 
-## Current v6 contract
+## Current v7 contract
 
-The builder supports complete faces, seven composable anatomy families, and one non-anatomical finish family.
+The builder supports complete faces, seven composable anatomy families, one non-anatomical finish family, and one non-anatomical junction family.
 
-### Anatomy render order
+### Builder render order
 
 1. horns / ears
 2. blank head base
-3. surface pattern
-4. eyes
-5. nose / snout
-6. mouth
-7. extras
+3. horn / ear root seam
+4. surface pattern
+5. eyes
+6. nose / snout
+7. mouth clipped to the selected base alpha
+8. base-specific mouth seam
+9. extras
+10. illustration finish
 
-Horns sit behind the head. Patterns and facial features sit above it. All anatomy is fully authored before runtime.
+All anatomy is fully authored before runtime. The junction stages only resolve overlap and edge ownership between already-authored objects.
 
-### Finish render stage
+## Junction render contract
 
-8. illustration finish
+A junction object is a fixed full-canvas transition plate. It may contain:
 
-The finish stage is separate from anatomy. A finish is a fixed full-canvas artwork plate containing only marks such as hatching, stipple, blackwork shadow masses, registration accents, scratches, or distress.
+- overlap shadows
+- cheek-colour cover shapes
+- lip-edge cover shapes
+- horn-root contour folds
+- short highlight marks
+- authored distress local to a join
+
+A junction object must not contain a complete mouth, horn, ear, tooth, eye, nose, head silhouette, or other standalone anatomy.
 
 Canvas may:
 
-1. transform the finish with the selected monster
-2. alpha-mask it to the already composed approved artwork
-3. blend it using the authored `blendMode` and `opacity`
+1. derive the required junction ID from the selected stable base, mouth, or horn ID
+2. transform the junction with the same composition and authored placement slot as its target
+3. use the authored base alpha to clip the complete mouth layer
+4. draw the fixed transition plate in the documented render stage
 
-Canvas must not use the finish layer to create a silhouette, facial feature, tooth, horn, eye, mouth, nose, head, or other anatomy.
+Canvas must not calculate a new contour, morph a path, infer a facial landmark, or generate a transition shape from image analysis.
+
+### Mouth edge ownership
+
+Every visible mouth asset should own its internal aperture. Teeth, gums, tongues, and inner shadows must be placed inside a fixed SVG clip path or alpha mask authored with that mouth.
+
+The compositor then clips the complete mouth layer to the selected authored base alpha. This is a safety and edge-ownership operation, not anatomy generation.
+
+A base-specific mouth seam plate renders after the clipped mouth. It may cover mouth corners with the exact base colour and add a fixed lower-lip shadow or cheek crease.
+
+### Horn and ear root ownership
+
+Horns and ears render behind the head base. Each visible horn/ear asset should include a deliberate root flare and denser authored texture near the root.
+
+A matching horn-root seam plate renders after the base. It may add a fixed overlap shadow, fold line, or highlight at the root. It may not extend or reshape the horn silhouette.
+
+## Finish render contract
+
+The finish stage remains separate from anatomy and junctions. A finish is a fixed full-canvas artwork plate containing only marks such as hatching, stipple, blackwork shadow masses, registration accents, scratches, or distress.
+
+Canvas may transform the finish with the selected monster, alpha-mask it to the already composed approved artwork, and blend it using the authored `blendMode` and `opacity`.
 
 ## Art-direction target
 
 The supplied MVP boards remain the primary visual source of truth. The target characteristics are:
 
 - bold, readable monster silhouettes
+- features that feel embedded into one character rather than stacked as stickers
 - dense but controlled hand-inked detail
 - irregular contour accents and imperfect marks
 - warm printed-paper context
@@ -48,13 +80,13 @@ The supplied MVP boards remain the primary visual source of truth. The target ch
 - screen-print and registration character without muddying the face
 - strong black shapes balanced against lighter stipple and hatch systems
 
-Hydro74’s public vector portfolio is a secondary reference for broad principles such as compact silhouette construction, high-contrast blackwork, ornamental line systems, and print-ready vector discipline. Do not trace, reproduce, or imitate a specific published piece.
+Hydro74’s public vector portfolio remains a secondary reference for broad principles such as compact silhouette construction, high-contrast blackwork, ornamental line systems, and print-ready vector discipline. Do not trace, reproduce, or imitate a specific published piece.
 
 ## Existing inline SVG contract
 
 Current composable anatomy objects live in family files under `assets/parts/` as fixed SVG documents using a shared `0 0 600 600` viewBox. Full-canvas alignment lets the compositor layer objects without detecting facial geometry.
 
-Current finishes live in `assets/finishes.js` and use the same `0 0 600 600` viewBox.
+Current finishes live in `assets/finishes.js`. Junction plates live in `assets/junctions.js`. Both use the same `0 0 600 600` viewBox.
 
 ## Recommended production format
 
@@ -99,12 +131,28 @@ These slots are art-direction metadata. They do not create or deform artwork.
 {
   id: "mouth-grin",
   name: "Toothy Grin",
-  tags: ["grin", "teeth"],
+  seamProfile: "wide",
+  tags: ["grin", "teeth", "clipped-interior"],
   svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 600\">...</svg>"
 }
 ```
 
+Optional metadata such as `seamProfile` or `rootProfile` documents the intended authored transition family. It must not be used to generate geometry.
+
 A family may include an explicit `none` object so the user can remove that layer without special compositor logic.
+
+## Junction object
+
+```js
+{
+  id: "mouth-seam-base-bog",
+  targetId: "base-bog",
+  name: "Bog mouth seam",
+  svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 600\">...</svg>"
+}
+```
+
+The `targetId` is a stable lookup key. Junction selection is deterministic: the compositor chooses the fixed plate that matches the selected authored object.
 
 ## Finish object
 
@@ -136,6 +184,8 @@ horn-<name>
 pattern-<name>
 extra-<name>
 finish-<name>
+mouth-seam-<base-id>
+horn-seam-<horn-id>
 ```
 
 Do not rename a published ID. Replace the art behind the same ID or introduce a new ID.
@@ -153,10 +203,28 @@ assets/
   patterns/
   extras/
   finishes/
+  junctions/
   thumbnails/
 ```
 
-A future manifest entry may use `src` instead of inline `svg` while keeping the same IDs, slots, finish blend metadata, and full-canvas alignment.
+A future manifest entry may use `src` instead of inline `svg` while keeping the same IDs, slots, finish blend metadata, junction target IDs, and full-canvas alignment.
+
+## Mouth design guidance
+
+- Put all teeth, gums, tongues, and interior shadows inside one authored aperture clip.
+- Avoid perfectly repeated tooth widths and identical vertical baselines.
+- Use a deliberate gum ridge or lip edge so the mouth does not read as a black sticker.
+- Keep cheek-cover shapes in the junction plate, not inside the reusable mouth asset.
+- Test each mouth against all six bases and all mouth placement slots.
+- Inspect the wide mouths on the narrow skull base and the open roar on the shortest bases.
+
+## Horn and ear design guidance
+
+- Widen the root before it disappears behind the head.
+- Increase segmentation and texture density near the root.
+- Preserve a clear outer silhouette at thumbnail scale.
+- Keep root shadows and head-side fold marks in the junction plate.
+- Test every horn/ear on all six bases, including horizontal flip.
 
 ## Finish design guidance
 
@@ -178,12 +246,16 @@ Before adding or replacing an asset:
 3. Confirm line weight and detail density match the approved MVP pack.
 4. Verify the feature remains legible in the library thumbnail.
 5. Test anatomy parts on all six current blank bases.
-6. Inspect the intended z-order against horns, patterns, extras, and the selected finish.
-7. Export a 3600 × 3600 composition and inspect edge detail.
-8. Confirm exported `monsterFaceState` metadata records every stable ID, including `finishId`.
-9. Test horizontal flip when the artwork is expected to be mirror-safe.
-10. Confirm a finish plate remains non-anatomical when viewed without a monster.
-11. Keep a contact sheet for review, but treat individual transparent objects as production source files.
+6. Confirm mouth interiors remain inside the authored aperture.
+7. Confirm the complete mouth layer remains inside the selected base alpha.
+8. Inspect mouth-corner coverage and lower-lip seam continuity.
+9. Inspect horn-root overlap, shadow, and contour continuity.
+10. Verify the intended z-order against patterns, extras, and the selected finish.
+11. Export a 3600 × 3600 composition and inspect edge detail.
+12. Confirm exported `monsterFaceState` metadata records stable part, finish, and junction IDs.
+13. Test horizontal flip when the artwork is expected to be mirror-safe.
+14. Confirm finish and junction plates remain non-anatomical when viewed without a monster.
+15. Keep a contact sheet for review, but treat individual transparent objects as production source files.
 
 ## Source-of-truth principle
 
