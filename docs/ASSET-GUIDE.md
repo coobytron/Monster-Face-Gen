@@ -8,7 +8,7 @@ Randomisation is selection, not generation. Contact-sheet QA is review, not crea
 
 ## Authored asset contract
 
-All composable anatomy, finishes, junctions, and compatibility data use stable IDs and a shared `0 0 600 600` full-canvas coordinate system.
+All composable anatomy, finishes, junctions, compatibility data, expression data, and silhouette data use stable IDs and a shared `0 0 600 600` full-canvas coordinate system.
 
 Recommended production replacements:
 
@@ -34,9 +34,26 @@ Blocked anatomy must be disabled for manual selection, repaired after a base cha
 
 Patterns and extras are globally compatible in the current pack.
 
+## Expression contract
+
+`assets/expression-direction.js` preserves the authored emotional intent of the part library without changing geometry.
+
+The current vocabulary is:
+
+- `sleepy`
+- `uneasy`
+- `feral`
+- `goofy`
+- `stern`
+- `startled`
+
+Every eye and mouth ID has zero or more expression tags. Reviewed eye × mouth pairings may be marked `approved`, while shared-tag combinations are `acceptable`. Every approved complete recipe must carry one stable expression assignment that is supported by its selected eye or mouth.
+
+Expression metadata may guide curation, QA labels, future shuffle weighting, and export metadata. It must not procedurally redraw eyelids, pupils, gums, lips, teeth, or any other anatomy.
+
 ## Approved recipe contract
 
-A recipe is a complete stable-ID selection. Recipes are authored compositions, not generated presets. Every recipe must resolve to known IDs, avoid blocked primary pairs, and remain legible at thumbnail size.
+A recipe is a complete stable-ID selection. Recipes are authored compositions, not generated presets. Every recipe must resolve to known IDs, avoid blocked primary pairs, carry a reviewed expression assignment, and remain legible at thumbnail size.
 
 Recipe IDs remain stable because exported PNG metadata and QA reports may reference them.
 
@@ -49,6 +66,21 @@ Per-pair placement overrides use the key `<base-id>|<part-id>` and may only:
 - rotate
 
 Overrides may not morph, infer landmarks, non-uniformly distort anatomy, or create geometry.
+
+## Silhouette contract
+
+`assets/silhouette-direction.js` records the intended outer-contour rhythm for each base through authored descriptors for crown, cheek, jaw, and chin. These descriptors are review metadata, not runtime contour instructions.
+
+Every visible approved or acceptable horn/ear pairing requires:
+
+- a known authored root profile
+- a compatibility-specific seam profile
+- flip-safe treatment
+- a rigid pair override where the generic slot is insufficient
+
+Blocked pairings do not require a root profile. `horn-none` is treated as inherently safe.
+
+Silhouette metadata must not generate paths, infer attachment landmarks, morph the head edge, or create seam geometry. Runtime code may only select existing authored seams and apply approved rigid transforms.
 
 ## Junction contract
 
@@ -87,6 +119,8 @@ npm test
 npm run qa
 ```
 
+The test workflow validates compatibility, expression assignments, silhouette profiles, root coverage, flip safety, and the machine-readable QA contract.
+
 The workflow generates SVG and PNG contact sheets in `generated/qa/` for:
 
 - mouth × base, including all blocked, acceptable, and approved pairs
@@ -107,8 +141,10 @@ Validation must report asset IDs for:
 - missing or duplicate IDs
 - unknown IDs and incomplete compatibility coverage
 - blocked approved-recipe combinations
+- missing expression assignments or unsupported recipe expressions
 - missing metadata or `viewBox="0 0 600 600"`
 - missing mouth/base or horn/root junctions
+- missing silhouette profiles or flip-unsafe root pairings
 - invalid z-order
 - any manifest state that permits runtime anatomy generation
 
@@ -118,18 +154,20 @@ The report uses a stable digest of the manifest, IDs, and recipes. Its timestamp
 
 1. Inspect every asset on cream, white, black, and transparent backgrounds.
 2. Confirm line weight and detail density match the supplied MVP boards.
-3. Check thumbnail legibility.
-4. Review mouth corners, lower-lip seams, and mouth clipping.
-5. Review horn roots before and after horizontal flip.
-6. Confirm blocked pairs are visibly labelled and never appear in approved recipes.
-7. Inspect authored finishes only on approved recipes.
-8. Keep generated review artifacts with asset-changing pull requests when appropriate.
-9. Run the compatibility-aware shuffle test with no blocked selections.
-10. Confirm finish and junction plates remain non-anatomical by themselves.
+3. Check thumbnail legibility and confirm the eyes remain the first-read feature.
+4. Review tooth cadence, gum ridges, cheek compression, lower-lip ownership, mouth corners, and clipping.
+5. Review crown, cheek, jaw, and chin rhythm before internal details.
+6. Review horn roots before and after horizontal flip at 100%, 25%, and thumbnail scale.
+7. Confirm blocked pairs are visibly labelled and never appear in approved recipes.
+8. Confirm every approved recipe carries one of the six expression tags.
+9. Inspect authored finishes only on approved recipes.
+10. Keep generated review artifacts with asset-changing pull requests when appropriate.
+11. Run the compatibility-aware shuffle test with no blocked selections.
+12. Confirm finish and junction plates remain non-anatomical by themselves.
 
 ## GitHub Actions
 
-`.github/workflows/contact-sheet-qa.yml` runs manually and on changes to assets, compatibility data, the manifest, schemas, and QA scripts. It uploads the generated review set and may commit refreshed review artifacts back to the current branch.
+`.github/workflows/contact-sheet-qa.yml` runs manually and on changes to assets, compatibility data, expression/silhouette direction, the manifest, schemas, and QA scripts. It uploads the generated review set and may commit refreshed review artifacts back to the current branch.
 
 ## Source of truth
 

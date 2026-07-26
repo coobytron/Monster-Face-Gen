@@ -1,5 +1,5 @@
 
-> monster-face-gen-qa@8.1.0 qa
+> monster-face-gen-qa@8.2.0 qa
 > node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js
 
 Fontconfig warning: using without calling FcInit()

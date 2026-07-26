@@ -1,10 +1,10 @@
 {
   "name": "monster-face-gen-qa",
   "private": true,
-  "version": "8.1.0",
+  "version": "8.2.0",
   "scripts": {
     "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js",
-    "test": "node tests/compatibility.test.js && node scripts/contact-sheet-qa.js --validate-only"
+    "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node scripts/contact-sheet-qa.js --validate-only"
   },
   "dependencies": {
     "sharp": "0.34.3"

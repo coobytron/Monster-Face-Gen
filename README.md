@@ -18,6 +18,18 @@ The builder includes 16 complete hand-directed recipes and authored per-pair pla
 
 The retained v7 assembly stages clip mouths to the authored base alpha, add six base-specific mouth seam plates, and add eight authored horn/ear root seam plates. Horns remain behind the head and the complete authored composition mirrors together when flipped.
 
+## Expression direction
+
+`assets/expression-direction.js` adds a fixed six-word expression vocabulary: `sleepy`, `uneasy`, `feral`, `goofy`, `stern`, and `startled`.
+
+Every eye and mouth has authored expression tags, at least six reviewed eye × mouth pairings are explicitly approved, and every complete recipe carries one stable expression assignment. The metadata does not alter anatomy; it preserves art direction for review, shuffle curation, exports, and future asset replacements.
+
+## Silhouette and root direction
+
+`assets/silhouette-direction.js` records intentional crown, cheek, jaw, and chin rhythm for all six bases. It also defines authored root profiles for every approved or acceptable base × horn/ear pairing, compatibility-specific placement corrections for the weakest joins, and a flip-safety contract.
+
+The root metadata only selects authored seam treatment and rigid transforms. It does not infer landmarks, morph contours, or generate attachment geometry.
+
 ## Authored illustration finishes
 
 Five fixed, non-anatomical full-canvas finish plates are available:
@@ -40,7 +52,7 @@ npm test
 npm run qa
 ```
 
-`npm test` runs the compatibility tests and validation-only pass. `npm run qa` then writes deterministic review artifacts to `generated/qa/`.
+`npm test` runs compatibility, expression, silhouette/root, and validation-only checks. `npm run qa` then writes deterministic review artifacts to `generated/qa/`.
 
 The generator produces SVG and PNG sheets for:
 
@@ -85,7 +97,9 @@ The report uses a deterministic source digest and a fixed epoch timestamp so unc
 | Mouth seam plates | 6 |
 | Horn / ear root seam plates | 8 |
 | Approved recipes | 16 |
+| Approved expression pairings | 12 |
 | Pair placement overrides | 16 |
+| Silhouette-specific horn overrides | 11 |
 | **Total authored visual objects** | **90** |
 
 ## Builder render order
@@ -105,6 +119,8 @@ The report uses a deterministic source digest and a fixed epoch timestamp so unc
 
 - `assets/manifest.json` — canonical inventory, render contract, and QA contract
 - `assets/compatibility.js` — compatibility matrix, recipes, and pair overrides
+- `assets/expression-direction.js` — authored expression vocabulary and eye × mouth pairing direction
+- `assets/silhouette-direction.js` — head contour rhythm, root profiles, pair corrections, and flip safety
 - `assets/parts/*.js` — authored composable objects and base slots
 - `assets/finishes.js` — fixed non-anatomical finish plates
 - `assets/junctions.js` — fixed non-anatomical transition plates
@@ -112,9 +128,10 @@ The report uses a deterministic source digest and a fixed epoch timestamp so unc
 - `schemas/qa-validation-report.schema.json` — report schema
 - `generated/qa/` — generated review sheets and report
 - `tests/compatibility.test.js` — matrix and shuffle validation
+- `tests/art-direction.test.js` — expression, silhouette, root-profile, and flip-safety validation
 - `docs/ASSET-GUIDE.md` — production and review contract
 - `docs/GITHUB_VECTOR_AGENT_HANDOFF.md` — agent workflow architecture
 
 ## Production direction
 
-Future replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, placement overrides, and junction profiles remain intact.
+Future replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, expression tags, silhouette profiles, placement overrides, and junction profiles remain intact.
