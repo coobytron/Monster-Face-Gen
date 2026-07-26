@@ -6,434 +6,470 @@
 <title>Procedural Monster Face Generator</title>
 <style>
   :root{
-    --paper:#f4eedf;
-    --ink:#171715;
-    --muted:#d9d0bc;
-    --panel:#fbf7ec;
-    --accent:#ef6b61;
-    --teal:#2e958f;
-    --yellow:#efc85d;
-    --purple:#7a568d;
+    --paper:#f3ead7;
+    --paper2:#fbf3df;
+    --ink:#171714;
+    --muted:#cfc3aa;
+    --panel:#f8f0dc;
+    --accent:#ef6d62;
+    --teal:#3aa29a;
+    --yellow:#e7be4f;
+    --purple:#765286;
+    --shadow:rgba(23,23,20,.16);
   }
   *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
     font-family:Helvetica,Arial,sans-serif;
-    min-height:100vh;
+    background:
+      radial-gradient(circle at 20% 10%,rgba(255,255,255,.7),transparent 28%),
+      linear-gradient(180deg,#f9f0dd,#eee1c9);
   }
   button,input,select{font:inherit}
-  .app{max-width:1540px;margin:auto;padding:22px}
-  header{
-    display:grid;
-    grid-template-columns:minmax(320px,1.2fr) minmax(300px,.8fr) auto;
-    gap:24px;
-    align-items:end;
-    margin-bottom:18px;
-  }
-  .eyebrow{font-weight:800;letter-spacing:.1em;font-size:14px}
-  h1{margin:2px 0 0;font-size:clamp(42px,6vw,88px);line-height:.84;letter-spacing:-.055em;text-transform:uppercase}
-  h1 span{display:block;color:var(--accent);font-size:.47em;letter-spacing:-.025em;margin-top:10px}
-  .intro{font-size:18px;line-height:1.35;max-width:420px;padding-bottom:6px}
-  .top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-  .btn{
-    border:2px solid var(--ink);
-    background:var(--panel);
-    color:var(--ink);
-    padding:11px 15px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    border-radius:999px;
-    cursor:pointer;
-    box-shadow:2px 3px 0 var(--ink);
-  }
-  .btn:hover{transform:translate(-1px,-1px);box-shadow:3px 4px 0 var(--ink)}
-  .btn:active{transform:translate(1px,1px);box-shadow:1px 2px 0 var(--ink)}
-  .btn.primary{background:var(--accent)}
-  .layout{display:grid;grid-template-columns:280px minmax(420px,1fr) 310px;gap:16px;align-items:stretch}
-  .panel,.stage{
-    border:2px solid var(--ink);
-    border-radius:18px;
-    background:rgba(251,247,236,.84);
-    overflow:hidden;
-    box-shadow:5px 6px 0 rgba(23,23,21,.16);
-  }
-  .panel-title{
-    background:var(--ink);
-    color:white;
-    padding:13px 16px;
-    text-transform:uppercase;
-    font-weight:800;
-    letter-spacing:.04em;
-  }
-  .panel-body{padding:15px}
-  .control{margin-bottom:18px}
-  .control:last-child{margin-bottom:0}
-  .control label{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
-  input[type="range"]{width:100%;accent-color:var(--teal)}
-  select,input[type="number"]{width:100%;border:2px solid var(--ink);background:white;padding:9px;border-radius:9px;font-weight:700}
-  .palette-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .palette-button{border:2px solid var(--ink);background:white;border-radius:10px;padding:6px;cursor:pointer}
-  .palette-button.active{outline:4px solid var(--accent)}
-  .swatches{display:flex;height:24px;overflow:hidden;border-radius:6px}
-  .swatches i{flex:1}
-  .stage{padding:14px;display:flex;flex-direction:column;min-height:690px}
-  .stage-bar{display:flex;justify-content:space-between;align-items:center;margin:0 3px 10px;gap:12px}
-  .seed{font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em}
-  .canvas-wrap{position:relative;flex:1;display:grid;place-items:center;min-height:560px;border:2px dashed rgba(23,23,21,.28);border-radius:14px;background:#efe6d4;overflow:hidden}
-  #monsterCanvas{width:min(100%,760px);height:auto;display:block;filter:drop-shadow(0 20px 12px rgba(0,0,0,.12))}
-  .paper-noise{pointer-events:none;position:absolute;inset:0;opacity:.12;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
-  .stage-footer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding-top:12px}
-  .mini-btn{border:0;background:transparent;font-weight:800;text-transform:uppercase;cursor:pointer;padding:8px}
-  .mutate{width:100%;border:2px solid var(--ink);background:var(--accent);padding:18px;border-radius:14px;font-size:26px;font-weight:900;text-transform:uppercase;box-shadow:4px 5px 0 var(--ink);cursor:pointer;margin:4px 0 18px}
+  button{color:inherit}
+  .app{max-width:1580px;margin:auto;padding:20px 22px 28px}
+  .paper-grain{position:fixed;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:multiply;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.77' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E")}
+  header{display:grid;grid-template-columns:minmax(420px,1.15fr) minmax(280px,.65fr) auto;gap:26px;align-items:center;margin-bottom:16px}
+  .brand{display:flex;align-items:center;gap:18px;min-width:0}
+  .brand-copy{min-width:0}
+  .eyebrow{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-weight:900;letter-spacing:.12em;font-size:18px;text-transform:uppercase}
+  h1{margin:1px 0 0;font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(48px,5.8vw,90px);line-height:.82;letter-spacing:.005em;text-transform:uppercase;text-shadow:1px 1px 0 rgba(0,0,0,.15)}
+  h1 span{display:block;color:var(--accent);font-size:.47em;letter-spacing:.04em;margin-top:12px}
+  .mascot{width:94px;height:94px;flex:0 0 auto;border:0;background:transparent;padding:0;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.12))}
+  .intro{font-family:'Arial Narrow',Arial,sans-serif;font-size:18px;font-weight:700;line-height:1.28;border-left:1px solid rgba(23,23,20,.35);padding-left:24px;max-width:330px}
+  .top-actions{display:flex;gap:16px;justify-content:flex-end;align-items:center}
+  .icon-action{border:0;background:transparent;text-align:center;font-weight:900;text-transform:uppercase;font-size:11px;cursor:pointer;padding:0;min-width:60px}
+  .icon-action span{display:grid;place-items:center;width:50px;height:50px;margin:0 auto 7px;border:2px solid var(--ink);border-radius:50%;background:rgba(255,255,255,.25);font-size:24px;box-shadow:2px 3px 0 rgba(23,23,20,.15)}
+  .icon-action:hover span{transform:rotate(-3deg) translateY(-2px)}
+  .layout{display:grid;grid-template-columns:300px minmax(480px,1fr) 325px;gap:16px;align-items:stretch}
+  .panel,.stage{border:2px solid rgba(23,23,20,.72);border-radius:14px;background:rgba(249,241,220,.88);overflow:hidden;box-shadow:5px 6px 0 var(--shadow)}
+  .panel-title{background:var(--ink);color:#fff;padding:11px 14px;text-transform:uppercase;font-weight:900;letter-spacing:.045em;font-family:'Arial Narrow',Arial,sans-serif;display:flex;align-items:center;gap:8px}
+  .panel-title b{font-size:19px}
+  .panel-body{padding:12px 13px}
+  .feature-group{padding:0 0 12px;margin-bottom:11px;border-bottom:1px solid rgba(23,23,20,.22)}
+  .feature-group:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+  .feature-label{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:900;text-transform:uppercase;margin:0 0 7px;letter-spacing:.02em}
+  .feature-label small{font-size:11px;opacity:.7}
+  .feature-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .feature-grid.four{grid-template-columns:repeat(4,1fr)}
+  .feature-tile{border:1.5px solid rgba(23,23,20,.28);border-radius:7px;background:#f7eed9;padding:3px;aspect-ratio:1;cursor:pointer;position:relative;overflow:hidden}
+  .feature-tile canvas{width:100%;height:100%;display:block}
+  .feature-tile.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+  .feature-tile:hover{background:#fff6e2}
+  .stage{padding:12px;display:flex;flex-direction:column;min-height:710px}
+  .stage-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-transform:uppercase;font-weight:900;font-size:12px;letter-spacing:.04em;margin:1px 6px 9px}
+  .stage-bar .title{text-align:center;font-size:14px}
+  .stage-bar .seed{text-align:right;font-size:11px;opacity:.7}
+  .canvas-wrap{position:relative;flex:1;display:grid;place-items:center;min-height:590px;border:1.5px solid rgba(23,23,20,.28);border-radius:12px;background:#f4ead5;overflow:hidden}
+  #monsterCanvas{width:min(100%,780px);height:auto;display:block;filter:drop-shadow(0 18px 11px rgba(0,0,0,.13))}
+  .canvas-overlay{pointer-events:none;position:absolute;inset:0;opacity:.09;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 130 130' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+  .stage-footer{display:flex;gap:24px;justify-content:center;align-items:center;flex-wrap:wrap;padding:11px 0 0}
+  .mini-btn{border:0;background:transparent;font-weight:900;text-transform:uppercase;cursor:pointer;padding:4px;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}
+  .mini-btn b{font-size:24px;line-height:1}
+  .right-panel .panel-body{padding:15px 16px}
+  .personality{margin-bottom:18px}
+  .personality label{display:flex;justify-content:space-between;align-items:center;font-family:'Arial Narrow',Arial,sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;margin-bottom:6px}
+  .personality label i{font-style:normal;font-size:21px}
+  .range-row{display:grid;grid-template-columns:28px 1fr 28px;gap:8px;align-items:center}
+  input[type="range"]{width:100%;accent-color:var(--teal);cursor:pointer}
+  .mutate{width:100%;border:2px solid var(--ink);background:var(--accent);padding:16px 12px;border-radius:12px;font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:34px;letter-spacing:.03em;text-transform:uppercase;box-shadow:4px 5px 0 var(--ink);cursor:pointer;margin:8px 0 16px}
+  .mutate small{display:block;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:.08em;margin-top:2px}
   .mutate:active{transform:translate(2px,2px);box-shadow:2px 3px 0 var(--ink)}
-  .checkrow{display:flex;justify-content:space-between;align-items:center;font-weight:800;text-transform:uppercase;font-size:13px;margin:12px 0}
-  .tip{font-size:13px;line-height:1.4;background:#eee4cf;border-left:5px solid var(--yellow);padding:10px 12px;border-radius:6px}
-  .variations{margin-top:16px;border:2px solid var(--ink);border-radius:16px;background:var(--panel);padding:12px;display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;box-shadow:5px 6px 0 rgba(23,23,21,.16)}
-  .variations-title{font-weight:900;text-transform:uppercase;font-size:18px;line-height:1.05}
-  .variation-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;overflow-x:auto;padding:2px}
-  .variation-grid button{border:2px solid var(--ink);border-radius:10px;background:#efe6d4;min-width:110px;padding:0;overflow:hidden;cursor:pointer}
+  .switch-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:900;text-transform:uppercase;margin:11px 0}
+  .tip{font-size:12px;line-height:1.35;border-top:1px solid rgba(23,23,20,.2);padding-top:11px}
+  .variations{margin-top:15px;border:2px solid rgba(23,23,20,.72);border-radius:12px;background:rgba(249,241,220,.9);padding:8px;display:grid;grid-template-columns:126px 1fr;gap:8px;align-items:stretch;box-shadow:5px 6px 0 var(--shadow)}
+  .variations-title{background:var(--ink);color:#fff;border-radius:7px;padding:12px 10px;display:flex;flex-direction:column;justify-content:center;font-weight:900;text-transform:uppercase;line-height:1.06;font-size:16px}
+  .variations-title b{color:var(--yellow);font-size:26px;margin-bottom:7px}
+  .variation-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;overflow-x:auto}
+  .variation-grid button{border:1px solid rgba(23,23,20,.25);border-radius:7px;background:#eee2c9;min-width:112px;padding:0;overflow:hidden;cursor:pointer}
+  .variation-grid button:hover{border-color:var(--accent)}
   .variation-grid canvas{width:100%;display:block}
-  .print-note{text-align:center;font-size:12px;font-weight:700;opacity:.65;margin-top:12px}
-  @media(max-width:1100px){
-    header{grid-template-columns:1fr}.top-actions{justify-content:flex-start}
-    .layout{grid-template-columns:1fr 1fr}.stage{grid-column:1/-1;grid-row:1}.left-panel{grid-column:1}.right-panel{grid-column:2}
+  .footer-note{text-align:center;font-family:'Arial Narrow',Arial,sans-serif;font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:11px;margin-top:14px}
+  .footer-note span{margin:0 9px}
+  @media(max-width:1160px){
+    header{grid-template-columns:1fr auto}.intro{display:none}.layout{grid-template-columns:1fr 1fr}.stage{grid-column:1/-1;grid-row:1}.left-panel{grid-column:1}.right-panel{grid-column:2}
   }
-  @media(max-width:720px){
-    .app{padding:12px}.layout{grid-template-columns:1fr}.stage,.left-panel,.right-panel{grid-column:auto;grid-row:auto}.stage{min-height:500px}.canvas-wrap{min-height:410px}.variations{grid-template-columns:1fr}.variation-grid{grid-template-columns:repeat(8,110px)}
+  @media(max-width:760px){
+    .app{padding:12px}.brand{gap:8px}.mascot{display:none}header{grid-template-columns:1fr}.top-actions{justify-content:flex-start;gap:12px}.layout{grid-template-columns:1fr}.stage,.left-panel,.right-panel{grid-column:auto;grid-row:auto}.stage{min-height:520px}.canvas-wrap{min-height:430px}.variations{grid-template-columns:1fr}.variation-grid{grid-template-columns:repeat(8,112px)}
   }
 </style>
 </head>
 <body>
+<div class="paper-grain"></div>
 <div class="app">
   <header>
-    <div>
-      <div class="eyebrow">Procedural</div>
-      <h1>Monster<span>Face Generator</span></h1>
+    <div class="brand">
+      <div class="brand-copy">
+        <div class="eyebrow">Procedural</div>
+        <h1>Monster<span>Face Generator</span></h1>
+      </div>
+      <canvas class="mascot" id="mascot" width="220" height="220"></canvas>
     </div>
-    <div class="intro">Build expressive illustrated creatures with ink wobble, asymmetry, texture and print-ready export.</div>
+    <div class="intro">Mix, match, and mutate richly illustrated monster faces built from procedural ink, shape, texture, and color.</div>
     <div class="top-actions">
-      <button class="btn" id="randomBtn">Random</button>
-      <button class="btn" id="resetBtn">Reset</button>
-      <button class="btn primary" id="exportBtn">Print PNG</button>
+      <button class="icon-action" id="randomBtn"><span>⚄</span>Random</button>
+      <button class="icon-action" id="resetBtn"><span>↻</span>Reset</button>
+      <button class="icon-action" id="saveVariationBtn"><span>♥</span>Favorite</button>
+      <button class="icon-action" id="exportBtn"><span>⇩</span>Export</button>
     </div>
   </header>
 
   <main class="layout">
     <aside class="panel left-panel">
-      <div class="panel-title">Character DNA</div>
+      <div class="panel-title"><b>☠</b> Choose Features</div>
       <div class="panel-body">
-        <div class="control"><label><span>Head family</span></label><select id="headStyle"><option value="blob">Blob</option><option value="pear">Pear</option><option value="square">Soft square</option><option value="skull">Skull</option><option value="fuzzy">Fuzzy</option></select></div>
-        <div class="control"><label><span>Eye count</span><span id="eyeCountOut">2</span></label><input id="eyeCount" type="range" min="1" max="6" step="1" value="2"></div>
-        <div class="control"><label><span>Eye scale</span><span id="eyeScaleOut">66</span></label><input id="eyeScale" type="range" min="30" max="100" value="66"></div>
-        <div class="control"><label><span>Mouth width</span><span id="mouthWidthOut">72</span></label><input id="mouthWidth" type="range" min="25" max="100" value="72"></div>
-        <div class="control"><label><span>Teeth</span><span id="teethOut">9</span></label><input id="teeth" type="range" min="0" max="18" value="9"></div>
-        <div class="control"><label><span>Horns</span><span id="hornsOut">2</span></label><input id="horns" type="range" min="0" max="6" value="2"></div>
-        <div class="control"><label><span>Texture density</span><span id="textureOut">58</span></label><input id="texture" type="range" min="0" max="100" value="58"></div>
-        <div class="control">
-          <label><span>Print palette</span></label>
-          <div class="palette-grid" id="paletteGrid"></div>
-        </div>
+        <div class="feature-group"><div class="feature-label"><span>Head Shapes</span><small>5 / 24</small></div><div class="feature-grid" id="headGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Eyes</span><small>5 / 32</small></div><div class="feature-grid" id="eyeGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Noses / Snouts</span><small>4 / 24</small></div><div class="feature-grid four" id="noseGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Mouths</span><small>5 / 32</small></div><div class="feature-grid" id="mouthGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Horns / Ears</span><small>5 / 32</small></div><div class="feature-grid" id="hornGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Skin Patterns</span><small>5 / 32</small></div><div class="feature-grid" id="skinGrid"></div></div>
+        <div class="feature-group"><div class="feature-label"><span>Print Palette</span><small>6 sets</small></div><div class="feature-grid" id="paletteGrid"></div></div>
       </div>
     </aside>
 
     <section class="stage">
-      <div class="stage-bar"><span class="seed">Current monster — seed <b id="seedLabel"></b></span><span>1200 × 1200 preview</span></div>
+      <div class="stage-bar"><span>↗</span><span class="title">Current Monster</span><span class="seed">Seed <b id="seedLabel"></b></span></div>
       <div class="canvas-wrap">
-        <canvas id="monsterCanvas" width="1200" height="1200" aria-label="Procedural monster preview"></canvas>
-        <div class="paper-noise"></div>
+        <canvas id="monsterCanvas" width="1400" height="1400" aria-label="Procedural illustrated monster preview"></canvas>
+        <div class="canvas-overlay"></div>
       </div>
       <div class="stage-footer">
-        <button class="mini-btn" id="flipBtn">Flip</button>
-        <button class="mini-btn" id="newSeedBtn">New Seed</button>
-        <button class="mini-btn" id="saveVariationBtn">Save Variation</button>
+        <button class="mini-btn" id="undoBtn"><b>↶</b>Undo</button>
+        <button class="mini-btn" id="redoBtn"><b>↷</b>Redo</button>
+        <button class="mini-btn" id="flipBtn"><b>↔</b>Flip H</button>
+        <button class="mini-btn" id="newSeedBtn"><b>✦</b>New Seed</button>
+        <button class="mini-btn" id="backgroundBtn"><b>◉</b>Background</button>
       </div>
     </section>
 
     <aside class="panel right-panel">
-      <div class="panel-title">Personality Controls</div>
+      <div class="panel-title"><b>☷</b> Personality Controls</div>
       <div class="panel-body">
-        <div class="control"><label><span>Cute</span><span>Creepy</span></label><input id="creepy" type="range" min="0" max="100" value="42"></div>
-        <div class="control"><label><span>Calm</span><span>Wild</span></label><input id="wild" type="range" min="0" max="100" value="55"></div>
-        <div class="control"><label><span>Simple</span><span>Detailed</span></label><input id="detail" type="range" min="0" max="100" value="62"></div>
-        <div class="control"><label><span>Soft</span><span>Sharp</span></label><input id="sharp" type="range" min="0" max="100" value="28"></div>
-        <div class="control"><label><span>Balanced</span><span>Asymmetric</span></label><input id="asymmetry" type="range" min="0" max="100" value="66"></div>
-        <div class="control"><label><span>Clean</span><span>Printed</span></label><input id="printiness" type="range" min="0" max="100" value="72"></div>
-        <div class="checkrow"><span>Background</span><input type="checkbox" id="backgroundToggle" checked></div>
-        <button class="mutate" id="mutateBtn">Mutate!</button>
-        <div class="tip">The export is rendered at 3600 × 3600 pixels, suitable for a 12-inch square print at 300 DPI.</div>
+        <div class="personality"><label><span>Cute</span><span>Creepy</span></label><div class="range-row"><i>●</i><input id="creepy" type="range" min="0" max="100" value="42"><i>☠</i></div></div>
+        <div class="personality"><label><span>Calm</span><span>Wild</span></label><div class="range-row"><i>–</i><input id="wild" type="range" min="0" max="100" value="55"><i>✹</i></div></div>
+        <div class="personality"><label><span>Simple</span><span>Detailed</span></label><div class="range-row"><i>○</i><input id="detail" type="range" min="0" max="100" value="78"><i>✺</i></div></div>
+        <div class="personality"><label><span>Soft</span><span>Sharp</span></label><div class="range-row"><i>☁</i><input id="sharp" type="range" min="0" max="100" value="34"><i>✷</i></div></div>
+        <div class="personality"><label><span>Clean</span><span>Printed</span></label><div class="range-row"><i>◌</i><input id="printiness" type="range" min="0" max="100" value="82"><i>▧</i></div></div>
+        <div class="personality"><label><span>Balanced</span><span>Asymmetric</span></label><div class="range-row"><i>◫</i><input id="asymmetry" type="range" min="0" max="100" value="68"><i>◩</i></div></div>
+        <button class="mutate" id="mutateBtn">☣ Mutate!<small>Evolve something new</small></button>
+        <div class="switch-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle"></div>
+        <div class="tip">The face is rendered procedurally at print resolution. Export creates a 3600 × 3600 PNG for a 12-inch square print at 300 DPI.</div>
       </div>
     </aside>
   </main>
 
   <section class="variations">
-    <div class="variations-title">Generated<br>Variations →</div>
+    <div class="variations-title"><b>ϟ</b>Generated<br>Variations →</div>
     <div class="variation-grid" id="variationGrid"></div>
   </section>
-  <div class="print-note">Standalone browser app. No backend, model or API required.</div>
+  <div class="footer-note"><span>☠</span>Create. Customize. Mutate. Repeat.<span>☠</span></div>
 </div>
 <script>
 (() => {
   const palettes = [
-    {name:'Bog Pop', c:['#2f958f','#efd36f','#7f5b93','#ee7468','#f5ead8','#171715']},
-    {name:'Candy Rot', c:['#ef6b77','#f4bd53','#6eb8aa','#8d6aa0','#f8ead7','#1a1917']},
-    {name:'Night Mold', c:['#375b54','#d6c867','#713f5a','#d17a58','#e5dbc6','#171715']},
-    {name:'Blueberry', c:['#3f6d9d','#e9bd55','#bb6076','#6d538f','#f2e8d6','#161616']},
-    {name:'Bone Ink', c:['#d9d1bc','#b5a24d','#7d6b61','#9c4550','#f3eadb','#171715']},
-    {name:'Hot Slime', c:['#75a942','#f1c94c','#5b6cb4','#e6635b','#f6ead4','#161616']}
+    {name:'Bog Pop', c:['#30958f','#e3c55f','#7c5487','#e86f67','#f3e3c9','#171714','#174e4b']},
+    {name:'Candy Rot', c:['#ef6878','#f1bd4f','#557d9e','#875a91','#f6e4ca','#171714','#a53e58']},
+    {name:'Night Mold', c:['#426f65','#d4c15b','#725063','#cb7658','#e8dbc3','#171714','#263e3b']},
+    {name:'Blueberry', c:['#3d719d','#e4bc54','#ba637d','#6b4f86','#f0e2cb','#171714','#26445e']},
+    {name:'Bone Ink', c:['#d4cbb4','#b9a957','#73645d','#a44c54','#efe2ca','#171714','#80786a']},
+    {name:'Hot Slime', c:['#7ca744','#edc84d','#526bad','#e4645d','#f3e2c5','#171714','#466125']}
   ];
-  const defaults = {
-    seed: 81542, headStyle:'blob', eyeCount:2, eyeScale:66, mouthWidth:72, teeth:9, horns:2,
-    texture:58, creepy:42, wild:55, detail:62, sharp:28, asymmetry:66, printiness:72,
-    palette:0, flipped:false, background:true
+  const lists = {
+    headStyle:['blob','pear','square','skull','fuzzy'],
+    eyeStyle:['mixed','cyclops','droopy','cat','cluster'],
+    noseStyle:['nostrils','snout','skull','beak'],
+    mouthStyle:['grin','fangs','gape','underbite','stitched'],
+    hornStyle:['broken','curled','stubby','spikes','none'],
+    skinStyle:['warts','spots','scales','scratches','fur']
   };
-  let state = {...defaults};
-  const $ = id => document.getElementById(id);
-  const canvas = $('monsterCanvas');
-  const ctx = canvas.getContext('2d');
+  const defaults = {
+    seed:81542,headStyle:'blob',eyeStyle:'mixed',noseStyle:'snout',mouthStyle:'grin',hornStyle:'broken',skinStyle:'warts',
+    eyeCount:2,eyeScale:82,mouthWidth:86,teeth:12,horns:2,texture:90,
+    creepy:44,wild:57,detail:88,sharp:38,asymmetry:70,printiness:90,palette:0,flipped:false,background:true,transparent:false
+  };
+  let state={...defaults};
+  let history=[],future=[];
+  const $=id=>document.getElementById(id);
+  const canvas=$('monsterCanvas');
 
   function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-  function rngFor(extra=0){return mulberry32((state.seed + extra*2654435761) >>> 0)}
+  function rng(seed){return mulberry32(seed>>>0)}
   function lerp(a,b,t){return a+(b-a)*t}
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-  function jitter(r,n){return (r()-.5)*n}
-  function pathBlob(cx,cy,rx,ry,r,points=18,amount=.11,shape='blob'){
-    const pts=[];
-    for(let i=0;i<points;i++){
-      const a=-Math.PI/2 + i/points*Math.PI*2;
-      let mx=1,my=1;
-      if(shape==='pear'){const t=(Math.sin(a)+1)/2;mx=lerp(.78,1.18,t);my=1}
-      if(shape==='square'){mx=1-.12*Math.cos(a*4);my=1-.12*Math.cos(a*4)}
-      if(shape==='skull'){mx=1-.18*Math.max(0,Math.sin(a));if(Math.sin(a)>.15) mx*=.85}
-      const wob=1+jitter(r,amount);
-      pts.push({x:cx+Math.cos(a)*rx*wob*mx,y:cy+Math.sin(a)*ry*wob*my});
-    }
-    return pts;
+  function jitter(r,n){return(r()-.5)*n}
+  function pick(r,a){return a[Math.floor(r()*a.length)]}
+  function shade(hex,amt){
+    const n=parseInt(hex.slice(1),16),r=clamp((n>>16)+amt,0,255),g=clamp(((n>>8)&255)+amt,0,255),b=clamp((n&255)+amt,0,255);
+    return`#${(1<<24|r<<16|g<<8|b).toString(16).slice(1)}`;
   }
   function smoothClosedPath(g,pts){
-    g.beginPath();
-    const p0=pts[0], pLast=pts[pts.length-1];
-    g.moveTo((p0.x+pLast.x)/2,(p0.y+pLast.y)/2);
-    for(let i=0;i<pts.length;i++){
-      const p=pts[i], n=pts[(i+1)%pts.length];
-      g.quadraticCurveTo(p.x,p.y,(p.x+n.x)/2,(p.y+n.y)/2);
-    }
-    g.closePath();
+    g.beginPath();const p0=pts[0],pl=pts[pts.length-1];g.moveTo((p0.x+pl.x)/2,(p0.y+pl.y)/2);
+    for(let i=0;i<pts.length;i++){const p=pts[i],n=pts[(i+1)%pts.length];g.quadraticCurveTo(p.x,p.y,(p.x+n.x)/2,(p.y+n.y)/2)}g.closePath();
   }
-  function inkStroke(g,width=18,color='#171715'){
-    g.lineJoin='round';g.lineCap='round';g.lineWidth=width;g.strokeStyle=color;g.stroke();
-  }
-  function drawHorn(g,x,y,s,angle,flip,r,pal,sharp){
-    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
-    const bend=.2+sharp*.28;
-    g.beginPath();g.moveTo(-s*.18,s*.08);g.quadraticCurveTo(-s*.15,-s*.55,-s*bend,-s);g.quadraticCurveTo(s*.18,-s*.56,s*.2,s*.08);g.closePath();
-    g.fillStyle=pal[4];g.fill();inkStroke(g,Math.max(7,s*.075),pal[5]);
-    g.strokeStyle=pal[3];g.lineWidth=Math.max(5,s*.04);
-    for(let i=1;i<5;i++){
-      const yy=-s*i/5;g.beginPath();g.moveTo(-s*.12,yy);g.quadraticCurveTo(0,yy+s*.06,s*.1,yy+s*.02);g.stroke();
-    }
-    g.restore();
-  }
-  function drawEar(g,x,y,s,angle,flip,pal){
-    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
-    g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(s*.9,-s*.55,s*.72,s*.45);g.quadraticCurveTo(s*.36,s*.73,0,0);g.closePath();
-    g.fillStyle=pal[2];g.fill();inkStroke(g,Math.max(8,s*.09),pal[5]);
-    g.beginPath();g.moveTo(s*.12,s*.03);g.quadraticCurveTo(s*.55,-s*.22,s*.53,s*.33);g.strokeStyle=pal[3];g.lineWidth=Math.max(5,s*.055);g.stroke();
-    g.restore();
-  }
-  function drawEye(g,x,y,s,rot,type,r,pal,creepy,wild){
-    g.save();g.translate(x,y);g.rotate(rot);
-    const sx=type===1?.72:1, sy=type===2?.65:1;
-    g.scale(sx,sy);
-    g.beginPath();g.ellipse(0,0,s*.58,s*.7,0,0,Math.PI*2);g.fillStyle=pal[4];g.fill();inkStroke(g,Math.max(10,s*.11),pal[5]);
-    const iris=type===3?pal[3]:pal[1];
-    g.beginPath();g.arc(0,0,s*.36,0,Math.PI*2);g.fillStyle=iris;g.fill();g.lineWidth=Math.max(5,s*.05);g.strokeStyle=pal[5];g.stroke();
-    const px=jitter(r,s*.16)+wild*s*.12, py=jitter(r,s*.12);
-    g.beginPath();
-    if(creepy>.55){g.ellipse(px,py,s*.075,s*.25,0,0,Math.PI*2)}else{g.arc(px,py,s*.13,0,Math.PI*2)}
-    g.fillStyle=pal[5];g.fill();
-    g.beginPath();g.arc(-s*.15,-s*.2,s*.07,0,Math.PI*2);g.fillStyle='#fff';g.fill();
-    if(type===2 || creepy>.72){
-      g.beginPath();g.moveTo(-s*.55,-s*.12);g.quadraticCurveTo(0,-s*.48,s*.55,-s*.08);g.strokeStyle=pal[2];g.lineWidth=Math.max(12,s*.16);g.stroke();
-    }
-    g.restore();
-  }
-  function drawMouth(g,cx,cy,w,h,r,pal,teeth,creepy,wild,sharp){
-    g.save();g.translate(cx,cy);g.rotate(jitter(r,wild*.12));
-    g.beginPath();
-    g.moveTo(-w/2,0);
-    g.quadraticCurveTo(0,h*(.45+jitter(r,.14)),w/2,jitter(r,h*.08));
-    g.quadraticCurveTo(0,h*(1.18+jitter(r,.16)),-w/2,0);
-    g.closePath();
-    g.fillStyle=pal[5];g.fill();inkStroke(g,Math.max(14,w*.032),pal[5]);
-    g.beginPath();g.moveTo(-w*.42,h*.51);g.quadraticCurveTo(0,h*.84,w*.38,h*.45);g.quadraticCurveTo(w*.18,h*.95,-w*.18,h*.9);g.closePath();g.fillStyle=pal[3];g.fill();
-    const n=Math.max(0,teeth);
-    for(let i=0;i<n;i++){
-      const t=(i+.5)/n;
-      const x=lerp(-w*.4,w*.4,t)+jitter(r,w*.025);
-      const top=i%2===0;
-      const baseY=top?h*.18:h*.69;
-      const tw=w/(n+5)*(.7+jitter(r,.25));
-      const th=h*(.18+.16*creepy+jitter(r,.08));
-      g.beginPath();g.moveTo(x-tw/2,baseY);g.lineTo(x+tw/2,baseY);
-      const tipY=top?baseY+th:baseY-th;
-      if(sharp>.48 || creepy>.6) g.lineTo(x+jitter(r,tw*.22),tipY);
-      else g.quadraticCurveTo(x+tw*.1,tipY,x,tipY);
-      g.closePath();g.fillStyle=pal[4];g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(3,w*.006);g.stroke();
-    }
-    g.restore();
-  }
-  function stipple(g,r,clipPts,count,pal,alpha=.25,scale=1){
-    g.save();smoothClosedPath(g,clipPts);g.clip();
-    const xs=clipPts.map(p=>p.x), ys=clipPts.map(p=>p.y);const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  function headPoints(cx,cy,rx,ry,r,style,wild){
+    const pts=[],count=42;
     for(let i=0;i<count;i++){
-      const x=lerp(minX,maxX,r()), y=lerp(minY,maxY,r());
-      const rr=(1+r()*5)*scale;g.globalAlpha=alpha*(.35+r()*.65);g.fillStyle=r()>.7?pal[1]:pal[5];g.beginPath();g.arc(x,y,rr,0,Math.PI*2);g.fill();
-    }
-    g.restore();g.globalAlpha=1;
+      const a=-Math.PI/2+i/count*Math.PI*2;let mx=1,my=1;
+      if(style==='pear'){const t=(Math.sin(a)+1)/2;mx=lerp(.76,1.13,t)}
+      if(style==='square'){mx=1-.11*Math.cos(a*4);my=1-.11*Math.cos(a*4)}
+      if(style==='skull'){if(Math.sin(a)>.05)mx*=.84;if(Math.sin(a)>.58)mx*=.83;my=1-.05*Math.cos(a*2)}
+      if(style==='fuzzy'){mx=1+.035*Math.sin(a*13)+.025*Math.sin(a*19)}
+      const wob=1+jitter(r,.055+wild*.06)+Math.sin(a*5+r()*2)*.012;
+      pts.push({x:cx+Math.cos(a)*rx*wob*mx,y:cy+Math.sin(a)*ry*wob*my});
+    }return pts;
   }
-  function drawMonster(target, size, customState=state){
-    const g=target.getContext('2d'); target.width=size;target.height=size;
-    const oldState=state; state=customState;
-    const r=rngFor(size);
-    const pal=palettes[state.palette].c;
-    const sc=size/1200;
-    g.clearRect(0,0,size,size);
-    if(state.background){g.fillStyle=pal[4];g.fillRect(0,0,size,size)}
-    g.save();g.scale(state.flipped?-1:1,1);if(state.flipped)g.translate(-size,0);
-    // ground shadow
-    g.globalAlpha=.18;g.fillStyle=pal[5];g.beginPath();g.ellipse(size*.5,size*.91,size*.28,size*.045,0,0,Math.PI*2);g.fill();g.globalAlpha=1;
-    const asym=state.asymmetry/100, creepy=state.creepy/100, wild=state.wild/100, sharp=state.sharp/100, detail=state.detail/100;
-    const cx=size*(.5+jitter(r,.02*asym)), cy=size*.54;
-    const rx=size*(.29+jitter(r,.025)), ry=size*(.32+jitter(r,.025));
-    // horns behind
-    for(let i=0;i<state.horns;i++){
-      const side=i%2===0?-1:1, tier=Math.floor(i/2);
-      const hx=cx+side*rx*(.56-tier*.08), hy=cy-ry*(.76-tier*.05);
-      drawHorn(g,hx,hy,size*(.12-tier*.015),side*(.12+jitter(r,.08)),side,r,pal,sharp);
+  function strokeInk(g,w,color){g.lineJoin='round';g.lineCap='round';g.strokeStyle=color;g.lineWidth=w;g.stroke()}
+  function irregularStroke(g,pts,r,width,color,passes=2){
+    for(let p=0;p<passes;p++){g.beginPath();g.moveTo(pts[0].x+jitter(r,width*.08),pts[0].y+jitter(r,width*.08));for(let i=1;i<pts.length;i++)g.lineTo(pts[i].x+jitter(r,width*.08),pts[i].y+jitter(r,width*.08));g.strokeStyle=color;g.lineWidth=width*(1-p*.24);g.globalAlpha=p?0.52:1;g.stroke()}g.globalAlpha=1;
+  }
+  function clipHead(g,pts,fn){g.save();smoothClosedPath(g,pts);g.clip();fn();g.restore()}
+  function drawPaper(g,size,pal,r,transparent){
+    if(!transparent){
+      const bg=g.createRadialGradient(size*.44,size*.34,size*.1,size*.5,size*.5,size*.76);bg.addColorStop(0,shade(pal[4],12));bg.addColorStop(1,shade(pal[4],-6));g.fillStyle=bg;g.fillRect(0,0,size,size);
+      g.globalAlpha=.07;g.fillStyle=pal[5];for(let i=0;i<size*.42;i++){const x=r()*size,y=r()*size,s=.5+r()*1.8;g.fillRect(x,y,s,s)}g.globalAlpha=1;
     }
-    drawEar(g,cx-rx*.88,cy-ry*.12,size*.14,-.2,-1,pal);drawEar(g,cx+rx*.88,cy-ry*.08,size*.14,.2,1,pal);
-    const headPts=pathBlob(cx,cy,rx,ry,r,22,.11+wild*.10,state.headStyle);
-    smoothClosedPath(g,headPts);g.fillStyle=pal[0];g.fill();inkStroke(g,size*.018,pal[5]);
-    // cheek shadow offset print plate
-    g.save();smoothClosedPath(g,headPts);g.clip();g.globalAlpha=.22*(state.printiness/100);g.fillStyle=pal[2];g.beginPath();g.ellipse(cx+rx*.18,cy+ry*.13,rx*.9,ry*.9,.2,0,Math.PI*2);g.fill();g.restore();g.globalAlpha=1;
-    // spots / blemishes
-    const blemishes=Math.floor(lerp(3,28,detail));
-    g.save();smoothClosedPath(g,headPts);g.clip();
-    for(let i=0;i<blemishes;i++){
-      const a=r()*Math.PI*2, rad=Math.sqrt(r())*.78;const x=cx+Math.cos(a)*rx*rad,y=cy+Math.sin(a)*ry*rad;
-      const s=size*(.008+r()*.026)*(1+detail*.4);
-      g.fillStyle=r()>.55?pal[1]:pal[3];g.globalAlpha=.45+r()*.35;g.beginPath();g.arc(x,y,s,0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=size*.003;g.stroke();
+  }
+  function drawShadow(g,cx,cy,rx,ry,pal,r){
+    g.save();g.translate(cx,cy);g.globalAlpha=.22;g.fillStyle=pal[5];g.beginPath();g.ellipse(0,0,rx,ry,0,0,Math.PI*2);g.fill();g.globalAlpha=.13;for(let i=0;i<95;i++){const x=jitter(r,rx*2.2),y=jitter(r,ry*.7);g.beginPath();g.arc(x,y,1+r()*3,0,Math.PI*2);g.fill()}g.restore();g.globalAlpha=1;
+  }
+  function drawHorn(g,x,y,s,angle,flip,r,pal,kind,sharp,broken=false){
+    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
+    if(kind==='spikes'){
+      g.beginPath();g.moveTo(-s*.18,s*.1);g.lineTo(0,-s*.72);g.lineTo(s*.2,s*.1);g.closePath();
+    }else if(kind==='stubby'){
+      g.beginPath();g.moveTo(-s*.25,s*.12);g.quadraticCurveTo(-s*.18,-s*.48,0,-s*.58);g.quadraticCurveTo(s*.18,-s*.44,s*.26,s*.12);g.closePath();
+    }else{
+      const curl=kind==='curled'?1.13:1;
+      g.beginPath();
+      g.moveTo(-s*.3,s*.12);
+      g.bezierCurveTo(-s*.4,-s*.28,-s*.7*curl,-s*.56,-s*.69*curl,-s*(broken?.72:.9));
+      if(broken){g.lineTo(-s*.53,-s*.79);g.lineTo(-s*.4,-s*.69);g.lineTo(-s*.31,-s*.8)}
+      else{g.bezierCurveTo(-s*.7*curl,-s*1.02,-s*.54*curl,-s*1.08,-s*.46*curl,-s*.96)}
+      g.bezierCurveTo(-s*.33,-s*.73,-s*.02,-s*.38,s*.3,s*.12);
+      g.closePath();
     }
-    g.restore();g.globalAlpha=1;
-    // eyes distribution
-    const n=state.eyeCount;const eyeBase=size*(.085+state.eyeScale/100*.07)/(1+Math.max(0,n-2)*.16);
-    const positions=[];
-    if(n===1)positions.push([0,-.15]);
-    else{
-      for(let i=0;i<n;i++){
-        const row=n>3 && i>=Math.ceil(n/2)?1:0;
-        const rowCount=row?n-Math.ceil(n/2):Math.ceil(n/2);
-        const idx=row?i-Math.ceil(n/2):i;
-        const spread=rowCount===1?0:(idx/(rowCount-1)-.5);
-        positions.push([spread*(.9-row*.12),-.18+row*.35]);
+    const grad=g.createLinearGradient(-s*.26,0,s*.3,-s);grad.addColorStop(0,shade(pal[4],-22));grad.addColorStop(.5,pal[4]);grad.addColorStop(1,shade(pal[4],-38));g.fillStyle=grad;g.fill();strokeInk(g,Math.max(8,s*.075),pal[5]);
+    g.strokeStyle=pal[3];g.lineWidth=Math.max(4,s*.032);g.globalAlpha=.7;
+    for(let i=1;i<6;i++){const yy=-s*i/6;g.beginPath();g.moveTo(-s*(.2-i*.014),yy);g.quadraticCurveTo(0,yy+s*.055,s*(.16-i*.009),yy+s*.018);g.stroke()}
+    g.globalAlpha=1;
+    if(broken){g.fillStyle=pal[5];g.beginPath();g.moveTo(-s*.58,-s*.75);g.lineTo(-s*.48,-s*.68);g.lineTo(-s*.38,-s*.78);g.closePath();g.fill()}
+    g.strokeStyle=pal[5];g.lineWidth=Math.max(2,s*.018);for(let i=0;i<7;i++){const y=-s*(.08+r()*.75),x=jitter(r,s*.12);g.beginPath();g.moveTo(x,y);g.lineTo(x+jitter(r,s*.14),y+jitter(r,s*.08));g.stroke()}
+    g.restore();
+  }
+  function drawEar(g,x,y,s,angle,flip,pal,r,detail,earring){
+    g.save();g.translate(x,y);g.rotate(angle);g.scale(flip,1);
+    g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(s*.98,-s*.58,s*.78,s*.48);g.quadraticCurveTo(s*.42,s*.76,0,0);g.closePath();
+    const grad=g.createLinearGradient(0,-s*.3,s*.7,s*.5);grad.addColorStop(0,pal[2]);grad.addColorStop(1,shade(pal[2],-30));g.fillStyle=grad;g.fill();strokeInk(g,Math.max(8,s*.075),pal[5]);
+    g.beginPath();g.moveTo(s*.12,s*.02);g.quadraticCurveTo(s*.58,-s*.25,s*.55,s*.34);g.quadraticCurveTo(s*.35,s*.5,s*.16,s*.18);g.closePath();g.fillStyle=pal[3];g.globalAlpha=.72;g.fill();g.globalAlpha=1;g.strokeStyle=pal[5];g.lineWidth=Math.max(4,s*.035);g.stroke();
+    if(detail>.55){g.strokeStyle=pal[5];g.lineWidth=Math.max(2,s*.016);for(let i=0;i<5;i++){g.beginPath();g.moveTo(s*(.22+i*.07),s*(.02+i*.03));g.lineTo(s*(.38+i*.04),s*(.12+i*.04));g.stroke()}}
+    if(earring){g.strokeStyle=pal[1];g.lineWidth=Math.max(8,s*.07);g.beginPath();g.arc(s*.63,s*.5,s*.2,0,Math.PI*2);g.stroke();g.strokeStyle=pal[5];g.lineWidth=Math.max(2,s*.02);g.stroke()}
+    g.restore();
+  }
+  function drawEye(g,x,y,s,rot,style,r,pal,creepy,wild,detail){
+    g.save();g.translate(x,y);g.rotate(rot);
+    const droopy=style==='droopy',cat=style==='cat';
+    const sx=droopy?.9:1,sy=droopy?.72:1;g.scale(sx,sy);
+    g.globalAlpha=.28;g.fillStyle=pal[5];g.beginPath();g.ellipse(5*s/100,9*s/100,s*.71,s*.82,0,0,Math.PI*2);g.fill();g.globalAlpha=1;
+    const ring=g.createRadialGradient(-s*.1,-s*.15,s*.08,0,0,s*.72);ring.addColorStop(0,shade(pal[0],22));ring.addColorStop(.7,shade(pal[0],-12));ring.addColorStop(1,pal[5]);g.fillStyle=ring;g.beginPath();g.ellipse(0,0,s*.69,s*.79,0,0,Math.PI*2);g.fill();
+    g.beginPath();g.ellipse(0,0,s*.55,s*.67,0,0,Math.PI*2);const white=g.createRadialGradient(-s*.16,-s*.22,s*.05,0,0,s*.68);white.addColorStop(0,'#fff9e8');white.addColorStop(.72,pal[4]);white.addColorStop(1,shade(pal[4],-26));g.fillStyle=white;g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(7,s*.065);g.stroke();
+    const iris=g.createRadialGradient(-s*.08,-s*.1,s*.04,0,0,s*.38);iris.addColorStop(0,shade(pal[1],28));iris.addColorStop(.65,pal[1]);iris.addColorStop(1,shade(pal[1],-55));g.fillStyle=iris;g.beginPath();g.arc(0,0,s*.34,0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(4,s*.035);g.stroke();
+    const px=jitter(r,s*.1)+wild*s*.08,py=jitter(r,s*.08);
+    g.fillStyle=pal[5];g.beginPath();if(cat||creepy>.62)g.ellipse(px,py,s*.065,s*.24,0,0,Math.PI*2);else g.arc(px,py,s*.13,0,Math.PI*2);g.fill();
+    g.fillStyle='#fff';g.beginPath();g.arc(-s*.16,-s*.21,s*.075,0,Math.PI*2);g.fill();g.globalAlpha=.65;g.beginPath();g.arc(s*.08,-s*.07,s*.032,0,Math.PI*2);g.fill();g.globalAlpha=1;
+    if(droopy||style==='mixed'){
+      g.beginPath();g.moveTo(-s*.59,-s*.1);g.quadraticCurveTo(0,-s*(.42+.12*wild),s*.58,-s*.08);g.quadraticCurveTo(s*.22,s*.02,-s*.55,s*.02,-s*.59,-s*.1);g.closePath();g.fillStyle=pal[2];g.fill();strokeInk(g,Math.max(8,s*.085),pal[5]);
+    }
+    if(detail>.45){g.strokeStyle=pal[5];g.lineWidth=Math.max(2,s*.017);g.globalAlpha=.55;for(let i=0;i<5;i++){const yy=s*(.68+i*.045);g.beginPath();g.moveTo(-s*(.37-i*.03),yy);g.quadraticCurveTo(0,yy+s*.025,s*(.25-i*.02),yy);g.stroke()}g.globalAlpha=1}
+    g.restore();
+  }
+  function drawSnout(g,cx,cy,s,style,r,pal,detail){
+    if(style==='nostrils'){g.fillStyle=pal[5];for(const dx of[-.16,.16]){g.beginPath();g.ellipse(cx+s*dx,cy,s*.075,s*.12,dx,0,Math.PI*2);g.fill()}return}
+    if(style==='beak'){g.beginPath();g.moveTo(cx-s*.28,cy-s*.06);g.lineTo(cx+s*.3,cy);g.lineTo(cx-s*.18,cy+s*.23);g.closePath();g.fillStyle=pal[1];g.fill();strokeInk(g,s*.05,pal[5]);return}
+    const skull=style==='skull';
+    g.beginPath();g.ellipse(cx,cy,s*(skull?.31:.42),s*(skull?.26:.3),0,0,Math.PI*2);const grad=g.createRadialGradient(cx-s*.12,cy-s*.1,s*.03,cx,cy,s*.42);grad.addColorStop(0,shade(pal[0],20));grad.addColorStop(1,shade(pal[0],-25));g.fillStyle=grad;g.fill();g.strokeStyle=pal[5];g.lineWidth=s*.045;g.stroke();
+    g.fillStyle=pal[5];for(const dx of[-.15,.15]){g.beginPath();g.ellipse(cx+s*dx,cy+s*.02,s*(skull?.1:.085),s*(skull?.14:.11),dx,0,Math.PI*2);g.fill()}
+    if(detail>.55){g.globalAlpha=.45;g.fillStyle=pal[4];g.beginPath();g.ellipse(cx-s*.11,cy-s*.13,s*.1,s*.045,-.25,0,Math.PI*2);g.fill();g.globalAlpha=1}
+  }
+  function mouthPath(g,w,h,style,r){
+    g.beginPath();
+    if(style==='stitched'){g.moveTo(-w*.5,0);g.quadraticCurveTo(0,h*.18,w*.5,0);g.quadraticCurveTo(0,h*.3,-w*.5,0)}
+    else if(style==='gape'){g.ellipse(0,h*.34,w*.42,h*.62,jitter(r,.06),0,Math.PI*2)}
+    else if(style==='underbite'){g.moveTo(-w*.5,0);g.quadraticCurveTo(0,h*.5,w*.5,0);g.quadraticCurveTo(0,h*1.22,-w*.5,0)}
+    else{g.moveTo(-w*.5,0);g.quadraticCurveTo(0,h*(.42+jitter(r,.1)),w*.5,jitter(r,h*.05));g.quadraticCurveTo(0,h*(1.08+jitter(r,.12)),-w*.5,0)}
+    g.closePath();
+  }
+  function drawTooth(g,x,y,w,h,top,r,pal,sharp,stain){
+    g.beginPath();g.moveTo(x-w*.5,y);g.quadraticCurveTo(x,y+(top?h:-h)*(sharp>.55?1:.86),x+w*.5,y);g.closePath();g.fillStyle=stain?shade(pal[4],-16):pal[4];g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(2,w*.11);g.stroke();
+    if(stain){g.globalAlpha=.32;g.fillStyle=pal[1];g.beginPath();g.arc(x+jitter(r,w*.18),y+(top?h*.28:-h*.28),w*.14,0,Math.PI*2);g.fill();g.globalAlpha=1}
+    if(r()>.72){g.strokeStyle=pal[5];g.lineWidth=Math.max(1,w*.055);g.beginPath();g.moveTo(x,y+(top?h*.12:-h*.12));g.lineTo(x+jitter(r,w*.18),y+(top?h*.5:-h*.5));g.stroke()}
+  }
+  function drawMouth(g,cx,cy,w,h,style,r,pal,teeth,creepy,wild,sharp,detail){
+    g.save();g.translate(cx,cy);g.rotate(jitter(r,wild*.09));
+    if(style==='stitched'){
+      g.strokeStyle=pal[5];g.lineWidth=Math.max(12,w*.035);g.beginPath();g.moveTo(-w*.46,h*.25);g.quadraticCurveTo(0,h*.43,w*.46,h*.2);g.stroke();
+      g.lineWidth=Math.max(5,w*.012);for(let i=0;i<8;i++){const x=lerp(-w*.38,w*.38,i/7);g.beginPath();g.moveTo(x-w*.02,h*.08);g.lineTo(x+w*.02,h*.48);g.stroke()}g.restore();return;
+    }
+    mouthPath(g,w,h,style,r);g.fillStyle=pal[5];g.fill();strokeInk(g,Math.max(16,w*.032),pal[5]);
+    g.save();mouthPath(g,w,h,style,r);g.clip();
+    // pink gum/lip contour
+    g.strokeStyle=pal[3];g.lineWidth=Math.max(10,w*.022);g.beginPath();g.moveTo(-w*.43,h*.12);g.quadraticCurveTo(0,h*.34,w*.43,h*.1);g.stroke();
+    g.beginPath();g.moveTo(-w*.38,h*.76);g.quadraticCurveTo(0,h*.96,w*.37,h*.7);g.stroke();
+    // tongue
+    g.beginPath();g.moveTo(-w*.2,h*.67);g.quadraticCurveTo(0,h*.5,w*.23,h*.66);g.quadraticCurveTo(w*.18,h*.95,-w*.13,h*.9);g.closePath();const tg=g.createLinearGradient(0,h*.5,0,h*.95);tg.addColorStop(0,shade(pal[3],18));tg.addColorStop(1,shade(pal[3],-18));g.fillStyle=tg;g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(4,w*.008);g.stroke();g.beginPath();g.moveTo(0,h*.58);g.quadraticCurveTo(.03*w,h*.72,0,h*.86);g.stroke();
+    const n=Math.max(0,teeth);const topCount=Math.ceil(n*.58),bottomCount=n-topCount;
+    for(let i=0;i<topCount;i++){const t=(i+.5)/topCount,x=lerp(-w*.38,w*.38,t)+jitter(r,w*.018),tw=w/(topCount+5)*(.78+jitter(r,.18)),th=h*(.23+.2*creepy+jitter(r,.09));drawTooth(g,x,h*.18,tw,th,true,r,pal,sharp,r()>.62)}
+    for(let i=0;i<bottomCount;i++){const t=(i+.5)/Math.max(1,bottomCount),x=lerp(-w*.34,w*.34,t)+jitter(r,w*.018),tw=w/(bottomCount+5)*(.78+jitter(r,.18)),th=h*(.18+.13*creepy+jitter(r,.07));drawTooth(g,x,h*.73,tw,th,false,r,pal,sharp,r()>.58)}
+    if(style==='fangs'||creepy>.66){drawTooth(g,-w*.34,h*.14,w*.11,h*.6,true,r,pal,.9,true);if(r()>.32)drawTooth(g,w*.34,h*.14,w*.11,h*.52,true,r,pal,.9,true)}
+    if(detail>.45){g.strokeStyle=pal[4];g.lineWidth=Math.max(2,w*.006);g.globalAlpha=.18;for(let i=0;i<28;i++){const x=jitter(r,w*.72),y=h*(.25+r()*.46);g.beginPath();g.moveTo(x,y);g.lineTo(x+jitter(r,w*.08),y+jitter(r,h*.05));g.stroke()}g.globalAlpha=1}
+    g.restore();
+    // redraw mouth contour after clipping
+    mouthPath(g,w,h,style,r);g.strokeStyle=pal[5];g.lineWidth=Math.max(10,w*.018);g.stroke();
+    g.restore();
+  }
+  function drawSkin(g,pts,cx,cy,rx,ry,style,r,pal,detail,texture){
+    clipHead(g,pts,()=>{
+      const count=Math.floor(lerp(8,30,detail)*(.68+texture*.45));
+      if(style==='spots'||style==='warts'){
+        for(let i=0;i<count;i++){
+          const a=r()*Math.PI*2,rad=Math.sqrt(r())*.82,x=cx+Math.cos(a)*rx*rad,y=cy+Math.sin(a)*ry*rad,s=rx*(.012+r()*.045)*(style==='warts'?1.15:.8);
+          if(style==='warts'){
+            const raised=r()>.52;
+            if(raised){
+              g.globalAlpha=.24;g.fillStyle=pal[5];g.beginPath();g.ellipse(x+s*.18,y+s*.23,s*1.05,s*.82,0,0,Math.PI*2);g.fill();g.globalAlpha=1;
+              const wc=r()>.28?pal[1]:(r()>.5?pal[3]:shade(pal[0],18));
+              const wg=g.createRadialGradient(x-s*.28,y-s*.32,s*.06,x,y,s);wg.addColorStop(0,shade(wc,30));wg.addColorStop(.58,wc);wg.addColorStop(1,shade(wc,-34));g.fillStyle=wg;g.beginPath();g.arc(x,y,s,0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(2,s*.11);g.stroke();
+              g.globalAlpha=.4;g.fillStyle=pal[4];g.beginPath();g.arc(x-s*.25,y-s*.28,s*.16,0,Math.PI*2);g.fill();g.globalAlpha=1;
+            }else{
+              g.globalAlpha=.45+r()*.22;g.fillStyle=r()>.55?shade(pal[0],-24):pal[3];g.beginPath();g.ellipse(x,y,s*(1.2+r()*.5),s*(.72+r()*.45),jitter(r,.5),0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(1.5,s*.075);g.stroke();g.globalAlpha=1;
+            }
+          }else{g.globalAlpha=.55+r()*.22;g.fillStyle=r()>.55?pal[1]:pal[3];g.beginPath();g.arc(x,y,s,0,Math.PI*2);g.fill();g.strokeStyle=pal[5];g.lineWidth=Math.max(1,s*.08);g.stroke();g.globalAlpha=1}
+        }
+      }
+      if(style==='scales'){
+        g.globalAlpha=.48;g.strokeStyle=shade(pal[6],-8);g.lineWidth=Math.max(2,rx*.007);
+        for(let row=0;row<8;row++)for(let col=0;col<10;col++){const x=cx-rx*.65+col*rx*.145+(row%2)*rx*.072,y=cy-ry*.55+row*ry*.15;g.beginPath();g.arc(x,y,rx*.075,0,Math.PI);g.stroke()}g.globalAlpha=1;
+      }
+      if(style==='scratches'){
+        g.strokeStyle=pal[5];g.lineWidth=Math.max(2,rx*.006);g.globalAlpha=.48;for(let i=0;i<28;i++){const x=cx+jitter(r,rx*1.35),y=cy+jitter(r,ry*1.4),len=rx*(.025+r()*.08);g.beginPath();g.moveTo(x,y);g.lineTo(x+len,y+jitter(r,len*.4));g.stroke()}g.globalAlpha=1;
+      }
+      if(style==='fur'){
+        g.strokeStyle=shade(pal[6],-10);g.lineWidth=Math.max(2,rx*.006);g.globalAlpha=.55;for(let i=0;i<90;i++){const x=cx+jitter(r,rx*1.45),y=cy+jitter(r,ry*1.5);g.beginPath();g.moveTo(x,y);g.lineTo(x+jitter(r,rx*.03),y+rx*.035);g.stroke()}g.globalAlpha=1;
+      }
+      // pores and freckles
+      g.fillStyle=pal[5];g.globalAlpha=.14+.12*detail;for(let i=0;i<150+detail*260;i++){const x=cx+jitter(r,rx*1.55),y=cy+jitter(r,ry*1.65),s=.7+r()*2.8;g.beginPath();g.arc(x,y,s,0,Math.PI*2);g.fill()}g.globalAlpha=1;
+    });
+  }
+  function drawContourHatching(g,pts,cx,cy,rx,ry,r,pal,detail){
+    clipHead(g,pts,()=>{
+      g.strokeStyle=pal[5];g.lineWidth=Math.max(1.5,rx*.004);g.globalAlpha=.27+.18*detail;
+      for(let i=0;i<115*detail;i++){const side=r()>.5?1:-1,x=cx+side*rx*(.5+r()*.35),y=cy+jitter(r,ry*1.3),len=rx*(.025+r()*.075);g.beginPath();g.moveTo(x,y);g.lineTo(x-side*len,y+len*.55);g.stroke()}
+      for(let i=0;i<72*detail;i++){const x=cx+jitter(r,rx*1.4),y=cy+ry*(.54+r()*.22),len=rx*(.02+r()*.055);g.beginPath();g.moveTo(x,y);g.lineTo(x+jitter(r,len),y-len);g.stroke()}
+      g.globalAlpha=1;
+    });
+  }
+  function drawScar(g,x,y,s,angle,pal,r){g.save();g.translate(x,y);g.rotate(angle);g.strokeStyle=pal[5];g.lineWidth=s*.045;g.beginPath();g.moveTo(-s*.55,0);g.lineTo(s*.55,jitter(r,s*.12));g.stroke();g.lineWidth=s*.026;for(let i=0;i<5;i++){const xx=lerp(-s*.4,s*.4,i/4);g.beginPath();g.moveTo(xx,-s*.18);g.lineTo(xx+jitter(r,s*.08),s*.18);g.stroke()}g.restore()}
+  function drawMonster(target,size,custom=state,opts={}){
+    const g=target.getContext('2d');target.width=size;target.height=size;
+    const st={...custom};const r=rng((st.seed+size*13)>>>0),pal=palettes[st.palette].c;
+    const transparent=opts.transparent??st.transparent;
+    g.clearRect(0,0,size,size);drawPaper(g,size,pal,r,transparent);
+    const creepy=st.creepy/100,wild=st.wild/100,detail=st.detail/100,sharp=st.sharp/100,asym=st.asymmetry/100,printy=st.printiness/100,texture=st.texture/100;
+    g.save();if(st.flipped){g.translate(size,0);g.scale(-1,1)}
+    const cx=size*(.5+jitter(r,.018*asym)),cy=size*.545,rx=size*(.315+jitter(r,.018)),ry=size*(.33+jitter(r,.018));
+    drawShadow(g,cx,cy+ry*.97,rx*.92,ry*.12,pal,r);
+    // color registration halo
+    if(printy>.2){g.save();g.globalAlpha=.16*printy;g.translate(size*.008,-size*.004);const halo=headPoints(cx,cy,rx,ry,r,st.headStyle,wild);smoothClosedPath(g,halo);g.fillStyle=pal[3];g.fill();g.restore()}
+    // horns and ears
+    if(st.hornStyle!=='none'){
+      const hornCount=st.hornStyle==='spikes'?Math.max(3,st.horns+2):st.horns;
+      for(let i=0;i<hornCount;i++){
+        if(st.hornStyle==='spikes'){const t=hornCount===1?.5:i/(hornCount-1),x=lerp(cx-rx*.55,cx+rx*.55,t),y=cy-ry*(.82+.08*Math.sin(t*Math.PI));drawHorn(g,x,y,size*.095,0,1,r,pal,'spikes',sharp,false)}
+        else{const side=i%2===0?-1:1,tier=Math.floor(i/2),x=cx+side*rx*(.69-tier*.1),y=cy-ry*(.71-tier*.08),broken=st.hornStyle==='broken'&&side===1&&tier===0;drawHorn(g,x,y,size*(.19-tier*.022),side*(.23+jitter(r,.045)),side,r,pal,st.hornStyle,sharp,broken)}
       }
     }
-    positions.forEach((p,i)=>{
-      const dx=p[0]*rx + jitter(r,size*.018*asym),dy=p[1]*ry+jitter(r,size*.014*asym);
-      const local=eyeBase*(1+jitter(r,.18*asym));drawEye(g,cx+dx,cy+dy,local,jitter(r,.18*wild),i%4,r,pal,creepy,wild);
+    drawEar(g,cx-rx*.91,cy-ry*.1,size*.145,-.16,-1,pal,r,detail,false);drawEar(g,cx+rx*.91,cy-ry*.08,size*.145,.18,1,pal,r,detail,true);
+    if(detail>.48){
+      const spikeCount=3+Math.floor(wild*4);for(let i=0;i<spikeCount;i++){const t=spikeCount===1?.5:i/(spikeCount-1),x=lerp(cx-rx*.2,cx+rx*.25,t),y=cy-ry*.86-size*.012*Math.sin(t*Math.PI);g.beginPath();g.moveTo(x-size*.022,y+size*.05);g.lineTo(x+jitter(r,size*.018),y-size*(.045+r()*.035));g.lineTo(x+size*.024,y+size*.05);g.closePath();g.fillStyle=pal[2];g.fill();g.strokeStyle=pal[5];g.lineWidth=size*.007;g.stroke()}
+    }
+    const pts=headPoints(cx,cy,rx,ry,r,st.headStyle,wild);
+    // head fill
+    smoothClosedPath(g,pts);const hg=g.createRadialGradient(cx-rx*.28,cy-ry*.38,rx*.08,cx+rx*.08,cy+ry*.12,rx*1.1);hg.addColorStop(0,shade(pal[0],30));hg.addColorStop(.58,pal[0]);hg.addColorStop(1,shade(pal[0],-34));g.fillStyle=hg;g.fill();strokeInk(g,size*.019,pal[5]);
+    // secondary hand ink contour
+    g.globalAlpha=.58;smoothClosedPath(g,pts.map(p=>({x:p.x+jitter(r,size*.0025),y:p.y+jitter(r,size*.0025)})));g.strokeStyle=pal[5];g.lineWidth=size*.0055;g.stroke();g.globalAlpha=1;
+    // internal cheek shadow + highlight
+    clipHead(g,pts,()=>{
+      const sh=g.createRadialGradient(cx+rx*.38,cy+ry*.2,rx*.08,cx+rx*.28,cy+ry*.3,rx*.85);sh.addColorStop(0,'rgba(0,0,0,0)');sh.addColorStop(1,'rgba(0,0,0,.32)');g.fillStyle=sh;g.fillRect(cx-rx,cy-ry,rx*2,ry*2);
+      const hi=g.createRadialGradient(cx-rx*.35,cy-ry*.45,0,cx-rx*.25,cy-ry*.35,rx*.56);hi.addColorStop(0,'rgba(255,255,255,.23)');hi.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=hi;g.fillRect(cx-rx,cy-ry,rx*2,ry*2);
     });
-    // brows
-    if(wild>.25){
-      g.strokeStyle=pal[5];g.lineWidth=size*(.014+.012*wild);g.lineCap='round';
-      g.beginPath();g.moveTo(cx-rx*.48,cy-ry*.34);g.quadraticCurveTo(cx-rx*.22,cy-ry*(.5+.12*wild),cx-rx*.02,cy-ry*.38);g.stroke();
-      if(state.eyeCount>1){g.beginPath();g.moveTo(cx+rx*.08,cy-ry*.4);g.quadraticCurveTo(cx+rx*.33,cy-ry*(.32-.1*wild),cx+rx*.48,cy-ry*.28);g.stroke();}
+    drawSkin(g,pts,cx,cy,rx,ry,st.skinStyle,r,pal,detail,texture);
+    drawContourHatching(g,pts,cx,cy,rx,ry,r,pal,detail);
+    // eyes
+    let positions=[];
+    const eyeCount=st.eyeStyle==='cyclops'?1:st.eyeStyle==='cluster'?Math.max(3,st.eyeCount):st.eyeCount;
+    if(eyeCount===1)positions=[[0,-.18,1.22]];
+    else if(eyeCount===2)positions=[[-.29,-.2,1.26],[.3,-.15,.78]];
+    else{
+      const cols=Math.ceil(eyeCount/2);for(let i=0;i<eyeCount;i++){const row=i>=cols?1:0,idx=row?i-cols:i,count=row?eyeCount-cols:cols,t=count===1?0:idx/(count-1)-.5;positions.push([t*(.86-row*.12),-.24+row*.32,row?.72:.82])}
     }
-    // nose
-    g.fillStyle=pal[5];const noseY=cy+ry*.10;g.beginPath();g.ellipse(cx-size*.026,noseY,size*.012,size*.019,-.15,0,Math.PI*2);g.ellipse(cx+size*.026,noseY,size*.012,size*.019,.15,0,Math.PI*2);g.fill();
-    // mouth
-    drawMouth(g,cx+jitter(r,rx*.08*asym),cy+ry*.29,size*(.18+state.mouthWidth/100*.25),size*(.13+.08*creepy),r,pal,state.teeth,creepy,wild,sharp);
-    // scars
-    if(detail>.42){
-      const sx=cx+rx*.43,sy=cy+ry*.42;g.strokeStyle=pal[5];g.lineWidth=size*.006;g.beginPath();g.moveTo(sx-size*.06,sy-size*.025);g.lineTo(sx+size*.055,sy+size*.02);g.stroke();
-      for(let i=0;i<4;i++){const x=sx-size*.04+i*size*.027;g.beginPath();g.moveTo(x,sy-size*.03);g.lineTo(x-size*.01,sy+size*.035);g.stroke();}
-    }
-    const textureCount=Math.floor(state.texture*5*(.4+state.printiness/100));
-    stipple(g,r,headPts,textureCount,pal,.2,state.printiness/100);
-    // fuzzy edge
-    if(state.headStyle==='fuzzy'){
-      g.strokeStyle=pal[5];g.lineWidth=size*.006;
-      headPts.forEach((p,i)=>{if(i%2===0){const vx=p.x-cx,vy=p.y-cy,l=Math.hypot(vx,vy);g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+vx/l*size*.025,p.y+vy/l*size*.025);g.stroke()}})
-    }
+    const base=size*(.095+st.eyeScale/100*.064)/(1+Math.max(0,eyeCount-2)*.14);
+    positions.forEach((p,i)=>{
+      const es=base*p[2]*(1+jitter(r,.08*asym)),x=cx+p[0]*rx+jitter(r,size*.016*asym),y=cy+p[1]*ry+jitter(r,size*.012*asym);
+      const eyeStyle=st.eyeStyle==='mixed'?(i===1?'droopy':i%3===2?'cat':'round'):st.eyeStyle;
+      drawEye(g,x,y,es,jitter(r,.12*wild),eyeStyle,r,pal,creepy,wild,detail);
+    });
+    // eyebrows
+    g.strokeStyle=pal[5];g.lineCap='round';g.lineWidth=size*(.012+.01*wild);g.beginPath();g.moveTo(cx-rx*.52,cy-ry*.42);g.quadraticCurveTo(cx-rx*.27,cy-ry*(.56+.1*wild),cx-rx*.05,cy-ry*.43);g.stroke();
+    if(eyeCount>1){g.beginPath();g.moveTo(cx+rx*.08,cy-ry*.44);g.quadraticCurveTo(cx+rx*.3,cy-ry*(.35-.06*wild),cx+rx*.49,cy-ry*.31);g.stroke()}
+    // nose and mouth
+    drawSnout(g,cx+jitter(r,rx*.035*asym),cy+ry*.08,size*.18,st.noseStyle,r,pal,detail);
+    drawMouth(g,cx+jitter(r,rx*.055*asym),cy+ry*.28,size*(.21+st.mouthWidth/100*.27),size*(.16+.078*creepy),st.mouthStyle,r,pal,st.teeth,creepy,wild,sharp,detail);
+    if(detail>.42)drawScar(g,cx+rx*.4,cy+ry*.5,size*.12,-.1,pal,r);
+    // chin hatch and random whisker scratches
+    if(detail>.6){g.strokeStyle=pal[5];g.lineWidth=size*.003;g.globalAlpha=.34;for(let i=0;i<20;i++){const x=cx+jitter(r,rx*.9),y=cy+ry*(.58+r()*.18);g.beginPath();g.moveTo(x,y);g.lineTo(x+jitter(r,size*.025),y-size*(.018+r()*.02));g.stroke()}g.globalAlpha=1}
     g.restore();
-    // overall paper speckle
-    if(state.printiness>25){
-      const rr=rngFor(123);g.globalAlpha=.08*(state.printiness/100);g.fillStyle=pal[5];for(let i=0;i<size/2;i++){g.fillRect(rr()*size,rr()*size,1+rr()*2,1+rr()*2)}g.globalAlpha=1;
-    }
-    state=oldState;
+    // top-level print speckle
+    if(printy>.18){const rr=rng(st.seed^0x7f4a7c15);g.globalAlpha=.045+.07*printy;g.fillStyle=pal[5];for(let i=0;i<size*.55;i++){g.fillRect(rr()*size,rr()*size,.7+rr()*2.2,.7+rr()*2.2)}g.globalAlpha=1}
   }
 
-  function syncStateFromUI(){
-    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(id=>state[id]=+$ (id).value);
-    state.headStyle=$('headStyle').value;state.background=$('backgroundToggle').checked;
+  function iconState(type,value,index){
+    const s={...defaults,seed:18000+index*919,palette:index%palettes.length,background:false,transparent:true,detail:55,printiness:55,texture:55,eyeCount:2,teeth:8,horns:2};
+    if(type==='palette')s.palette=index;else s[type]=value;
+    if(type==='headStyle'){s.eyeStyle='mixed';s.mouthStyle='grin'}
+    if(type==='eyeStyle'){s.headStyle='blob';s[value==='cluster'?'eyeCount':'eyeCount']=value==='cluster'?4:value==='cyclops'?1:2}
+    if(type==='noseStyle'){s.eyeCount=2}
+    if(type==='mouthStyle'){s.eyeCount=1;s.teeth=value==='stitched'?0:8}
+    if(type==='hornStyle'){s.horns=value==='none'?0:value==='spikes'?4:2}
+    if(type==='skinStyle'){s.eyeCount=1}
+    return s;
   }
-  function updateOutputs(){
-    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture'].forEach(id=>$(id+'Out').textContent=$(id).value);
-    $('seedLabel').textContent=state.seed;
-  }
-  function render(){syncStateFromUI();updateOutputs();drawMonster(canvas,1200,state)}
-  function setUIFromState(){
-    $('headStyle').value=state.headStyle;
-    ['eyeCount','eyeScale','mouthWidth','teeth','horns','texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(id=>$(id).value=state[id]);
-    $('backgroundToggle').checked=state.background;
-    [...document.querySelectorAll('.palette-button')].forEach((b,i)=>b.classList.toggle('active',i===state.palette));
-    render();
-  }
-  function randomise(full=true){
-    const r=Math.random;
-    state.seed=Math.floor(r()*999999);
-    state.headStyle=['blob','pear','square','skull','fuzzy'][Math.floor(r()*5)];
-    state.eyeCount=1+Math.floor(r()*6);state.eyeScale=35+Math.floor(r()*61);state.mouthWidth=35+Math.floor(r()*66);state.teeth=Math.floor(r()*19);state.horns=Math.floor(r()*7);
-    state.texture=Math.floor(r()*101);state.creepy=Math.floor(r()*101);state.wild=Math.floor(r()*101);state.detail=Math.floor(r()*101);state.sharp=Math.floor(r()*101);state.asymmetry=Math.floor(r()*101);state.printiness=35+Math.floor(r()*66);state.palette=Math.floor(r()*palettes.length);
-    if(full)state.flipped=false;
-    setUIFromState();
-  }
-  function mutate(){
-    const amount=.34;const n=v=>clamp(Math.round(v+(Math.random()-.5)*100*amount),0,100);
-    state.seed=(state.seed+Math.floor(Math.random()*99991))%999999;
-    state.eyeCount=clamp(state.eyeCount+(Math.random()<.35?(Math.random()<.5?-1:1):0),1,6);
-    state.eyeScale=clamp(n(state.eyeScale),30,100);state.mouthWidth=clamp(n(state.mouthWidth),25,100);state.teeth=clamp(Math.round(state.teeth+(Math.random()-.5)*8),0,18);state.horns=clamp(Math.round(state.horns+(Math.random()-.5)*3),0,6);
-    ['texture','creepy','wild','detail','sharp','asymmetry','printiness'].forEach(k=>state[k]=n(state[k]));
-    if(Math.random()<.22)state.palette=Math.floor(Math.random()*palettes.length);
-    if(Math.random()<.18)state.headStyle=['blob','pear','square','skull','fuzzy'][Math.floor(Math.random()*5)];
-    setUIFromState();
+  function buildFeatureGrid(id,type,values){
+    const grid=$(id);values.forEach((value,index)=>{const b=document.createElement('button');b.className='feature-tile';b.dataset.value=value;b.title=value;const c=document.createElement('canvas');c.width=180;c.height=180;b.appendChild(c);drawMonster(c,360,iconState(type,value,index),{transparent:false});b.onclick=()=>{pushHistory();state[type]=value;if(type==='eyeStyle'){state.eyeCount=value==='cyclops'?1:value==='cluster'?4:2}if(type==='hornStyle'&&value==='none')state.horns=0;renderAll()};grid.appendChild(b)})
   }
   function buildPalettes(){
-    const grid=$('paletteGrid');
-    palettes.forEach((p,i)=>{
-      const b=document.createElement('button');b.className='palette-button';b.title=p.name;b.innerHTML=`<div class="swatches">${p.c.slice(0,5).map(c=>`<i style="background:${c}"></i>`).join('')}</div>`;
-      b.onclick=()=>{state.palette=i;setUIFromState()};grid.appendChild(b);
-    });
+    const grid=$('paletteGrid');palettes.forEach((p,index)=>{const b=document.createElement('button');b.className='feature-tile';b.dataset.value=index;b.title=p.name;b.style.padding='5px';b.innerHTML=`<div style="height:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:2px">${p.c.slice(0,4).map(c=>`<i style="background:${c};border-radius:3px"></i>`).join('')}</div>`;b.onclick=()=>{pushHistory();state.palette=index;renderAll()};grid.appendChild(b)})
   }
-  function addVariation(s=state){
-    const box=document.createElement('button');const c=document.createElement('canvas');c.width=260;c.height=260;box.appendChild(c);
-    const snapshot=JSON.parse(JSON.stringify(s));drawMonster(c,520,snapshot);box.onclick=()=>{state={...snapshot};setUIFromState()};
-    const grid=$('variationGrid');grid.prepend(box);while(grid.children.length>8)grid.lastChild.remove();
+  function updateActive(){
+    [['headGrid','headStyle'],['eyeGrid','eyeStyle'],['noseGrid','noseStyle'],['mouthGrid','mouthStyle'],['hornGrid','hornStyle'],['skinGrid','skinStyle']].forEach(([id,key])=>[...$(id).children].forEach(b=>b.classList.toggle('active',b.dataset.value===String(state[key]))));
+    [...$('paletteGrid').children].forEach(b=>b.classList.toggle('active',+b.dataset.value===state.palette));
   }
-  function seedVariations(){
-    const original={...state};for(let i=0;i<8;i++){randomise();addVariation(state)}state=original;setUIFromState();
-  }
-  function exportPrint(){
-    syncStateFromUI();const out=document.createElement('canvas');drawMonster(out,3600,state);
-    const a=document.createElement('a');a.download=`monster-${state.seed}-12in-300dpi.png`;a.href=out.toDataURL('image/png');a.click();
-  }
+  function readControls(){['creepy','wild','detail','sharp','printiness','asymmetry'].forEach(id=>state[id]=+$ (id).value);state.transparent=$('transparentToggle').checked}
+  function setControls(){['creepy','wild','detail','sharp','printiness','asymmetry'].forEach(id=>$(id).value=state[id]);$('transparentToggle').checked=state.transparent}
+  function renderAll(){readControls();$('seedLabel').textContent=state.seed;drawMonster(canvas,1400,state);updateActive();drawMascot()}
+  function pushHistory(){history.push(JSON.parse(JSON.stringify(state)));if(history.length>30)history.shift();future=[]}
+  function undo(){if(!history.length)return;future.push(JSON.parse(JSON.stringify(state)));state=history.pop();setControls();renderAll()}
+  function redo(){if(!future.length)return;history.push(JSON.parse(JSON.stringify(state)));state=future.pop();setControls();renderAll()}
+  function randomise(add=true){if(add)pushHistory();const r=Math.random;state.seed=Math.floor(r()*999999);state.headStyle=pick(r,lists.headStyle);state.eyeStyle=pick(r,lists.eyeStyle);state.noseStyle=pick(r,lists.noseStyle);state.mouthStyle=pick(r,lists.mouthStyle);state.hornStyle=pick(r,lists.hornStyle);state.skinStyle=pick(r,lists.skinStyle);state.eyeCount=state.eyeStyle==='cyclops'?1:state.eyeStyle==='cluster'?3+Math.floor(r()*3):1+Math.floor(r()*3);state.eyeScale=55+Math.floor(r()*40);state.mouthWidth=50+Math.floor(r()*45);state.teeth=state.mouthStyle==='stitched'?0:5+Math.floor(r()*10);state.horns=state.hornStyle==='none'?0:state.hornStyle==='spikes'?3+Math.floor(r()*3):2;state.texture=55+Math.floor(r()*45);state.creepy=Math.floor(r()*85);state.wild=20+Math.floor(r()*80);state.detail=58+Math.floor(r()*43);state.sharp=15+Math.floor(r()*70);state.asymmetry=25+Math.floor(r()*75);state.printiness=55+Math.floor(r()*46);state.palette=Math.floor(r()*palettes.length);state.flipped=false;setControls();renderAll()}
+  function mutate(){pushHistory();const n=(v,a=0,b=100,amt=22)=>clamp(Math.round(v+jitter(Math.random,amt*2)),a,b);state.seed=(state.seed+Math.floor(Math.random()*98731))%999999;state.creepy=n(state.creepy);state.wild=n(state.wild);state.detail=n(state.detail,35,100);state.sharp=n(state.sharp);state.asymmetry=n(state.asymmetry);state.printiness=n(state.printiness,35,100);state.eyeScale=n(state.eyeScale,45,100);state.mouthWidth=n(state.mouthWidth,40,100);state.teeth=n(state.teeth,0,16,5);if(Math.random()<.28){const key=pick(Math.random,['headStyle','eyeStyle','noseStyle','mouthStyle','hornStyle','skinStyle']);state[key]=pick(Math.random,lists[key]);}if(Math.random()<.22)state.palette=Math.floor(Math.random()*palettes.length);setControls();renderAll()}
+  function addVariation(snapshot=state){const box=document.createElement('button'),c=document.createElement('canvas');c.width=270;c.height=270;box.appendChild(c);const snap=JSON.parse(JSON.stringify(snapshot));drawMonster(c,540,snap);box.onclick=()=>{pushHistory();state={...snap};setControls();renderAll()};$('variationGrid').prepend(box);while($('variationGrid').children.length>8)$('variationGrid').lastChild.remove()}
+  function seedVariations(){const original={...state};for(let i=0;i<8;i++){randomise(false);addVariation(state)}state=original;setControls();renderAll()}
+  function exportPrint(){readControls();const out=document.createElement('canvas');drawMonster(out,3600,state,{transparent:state.transparent});const a=document.createElement('a');a.download=`monster-${state.seed}-12in-300dpi.png`;a.href=out.toDataURL('image/png');a.click()}
+  function drawMascot(){const c=$('mascot'),s={...state,seed:state.seed+333,background:false,transparent:true,eyeStyle:'cyclops',eyeCount:1,mouthStyle:'grin',hornStyle:'stubby',horns:2,detail:68,skinStyle:'fur'};drawMonster(c,440,s,{transparent:true})}
 
-  buildPalettes();
-  document.querySelectorAll('input[type="range"],select,input[type="checkbox"]').forEach(el=>el.addEventListener('input',render));
-  $('randomBtn').onclick=()=>randomise();$('resetBtn').onclick=()=>{state={...defaults};setUIFromState()};$('mutateBtn').onclick=mutate;$('newSeedBtn').onclick=()=>{state.seed=Math.floor(Math.random()*999999);render()};$('flipBtn').onclick=()=>{state.flipped=!state.flipped;render()};$('saveVariationBtn').onclick=()=>addVariation(state);$('exportBtn').onclick=exportPrint;
-  setUIFromState();seedVariations();
+  buildFeatureGrid('headGrid','headStyle',lists.headStyle);buildFeatureGrid('eyeGrid','eyeStyle',lists.eyeStyle);buildFeatureGrid('noseGrid','noseStyle',lists.noseStyle);buildFeatureGrid('mouthGrid','mouthStyle',lists.mouthStyle);buildFeatureGrid('hornGrid','hornStyle',lists.hornStyle);buildFeatureGrid('skinGrid','skinStyle',lists.skinStyle);buildPalettes();
+  document.querySelectorAll('input[type="range"],input[type="checkbox"]').forEach(el=>el.addEventListener('input',renderAll));
+  $('randomBtn').onclick=()=>randomise(true);$('resetBtn').onclick=()=>{pushHistory();state={...defaults};setControls();renderAll()};$('mutateBtn').onclick=mutate;$('newSeedBtn').onclick=()=>{pushHistory();state.seed=Math.floor(Math.random()*999999);renderAll()};$('flipBtn').onclick=()=>{pushHistory();state.flipped=!state.flipped;renderAll()};$('backgroundBtn').onclick=()=>{pushHistory();state.background=!state.background;renderAll()};$('saveVariationBtn').onclick=()=>addVariation(state);$('exportBtn').onclick=exportPrint;$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;
+  setControls();renderAll();seedVariations();
 })();
 </script>
 </body>

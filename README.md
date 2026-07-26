@@ -1,16 +1,16 @@
-# Procedural Monster Face Generator — Canvas MVP
+# Procedural Monster Face Generator — Illustrated Canvas MVP v2
 
-Open `index.html` in a modern desktop browser. No install, server, API, or build step is required.
+Open `index.html` in a modern desktop browser. No server, install, API, or build step is required.
 
-## Included
+## This pass adds
 
-- Procedural Canvas-rendered illustrated monster faces
-- Seeded mutations and full randomisation
-- Head, eye, mouth, teeth, horn, texture, palette, and personality controls
-- Saved variation strip
-- Flip and background controls
-- 3600 × 3600 PNG export for a 12-inch square print at 300 DPI
+- A denser hand-inked monster rendering style inspired by the approved concept art
+- Large asymmetric eyes, drooping eyelids, expressive brows, snouts, gums, irregular teeth, tongues, scars, and earrings
+- Broken, curled, stubby, and spiked horn families
+- Warts, spots, scales, scratches, fur marks, pores, contour hatching, shadows, paper grain, and print-registration offsets
+- Illustrated feature thumbnails that use the actual procedural renderer
+- Functional feature selection, personality sliders, mutation, randomization, undo/redo, horizontal flip, saved variations, and background toggle
+- Transparent or paper-background PNG export
+- 3600 × 3600 PNG output for a 12-inch square print at 300 DPI
 
-## Notes
-
-The generator uses deformable Canvas drawing rather than SVG components or AI-generated images. The print texture, asymmetry, ink wobble, spots, teeth, horns, and eyes are created at render time from the current seed and controls.
+The faces are drawn entirely at render time with the Canvas 2D API. No generated image assets are used for the monsters.
