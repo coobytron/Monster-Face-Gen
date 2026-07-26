@@ -1,0 +1,29 @@
+{
+  "version": 4,
+  "mode": "pre-drawn",
+  "assetType": "inline-svg",
+  "files": [
+    "assets/faces/monster-01.js",
+    "assets/faces/monster-02.js",
+    "assets/faces/monster-03.js",
+    "assets/faces/monster-04.js",
+    "assets/faces/monster-05.js",
+    "assets/faces/monster-06.js",
+    "assets/faces/monster-07.js",
+    "assets/faces/monster-08.js",
+    "assets/faces/monster-09.js",
+    "assets/faces/monster-10.js"
+  ],
+  "monsters": [
+    {"id":"monster-01","name":"Bog Cyclops","mood":"mischievous","eyeCount":1,"palette":"teal","tags":["cyclops","horned","toothy","friendly"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-02","name":"Swamp Elder","mood":"sleepy","eyeCount":2,"palette":"olive","tags":["goblin","droopy","long-nose","tired"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-03","name":"Sunburst Triplet","mood":"joyful","eyeCount":3,"palette":"orange","tags":["three-eyes","furry","tongue","bright"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-04","name":"Bone Oracle","mood":"haunted","eyeCount":2,"palette":"bone","tags":["skull","horned","dark","creepy"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-05","name":"Boiler Imp","mood":"angry","eyeCount":2,"palette":"coral","tags":["angry","horned","fangs","round"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-06","name":"Blue Worrywart","mood":"nervous","eyeCount":3,"palette":"blue","tags":["three-eyes","soft-horns","worried","furry"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-07","name":"Purple Lurker","mood":"bored","eyeCount":1,"palette":"purple","tags":["cyclops","sleepy","underbite","horned"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-08","name":"Moss Grinner","mood":"gleeful","eyeCount":1,"palette":"moss","tags":["cyclops","wide-mouth","horned","warts"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-09","name":"Tongue Tangle","mood":"chaotic","eyeCount":4,"palette":"teal","tags":["four-eyes","tongue","bat-ears","horned"],"defaultScale":1.0,"defaultRotation":0},
+    {"id":"monster-10","name":"Amber Brute","mood":"furious","eyeCount":2,"palette":"amber","tags":["angry","furry","fangs","horned"],"defaultScale":1.0,"defaultRotation":0}
+  ]
+}
