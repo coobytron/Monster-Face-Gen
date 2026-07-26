@@ -1,9 +1,9 @@
-# Monster Face Builder — Pre-Drawn v7
+# Monster Face Builder — Pre-Drawn v8
 
 Monster Face Builder is a static browser app for composing approved monster artwork. It supports two curated workflows:
 
 1. **Complete Faces** — select one of ten finished monster illustrations.
-2. **Build a Monster** — combine fixed head, eye, nose, mouth, horn/ear, pattern, and extra assets.
+2. **Build a Monster** — combine fixed head, eye, nose, mouth, horn/ear, pattern, and extra assets through authored compatibility rules.
 
 Open `index.html` in a modern browser or publish the branch through GitHub Pages. No framework, server, API, or build step is required.
 
@@ -13,26 +13,49 @@ Every visible monster feature originates from an authored asset. Canvas may sele
 
 Randomisation is selection, not generation.
 
-## v7 assembly-refinement pass
+## v8 compatibility and recipe pass
 
-V7 focuses on the places where separate pre-drawn objects meet. The attached MVP boards remain the visual source of truth: features should feel embedded in one heavy, hand-inked character rather than laid on top as independent stickers.
+V8 replaces universal mix-and-match behavior with an authored compatibility system based on the supplied MVP boards.
+
+### Compatibility matrix
+
+`assets/compatibility.js` classifies every base × eye, base × nose, base × mouth, and base × horn pairing as:
+
+- `approved` — preferred art-directed pairing
+- `acceptable` — safe secondary pairing
+- `blocked` — visually cramped, floating, overly generic, or incompatible
+
+Blocked parts are disabled in the library for the active base and are filtered from rendering as a final safety layer. Changing the base automatically repairs any newly blocked selection.
+
+### Approved recipes
+
+The builder includes 16 complete hand-directed recipes. Builder shuffle starts from this library 76% of the time. The remaining shuffles mutate one feature while staying inside the selected base’s approved or acceptable family.
+
+The recipes preserve the silhouette and expression language of the MVP boards while keeping every visible feature fully pre-drawn.
+
+### Per-pair placement overrides
+
+Universal base slots remain the default. `placementOverrides` adds small authored x/y/scale/rotation adjustments for specific base/part pairs where the universal slot is not sufficient.
+
+These overrides only position existing full-canvas assets. They do not generate, deform, or infer anatomy.
+
+## v7 assembly refinement retained
 
 ### Mouth integration
 
-- All eight visible mouth assets were redrawn with irregular contours, denser gum and tooth detail, and fixed SVG clip paths.
-- Teeth, gums, and tongue artwork are clipped to the authored mouth aperture, preventing interior vectors from ending abruptly outside the black mouth shape.
-- During builder rendering, the complete mouth layer is additionally alpha-clipped to the selected authored head base.
-- Six fixed base-specific cheek and lower-lip seam plates cover hard mouth corners and restore the base colour, contour line, and local shadow around the join.
+- All visible mouth assets use authored aperture clipping.
+- The complete mouth layer is alpha-clipped to the selected authored head base.
+- Six fixed base-specific cheek and lower-lip seam plates cover hard mouth corners and restore local contour continuity.
 
 ### Horn and ear integration
 
-- All eight visible horn/ear assets now include wider root flares, more authored segmentation, and stronger texture near the attachment point.
-- Eight fixed horn-root seam plates render after the head base, adding overlap shadows, contour folds, and short highlight marks at the exact authored roots.
-- Horns remain behind the head. The seam plate only resolves the overlap; it does not create or deform horn anatomy.
+- Horn and ear assets include authored root flares and root texture.
+- Eight fixed horn-root seam plates add overlap shadows and contour folds.
+- Horns remain behind the head and stay attached after horizontal flip because the complete authored composition transform is mirrored together.
 
 ## Authored illustration finishes
 
-The five v6 full-canvas finish plates remain available:
+Five non-anatomical full-canvas finish plates remain available:
 
 | Finish | Purpose |
 |---|---|
@@ -41,8 +64,6 @@ The five v6 full-canvas finish plates remain available:
 | Screenprint Pop | halftone dots and controlled registration-colour accents |
 | Distressed Ink | scratches, speckle, and worn print marks |
 | Clean Asset | shows the underlying approved asset without an added finish |
-
-The selected plate is transformed with the monster, alpha-masked to the completed approved artwork, and blended non-destructively.
 
 ## Included asset packs
 
@@ -60,9 +81,11 @@ The selected plate is transformed with the monster, alpha-masked to the complete
 | Illustration finishes | 5 |
 | Mouth seam plates | 6 |
 | Horn / ear root seam plates | 8 |
-| **Total authored objects** | **90** |
+| Approved complete recipes | 16 |
+| Pair placement overrides | 16 |
+| **Total authored visual objects** | **90** |
 
-The composable pack includes explicit `none` objects where removing a layer is useful.
+Compatibility metadata and recipes reference the existing stable visual-object IDs and do not add generated anatomy.
 
 ## Builder render order
 
@@ -81,10 +104,11 @@ The composable pack includes explicit `none` objects where removing a layer is u
 
 - Switch between complete-face and authored-parts modes
 - Browse feature families through category tabs
-- Use per-base authored placement slots for small alignment adjustments
-- Apply the automatic v7 assembly pass to builder combinations
+- See approved, acceptable, and blocked status for the active base
+- Use base slots plus authored per-pair placement overrides
+- Apply the v7 assembly integration pass
 - Select one of five authored illustration finishes
-- Shuffle approved assets without generating geometry
+- Shuffle from approved recipes or compatible mutations only
 - Drag, scale, rotate, flip, frame, caption, and apply print treatments
 - Save up to eight comparison versions
 - Store favourites locally
@@ -94,36 +118,56 @@ The composable pack includes explicit `none` objects where removing a layer is u
 
 Every exported PNG receives a `tEXt` chunk with the keyword `monsterFaceState`.
 
-Version 7 metadata includes:
+Version 8 builder metadata includes:
 
-- complete-face or authored-parts mode
-- selected asset IDs and names
+- selected stable asset IDs and names
 - complete part recipe
-- selected finishing-plate ID and metadata
+- approved recipe ID when applicable
+- compatibility state for each base/feature pair
+- active per-pair placement overrides
+- selected finishing-plate metadata
 - assembly version and derived mouth / horn seam IDs
 - composition position, scale, rotation, and flip
 - paper, frame, treatment, caption, and transparency settings
 - export timestamp
 
-The raw SVG source is not duplicated inside the metadata. The PNG stores a compact editable recipe that points back to canonical asset IDs.
+The PNG stores a compact editable recipe pointing to canonical asset IDs. It does not duplicate raw SVG source.
+
+## Validation
+
+Run:
+
+```bash
+node tests/compatibility.test.js
+```
+
+The test verifies:
+
+- complete matrix coverage for all stable IDs
+- no duplicate classifications
+- all 16 approved recipes avoid blocked pairs
+- narrow bases block the widest mouth unless an authored exception exists
+- placement override presence for approved wide-mouth exceptions
+- 100 compatibility-aware shuffle samples contain no blocked selections
 
 ## Files
 
-- `index.html` — static interface and v7 script loading order
-- `styles.css` — responsive visual system
-- `v6-art-finish.css` — poster framing and finish-selector styling
+- `index.html` — static interface and script loading order
 - `app-core.js` — state, library, builder, history, and favourites
 - `app.js` — base Canvas composition, export, and controls
 - `v6-art-finish.js` — finish selection and alpha-masked finishing compositor
 - `v7-integration.js` — mouth/base clipping, junction-stage rendering, and v7 metadata
+- `v8-compatibility.js` — compatibility-aware selection, repair, shuffle, placement, and metadata
+- `assets/compatibility.js` — matrix, approved recipes, and pair overrides
 - `png-metadata.js` — JSON-in-PNG metadata writer
 - `assets/faces/` — ten complete pre-drawn monsters
 - `assets/parts/*.js` — seven anatomy families containing 61 composable authored objects and base slots
 - `assets/finishes.js` — five fixed non-anatomical vector finishing plates
-- `assets/junctions.js` — fourteen fixed non-anatomical mouth and horn/ear transition plates
+- `assets/junctions.js` — fourteen fixed non-anatomical transition plates
 - `assets/manifest.json` — canonical pack inventory and render contract
+- `tests/compatibility.test.js` — matrix and shuffle validation
 - `docs/ASSET-GUIDE.md` — production contract for future art packs
 
 ## Production direction
 
-Future production replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, slot metadata, and compatible junction profiles remain intact.
+Future production replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, pair overrides, and junction profiles remain intact.
