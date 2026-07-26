@@ -6,6 +6,8 @@
   "finishType": "inline-svg-full-canvas-alpha-masked",
   "junctionType": "inline-svg-full-canvas-authored-transition",
   "compatibilityType": "authored-stable-id-matrix-and-recipes",
+  "expressionType": "authored-stable-id-tags-and-pairings",
+  "silhouetteType": "authored-base-rhythm-and-root-profiles",
   "sourceOfTruth": "attached-mvp-reference-boards",
   "runtimeAnatomyGeneration": false,
   "files": {
@@ -33,9 +35,12 @@
     "finishes": ["assets/finishes.js"],
     "junctions": ["assets/junctions.js"],
     "compatibility": ["assets/compatibility.js"],
+    "expressionDirection": ["assets/expression-direction.js"],
+    "silhouetteDirection": ["assets/silhouette-direction.js"],
     "runtime": ["v8-compatibility.js"],
     "validation": [
       "tests/compatibility.test.js",
+      "tests/art-direction.test.js",
       "scripts/contact-sheet-qa.js",
       "schemas/qa-validation-report.schema.json"
     ],
@@ -57,7 +62,10 @@
     "hornSeams": 8,
     "junctions": 14,
     "approvedRecipes": 16,
+    "approvedExpressionPairs": 12,
+    "expressionVocabulary": 6,
     "pairPlacementOverrides": 16,
+    "silhouettePairOverrides": 11,
     "primaryPairClassifications": 222,
     "totalAuthoredVisualObjects": 90
   },
@@ -85,6 +93,23 @@
     "wideMouthRule": "narrow bases block mouth-roar unless a reviewed authored override exists",
     "flipRule": "mirror complete authored composition and junction transforms together",
     "runtimeGeometry": false
+  },
+  "expressionContract": {
+    "version": 8,
+    "vocabulary": ["sleepy", "uneasy", "feral", "goofy", "stern", "startled"],
+    "eyeAndMouthTags": "stable authored metadata",
+    "approvedPairings": "reviewed eye-mouth combinations with one dominant expression",
+    "recipeCoverage": "every approved recipe carries one stable expression assignment",
+    "allowedUses": ["curation", "QA labels", "future shuffle weighting", "export metadata"],
+    "runtimeGeometry": false
+  },
+  "silhouetteContract": {
+    "version": 8,
+    "baseCoverage": "all six bases define crown, cheek, jaw, and chin rhythm",
+    "rootCoverage": "every approved or acceptable visible horn pair has an authored root profile and seam profile",
+    "flipSafety": "all visible approved or acceptable horn pairs are explicitly flip-safe",
+    "pairOverrides": "rigid transforms only for reviewed weak joins",
+    "forbidden": ["path-generation", "landmark-inference", "path-morphing", "runtime-seam-generation"]
   },
   "placementOverrideContract": {
     "key": "<base-id>|<part-id>",
@@ -169,6 +194,7 @@
   "validation": {
     "commands": [
       "node tests/compatibility.test.js",
+      "node tests/art-direction.test.js",
       "node scripts/contact-sheet-qa.js --validate-only",
       "node scripts/contact-sheet-qa.js"
     ],
@@ -179,6 +205,9 @@
     "requiresCompleteMatrixCoverage": true,
     "requiresApprovedRecipes": true,
     "requiresStableIds": true,
+    "requiresExpressionCoverage": true,
+    "requiresSilhouetteCoverage": true,
+    "requiresFlipSafety": true,
     "requiresViewBox": "0 0 600 600",
     "requiresJunctionCoverage": true,
     "requiresLayerOrder": true,
