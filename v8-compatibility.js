@@ -5,6 +5,8 @@
   const originalSlotFor=slotFor;
   const originalSelectPart=selectPart;
   const originalRecipeMetadata=recipeMetadata;
+  const originalCompositeLayerItems=compositeLayerItems;
+  const keyCategories={eyeId:'eyes',noseId:'noses',mouthId:'mouths',hornId:'horns'};
 
   function mergeSlots(baseSlot,override){
     return {
@@ -17,8 +19,9 @@
 
   slotFor=function(base,categoryId,item){
     const baseSlot=originalSlotFor(base,categoryId);
-    if(!base||!item||categoryId==='bases') return baseSlot;
-    const override=compatibility.placementOverrides[`${base.id}|${item.id}`];
+    const selected=item||currentPart(categoryId);
+    if(!base||!selected||categoryId==='bases') return baseSlot;
+    const override=compatibility.placementOverrides[`${base.id}|${selected.id}`];
     return override?mergeSlots(baseSlot,override):baseSlot;
   };
 
@@ -48,19 +51,22 @@
       const next=repairForBase({baseId:id});
       const base=(parts.bases||[]).find(part=>part.id===id);
       if(base) next.caption=base.name.toUpperCase();
+      next.recipeId=null;
+      next.compatibilityState='manual-compatible';
       applyState(next);
       updateFavoriteButton();
       return;
     }
     if(statusFor(categoryId,id)==='blocked') return;
     originalSelectPart(categoryId,id);
+    state.recipeId=null;
+    state.compatibilityState=statusFor(categoryId,id)==='approved'?'manual-approved':'manual-compatible';
   };
 
   const originalRenderLibrary=renderLibrary;
   renderLibrary=function(){
     originalRenderLibrary();
     if(state.mode!=='builder'||!['eyes','noses','mouths','horns'].includes(activeCategory)) return;
-    const category=categoryInfo(activeCategory);
     [...document.querySelectorAll('#libraryGrid .part-card')].forEach((card,index)=>{
       const part=(parts[activeCategory]||[])[index];
       if(!part) return;
@@ -93,7 +99,7 @@
   function mutateRecipe(recipe){
     const next=recipeState(recipe);
     const mutable=randomItem(['eyeId','noseId','mouthId','hornId','patternId','extraId']);
-    const category=categoryForKey(mutable);
+    const category=keyCategories[mutable];
     if(category) next[mutable]=chooseCompatible(recipe.baseId,category,.88);
     else if(mutable==='patternId') next.patternId=chooseOptional('patterns',.12);
     else next.extraId=chooseOptional('extras',.25);
@@ -111,8 +117,7 @@
       return;
     }
     const recipe=randomItem(compatibility.recipes);
-    const next=Math.random()<.76?recipeState(recipe):mutateRecipe(recipe);
-    applyState(next);
+    applyState(Math.random()<.76?recipeState(recipe):mutateRecipe(recipe));
   }
   shuffle=v8Shuffle;
   $('shuffleBtn').onclick=v8Shuffle;
@@ -124,7 +129,6 @@
     return {...metadata,compatibility:{version:8,recipeId:state.recipeId||null,state:state.compatibilityState||'manual-compatible',pairStates:{eyes:statusFor('eyes',state.eyeId),noses:statusFor('noses',state.noseId),mouths:statusFor('mouths',state.mouthId),horns:statusFor('horns',state.hornId)},placementOverrides:Object.fromEntries(['eyes','noses','mouths','horns'].map(categoryId=>{const item=currentPart(categoryId);const value=item?compatibility.placementOverrides[`${state.baseId}|${item.id}`]:null;return [categoryId,value||null]}))}};
   };
 
-  const originalCompositeLayerItems=compositeLayerItems;
   compositeLayerItems=function(snapshot=state){
     return originalCompositeLayerItems(snapshot).filter(layer=>statusFor(layer.categoryId,layer.item.id,snapshot)!=='blocked');
   };
