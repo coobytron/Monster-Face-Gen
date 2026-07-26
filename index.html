@@ -4,9 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#ead9b7" />
-<title>Monster Face Builder — Pre-Drawn v6</title>
+<title>Monster Face Builder — Pre-Drawn v8</title>
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="v6-art-finish.css" />
+<style>
+.part-card[data-compatibility="approved"]::after,.part-card[data-compatibility="acceptable"]::after{content:attr(data-compatibility);position:absolute;top:6px;right:6px;padding:2px 5px;border:1px solid currentColor;border-radius:999px;background:#efe2c8;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.part-card[data-compatibility="acceptable"]{opacity:.78}.part-card.blocked{opacity:.25;filter:grayscale(1);cursor:not-allowed}.part-card.blocked::after{content:"blocked";position:absolute;top:6px;right:6px;padding:2px 5px;border:1px solid currentColor;border-radius:999px;background:#efe2c8;font-size:8px;font-weight:800;text-transform:uppercase}.part-card{position:relative}
+</style>
 </head>
 <body>
 <div class="grain"></div>
@@ -14,12 +17,12 @@
   <header>
     <div class="brand">
       <div class="brand-copy">
-        <div class="eyebrow">Pre-drawn monster asset system</div>
+        <div class="eyebrow">Pre-drawn monster assembly system</div>
         <h1>Monster<span>Face Builder</span></h1>
       </div>
-      <div class="speech">Drawn once.<br>Mixed forever.<br>No invented anatomy.</div>
+      <div class="speech">Drawn once.<br>Mixed forever.<br>Curated by hand.</div>
     </div>
-    <div class="intro">A curated library of approved monster art, now finished with <b>fixed vector hatching, blackwork, halftone, and distressed-ink plates</b> inspired by the dense graphic energy of the MVP.</div>
+    <div class="intro">A curated library of approved monster art with <b>compatibility-aware recipes, authored pair overrides, mouth clipping, cheek transitions, horn-root seams, and fixed print finishes</b>.</div>
     <div class="top-actions">
       <button class="icon-action" id="shuffleBtn"><span>⚄</span>Shuffle</button>
       <button class="icon-action" id="resetBtn"><span>↻</span>Reset</button>
@@ -32,7 +35,7 @@
     <aside class="panel left-panel">
       <div class="panel-title"><span>☠ Authored assets</span><small id="assetCount">10 faces</small></div>
       <div class="panel-body">
-        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>Canvas may compose, position, mask, treat, and export approved assets. It never generates monster anatomy.</div>
+        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>Canvas may compose, position, clip, mask, treat, and export approved assets. It never generates monster anatomy.</div>
         <div class="mode-switch" aria-label="Builder mode">
           <button class="mode-btn active" data-mode="faces">Complete faces</button>
           <button class="mode-btn" data-mode="builder">Build a monster</button>
@@ -88,15 +91,10 @@
           <div class="group-label"><span>Format</span></div>
           <div class="select-row">
             <select id="frameStyle" aria-label="Frame style">
-              <option value="none">No frame</option>
-              <option value="poster">Poster border</option>
-              <option value="badge">Badge circle</option>
+              <option value="none">No frame</option><option value="poster">Poster border</option><option value="badge">Badge circle</option>
             </select>
             <select id="paperColor" aria-label="Paper colour">
-              <option value="cream">Cream paper</option>
-              <option value="warm">Warm kraft</option>
-              <option value="white">Off white</option>
-              <option value="black">Black stock</option>
+              <option value="cream">Cream paper</option><option value="warm">Warm kraft</option><option value="white">Off white</option><option value="black">Black stock</option>
             </select>
           </div>
         </div>
@@ -107,7 +105,7 @@
           <div class="toggle-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle" /></div>
         </div>
         <button class="primary" id="shufflePrimary">Shuffle face</button>
-        <div class="tip">Exports a 3600 × 3600 PNG and embeds the editable face, part, finish, and composition recipe inside the PNG metadata.</div>
+        <div class="tip">Builder shuffle starts from one of 16 approved complete recipes and only mutates within compatible families. Exports retain stable IDs, compatibility states, recipe IDs, and pair overrides in PNG metadata.</div>
       </div>
     </aside>
   </main>
@@ -116,31 +114,13 @@
     <div class="variations-title"><b>ϟ</b>Saved<br>Compositions →</div>
     <div class="variation-grid" id="variationGrid"></div>
   </section>
-  <div class="footer-note"><span>☠</span>Selected by hand. Finished with authored ink.<span>☠</span></div>
+  <div class="footer-note"><span>☠</span>Selected by hand. Joined like one drawing.<span>☠</span></div>
 </div>
 
-<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};window.MONSTER_FINISHES=[];</script>
-<script src="assets/faces/monster-01.js"></script>
-<script src="assets/faces/monster-02.js"></script>
-<script src="assets/faces/monster-03.js"></script>
-<script src="assets/faces/monster-04.js"></script>
-<script src="assets/faces/monster-05.js"></script>
-<script src="assets/faces/monster-06.js"></script>
-<script src="assets/faces/monster-07.js"></script>
-<script src="assets/faces/monster-08.js"></script>
-<script src="assets/faces/monster-09.js"></script>
-<script src="assets/faces/monster-10.js"></script>
-<script src="assets/parts/bases.js"></script>
-<script src="assets/parts/eyes.js"></script>
-<script src="assets/parts/noses.js"></script>
-<script src="assets/parts/mouths.js"></script>
-<script src="assets/parts/horns.js"></script>
-<script src="assets/parts/patterns-compact.js"></script>
-<script src="assets/parts/extras.js"></script>
-<script src="assets/finishes.js"></script>
-<script src="png-metadata.js"></script>
-<script src="app-core.js"></script>
-<script src="app.js"></script>
-<script src="v6-art-finish.js"></script>
+<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};window.MONSTER_FINISHES=[];window.MONSTER_JUNCTIONS={mouthSeams:[],hornSeams:[]};</script>
+<script src="assets/faces/monster-01.js"></script><script src="assets/faces/monster-02.js"></script><script src="assets/faces/monster-03.js"></script><script src="assets/faces/monster-04.js"></script><script src="assets/faces/monster-05.js"></script><script src="assets/faces/monster-06.js"></script><script src="assets/faces/monster-07.js"></script><script src="assets/faces/monster-08.js"></script><script src="assets/faces/monster-09.js"></script><script src="assets/faces/monster-10.js"></script>
+<script src="assets/parts/bases.js"></script><script src="assets/parts/eyes.js"></script><script src="assets/parts/noses.js"></script><script src="assets/parts/mouths.js"></script><script src="assets/parts/horns.js"></script><script src="assets/parts/patterns-compact.js"></script><script src="assets/parts/extras.js"></script>
+<script src="assets/finishes.js"></script><script src="assets/junctions.js"></script><script src="assets/compatibility.js"></script>
+<script src="png-metadata.js"></script><script src="app-core.js"></script><script src="app.js"></script><script src="v6-art-finish.js"></script><script src="v7-integration.js"></script><script src="v8-compatibility.js"></script>
 </body>
 </html>

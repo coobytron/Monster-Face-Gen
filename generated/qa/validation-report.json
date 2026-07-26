@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/contact-sheet-qa.js",
+  "deterministic": true,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceManifestVersion": 8,
+  "sourceDigest": "a5eb9845d5b976a34489b442d6de2c73aa460aceaff8c8dc8167fd1ca95de6c5",
+  "summary": {
+    "passed": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "checkCount": 7
+  },
+  "checks": [
+    {
+      "name": "stable",
+      "passed": true
+    },
+    {
+      "name": "metadata",
+      "passed": true
+    },
+    {
+      "name": "compatibility",
+      "passed": true
+    },
+    {
+      "name": "junctions",
+      "passed": true
+    },
+    {
+      "name": "recipes",
+      "passed": true
+    },
+    {
+      "name": "order",
+      "passed": true
+    },
+    {
+      "name": "authored",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "bases": 6,
+    "mouths": 9,
+    "horns": 9,
+    "finishes": 5,
+    "recipes": 16,
+    "visualAssets": 80
+  }
+}

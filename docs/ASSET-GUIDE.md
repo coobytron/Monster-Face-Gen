@@ -1,190 +1,136 @@
-# Pre-Drawn Asset Guide — v6
+# Pre-Drawn Asset Guide — v8
 
 ## Core rule
 
-Every visible monster feature must originate from an authored image asset. Canvas may position, layer, mask, blend, frame, transform, and export assets, but it must not synthesize monster anatomy with paths or runtime geometry.
+Every visible monster feature must originate from an authored asset. Canvas and repository tooling may position, layer, clip, mask, blend, frame, transform, render, and export those assets, but must not synthesize monster anatomy with runtime paths or inferred geometry.
 
-Randomisation is selection, not generation.
+Randomisation is selection, not generation. Contact-sheet QA is review, not creation.
 
-## Current v6 contract
+## Authored asset contract
 
-The builder supports complete faces, seven composable anatomy families, and one non-anatomical finish family.
+All composable anatomy, finishes, junctions, and compatibility data use stable IDs and a shared `0 0 600 600` full-canvas coordinate system.
 
-### Anatomy render order
+Recommended production replacements:
 
-1. horns / ears
-2. blank head base
-3. surface pattern
-4. eyes
-5. nose / snout
-6. mouth
-7. extras
-
-Horns sit behind the head. Patterns and facial features sit above it. All anatomy is fully authored before runtime.
-
-### Finish render stage
-
-8. illustration finish
-
-The finish stage is separate from anatomy. A finish is a fixed full-canvas artwork plate containing only marks such as hatching, stipple, blackwork shadow masses, registration accents, scratches, or distress.
-
-Canvas may:
-
-1. transform the finish with the selected monster
-2. alpha-mask it to the already composed approved artwork
-3. blend it using the authored `blendMode` and `opacity`
-
-Canvas must not use the finish layer to create a silhouette, facial feature, tooth, horn, eye, mouth, nose, head, or other anatomy.
-
-## Art-direction target
-
-The supplied MVP boards remain the primary visual source of truth. The target characteristics are:
-
-- bold, readable monster silhouettes
-- dense but controlled hand-inked detail
-- irregular contour accents and imperfect marks
-- warm printed-paper context
-- small areas of high-saturation coral, teal, amber, purple, and moss
-- screen-print and registration character without muddying the face
-- strong black shapes balanced against lighter stipple and hatch systems
-
-Hydro74’s public vector portfolio is a secondary reference for broad principles such as compact silhouette construction, high-contrast blackwork, ornamental line systems, and print-ready vector discipline. Do not trace, reproduce, or imitate a specific published piece.
-
-## Existing inline SVG contract
-
-Current composable anatomy objects live in family files under `assets/parts/` as fixed SVG documents using a shared `0 0 600 600` viewBox. Full-canvas alignment lets the compositor layer objects without detecting facial geometry.
-
-Current finishes live in `assets/finishes.js` and use the same `0 0 600 600` viewBox.
-
-## Recommended production format
-
-For replacement or expansion packs:
-
-- transparent PNG or WebP for raster artwork
-- SVG only when the original artwork is genuinely vector
+- transparent PNG, WebP, or genuine SVG source
 - square 2048 × 2048 working canvas
 - sRGB colour profile
 - premultiplied-alpha-safe edges
-- no baked paper background
-- no labels, contact-sheet borders, or crop marks
+- no baked paper background, labels, borders, or crop marks
 - at least 120 px transparent padding
+- published IDs remain stable
 
-Keep all anatomy features on the same full-size canvas as their compatible base. A mouth should remain in its authored face position rather than being tightly cropped.
+A published ID must not be renamed. Replace the art behind the same ID or introduce a new ID.
 
-## Base object
+## Compatibility contract
 
-Each blank head base owns small alignment adjustments for the other anatomy families:
+Every base must classify every stable eye, nose, mouth, and horn/ear ID in `assets/compatibility.js` exactly once as:
 
-```js
-{
-  id: "base-bog",
-  name: "Bog Blob",
-  svg: "<svg ...>",
-  slots: {
-    eyes:    { x: 0, y: -0.01, scale: 1 },
-    noses:   { x: 0, y: 0,     scale: 1 },
-    mouths:  { x: 0, y: 0.01,  scale: 1 },
-    horns:   { x: 0, y: 0,     scale: 1 },
-    patterns:{ x: 0, y: 0,     scale: 1 },
-    extras:  { x: 0, y: 0,     scale: 1 }
-  }
-}
+- `approved` — preferred art-directed pairing
+- `acceptable` — safe alternate pairing
+- `blocked` — visually incompatible pairing
+
+Blocked anatomy must be disabled for manual selection, repaired after a base change, filtered before rendering, and excluded from shuffle.
+
+Patterns and extras are globally compatible in the current pack.
+
+## Approved recipe contract
+
+A recipe is a complete stable-ID selection. Recipes are authored compositions, not generated presets. Every recipe must resolve to known IDs, avoid blocked primary pairs, and remain legible at thumbnail size.
+
+Recipe IDs remain stable because exported PNG metadata and QA reports may reference them.
+
+## Placement overrides
+
+Per-pair placement overrides use the key `<base-id>|<part-id>` and may only:
+
+- translate x/y
+- uniformly scale
+- rotate
+
+Overrides may not morph, infer landmarks, non-uniformly distort anatomy, or create geometry.
+
+## Junction contract
+
+A junction is a fixed full-canvas transition plate. It may contain overlap shadows, cheek-colour cover shapes, lip-edge cover shapes, horn-root contour folds, short highlights, and local distress.
+
+A junction must not contain standalone anatomy. Every base requires a mouth seam. Every visible horn/ear requires a matching horn-root seam. `horn-none` is the only horn selection that does not require a root seam.
+
+Mouth interiors remain inside authored apertures and are clipped to the selected base alpha. Horns render behind the base. The complete authored composition and junction transforms mirror together when flipped.
+
+## Finish contract
+
+A finish is a fixed, non-anatomical full-canvas plate containing hatching, stipple, blackwork, registration accents, scratches, or distress. It renders after the approved art and junction composition and may be alpha-masked to the composed artwork.
+
+## Render order
+
+1. horns / ears
+2. blank head base
+3. horn / ear root seam
+4. surface pattern
+5. eyes
+6. nose / snout
+7. mouth clipped to selected base alpha
+8. base-specific mouth seam
+9. extras
+10. illustration finish
+
+Changing this order is a validation failure.
+
+## Deterministic review workflow
+
+Run:
+
+```bash
+npm ci
+npm test
+npm run qa
 ```
 
-These slots are art-direction metadata. They do not create or deform artwork.
+The workflow generates SVG and PNG contact sheets in `generated/qa/` for:
 
-## Anatomy part object
+- mouth × base, including all blocked, acceptable, and approved pairs
+- horn/ear × base
+- unflipped and horizontally flipped variants
+- every finish on every approved recipe
+- large approved-recipe crops for join and edge inspection
+- cream, white, black, and transparent backgrounds
 
-```js
-{
-  id: "mouth-grin",
-  name: "Toothy Grin",
-  tags: ["grin", "teeth"],
-  svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 600\">...</svg>"
-}
-```
+Every review cell displays stable IDs and compatibility state. Rendering composes only authored repository assets.
 
-A family may include an explicit `none` object so the user can remove that layer without special compositor logic.
+## Machine-readable validation
 
-## Finish object
+`generated/qa/validation-report.json` follows `schemas/qa-validation-report.schema.json`.
 
-```js
-{
-  id: "finish-etched",
-  name: "Etched MVP",
-  shortName: "Etched",
-  blendMode: "multiply",
-  opacity: 0.58,
-  tags: ["etched", "hatching", "mvp"],
-  svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 600\">...</svg>"
-}
-```
+Validation must report asset IDs for:
 
-A finish plate must remain non-anatomical. It may contain authored texture and print marks, but no feature should make sense as a new monster part when viewed by itself.
+- missing or duplicate IDs
+- unknown IDs and incomplete compatibility coverage
+- blocked approved-recipe combinations
+- missing metadata or `viewBox="0 0 600 600"`
+- missing mouth/base or horn/root junctions
+- invalid z-order
+- any manifest state that permits runtime anatomy generation
 
-## Naming
+The report uses a stable digest of the manifest, IDs, and recipes. Its timestamp is fixed to the Unix epoch so unchanged inputs create byte-stable output.
 
-Stable IDs are required because exported PNG recipes point back to them.
+## Review expectations
 
-```text
-monster-<number>
-base-<name>
-eye-<name>
-nose-<name>
-mouth-<name>
-horn-<name>
-pattern-<name>
-extra-<name>
-finish-<name>
-```
+1. Inspect every asset on cream, white, black, and transparent backgrounds.
+2. Confirm line weight and detail density match the supplied MVP boards.
+3. Check thumbnail legibility.
+4. Review mouth corners, lower-lip seams, and mouth clipping.
+5. Review horn roots before and after horizontal flip.
+6. Confirm blocked pairs are visibly labelled and never appear in approved recipes.
+7. Inspect authored finishes only on approved recipes.
+8. Keep generated review artifacts with asset-changing pull requests when appropriate.
+9. Run the compatibility-aware shuffle test with no blocked selections.
+10. Confirm finish and junction plates remain non-anatomical by themselves.
 
-Do not rename a published ID. Replace the art behind the same ID or introduce a new ID.
+## GitHub Actions
 
-## Folder direction for raster production packs
+`.github/workflows/contact-sheet-qa.yml` runs manually and on changes to assets, compatibility data, the manifest, schemas, and QA scripts. It uploads the generated review set and may commit refreshed review artifacts back to the current branch.
 
-```text
-assets/
-  faces/
-  bases/
-  eyes/
-  noses/
-  mouths/
-  horns/
-  patterns/
-  extras/
-  finishes/
-  thumbnails/
-```
+## Source of truth
 
-A future manifest entry may use `src` instead of inline `svg` while keeping the same IDs, slots, finish blend metadata, and full-canvas alignment.
-
-## Finish design guidance
-
-- Use broad zones of detail rather than uniform noise over the entire canvas.
-- Preserve eye, mouth, and tooth readability at thumbnail scale.
-- Keep the darkest masses away from the main expression unless the finish is intentionally dramatic.
-- Use hatching direction to reinforce volume, not to invent a new contour.
-- Registration accents should stay restrained and use approved palette colours.
-- Distress should feel placed and authored, not randomly generated.
-- Test the finish on all complete faces and all six current bases.
-- Include a `finish-clean` object so the original art is always available.
-
-## Quality checks
-
-Before adding or replacing an asset:
-
-1. View it on cream, white, black, and transparent backgrounds.
-2. Check for paper-coloured halos around alpha edges.
-3. Confirm line weight and detail density match the approved MVP pack.
-4. Verify the feature remains legible in the library thumbnail.
-5. Test anatomy parts on all six current blank bases.
-6. Inspect the intended z-order against horns, patterns, extras, and the selected finish.
-7. Export a 3600 × 3600 composition and inspect edge detail.
-8. Confirm exported `monsterFaceState` metadata records every stable ID, including `finishId`.
-9. Test horizontal flip when the artwork is expected to be mirror-safe.
-10. Confirm a finish plate remains non-anatomical when viewed without a monster.
-11. Keep a contact sheet for review, but treat individual transparent objects as production source files.
-
-## Source-of-truth principle
-
-The supplied reference boards define the approved families, tone, and visual language. Production assets should come from underlying layered artwork whenever it exists rather than being cropped from a flattened reference sheet.
+The supplied MVP boards define the approved families, tone, silhouette, expression language, and attachment quality. Production assets should come from underlying layered artwork whenever available rather than crops from a flattened reference sheet.
