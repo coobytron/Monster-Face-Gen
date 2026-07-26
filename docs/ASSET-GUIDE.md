@@ -2,52 +2,97 @@
 
 ## Core rule
 
-Every visible monster feature must originate from an authored image asset. Canvas may position, mask, blend, frame, and export assets, but it must not synthesize monster anatomy with paths.
+Every visible monster feature must originate from an authored image asset. Canvas may position, mask, blend, frame, transform, and export assets, but it must not synthesize monster anatomy with paths.
 
-## Recommended file format
+Randomisation is selection, not generation.
 
-- Transparent PNG for maximum compatibility
-- Transparent WebP for smaller production downloads
+## Current v5 contract
+
+The builder supports complete faces and seven composable families:
+
+1. horns / ears
+2. blank head base
+3. surface pattern
+4. eyes
+5. nose / snout
+6. mouth
+7. extras
+
+That list is also the render order. Horns sit behind the head; patterns and facial features sit above it.
+
+All current composable objects live in the family files under `assets/parts/` as fixed inline SVG documents using a shared `0 0 600 600` viewBox. This full-canvas alignment lets the compositor layer objects without detecting facial geometry.
+
+## Recommended production format
+
+For a production art replacement pack:
+
+- transparent PNG or WebP for raster artwork
+- SVG when the original artwork is genuinely vector
+- square 2048 × 2048 working canvas
 - sRGB colour profile
-- Premultiplied-alpha-safe edges
-- No baked paper background
-- No labels, crop marks, or contact-sheet borders
+- premultiplied-alpha-safe edges
+- no baked paper background
+- no labels, contact-sheet borders, or crop marks
+- at least 120 px transparent padding
 
-## Complete face assets
+Keep all features on the same full-size canvas as their compatible base. A mouth should remain in its authored face position rather than being tightly cropped.
 
-Use a square 2048 × 2048 working canvas.
+## Base object
 
-- Keep the monster centred around `(1024, 980)`
-- Leave at least 120 px transparent padding
-- Preserve the ground shadow as part of the asset when desired
-- Use a consistent visual scale across the pack
-- Export thumbnails at 320 × 320
+Each blank head base owns small alignment adjustments for the other families:
 
-Manifest entry:
-
-```json
+```js
 {
-  "id": "monster-11",
-  "name": "Example Monster",
-  "mood": "mischievous",
-  "eyeCount": 2,
-  "palette": "teal",
-  "tags": ["horned", "toothy"],
-  "src": "assets/monsters/monster-11.png",
-  "thumb": "assets/monsters/monster-11-thumb.png",
-  "defaultScale": 1,
-  "defaultRotation": 0
+  id: "base-bog",
+  name: "Bog Blob",
+  svg: "<svg ...>",
+  slots: {
+    eyes:    { x: 0, y: -0.01, scale: 1 },
+    noses:   { x: 0, y: 0,     scale: 1 },
+    mouths:  { x: 0, y: 0.01,  scale: 1 },
+    horns:   { x: 0, y: 0,     scale: 1 },
+    patterns:{ x: 0, y: 0,     scale: 1 },
+    extras:  { x: 0, y: 0,     scale: 1 }
+  }
 }
 ```
 
-## Future composable feature packs
+These slots are art-direction metadata. They do not create or deform artwork.
 
-Feature files should use the same 2048 × 2048 coordinate system as their compatible blank head base. Export each feature on a transparent full-size canvas instead of tightly cropping it. This lets the app layer files at `(0, 0)` without guessing placement.
+## Part object
 
-Recommended folder structure:
+```js
+{
+  id: "mouth-grin",
+  name: "Toothy Grin",
+  tags: ["grin", "teeth"],
+  svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 600\">...</svg>"
+}
+```
+
+A family may include an explicit `none` object so the user can remove that layer without special compositor logic.
+
+## Naming
+
+Use stable IDs because exported PNG recipes point back to them.
+
+```text
+base-<name>
+eye-<name>
+nose-<name>
+mouth-<name>
+horn-<name>
+pattern-<name>
+extra-<name>
+```
+
+Do not rename a published ID. Replace the art behind the same ID or introduce a new ID.
+
+## Folder direction for raster production packs
 
 ```text
 assets/
+  faces/
   bases/
   eyes/
   noses/
@@ -55,51 +100,26 @@ assets/
   horns/
   patterns/
   extras/
-  palettes/
+  thumbnails/
 ```
 
-Each composable asset should declare:
-
-- `id`
-- `family`
-- `compatibleBases`
-- `src`
-- `zIndex`
-- `anchor`
-- `bounds`
-- `tags`
-- optional `mirrorSafe`
-- optional `colourway`
-
-## Authored anchors
-
-For tightly cropped assets, provide a normalized anchor:
-
-```json
-{
-  "anchor": {
-    "x": 0.5,
-    "y": 0.42,
-    "scale": 1,
-    "rotation": 0
-  }
-}
-```
-
-Anchors are art-direction data, not procedural generation.
+A future manifest entry can use `src` instead of inline `svg` while keeping the same IDs and slots.
 
 ## Quality checks
 
-Before adding an asset:
+Before adding or replacing an asset:
 
 1. View it on cream, white, black, and transparent backgrounds.
-2. Check for paper-coloured halos around the alpha edge.
+2. Check for paper-coloured halos around alpha edges.
 3. Confirm the line weight matches the approved pack.
-4. Verify it remains legible at 160 px.
-5. Confirm the source and thumbnail filenames match the manifest.
-6. Export a 3600 × 3600 composition and inspect teeth, eyes, horns, and edge detail.
-7. Confirm embedded `monsterFaceState` JSON can identify the asset.
+4. Verify the feature remains legible in the library thumbnail.
+5. Test it on all six current blank bases.
+6. Inspect the intended z-order against horns, patterns, and extras.
+7. Export a 3600 × 3600 composition and inspect edge detail.
+8. Confirm the exported `monsterFaceState` metadata records the stable ID.
+9. Test horizontal flip when the artwork is expected to be mirror-safe.
+10. Keep a contact sheet for review, but treat the individual transparent objects as production source files.
 
 ## Source-of-truth principle
 
-Contact sheets are references and review surfaces. Production assets should be exported from the underlying artwork rather than cropped from a flattened contact sheet whenever the original layers are available.
+The supplied reference boards define the approved families, tone, and visual language. Production assets should come from the underlying layered artwork whenever it exists rather than being cropped from a flattened reference sheet.
