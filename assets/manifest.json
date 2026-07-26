@@ -1,8 +1,11 @@
 {
-  "version": 5,
+  "version": 6,
   "mode": "pre-drawn-builder",
   "completeFaceType": "inline-svg",
   "composablePartType": "inline-svg-full-canvas",
+  "finishType": "inline-svg-full-canvas-alpha-masked",
+  "sourceOfTruth": "attached-mvp-reference-boards",
+  "runtimeAnatomyGeneration": false,
   "files": {
     "faces": [
       "assets/faces/monster-01.js",
@@ -24,6 +27,9 @@
       "assets/parts/horns.js",
       "assets/parts/patterns-compact.js",
       "assets/parts/extras.js"
+    ],
+    "finishes": [
+      "assets/finishes.js"
     ]
   },
   "counts": {
@@ -35,7 +41,9 @@
     "horns": 9,
     "patterns": 9,
     "extras": 9,
-    "composableObjects": 61
+    "composableAnatomyObjects": 61,
+    "finishes": 5,
+    "totalAuthoredObjects": 76
   },
   "layerOrder": [
     "horns",
@@ -44,155 +52,58 @@
     "eyes",
     "noses",
     "mouths",
-    "extras"
+    "extras",
+    "finishes"
   ],
+  "finishContract": {
+    "stage": "after-approved-art-composition",
+    "transform": "same-as-composition",
+    "mask": "destination-in using composed artwork alpha",
+    "mayContain": [
+      "hatching",
+      "stipple",
+      "blackwork shadow masses",
+      "registration accents",
+      "scratches",
+      "distress"
+    ],
+    "mustNotContain": [
+      "head silhouettes",
+      "eyes",
+      "noses",
+      "mouths",
+      "teeth",
+      "horns",
+      "ears",
+      "monster anatomy"
+    ]
+  },
   "faces": [
-    {
-      "id": "monster-01",
-      "name": "Bog Cyclops",
-      "mood": "mischievous",
-      "eyeCount": 1,
-      "palette": "teal"
-    },
-    {
-      "id": "monster-02",
-      "name": "Swamp Elder",
-      "mood": "sleepy",
-      "eyeCount": 2,
-      "palette": "olive"
-    },
-    {
-      "id": "monster-03",
-      "name": "Sunburst Triplet",
-      "mood": "joyful",
-      "eyeCount": 3,
-      "palette": "orange"
-    },
-    {
-      "id": "monster-04",
-      "name": "Bone Oracle",
-      "mood": "haunted",
-      "eyeCount": 2,
-      "palette": "bone"
-    },
-    {
-      "id": "monster-05",
-      "name": "Boiler Imp",
-      "mood": "angry",
-      "eyeCount": 2,
-      "palette": "coral"
-    },
-    {
-      "id": "monster-06",
-      "name": "Blue Worrywart",
-      "mood": "nervous",
-      "eyeCount": 3,
-      "palette": "blue"
-    },
-    {
-      "id": "monster-07",
-      "name": "Purple Lurker",
-      "mood": "bored",
-      "eyeCount": 1,
-      "palette": "purple"
-    },
-    {
-      "id": "monster-08",
-      "name": "Moss Grinner",
-      "mood": "gleeful",
-      "eyeCount": 1,
-      "palette": "moss"
-    },
-    {
-      "id": "monster-09",
-      "name": "Tongue Tangle",
-      "mood": "chaotic",
-      "eyeCount": 4,
-      "palette": "teal"
-    },
-    {
-      "id": "monster-10",
-      "name": "Amber Brute",
-      "mood": "furious",
-      "eyeCount": 2,
-      "palette": "amber"
-    }
+    {"id":"monster-01","name":"Bog Cyclops","mood":"mischievous","eyeCount":1,"palette":"teal"},
+    {"id":"monster-02","name":"Swamp Elder","mood":"sleepy","eyeCount":2,"palette":"olive"},
+    {"id":"monster-03","name":"Sunburst Triplet","mood":"joyful","eyeCount":3,"palette":"orange"},
+    {"id":"monster-04","name":"Bone Oracle","mood":"haunted","eyeCount":2,"palette":"bone"},
+    {"id":"monster-05","name":"Boiler Imp","mood":"angry","eyeCount":2,"palette":"coral"},
+    {"id":"monster-06","name":"Blue Worrywart","mood":"nervous","eyeCount":3,"palette":"blue"},
+    {"id":"monster-07","name":"Purple Lurker","mood":"bored","eyeCount":1,"palette":"purple"},
+    {"id":"monster-08","name":"Moss Grinner","mood":"gleeful","eyeCount":1,"palette":"moss"},
+    {"id":"monster-09","name":"Tongue Tangle","mood":"chaotic","eyeCount":4,"palette":"teal"},
+    {"id":"monster-10","name":"Amber Brute","mood":"furious","eyeCount":2,"palette":"amber"}
   ],
   "partFamilies": {
-    "bases": [
-      "base-bog",
-      "base-fuzz",
-      "base-skull",
-      "base-imp",
-      "base-moss",
-      "base-blue"
-    ],
-    "eyes": [
-      "eye-none",
-      "eye-cyclops",
-      "eye-droopy",
-      "eye-beady",
-      "eye-wide",
-      "eye-triple",
-      "eye-stacked",
-      "eye-crossed",
-      "eye-sleepy",
-      "eye-wild"
-    ],
-    "noses": [
-      "nose-none",
-      "nose-button",
-      "nose-piggy",
-      "nose-skeletal",
-      "nose-beak",
-      "nose-trihole",
-      "nose-elephant",
-      "nose-warty",
-      "nose-hook"
-    ],
-    "mouths": [
-      "mouth-none",
-      "mouth-grin",
-      "mouth-gummy",
-      "mouth-fangs",
-      "mouth-jagged",
-      "mouth-tongue",
-      "mouth-buck",
-      "mouth-roar",
-      "mouth-gapped"
-    ],
-    "horns": [
-      "horn-none",
-      "horn-curved",
-      "horn-spiky",
-      "horn-nubs",
-      "horn-long",
-      "horn-rams",
-      "horn-bat",
-      "horn-tufted",
-      "horn-bent"
-    ],
-    "patterns": [
-      "pattern-none",
-      "pattern-spots",
-      "pattern-freckles",
-      "pattern-scales",
-      "pattern-warts",
-      "pattern-stripes",
-      "pattern-cracked",
-      "pattern-fur",
-      "pattern-pores"
-    ],
-    "extras": [
-      "extra-none",
-      "extra-earring",
-      "extra-bandage",
-      "extra-scar",
-      "extra-slime",
-      "extra-bumps",
-      "extra-spikes",
-      "extra-patch",
-      "extra-snot"
-    ]
-  }
+    "bases": ["base-bog","base-fuzz","base-skull","base-imp","base-moss","base-blue"],
+    "eyes": ["eye-none","eye-cyclops","eye-droopy","eye-beady","eye-wide","eye-triple","eye-stacked","eye-crossed","eye-sleepy","eye-wild"],
+    "noses": ["nose-none","nose-button","nose-piggy","nose-skeletal","nose-beak","nose-trihole","nose-elephant","nose-warty","nose-hook"],
+    "mouths": ["mouth-none","mouth-grin","mouth-gummy","mouth-fangs","mouth-jagged","mouth-tongue","mouth-buck","mouth-roar","mouth-gapped"],
+    "horns": ["horn-none","horn-curved","horn-spiky","horn-nubs","horn-long","horn-rams","horn-bat","horn-tufted","horn-bent"],
+    "patterns": ["pattern-none","pattern-spots","pattern-freckles","pattern-scales","pattern-warts","pattern-stripes","pattern-cracked","pattern-fur","pattern-pores"],
+    "extras": ["extra-none","extra-earring","extra-bandage","extra-scar","extra-slime","extra-bumps","extra-spikes","extra-patch","extra-snot"]
+  },
+  "finishes": [
+    {"id":"finish-etched","name":"Etched MVP","blendMode":"multiply","opacity":0.58},
+    {"id":"finish-blackwork","name":"Blackwork Punch","blendMode":"multiply","opacity":0.5},
+    {"id":"finish-screenprint","name":"Screenprint Pop","blendMode":"multiply","opacity":0.52},
+    {"id":"finish-distressed","name":"Distressed Ink","blendMode":"multiply","opacity":0.49},
+    {"id":"finish-clean","name":"Clean Asset","blendMode":"source-over","opacity":0}
+  ]
 }
