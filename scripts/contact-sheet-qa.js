@@ -23,7 +23,9 @@ function loadBrowserData(){
     if(!fs.existsSync(filename)) throw new Error(`Missing source file: ${rel}`);
     vm.runInContext(fs.readFileSync(filename,'utf8'),context,{filename:rel});
   }
-  return {parts:context.window.MONSTER_PARTS||{},finishes:context.window.MONSTER_FINISHES||[],junctions:context.window.MONSTER_JUNCTIONS||{},compatibility:context.window.MONSTER_COMPATIBILITY||{}};
+  const compatibility=context.window.MONSTER_COMPATIBILITY||{};
+  compatibility.approvedRecipes=compatibility.approvedRecipes||compatibility.recipes||[];
+  return {parts:context.window.MONSTER_PARTS||{},finishes:context.window.MONSTER_FINISHES||[],junctions:context.window.MONSTER_JUNCTIONS||{},compatibility};
 }
 function readManifest(){return JSON.parse(fs.readFileSync(path.join(ROOT,'assets/manifest.json'),'utf8'));}
 function hash(v){return crypto.createHash('sha256').update(v).digest('hex');}
@@ -57,10 +59,11 @@ function validate(data,manifest){
   for(const baseId of baseIds)for(const family of ['eyes','noses','mouths','horns']){const expected=new Set((data.parts[family]||[]).map(x=>x.id));const row=data.compatibility.matrix?.[baseId]?.[family];if(!row){errors.push({code:'missing-compatibility-row',baseId,family});continue;}const seen=new Map();for(const state of ['approved','acceptable','blocked'])for(const id of row[state]||[]){if(!expected.has(id))errors.push({code:'unknown-id',baseId,family,state,id});if(seen.has(id))errors.push({code:'duplicate-classification',baseId,family,id,states:[seen.get(id),state]});seen.set(id,state);}for(const id of expected)if(!seen.has(id))errors.push({code:'unclassified-id',baseId,family,id});}
   const mouthTargets=new Set((data.junctions.mouthSeams||[]).map(x=>x.targetId));const hornTargets=new Set((data.junctions.hornSeams||[]).map(x=>x.targetId));for(const id of baseIds)if(!mouthTargets.has(id))errors.push({code:'missing-junction',junction:'mouth-base',targetId:id});for(const horn of data.parts.horns||[])if(horn.id!=='horn-none'&&!hornTargets.has(horn.id))errors.push({code:'missing-junction',junction:'horn-root',targetId:horn.id});
   const recipes=data.compatibility.approvedRecipes||[];
+  if(recipes.length!==(manifest.counts?.approvedRecipes||0))errors.push({code:'recipe-count-mismatch',expected:manifest.counts?.approvedRecipes||0,actual:recipes.length});
   for(const r of recipes){for(const [family,key] of [['eyes','eyeId'],['noses','noseId'],['mouths','mouthId'],['horns','hornId']]){const st=stateFor(data,r.baseId,family,r[key]);if(st==='blocked')errors.push({code:'blocked-combination',recipeId:r.id,baseId:r.baseId,family,partId:r[key]});if(st==='unknown')errors.push({code:'unknown-recipe-id',recipeId:r.id,baseId:r.baseId,family,partId:r[key]});}for(const [family,key] of [['patterns','patternId'],['extras','extraId']])if(!ids.has(r[key]))errors.push({code:'unknown-recipe-id',recipeId:r.id,family,partId:r[key]});}
   if(JSON.stringify(manifest.layerOrder)!==JSON.stringify(REQUIRED_LAYER_ORDER))errors.push({code:'invalid-z-order',expected:REQUIRED_LAYER_ORDER,actual:manifest.layerOrder});
   if(manifest.runtimeAnatomyGeneration!==false)errors.push({code:'runtime-anatomy-generation-enabled'});
-  const groups={stable:['missing-id','duplicate-id'],metadata:['missing-metadata','missing-svg','missing-viewbox'],compatibility:['missing-compatibility-row','unknown-id','duplicate-classification','unclassified-id'],junctions:['missing-junction'],recipes:['blocked-combination','unknown-recipe-id'],order:['invalid-z-order'],authored:['runtime-anatomy-generation-enabled']};
+  const groups={stable:['missing-id','duplicate-id'],metadata:['missing-metadata','missing-svg','missing-viewbox'],compatibility:['missing-compatibility-row','unknown-id','duplicate-classification','unclassified-id'],junctions:['missing-junction'],recipes:['recipe-count-mismatch','blocked-combination','unknown-recipe-id'],order:['invalid-z-order'],authored:['runtime-anatomy-generation-enabled']};
   for(const [name,codes] of Object.entries(groups))checks.push({name,passed:!errors.some(x=>codes.includes(x.code))});
   return{schemaVersion:1,generator:'scripts/contact-sheet-qa.js',deterministic:true,generatedAt:new Date(0).toISOString(),sourceManifestVersion:manifest.version,sourceDigest:hash(JSON.stringify({manifest,ids:[...ids.keys()].sort(),recipes})),summary:{passed:errors.length===0,errorCount:errors.length,warningCount:warnings.length,checkCount:checks.length},checks,errors,warnings,counts:{bases:data.parts.bases?.length||0,mouths:data.parts.mouths?.length||0,horns:data.parts.horns?.length||0,finishes:data.finishes?.length||0,recipes:recipes.length,visualAssets:all.length}};
 }
