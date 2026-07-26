@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#efe2c8" />
-<title>Monster Face Library — Pre-Drawn Edition</title>
+<title>Monster Face Library — Pre-Drawn Builder</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,11 +14,11 @@
     <div class="brand">
       <div class="brand-copy">
         <div class="eyebrow">Hand-crafted asset collection</div>
-        <h1>Monster<span>Face Library</span></h1>
+        <h1>Monster<span>Face Builder</span></h1>
       </div>
-      <div class="speech">Pre-drawn faces.<br>No generated anatomy.<br>Just character.</div>
+      <div class="speech">Pre-drawn parts.<br>Mix by hand.<br>No invented anatomy.</div>
     </div>
-    <div class="intro">A curated set of <b>pre-drawn monster heads</b>. Select a face, art-direct the composition, save versions, and export it for print.</div>
+    <div class="intro">Choose a complete character or assemble one from <b>authored head, eye, nose, mouth, horn, pattern, and extra assets</b>.</div>
     <div class="top-actions">
       <button class="icon-action" id="shuffleBtn"><span>⚄</span>Shuffle</button>
       <button class="icon-action" id="resetBtn"><span>↻</span>Reset</button>
@@ -29,19 +29,24 @@
 
   <main class="layout">
     <aside class="panel left-panel">
-      <div class="panel-title"><span>☠ Select a face</span><small id="assetCount">10 assets</small></div>
+      <div class="panel-title"><span>☠ Authored assets</span><small id="assetCount">10 faces</small></div>
       <div class="panel-body">
-        <div class="source-note"><strong>New source of truth</strong>The face art is loaded from fixed, authored SVG assets. Canvas is now a compositor and export surface—not a monster drawing engine.</div>
+        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>Canvas selects, layers, positions, and exports approved artwork. It never invents monster anatomy.</div>
+        <div class="mode-switch" aria-label="Builder mode">
+          <button class="mode-btn active" data-mode="faces">Complete faces</button>
+          <button class="mode-btn" data-mode="builder">Build a monster</button>
+        </div>
         <div class="filter-row" id="filterRow"></div>
+        <div class="category-tabs" id="categoryRow" hidden></div>
         <div class="library-grid" id="libraryGrid"></div>
       </div>
     </aside>
 
     <section class="stage">
-      <div class="stage-bar"><span>↗</span><span class="title" id="currentTitle">Current Monster</span><span class="mode">Pre-drawn mode</span></div>
+      <div class="stage-bar"><span>↗</span><span class="title" id="currentTitle">Current Monster</span><span class="mode" id="stageMode">Complete face</span></div>
       <div class="canvas-wrap" id="canvasWrap">
         <canvas id="monsterCanvas" width="1600" height="1600" aria-label="Pre-drawn monster face composition preview"></canvas>
-        <div class="asset-badge">Curated pre-drawn asset</div>
+        <div class="asset-badge" id="assetBadge">Curated complete face</div>
         <div class="drag-tip">Drag to position</div>
       </div>
       <div class="stage-footer">
@@ -57,6 +62,10 @@
     <aside class="panel right-panel">
       <div class="panel-title"><span>☷ Art direction</span><small>Non-destructive</small></div>
       <div class="panel-body">
+        <div class="control-group builder-summary-group" id="builderSummaryGroup" hidden>
+          <div class="group-label"><span>Selected authored parts</span><output id="partCountOut">7</output></div>
+          <div class="builder-summary" id="builderSummary"></div>
+        </div>
         <div class="control-group">
           <div class="group-label"><span>Composition scale</span><output id="scaleOut">100%</output></div>
           <input id="scale" type="range" min="55" max="145" value="100" />
@@ -97,7 +106,7 @@
           <div class="toggle-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle" /></div>
         </div>
         <button class="primary" id="shufflePrimary">Shuffle face</button>
-        <div class="tip">Exports a 3600 × 3600 PNG and embeds the complete composition state as JSON inside the PNG metadata.</div>
+        <div class="tip">Exports a 3600 × 3600 PNG and embeds the full editable face or part recipe as JSON inside the PNG metadata.</div>
       </div>
     </aside>
   </main>
@@ -106,10 +115,10 @@
     <div class="variations-title"><b>ϟ</b>Saved<br>Compositions →</div>
     <div class="variation-grid" id="variationGrid"></div>
   </section>
-  <div class="footer-note"><span>☠</span>Selected by hand. Composed by you.<span>☠</span></div>
+  <div class="footer-note"><span>☠</span>Selected by hand. Layered by you.<span>☠</span></div>
 </div>
 
-<script>window.MONSTER_ASSETS=[];</script>
+<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};</script>
 <script src="assets/faces/monster-01.js"></script>
 <script src="assets/faces/monster-02.js"></script>
 <script src="assets/faces/monster-03.js"></script>
@@ -120,7 +129,15 @@
 <script src="assets/faces/monster-08.js"></script>
 <script src="assets/faces/monster-09.js"></script>
 <script src="assets/faces/monster-10.js"></script>
+<script src="assets/parts/bases.js"></script>
+<script src="assets/parts/eyes.js"></script>
+<script src="assets/parts/noses.js"></script>
+<script src="assets/parts/mouths.js"></script>
+<script src="assets/parts/horns.js"></script>
+<script src="assets/parts/patterns-compact.js"></script>
+<script src="assets/parts/extras.js"></script>
 <script src="png-metadata.js"></script>
+<script src="app-core.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
