@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monster-face-gen.local/schemas/hybrid-asset-bundle.schema.json",
+  "title": "Hybrid Authored Asset Bundle",
+  "type": "object",
+  "required": ["id", "parentAssetId", "revision", "width", "height", "viewBox", "runtimeGeometry", "layers"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "parentAssetId": {"type": "string", "minLength": 1},
+    "revision": {"type": "string", "minLength": 1},
+    "width": {"const": 600},
+    "height": {"const": 600},
+    "viewBox": {"const": "0 0 600 600"},
+    "runtimeGeometry": {"const": false},
+    "layers": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["role", "src", "kind", "z", "alpha", "blendMode", "sourceHash"],
+        "properties": {
+          "role": {"enum": ["silhouette-mask", "local-shadow", "colour-underpaint", "black-linework", "highlights", "texture-detail"]},
+          "src": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["svg", "svg-mask", "png", "webp"]},
+          "z": {"type": "number"},
+          "alpha": {"type": "number", "minimum": 0, "maximum": 1},
+          "blendMode": {"enum": ["source-over", "multiply", "screen", "overlay"]},
+          "sourceHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "masked": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
