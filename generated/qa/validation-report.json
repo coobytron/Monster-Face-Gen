@@ -3,8 +3,8 @@
   "generator": "scripts/contact-sheet-qa.js",
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "sourceManifestVersion": 8,
-  "sourceDigest": "77ebbd4486e2589cccfc1524702da58000ecd9e1fd02889935f444506ed06fcf",
+  "sourceManifestVersion": 9,
+  "sourceDigest": "14d8d6d76d558b06702a1118263286719804c873bb4afa0e05c17063ff2587c0",
   "summary": {
     "passed": true,
     "errorCount": 0,

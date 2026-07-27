@@ -11,15 +11,39 @@
     "checkCount": 7
   },
   "checks": [
-    {"name":"identity","passed":true},
-    {"name":"layers","passed":true},
-    {"name":"dimensions","passed":true},
-    {"name":"ordering","passed":true},
-    {"name":"alpha","passed":true},
-    {"name":"hashes","passed":true},
-    {"name":"authored","passed":true}
+    {
+      "name": "identity",
+      "passed": true
+    },
+    {
+      "name": "layers",
+      "passed": true
+    },
+    {
+      "name": "dimensions",
+      "passed": true
+    },
+    {
+      "name": "ordering",
+      "passed": true
+    },
+    {
+      "name": "alpha",
+      "passed": true
+    },
+    {
+      "name": "hashes",
+      "passed": true
+    },
+    {
+      "name": "authored",
+      "passed": true
+    }
   ],
   "errors": [],
   "warnings": [],
-  "counts": {"bundles":1,"layers":6}
+  "counts": {
+    "bundles": 1,
+    "layers": 6
+  }
 }
