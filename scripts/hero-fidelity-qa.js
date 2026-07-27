@@ -62,7 +62,7 @@ function renderComposition(data,selection,{flip=false,finishId='finish-clean',to
     renderAsset(idx.patterns[selection.patternId],transforms.patterns,`${token}-pattern`),
     renderAsset(idx.eyes[selection.eyeId],transforms.eyes,`${token}-eyes`),
     renderAsset(idx.noses[selection.noseId],transforms.noses,`${token}-nose`),
-    `<g clip-path="url(#${clipId})">${renderAsset(idx.mouths[selection.mouthId],transforms.mouths,`${token}-mouth`)}</g>`,
+    renderAsset(idx.mouths[selection.mouthId],transforms.mouths,`${token}-mouth`),
     mouthSeam?renderAsset(mouthSeam,'',`${token}-mouth-seam`):'',
     renderAsset(idx.extras[selection.extraId],transforms.extras,`${token}-extra`),
     finish&&finish.id!=='finish-clean'?`<g clip-path="url(#${clipId})" opacity="${finish.opacity??1}" style="mix-blend-mode:${finish.blendMode||'multiply'}">${renderAsset(finish,'',`${token}-finish`)}</g>`:''
