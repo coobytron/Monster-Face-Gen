@@ -36,6 +36,14 @@ function namespaceBody(svg,token){
   return body;
 }
 function renderAsset(asset,transform='',token='asset'){if(!asset)return'';const body=namespaceBody(asset.svg,token);return transform?`<g transform="${transform}">${body}</g>`:`<g>${body}</g>`;}
+function clipShape(asset){
+  const tags=[...String(asset?.svg||'').matchAll(/<path\b[^>]*>/gi)].map(match=>match[0]).filter(tag=>! /fill=["']none["']/i.test(tag));
+  const ranked=tags.map(tag=>({tag,d:(tag.match(/\bd=["']([^"']+)["']/i)||[])[1]||''})).filter(item=>item.d.length>60).sort((a,b)=>b.d.length-a.d.length);
+  if(!ranked.length)return renderAsset(asset,'','clip-fallback');
+  let tag=ranked[0].tag.replace(/\sfill=["'][^"']*["']/i,' fill="#fff"').replace(/\sstroke=["'][^"']*["']/gi,' stroke="none"');
+  if(!/\sfill=/i.test(tag))tag=tag.replace(/>$/,' fill="#fff">');
+  return '<g>'+tag+'</g>';
+}
 function transformFor(data,base,family,partId){const slot=base.slots?.[family]||{x:0,y:0,scale:1,rotation:0};const override=data.compatibility.placementOverrides?.[`${base.id}|${partId}`]||{};const x=((slot.x||0)+(override.x||0))*600,y=((slot.y||0)+(override.y||0))*600,scale=(slot.scale||1)*(override.scale||1),rotation=(slot.rotation||0)+(override.rotation||0);return`translate(${x.toFixed(3)} ${y.toFixed(3)}) translate(300 300) rotate(${rotation.toFixed(3)}) scale(${scale.toFixed(5)}) translate(-300 -300)`;}
 
 function renderComposition(data,selection,{flip=false,finishId='finish-clean',token='composition'}={}){
@@ -47,7 +55,7 @@ function renderComposition(data,selection,{flip=false,finishId='finish-clean',to
   const transforms={horns:transformFor(data,base,'horns',selection.hornId),patterns:transformFor(data,base,'patterns',selection.patternId),eyes:transformFor(data,base,'eyes',selection.eyeId),noses:transformFor(data,base,'noses',selection.noseId),mouths:transformFor(data,base,'mouths',selection.mouthId),extras:transformFor(data,base,'extras',selection.extraId)};
   const clipId=`hero-clip-${token}`;const finish=idx.finishes[finishId];
   const inner=[
-    `<defs><clipPath id="${clipId}">${renderAsset(base,'',`${token}-clip`)}</clipPath></defs>`,
+    `<defs><clipPath id="${clipId}">${clipShape(base)}</clipPath></defs>`,
     renderAsset(idx.horns[selection.hornId],transforms.horns,`${token}-horns`),
     renderAsset(base,'',`${token}-base`),
     hornSeam?renderAsset(hornSeam,transforms.horns,`${token}-horn-seam`):'',
