@@ -1,0 +1,11 @@
+const assert=require('assert');
+const C=require('../internal/recipe-director/recipe-contract.js');
+const knownIds={baseId:['base-bog'],eyeId:['eye-cyclops'],noseId:['nose-button'],mouthId:['mouth-grin','mouth-roar'],hornId:['horn-curved'],patternId:['pattern-spots'],extraId:['extra-earring'],finishId:['finish-clean']};
+const compatibility={status(base,family,id){return base==='base-bog'&&id==='mouth-roar'?'blocked':'approved'}};
+const hero={id:'bog-cyclops-grin',name:'Bog Cyclops Grin',status:'approved',parts:{baseId:'base-bog',eyeId:'eye-cyclops',noseId:'nose-button',mouthId:'mouth-grin',hornId:'horn-curved',patternId:'pattern-spots',extraId:'extra-earring',finishId:'finish-clean'},transforms:{mouth:{x:0,y:.012,scale:.96,rotation:0}},junctions:{mouth:'base-bog|mouth-grin',horns:'base-bog|horn-curved'},expressionTags:['goofy'],annotations:[{id:'pin-1',x:.51,y:.67,note:'Check lower lip join'}],review:{reviewer:'Art direction',scores:{silhouette:5,expression:4,junctions:4,thumbnail:4,finish:4,overall:4}}};
+const first=C.serializeRecipe(hero);const imported=C.importRecipe(first,{knownIds,compatibility});assert.equal(imported.valid,true,imported.errors.join('\n'));const second=C.serializeRecipe(imported.recipe);assert.equal(first,second,'round-trip output must be byte-stable');
+const blocked=C.validateRecipe({...hero,parts:{...hero.parts,mouthId:'mouth-roar'},junctions:{mouth:'base-bog|mouth-roar',horns:'base-bog|horn-curved'}},{knownIds,compatibility});assert.equal(blocked.valid,false);assert(blocked.errors.some(e=>e.includes('Blocked combination')));
+const unknown=C.validateRecipe({...hero,parts:{...hero.parts,eyeId:'eye-generated'}},{knownIds,compatibility});assert.equal(unknown.valid,false);assert(unknown.errors.some(e=>e.includes('Unsupported eyeId')));
+const mismatch=C.validateRecipe({...hero,junctions:{mouth:'base-fuzz|mouth-grin'}},{knownIds,compatibility});assert.equal(mismatch.valid,false);assert(mismatch.errors.some(e=>e.includes('Mouth junction')));
+const normalized=C.normalizeRecipe({...hero,transforms:{mouth:{x:.123456,y:0,scale:.987654,rotation:2.22222}},expressionTags:['goofy','goofy','uneasy']});assert.deepEqual(normalized.expressionTags,['goofy','uneasy']);assert.equal(normalized.transforms.mouth.x,.1235);assert.equal(normalized.transforms.mouth.scale,.9877);
+console.log('recipe director contract tests passed');
