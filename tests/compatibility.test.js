@@ -14,7 +14,7 @@ const expected={
   horns:['horn-none','horn-curved','horn-spiky','horn-nubs','horn-long','horn-rams','horn-bat','horn-tufted','horn-bent']
 };
 
-assert.strictEqual(c.version,8);
+assert.strictEqual(c.version,9);
 assert.strictEqual(c.recipes.length,16);
 assert.deepStrictEqual([...c.states],['approved','acceptable','blocked']);
 
@@ -28,6 +28,15 @@ for(const [baseId,families] of Object.entries(c.matrix)){
 
 for(const recipe of c.recipes){
   assert(c.validateRecipe(recipe),`${recipe.id} contains a blocked pair`);
+}
+
+assert.deepStrictEqual(Object.keys(c.heroPairJunctions).sort(),['bog-cyclops-grin','fuzz-fanged','imp-roar']);
+for(const [recipeId,pairs] of Object.entries(c.heroPairJunctions)){
+  const recipe=c.recipes.find(item=>item.id===recipeId);
+  assert(recipe,`${recipeId} must remain a stable recipe`);
+  assert.strictEqual(pairs.mouth,`${recipe.baseId}|${recipe.mouthId}`);
+  assert.strictEqual(pairs.horns,`${recipe.baseId}|${recipe.hornId}`);
+  assert.deepStrictEqual({...recipe.pairJunctions},{...pairs});
 }
 
 assert.strictEqual(c.status('base-skull','mouths','mouth-roar'),'blocked');
@@ -45,4 +54,4 @@ for(let i=0;i<100;i++){
   }
 }
 
-console.log('Compatibility v8: matrix coverage, 16 recipes, overrides, and 100 shuffle samples passed.');
+console.log('Compatibility v9: matrix coverage, hero pair junction metadata, overrides, and 100 shuffle samples passed.');
