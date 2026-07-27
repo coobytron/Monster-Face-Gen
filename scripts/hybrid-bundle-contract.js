@@ -9,7 +9,7 @@ const FORBIDDEN_KEYS=new Set(['geometry','commands','pathData','generator','proc
 const sha256=value=>crypto.createHash('sha256').update(value).digest('hex');
 const stripSvg=svg=>{const m=String(svg||'').match(/<svg\b[^>]*>([\s\S]*?)<\/svg>/i);return m?m[1]:''};
 const hasViewBox=(svg,viewBox)=>new RegExp(`<svg\\b[^>]*\\bviewBox=["']${viewBox.replace(/ /g,'\\s+')}["']`,'i').test(String(svg||''));
-const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&apos;'}[c]));
+const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 
 function loadRegistry(){
   const context={window:{MONSTER_PARTS:{bases:[]}},console};context.window.window=context.window;vm.createContext(context);
