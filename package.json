@@ -3,8 +3,8 @@
   "private": true,
   "version": "8.2.0",
   "scripts": {
-    "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js",
-    "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node tests/hybrid-bundle.test.js && node scripts/contact-sheet-qa.js --validate-only && node scripts/hybrid-bundle-qa.js --validate-only"
+    "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js",
+    "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node tests/hybrid-bundle.test.js && node tests/pair-junctions.test.js && node scripts/contact-sheet-qa.js --validate-only && node scripts/hybrid-bundle-qa.js --validate-only && node scripts/pair-junction-qa.js --validate-only"
   },
   "dependencies": {
     "sharp": "0.34.3"

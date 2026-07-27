@@ -77,6 +77,13 @@
     ['bog-gapped','Bog Gapped','base-bog','eye-wide','nose-piggy','mouth-gapped','horn-tufted','pattern-warts','extra-patch']
   ].map(([id,name,baseId,eyeId,noseId,mouthId,hornId,patternId,extraId])=>({id,name,baseId,eyeId,noseId,mouthId,hornId,patternId,extraId,status:'approved'}));
 
+  const heroPairJunctions={
+    'bog-cyclops-grin':{mouth:'base-bog|mouth-grin',horns:'base-bog|horn-curved'},
+    'fuzz-fanged':{mouth:'base-fuzz|mouth-fangs',horns:'base-fuzz|horn-bent'},
+    'imp-roar':{mouth:'base-imp|mouth-roar',horns:'base-imp|horn-spiky'}
+  };
+  for(const recipe of recipes) if(heroPairJunctions[recipe.id]) recipe.pairJunctions={...heroPairJunctions[recipe.id]};
+
   function categoryForKey(key){return ({eyeId:'eyes',noseId:'noses',mouthId:'mouths',hornId:'horns'})[key]||null}
   function status(baseId,categoryId,partId){
     const family=matrix[baseId]&&matrix[baseId][categoryId];
@@ -92,5 +99,5 @@
     return ['eyeId','noseId','mouthId','hornId'].every(key=>status(recipe.baseId,categoryForKey(key),recipe[key])!=='blocked');
   }
 
-  window.MONSTER_COMPATIBILITY={version:8,states,matrix,placementOverrides,recipes,status,compatibleIds,validateRecipe};
+  window.MONSTER_COMPATIBILITY={version:9,states,matrix,placementOverrides,recipes,heroPairJunctions,status,compatibleIds,validateRecipe};
 })();

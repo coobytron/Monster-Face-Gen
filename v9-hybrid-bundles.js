@@ -43,7 +43,7 @@
     return bundle?loadBundle(bundle):originalLoadSvgImage(item);
   };
 
-  function drawLayer(ctx,layer,size){
+  function drawBundleLayer(ctx,layer,size){
     ctx.save();
     ctx.globalAlpha=layer.alpha==null?1:layer.alpha;
     ctx.globalCompositeOperation=layer.blendMode||'source-over';
@@ -63,11 +63,11 @@
     for(const layer of descriptor.layers){
       if(layer.role==='silhouette-mask') continue;
       if(layer.masked===false||!mask){
-        drawLayer(finalCtx,layer,pixelSize);
+        drawBundleLayer(finalCtx,layer,pixelSize);
         continue;
       }
       artCtx.clearRect(0,0,pixelSize,pixelSize);
-      drawLayer(artCtx,layer,pixelSize);
+      drawBundleLayer(artCtx,layer,pixelSize);
       artCtx.save();
       artCtx.globalCompositeOperation='destination-in';
       artCtx.globalAlpha=mask.alpha==null?1:mask.alpha;
@@ -79,33 +79,78 @@
     return finalCanvas;
   }
 
+  function drawable(image,size){
+    return image&&image.__hybridBundle?compositeBundleImage(image,size):image;
+  }
+
+  function compositionTransform(ctx,size,callback){
+    const drawSize=size*.74;
+    ctx.save();
+    ctx.translate(size*.5+state.x*size*.22,size*.49+state.y*size*.22);
+    ctx.rotate(state.rotation*Math.PI/180);
+    ctx.scale(state.flipped?-state.scale:state.scale,state.scale);
+    callback(drawSize);
+    ctx.restore();
+  }
+
+  function drawInSlot(ctx,size,image,slot={x:0,y:0,scale:1,rotation:0}){
+    if(!image) return;
+    compositionTransform(ctx,size,drawSize=>{
+      ctx.save();
+      ctx.translate((slot.x||0)*drawSize,(slot.y||0)*drawSize);
+      ctx.rotate((slot.rotation||0)*Math.PI/180);
+      ctx.scale(slot.scale||1,slot.scale||1);
+      ctx.drawImage(drawable(image,drawSize),-drawSize/2,-drawSize/2,drawSize,drawSize);
+      ctx.restore();
+    });
+  }
+
+  function drawBuilderLayer(ctx,size,layer,base){
+    if(!layer||!layer.image) return;
+    drawInSlot(ctx,size,layer.image,slotFor(base,layer.categoryId,layer.item));
+  }
+
   drawLoadedLayers=function(g,size,layers){
     if(!layers.some(layer=>layer.image&&layer.image.__hybridBundle)) return originalDrawLoadedLayers(g,size,layers);
-    const drawSize=size*.74;
-    g.save();
-    g.translate(size*.5+state.x*size*.22,size*.49+state.y*size*.22);
-    g.rotate(state.rotation*Math.PI/180);
-    g.scale(state.flipped?-state.scale:state.scale,state.scale);
+
     if(state.mode==='faces'){
       const layer=layers[0];
-      if(layer){
-        const image=layer.image.__hybridBundle?compositeBundleImage(layer.image,drawSize):layer.image;
-        g.drawImage(image,-drawSize/2,-drawSize/2,drawSize,drawSize);
-      }
-    }else{
-      const base=currentBase();
-      layers.forEach(layer=>{
-        const slot=slotFor(base,layer.categoryId,layer.item);
-        g.save();
-        g.translate((slot.x||0)*drawSize,(slot.y||0)*drawSize);
-        g.rotate((slot.rotation||0)*Math.PI/180);
-        g.scale(slot.scale||1,slot.scale||1);
-        const image=layer.image.__hybridBundle?compositeBundleImage(layer.image,drawSize):layer.image;
-        g.drawImage(image,-drawSize/2,-drawSize/2,drawSize,drawSize);
-        g.restore();
-      });
+      if(layer) drawInSlot(g,size,layer.image);
+      return;
     }
-    g.restore();
+
+    const base=currentBase();
+    const byCategory=Object.fromEntries(layers.map(layer=>[layer.categoryId,layer]));
+    const assembly=layers.v7Assembly||{};
+
+    drawBuilderLayer(g,size,byCategory.horns,base);
+    drawBuilderLayer(g,size,byCategory.bases,base);
+
+    if(assembly.hornSeamImage&&byCategory.horns){
+      drawInSlot(g,size,assembly.hornSeamImage,slotFor(base,'horns',byCategory.horns.item));
+    }
+
+    drawBuilderLayer(g,size,byCategory.patterns,base);
+    drawBuilderLayer(g,size,byCategory.eyes,base);
+    drawBuilderLayer(g,size,byCategory.noses,base);
+
+    const mouthLayer=byCategory.mouths;
+    const baseLayer=byCategory.bases;
+    if(mouthLayer&&baseLayer){
+      const mouthSurface=document.createElement('canvas');
+      mouthSurface.width=size;mouthSurface.height=size;
+      const mouthContext=mouthSurface.getContext('2d');
+      drawBuilderLayer(mouthContext,size,mouthLayer,base);
+      mouthContext.globalCompositeOperation='destination-in';
+      drawBuilderLayer(mouthContext,size,baseLayer,base);
+      mouthContext.globalCompositeOperation='source-over';
+      g.drawImage(mouthSurface,0,0);
+    }else{
+      drawBuilderLayer(g,size,mouthLayer,base);
+    }
+
+    if(assembly.mouthSeamImage) drawInSlot(g,size,assembly.mouthSeamImage);
+    drawBuilderLayer(g,size,byCategory.extras,base);
   };
 
   function selectedBundleMetadata(snapshot=state){
@@ -134,5 +179,5 @@
     return hybridBundles.length?{...metadata,hybridAssetContractVersion:registry.version,hybridBundles}:metadata;
   };
 
-  window.MonsterHybridBundles={registry,bundleById,sortedLayers,selectedBundleMetadata};
+  window.MonsterHybridBundles={registry,bundleById,sortedLayers,selectedBundleMetadata,compositeBundleImage};
 })();

@@ -18,7 +18,7 @@ Recommended production sources:
 - premultiplied-alpha-safe edges
 - no baked paper background, labels, borders, or crop marks
 - at least 120 px transparent padding in the working source
-- published parent IDs remain stable
+- published parent IDs and pair IDs remain stable
 
 A published ID must not be renamed. Replace the art behind the same ID or introduce a new ID.
 
@@ -56,20 +56,13 @@ Every layer must use the bundle's full-canvas dimensions and `0 0 600 600` viewB
 - Allowed blend modes are `source-over`, `multiply`, `screen`, and `overlay`.
 - Layers use `masked: true` by default.
 - Authored local shadows and outer contour linework may use `masked: false` when they intentionally extend beyond the silhouette alpha.
-- The compositor applies the silhouette mask separately to each designated masked layer in deterministic z-order, preserving authored interleaving with unmasked layers.
-- The compositor rasterizes at the actual preview or export draw size, so the same bundle supports the 1600 preview and 3600 × 3600 export without a fixed 600 px intermediate.
+- The compositor applies the silhouette mask separately to each designated masked layer in deterministic z-order.
+- The compositor rasterizes at the actual preview or export draw size.
+- A hybrid base must preserve the same builder mouth clipping and junction z-order as its single-SVG fallback.
 
 ### Stable IDs, revisions, and hashes
 
-Every bundle must declare:
-
-- stable bundle ID
-- stable parent asset ID
-- semantic bundle revision
-- ordered layer roles and z values
-- source path and source kind
-- SHA-256 source hash for every layer
-- `runtimeGeometry: false`
+Every bundle must declare a stable bundle ID, stable parent asset ID, semantic revision, ordered roles and z values, source path and kind, SHA-256 source hash for every layer, and `runtimeGeometry: false`.
 
 PNG metadata includes the contract version, parent ID, bundle ID, revision, ordered layer metadata, and source hashes. Updating any source layer requires updating its hash and normally incrementing the bundle revision.
 
@@ -77,33 +70,17 @@ PNG metadata includes the contract version, parent ID, bundle ID, revision, orde
 
 Bundle declarations and runtime code must not contain procedural drawing commands, runtime path data, inferred landmarks, geometry generators, morph instructions, or anatomy construction recipes. Runtime code may only load and composite authored pixels and paths.
 
-The validator rejects geometry-like declaration keys, escaping or broken paths, scripts, event handlers, invalid SVG content, and mismatched inline fixture sources.
-
-## Minimal fixture
-
-`base-bog-hybrid-v1` demonstrates the contract by decomposing the existing authored `base-bog` SVG into mask, local shadow, underpaint, linework, highlight, and texture plates. It retains parent ID `base-bog` and introduces no new anatomy.
-
-The fixture includes inline SVG copies so opening `index.html` directly from disk remains supported. QA verifies that each inline copy exactly matches the repository source file hash.
-
 ## Compatibility contract
 
-Every base must classify every stable eye, nose, mouth, and horn/ear ID in `assets/compatibility.js` exactly once as:
+Every base must classify every stable eye, nose, mouth, and horn/ear ID in `assets/compatibility.js` exactly once as `approved`, `acceptable`, or `blocked`.
 
-- `approved` — preferred art-directed pairing
-- `acceptable` — safe alternate pairing
-- `blocked` — visually incompatible pairing
-
-Blocked anatomy must be disabled for manual selection, repaired after a base change, filtered before rendering, and excluded from shuffle.
-
-Patterns and extras are globally compatible in the current pack.
+Blocked anatomy must be disabled for manual selection, repaired after a base change, filtered before rendering, and excluded from shuffle. Patterns and extras are globally compatible in the current pack.
 
 ## Expression contract
 
 `assets/expression-direction.js` preserves authored emotional intent without changing geometry. The vocabulary is `sleepy`, `uneasy`, `feral`, `goofy`, `stern`, and `startled`.
 
 Every eye and mouth ID has authored expression tags. Every approved complete recipe carries one stable expression assignment supported by its selected eye or mouth.
-
-Expression metadata may guide curation, QA labels, future shuffle weighting, and export metadata. It must not redraw eyelids, pupils, gums, lips, teeth, or any anatomy.
 
 ## Approved recipe contract
 
@@ -115,8 +92,6 @@ Recipe IDs remain stable because exported PNG metadata and QA reports may refere
 
 `docs/MVP-FIDELITY-TARGETS.md` locks `bog-cyclops-grin`, `fuzz-fanged`, and `imp-roar` as the common review set. Later fidelity changes must preserve their stable IDs and use the same score categories and review sizes.
 
-The baseline is descriptive review metadata, not runtime drawing instruction.
-
 ## Placement overrides
 
 Per-pair placement overrides use `<base-id>|<part-id>` and may only translate, uniformly scale, or rotate. They may not morph, infer landmarks, non-uniformly distort anatomy, or create geometry.
@@ -127,13 +102,67 @@ Per-pair placement overrides use `<base-id>|<part-id>` and may only translate, u
 
 Runtime code may only select authored seams and apply approved rigid transforms.
 
-## Junction contract
+## Generic junction contract
 
-A junction is a fixed full-canvas transition plate. It may contain overlap shadows, cheek-colour cover shapes, lip-edge cover shapes, horn-root contour folds, short highlights, and local distress. It must not contain standalone anatomy.
+A generic junction is a fixed full-canvas transition plate selected by base ID for mouths or horn/ear family ID for roots. It may contain overlap shadows, cheek-colour cover shapes, lip-edge cover shapes, horn-root contour folds, short highlights, and local distress. It must not contain standalone anatomy.
 
-Every base requires a mouth seam. Every visible horn/ear requires a matching horn-root seam. `horn-none` is the only exception.
+Every base requires a generic mouth seam. Every visible horn/ear requires a matching generic horn-root seam. `horn-none` is the only exception. These remain the required fallback for combinations without an exact pair plate.
 
 Mouth interiors remain inside authored apertures and are clipped to the selected base alpha. Horns render behind the base. The complete authored composition and transforms mirror together when flipped.
+
+## Pair-specific junction contract
+
+Pair-specific plates are published in `assets/pair-junctions.js`. Their stable `id` and `pairKey` must both equal `<base-id>|<part-id>`.
+
+The current required set is:
+
+- `base-bog|mouth-grin`
+- `base-bog|horn-curved`
+- `base-fuzz|mouth-fangs`
+- `base-fuzz|horn-bent`
+- `base-imp|mouth-roar`
+- `base-imp|horn-spiky`
+
+### Selection and fallback
+
+Runtime selection is deterministic:
+
+1. look up the exact `<base-id>|<part-id>` pair
+2. use the exact pair plate when published
+3. otherwise use the retained generic base or horn-family seam
+
+The exact plate replaces the generic plate at that render stage. Do not render both.
+
+### Allowed pair-plate content
+
+- local skin or fur overlap
+- cheek and lip cover shapes
+- short wrinkle or fold lines
+- cast shadows
+- edge highlights
+- horn-root folds
+- local distress and texture continuity
+
+### Forbidden pair-plate content
+
+- standalone teeth or gums
+- standalone eyes
+- standalone horns or ears
+- standalone lips
+- complete mouth geometry
+- complete head silhouettes or head geometry
+- inferred landmarks, generated paths, or procedural geometry
+- embedded raster anatomy, external `<use>` references, scripts, event handlers, or `foreignObject`
+
+Every pair plate must declare `contentAudit.standaloneAnatomy: false`, list only approved transition content, use `0 0 600 600`, and set both `flipSafe` and `mirrorWithComposition` to `true`.
+
+### Pair-plate art direction
+
+Mouth plates should resolve mouth corners, lower-lip ownership, cheek compression, short fold lines, local shadow, and local texture continuity without replacing the authored mouth.
+
+Horn plates should resolve root contact, skin or fur overlap, compression, short contour folds, edge highlights, and local distress without extending the authored horn or ear.
+
+Pair plates should remain visually subordinate to the authored anatomy. They should not read as meaningful objects when viewed in isolation.
 
 ## Finish contract
 
@@ -143,12 +172,12 @@ A finish is a fixed, non-anatomical full-canvas plate containing hatching, stipp
 
 1. horns / ears
 2. blank head base or stable-parent hybrid bundle
-3. horn / ear root seam
+3. exact horn pair plate, otherwise generic horn / ear root seam
 4. surface pattern
 5. eyes
 6. nose / snout
 7. mouth clipped to selected base alpha
-8. base-specific mouth seam
+8. exact mouth pair plate, otherwise generic base mouth seam
 9. extras
 10. illustration finish
 
@@ -164,27 +193,30 @@ npm test
 npm run qa
 ```
 
-The test workflow validates compatibility, expression assignments, silhouette profiles, root coverage, flip safety, hybrid bundle identity, source hashes, required roles, order, alpha, transparent edges, and 3600 × 3600 export support.
+The test workflow validates compatibility, expression assignments, silhouette profiles, root coverage, hybrid bundle identity and hashes, exact pair coverage, unknown pair references, pair z-order, generic fallbacks, detectable anatomy-like content, flip safety, transparent edges, and 3600 × 3600 export support.
 
-The workflow generates SVG and PNG review sheets in `generated/qa/` for the existing matrices and for the hybrid fixture on cream, white, black, and transparent backgrounds.
+The workflow generates SVG and PNG review sheets in `generated/qa/` on cream, white, black, and transparent backgrounds.
+
+Pair-junction review sheets show the three locked heroes with generic before state, pair-specific after state, flipped after state, 100% mouth or root crop, 25% composition review, and 96 px / 48 px thumbnail review.
 
 ## Machine-readable validation
 
-`generated/qa/validation-report.json` follows `schemas/qa-validation-report.schema.json`.
+- `generated/qa/validation-report.json` follows `schemas/qa-validation-report.schema.json`.
+- `generated/qa/hybrid-bundle-validation-report.json` follows `schemas/hybrid-bundle-validation-report.schema.json`.
+- `generated/qa/pair-junction-validation-report.json` follows `schemas/pair-junction-validation-report.schema.json`.
 
-`generated/qa/hybrid-bundle-validation-report.json` follows `schemas/hybrid-bundle-validation-report.schema.json` and reports:
+The pair-junction report detects:
 
-- duplicate or missing bundle IDs and stable parent IDs
-- missing bundle revisions
-- missing required roles and duplicate roles
-- invalid source kinds, alpha, or blend modes
-- non-deterministic ordering or duplicate z values
-- invalid dimensions or viewBox
-- broken paths and invalid PNG/WebP sources
-- source-hash and inline-source mismatches
-- scripts, event handlers, foreign objects, runtime geometry, or procedural declarations
+- missing required hero pair junctions
+- duplicate, malformed, or unknown pair keys
+- incorrect mouth or horn z-order
+- missing generic fallback seams
+- invalid SVG/viewBox or embedded/active content
+- unsupported content-audit declarations
+- flip-unsafe configurations
+- runtime anatomy generation flags
 
-Both reports use stable digests and a fixed Unix-epoch timestamp so unchanged authored inputs produce byte-stable output.
+All reports use stable digests and a fixed Unix-epoch timestamp so unchanged authored inputs produce byte-stable output.
 
 ## Review expectations
 
@@ -193,20 +225,19 @@ Both reports use stable digests and a fixed Unix-epoch timestamp so unchanged au
 3. Check thumbnail legibility and eye-first hierarchy.
 4. Review tooth cadence, gum ridges, cheek compression, lower-lip ownership, mouth corners, and clipping.
 5. Review crown, cheek, jaw, and chin rhythm before internal details.
-6. Review horn roots before and after horizontal flip at 100%, 25%, and thumbnail scale.
-7. Confirm blocked pairs never appear in approved recipes.
-8. Confirm every approved recipe carries one expression tag.
-9. Inspect finishes only on approved recipes.
-10. Keep generated review artifacts with asset-changing pull requests.
-11. Confirm bundle layers remain full-canvas aligned and ordered.
+6. Review horn roots before and after horizontal flip at 100%, 25%, 96 px, and 48 px.
+7. Confirm each locked hero resolves to both exact pair keys.
+8. Confirm non-hero combinations retain their generic fallback seams.
+9. Confirm blocked pairs never appear in approved recipes.
+10. Inspect pair plates in isolation and reject anything that reads as standalone anatomy.
+11. Keep generated review artifacts with asset-changing pull requests.
 12. Compare hybrid output at preview scale and 3600 × 3600 export.
 13. Inspect transparent edges against cream, white, black, and checkerboard backgrounds.
-14. Confirm fixture or production bundles retain the stable parent ID and metadata hashes.
-15. Score the three locked heroes using `docs/MVP-FIDELITY-TARGETS.md`.
+14. Score the three locked heroes using `docs/MVP-FIDELITY-TARGETS.md`.
 
 ## GitHub Actions
 
-`.github/workflows/contact-sheet-qa.yml` runs manually and on changes to assets, bundle declarations, runtime compositor, schemas, tests, package scripts, and QA tooling. It uploads the generated review set and may commit refreshed artifacts to the branch.
+`.github/workflows/contact-sheet-qa.yml` runs manually and on changes to assets, bundle declarations, pair-junction declarations, runtime compositors, schemas, tests, package scripts, and QA tooling. It uploads the generated review set and may commit refreshed artifacts to the branch.
 
 ## Source of truth
 
