@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/hero-review-qa.js",
+  "deterministic": true,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceDigest": "964c975e076e7326a10754c86cc6d262f63a8766ee86519c3b1d101fa37c6b5d",
+  "summary": {
+    "passed": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "reviewCount": 3,
+    "humanConfirmedCount": 0
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "code": "human-confirmation-pending",
+      "recipeId": "bog-cyclops-grin"
+    },
+    {
+      "code": "human-confirmation-pending",
+      "recipeId": "fuzz-fanged"
+    },
+    {
+      "code": "human-confirmation-pending",
+      "recipeId": "imp-roar"
+    }
+  ]
+}
