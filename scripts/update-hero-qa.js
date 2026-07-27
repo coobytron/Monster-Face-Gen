@@ -5,7 +5,17 @@ const path=require('path');
 const filename=path.resolve(__dirname,'hero-fidelity-qa.js');
 let source=fs.readFileSync(filename,'utf8');
 const anchor="function renderAsset(asset,transform='',token='asset'){if(!asset)return'';const body=namespaceBody(asset.svg,token);return transform?`<g transform=\"${transform}\">${body}</g>`:`<g>${body}</g>`;}\n";
-const helper=`function clipShape(asset){\n  const tags=[...String(asset?.svg||'').matchAll(/<path\\b[^>]*>/gi)].map(match=>match[0]).filter(tag=>! /fill=[\"']none[\"']/i.test(tag));\n  const ranked=tags.map(tag=>({tag,d:(tag.match(/\\bd=[\"']([^\"']+)[\"']/i)||[])[1]||''})).filter(item=>item.d.length>60).sort((a,b)=>b.d.length-a.d.length);\n  if(!ranked.length)return renderAsset(asset,'','clip-fallback');\n  let tag=ranked[0].tag.replace(/\\sfill=[\"'][^\"']*[\"']/i,' fill=\"#fff\"').replace(/\\sstroke=[\"'][^\"']*[\"']/gi,' stroke=\"none\"');\n  if(!/\\sfill=/i.test(tag))tag=tag.replace(/>$/,' fill=\"#fff\">');\n  return `<g>${tag}</g>`;\n}\n`;
+const helper=[
+  'function clipShape(asset){',
+  "  const tags=[...String(asset?.svg||'').matchAll(/<path\\b[^>]*>/gi)].map(match=>match[0]).filter(tag=>! /fill=[\"']none[\"']/i.test(tag));",
+  "  const ranked=tags.map(tag=>({tag,d:(tag.match(/\\bd=[\"']([^\"']+)[\"']/i)||[])[1]||''})).filter(item=>item.d.length>60).sort((a,b)=>b.d.length-a.d.length);",
+  "  if(!ranked.length)return renderAsset(asset,'','clip-fallback');",
+  "  let tag=ranked[0].tag.replace(/\\sfill=[\"'][^\"']*[\"']/i,' fill=\"#fff\"').replace(/\\sstroke=[\"'][^\"']*[\"']/gi,' stroke=\"none\"');",
+  "  if(!/\\sfill=/i.test(tag))tag=tag.replace(/>$/,' fill=\"#fff\">');",
+  "  return '<g>'+tag+'</g>';",
+  '}',
+  ''
+].join('\n');
 if(!source.includes('function clipShape(asset)')){
   if(!source.includes(anchor))throw new Error('Hero QA render anchor not found');
   source=source.replace(anchor,anchor+helper);
