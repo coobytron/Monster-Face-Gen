@@ -3,7 +3,7 @@
   "generator": "scripts/hybrid-bundle-contract.js",
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "sourceDigest": "e0c02b7c21d14938bb9f6198f70367154605cb276bc9f043005d77738edb1681",
+  "sourceDigest": "2c3fccd038cea85b0bbcee9c5fb90616b9cde5c311cde3cd8d268012e3422c64",
   "summary": {
     "passed": true,
     "errorCount": 0,

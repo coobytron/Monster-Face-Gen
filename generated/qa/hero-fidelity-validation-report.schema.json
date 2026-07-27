@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/hero-fidelity-validation-report.schema.json",
+  "title": "Monster Face Hero Fidelity Validation Report",
+  "type": "object",
+  "required": ["schemaVersion","generator","deterministic","generatedAt","sourceDigest","summary","checks","errors","warnings","counts"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "generator": {"const": "scripts/hero-fidelity-qa.js"},
+    "deterministic": {"const": true},
+    "generatedAt": {"type": "string"},
+    "sourceDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "summary": {
+      "type": "object",
+      "required": ["passed","errorCount","warningCount","checkCount"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "errorCount": {"type": "integer", "minimum": 0},
+        "warningCount": {"type": "integer", "minimum": 0},
+        "checkCount": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "checks": {"type": "array", "items": {"type": "object", "required": ["name","passed"], "properties": {"name": {"type": "string"}, "passed": {"type": "boolean"}}, "additionalProperties": false}},
+    "errors": {"type": "array", "items": {"type": "object"}},
+    "warnings": {"type": "array", "items": {"type": "object"}},
+    "counts": {
+      "type": "object",
+      "required": ["heroRecipes","authoredReplacements","families","backgrounds"],
+      "properties": {
+        "heroRecipes": {"const": 3},
+        "authoredReplacements": {"const": 21},
+        "families": {"const": 7},
+        "backgrounds": {"const": 4}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

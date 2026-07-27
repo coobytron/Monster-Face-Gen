@@ -10,6 +10,20 @@ Every visible monster feature originates from an authored asset. Canvas and QA t
 
 Randomisation is selection, not generation. QA is review of authored objects, not asset creation.
 
+<!-- HERO-FIDELITY-V9:START -->
+## V9.4 near-final hero artwork
+
+The three locked fidelity recipes now resolve to **21 original re-authored components** behind their existing stable IDs. The replacement pack in `assets/hero-v9/` covers each hero base, eye set, nose, mouth, horn set, pattern, and extra while leaving every non-hero asset and recipe available.
+
+- `bog-cyclops-grin` — irregular teal blob silhouette, dominant asymmetrical cyclops eye, varied tooth cadence, and curved horn surface wear
+- `fuzz-fanged` — broken orange fur rhythm, weighted sleepy lids, long fangs, and bent horn integration
+- `imp-roar` — compressed purple imp silhouette, startled mismatched eyes, deep open roar, tongue volume, and spiky crown treatment
+
+`base-bog-hybrid-v2` updates the six-layer hybrid fixture to the same hero artwork while retaining parent ID `base-bog`. The exact mouth and horn pair plates from v9 remain active. Runtime code still performs composition only; it does not draw, infer, mutate, or sketch anatomy.
+
+See `docs/HERO-FIDELITY-V9.md` for the stable-ID inventory, art-direction changes, runtime boundary, and review procedure. `npm run qa` now generates one before/after summary and one large multi-scale comparison board per hero across cream, white, black, and transparent backgrounds.
+<!-- HERO-FIDELITY-V9:END -->
+
 ## V9 hybrid authored asset bundles
 
 A logical asset may now opt into an authored bundle while retaining its stable parent asset ID and the existing single-SVG fallback. Bundles support full-canvas transparent PNG, WebP, genuine SVG, and SVG mask layers with deterministic roles:

@@ -12,8 +12,9 @@ const {loadRegistry,validateRegistry,renderBundleSvg,bundleMetadata}=require('..
   assert.strictEqual(registry.runtimeGeometry,false);
   assert.strictEqual(registry.bundles.length,1);
   const bundle=registry.bundles[0];
+  assert.strictEqual(bundle.id,'base-bog-hybrid-v2');
   assert.strictEqual(bundle.parentAssetId,'base-bog');
-  assert.strictEqual(bundle.revision,'1.0.0');
+  assert.strictEqual(bundle.revision,'2.0.0');
   assert.deepStrictEqual(bundle.layers.map(layer=>layer.role),registry.roleOrder);
   assert.strictEqual(renderBundleSvg(bundle),renderBundleSvg(bundle),'bundle rendering must be byte-deterministic');
   const metadata=bundleMetadata(bundle);
@@ -23,15 +24,17 @@ const {loadRegistry,validateRegistry,renderBundleSvg,bundleMetadata}=require('..
   const raw=await sharp(svg).resize(600,600).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   const cornerAlpha=[raw.data[3],raw.data[(599*4)+3],raw.data[((599*600)*4)+3],raw.data[((600*600-1)*4)+3]];
   assert.deepStrictEqual(cornerAlpha,[0,0,0,0],'transparent corners must remain clean');
-  const context={window:{MONSTER_PARTS:{}},console};context.window.window=context.window;vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/parts/bases.js'),'utf8'),context);const legacy=(context.window.MONSTER_PARTS.bases||[]).find(item=>item.id==='base-bog');
-  assert(legacy,'legacy stable parent asset must remain available');
-  const legacyRaw=await sharp(Buffer.from(legacy.svg)).resize(600,600).ensureAlpha().raw().toBuffer();
+  const context={window:{MONSTER_PARTS:{},MONSTER_HERO_FIDELITY:null},console};context.window.window=context.window;vm.createContext(context);
+  for(const file of ['assets/parts/bases.js','assets/hero-v9/bases.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'..',file),'utf8'),context,{filename:file});
+  const fallback=(context.window.MONSTER_PARTS.bases||[]).find(item=>item.id==='base-bog');
+  assert(fallback,'stable parent fallback asset must remain available');
+  assert.strictEqual(fallback.heroRevision,'9.4.0');
+  const fallbackRaw=await sharp(Buffer.from(fallback.svg)).resize(600,600).ensureAlpha().raw().toBuffer();
   let totalDifference=0,maxDifference=0;
-  for(let i=0;i<raw.data.length;i++){const difference=Math.abs(raw.data[i]-legacyRaw[i]);totalDifference+=difference;if(difference>maxDifference)maxDifference=difference;}
-  assert(totalDifference/raw.data.length<0.75,`hybrid fixture average pixel difference too high: ${totalDifference/raw.data.length}`);
-  assert(maxDifference<=32,`hybrid fixture maximum pixel difference too high: ${maxDifference}`);
-
+  for(let i=0;i<raw.data.length;i++){const difference=Math.abs(raw.data[i]-fallbackRaw[i]);totalDifference+=difference;if(difference>maxDifference)maxDifference=difference;}
+  assert(totalDifference/raw.data.length<0.75,`hybrid/fallback average pixel difference too high: ${totalDifference/raw.data.length}`);
+  assert(maxDifference<=32,`hybrid/fallback maximum pixel difference too high: ${maxDifference}`);
   const exported=await sharp(svg).resize(3600,3600).png().toBuffer({resolveWithObject:true});
   assert.strictEqual(exported.info.width,3600);assert.strictEqual(exported.info.height,3600);
-  console.log('hybrid bundle contract tests passed');
+  console.log('hybrid bundle v2 contract tests passed');
 })().catch(error=>{console.error(error);process.exit(1);});

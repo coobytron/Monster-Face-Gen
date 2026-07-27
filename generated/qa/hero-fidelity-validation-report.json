@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/hero-fidelity-qa.js",
+  "deterministic": true,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceDigest": "13f37896cb5c3e0c1c6c1197cd56a0f42b4f50ab58fcb3df5b95c279b7dddf15",
+  "summary": {
+    "passed": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "checkCount": 5
+  },
+  "checks": [
+    {
+      "name": "identity",
+      "passed": true
+    },
+    {
+      "name": "authored",
+      "passed": true
+    },
+    {
+      "name": "recipes",
+      "passed": true
+    },
+    {
+      "name": "review",
+      "passed": true
+    },
+    {
+      "name": "manifest",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "heroRecipes": 3,
+    "authoredReplacements": 21,
+    "families": 7,
+    "backgrounds": 4
+  }
+}

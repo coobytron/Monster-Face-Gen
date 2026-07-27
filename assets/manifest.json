@@ -12,21 +12,95 @@
   "sourceOfTruth": "attached-mvp-reference-boards",
   "runtimeAnatomyGeneration": false,
   "files": {
-    "faces": ["assets/faces/monster-01.js","assets/faces/monster-02.js","assets/faces/monster-03.js","assets/faces/monster-04.js","assets/faces/monster-05.js","assets/faces/monster-06.js","assets/faces/monster-07.js","assets/faces/monster-08.js","assets/faces/monster-09.js","assets/faces/monster-10.js"],
-    "parts": ["assets/parts/bases.js","assets/parts/eyes.js","assets/parts/noses.js","assets/parts/mouths.js","assets/parts/horns.js","assets/parts/patterns-compact.js","assets/parts/extras.js"],
-    "hybridBundles": ["assets/hybrid-bundles.js"],
-    "hybridFixture": ["assets/hybrid-fixture/base-bog-mask.svg","assets/hybrid-fixture/base-bog-shadow.svg","assets/hybrid-fixture/base-bog-underpaint.svg","assets/hybrid-fixture/base-bog-linework.svg","assets/hybrid-fixture/base-bog-highlights.svg","assets/hybrid-fixture/base-bog-texture.svg"],
-    "finishes": ["assets/finishes.js"],
-    "junctions": ["assets/junctions.js"],
-    "pairJunctions": ["assets/pair-junctions.js"],
-    "compatibility": ["assets/compatibility.js"],
-    "expressionDirection": ["assets/expression-direction.js"],
-    "silhouetteDirection": ["assets/silhouette-direction.js"],
-    "fidelityTargets": ["docs/MVP-FIDELITY-TARGETS.md"],
-    "runtime": ["v8-compatibility.js","v9-hybrid-bundles.js","v9-pair-junctions.js"],
-    "validation": ["tests/compatibility.test.js","tests/art-direction.test.js","tests/hybrid-bundle.test.js","tests/pair-junctions.test.js","scripts/contact-sheet-qa.js","scripts/hybrid-bundle-contract.js","scripts/hybrid-bundle-qa.js","scripts/pair-junction-contract.js","scripts/pair-junction-qa.js","schemas/qa-validation-report.schema.json","schemas/hybrid-asset-bundle.schema.json","schemas/hybrid-bundle-validation-report.schema.json","schemas/pair-junction-validation-report.schema.json"],
-    "workflows": [".github/workflows/contact-sheet-qa.yml"],
-    "generatedReviewRoot": "generated/qa"
+    "faces": [
+      "assets/faces/monster-01.js",
+      "assets/faces/monster-02.js",
+      "assets/faces/monster-03.js",
+      "assets/faces/monster-04.js",
+      "assets/faces/monster-05.js",
+      "assets/faces/monster-06.js",
+      "assets/faces/monster-07.js",
+      "assets/faces/monster-08.js",
+      "assets/faces/monster-09.js",
+      "assets/faces/monster-10.js"
+    ],
+    "parts": [
+      "assets/parts/bases.js",
+      "assets/parts/eyes.js",
+      "assets/parts/noses.js",
+      "assets/parts/mouths.js",
+      "assets/parts/horns.js",
+      "assets/parts/patterns-compact.js",
+      "assets/parts/extras.js"
+    ],
+    "hybridBundles": [
+      "assets/hybrid-bundles.js"
+    ],
+    "hybridFixture": [
+      "assets/hybrid-fixture/base-bog-mask.svg",
+      "assets/hybrid-fixture/base-bog-shadow.svg",
+      "assets/hybrid-fixture/base-bog-underpaint.svg",
+      "assets/hybrid-fixture/base-bog-linework.svg",
+      "assets/hybrid-fixture/base-bog-highlights.svg",
+      "assets/hybrid-fixture/base-bog-texture.svg"
+    ],
+    "finishes": [
+      "assets/finishes.js"
+    ],
+    "junctions": [
+      "assets/junctions.js"
+    ],
+    "pairJunctions": [
+      "assets/pair-junctions.js"
+    ],
+    "compatibility": [
+      "assets/compatibility.js"
+    ],
+    "expressionDirection": [
+      "assets/expression-direction.js"
+    ],
+    "silhouetteDirection": [
+      "assets/silhouette-direction.js"
+    ],
+    "fidelityTargets": [
+      "docs/MVP-FIDELITY-TARGETS.md"
+    ],
+    "runtime": [
+      "v8-compatibility.js",
+      "v9-hybrid-bundles.js",
+      "v9-pair-junctions.js"
+    ],
+    "validation": [
+      "tests/compatibility.test.js",
+      "tests/art-direction.test.js",
+      "tests/hybrid-bundle.test.js",
+      "tests/pair-junctions.test.js",
+      "scripts/contact-sheet-qa.js",
+      "scripts/hybrid-bundle-contract.js",
+      "scripts/hybrid-bundle-qa.js",
+      "scripts/pair-junction-contract.js",
+      "scripts/pair-junction-qa.js",
+      "schemas/qa-validation-report.schema.json",
+      "schemas/hybrid-asset-bundle.schema.json",
+      "schemas/hybrid-bundle-validation-report.schema.json",
+      "schemas/pair-junction-validation-report.schema.json",
+      "tests/hero-fidelity.test.js",
+      "scripts/hero-fidelity-qa.js",
+      "schemas/hero-fidelity-validation-report.schema.json"
+    ],
+    "workflows": [
+      ".github/workflows/contact-sheet-qa.yml"
+    ],
+    "generatedReviewRoot": "generated/qa",
+    "heroFidelity": [
+      "assets/hero-v9/bases.js",
+      "assets/hero-v9/eyes.js",
+      "assets/hero-v9/noses.js",
+      "assets/hero-v9/mouths.js",
+      "assets/hero-v9/horns.js",
+      "assets/hero-v9/patterns.js",
+      "assets/hero-v9/extras.js"
+    ]
   },
   "counts": {
     "completeFaces": 10,
@@ -54,43 +128,130 @@
     "primaryPairClassifications": 222,
     "hybridLogicalBundles": 1,
     "hybridBundleLayers": 6,
-    "totalAuthoredVisualObjects": 102
+    "totalAuthoredVisualObjects": 102,
+    "heroAuthoredReplacements": 21
   },
-  "layerOrder": ["horns","bases","horn-root-seam","patterns","eyes","noses","mouths-clipped-to-base-alpha","mouth-base-seam","extras","finishes"],
+  "layerOrder": [
+    "horns",
+    "bases",
+    "horn-root-seam",
+    "patterns",
+    "eyes",
+    "noses",
+    "mouths-clipped-to-base-alpha",
+    "mouth-base-seam",
+    "extras",
+    "finishes"
+  ],
   "hybridBundleContract": {
     "version": 1,
     "registry": "assets/hybrid-bundles.js",
     "schema": "schemas/hybrid-asset-bundle.schema.json",
     "stableIdentity": "parentAssetId remains the published recipe and compatibility ID",
-    "coordinateSystem": {"width":600,"height":600,"viewBox":"0 0 600 600"},
-    "roleOrder": ["silhouette-mask","local-shadow","colour-underpaint","black-linework","highlights","texture-detail"],
-    "requiredRoles": ["silhouette-mask","colour-underpaint","black-linework"],
-    "allowedKinds": ["svg","svg-mask","png","webp"],
-    "allowedBlendModes": ["source-over","multiply","screen","overlay"],
+    "coordinateSystem": {
+      "width": 600,
+      "height": 600,
+      "viewBox": "0 0 600 600"
+    },
+    "roleOrder": [
+      "silhouette-mask",
+      "local-shadow",
+      "colour-underpaint",
+      "black-linework",
+      "highlights",
+      "texture-detail"
+    ],
+    "requiredRoles": [
+      "silhouette-mask",
+      "colour-underpaint",
+      "black-linework"
+    ],
+    "allowedKinds": [
+      "svg",
+      "svg-mask",
+      "png",
+      "webp"
+    ],
+    "allowedBlendModes": [
+      "source-over",
+      "multiply",
+      "screen",
+      "overlay"
+    ],
     "deterministicOrder": "numeric z then role order then source path",
     "alpha": "0..1; mask uses destination-in; masked false allowed for authored local shadow",
     "sourceIntegrity": "SHA-256 per layer; inline fixture must match file source",
-    "exportMetadata": ["bundle-contract-version","stable-parent-asset-id","bundle-id","bundle-revision","ordered-layer-metadata","source-hashes"],
+    "exportMetadata": [
+      "bundle-contract-version",
+      "stable-parent-asset-id",
+      "bundle-id",
+      "bundle-revision",
+      "ordered-layer-metadata",
+      "source-hashes"
+    ],
     "backwardsCompatibility": "single SVG remains the fallback when no bundleId is attached",
-    "forbidden": ["runtime-path-generation","procedural-anatomy","landmark-inference","path-morphing","scripts","event-handlers","foreignObject","non-deterministic-order"],
-    "runtimeGeometry": false
+    "forbidden": [
+      "runtime-path-generation",
+      "procedural-anatomy",
+      "landmark-inference",
+      "path-morphing",
+      "scripts",
+      "event-handlers",
+      "foreignObject",
+      "non-deterministic-order"
+    ],
+    "runtimeGeometry": false,
+    "currentBundleId": "base-bog-hybrid-v2",
+    "currentBundleRevision": "2.0.0"
   },
   "fidelityAuditContract": {
     "version": 9,
     "document": "docs/MVP-FIDELITY-TARGETS.md",
-    "heroRecipeIds": ["bog-cyclops-grin","fuzz-fanged","imp-roar"],
+    "heroRecipeIds": [
+      "bog-cyclops-grin",
+      "fuzz-fanged",
+      "imp-roar"
+    ],
     "defaultReviewFinishId": "finish-etched",
-    "scoreScale": [1,2,3,4,5],
-    "scoreCategories": ["silhouette-strength","attachment-integration","expression-read","detail-density","thumbnail-read","mvp-similarity"],
-    "reviewSizes": ["100-percent","25-percent","192px","96px","48px"],
+    "scoreScale": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scoreCategories": [
+      "silhouette-strength",
+      "attachment-integration",
+      "expression-read",
+      "detail-density",
+      "thumbnail-read",
+      "mvp-similarity"
+    ],
+    "reviewSizes": [
+      "100-percent",
+      "25-percent",
+      "192px",
+      "96px",
+      "48px"
+    ],
     "requiresMatchingBeforeAfterBackground": true,
     "requiresStableHeroIds": true,
     "runtimeGeometry": false
   },
   "compatibilityContract": {
     "version": 9,
-    "states": ["approved","acceptable","blocked"],
-    "primaryFamilies": ["eyes","noses","mouths","horns"],
+    "states": [
+      "approved",
+      "acceptable",
+      "blocked"
+    ],
+    "primaryFamilies": [
+      "eyes",
+      "noses",
+      "mouths",
+      "horns"
+    ],
     "coverage": "every stable primary-family ID classified exactly once for every base",
     "manualSelection": "approved-or-acceptable-only",
     "baseChange": "repair newly blocked selections to an approved ID",
@@ -103,11 +264,23 @@
   },
   "expressionContract": {
     "version": 8,
-    "vocabulary": ["sleepy","uneasy","feral","goofy","stern","startled"],
+    "vocabulary": [
+      "sleepy",
+      "uneasy",
+      "feral",
+      "goofy",
+      "stern",
+      "startled"
+    ],
     "eyeAndMouthTags": "stable authored metadata",
     "approvedPairings": "reviewed eye-mouth combinations with one dominant expression",
     "recipeCoverage": "every approved recipe carries one stable expression assignment",
-    "allowedUses": ["curation","QA labels","future shuffle weighting","export metadata"],
+    "allowedUses": [
+      "curation",
+      "QA labels",
+      "future shuffle weighting",
+      "export metadata"
+    ],
     "runtimeGeometry": false
   },
   "silhouetteContract": {
@@ -116,79 +289,364 @@
     "rootCoverage": "every approved or acceptable visible horn pair has an authored root profile and seam profile",
     "flipSafety": "all visible approved or acceptable horn pairs are explicitly flip-safe",
     "pairOverrides": "rigid transforms only for reviewed weak joins",
-    "forbidden": ["path-generation","landmark-inference","path-morphing","runtime-seam-generation"]
+    "forbidden": [
+      "path-generation",
+      "landmark-inference",
+      "path-morphing",
+      "runtime-seam-generation"
+    ]
   },
   "placementOverrideContract": {
     "key": "<base-id>|<part-id>",
-    "allowed": ["translate-x","translate-y","uniform-scale","rotation"],
-    "merge": {"translation":"add-to-base-slot","scale":"multiply-base-slot","rotation":"add-to-base-slot"},
-    "forbidden": ["path-generation","landmark-inference","nonuniform-anatomy-distortion","procedural-anatomy","asset-id-renaming"]
+    "allowed": [
+      "translate-x",
+      "translate-y",
+      "uniform-scale",
+      "rotation"
+    ],
+    "merge": {
+      "translation": "add-to-base-slot",
+      "scale": "multiply-base-slot",
+      "rotation": "add-to-base-slot"
+    },
+    "forbidden": [
+      "path-generation",
+      "landmark-inference",
+      "nonuniform-anatomy-distortion",
+      "procedural-anatomy",
+      "asset-id-renaming"
+    ]
   },
   "junctionContract": {
     "selection": "deterministic lookup by stable authored targetId",
     "mouthClip": "destination-in using selected authored base alpha",
     "mouthSeamTransform": "same as composition; full-canvas base alignment",
     "hornSeamTransform": "same as horn authored placement slot and pair override",
-    "mayContain": ["overlap shadows","cheek-colour cover shapes","lip-edge cover shapes","horn-root contour folds","short highlight marks","authored local distress"],
-    "mustNotContain": ["complete head silhouettes","complete mouths","teeth","complete horns","complete ears","eyes","noses","runtime-generated geometry","monster anatomy that reads independently"]
+    "mayContain": [
+      "overlap shadows",
+      "cheek-colour cover shapes",
+      "lip-edge cover shapes",
+      "horn-root contour folds",
+      "short highlight marks",
+      "authored local distress"
+    ],
+    "mustNotContain": [
+      "complete head silhouettes",
+      "complete mouths",
+      "teeth",
+      "complete horns",
+      "complete ears",
+      "eyes",
+      "noses",
+      "runtime-generated geometry",
+      "monster anatomy that reads independently"
+    ]
   },
   "pairJunctionContract": {
     "version": 9,
     "registry": "assets/pair-junctions.js",
     "keyPattern": "<base-id>|<part-id>",
-    "heroRecipeIds": ["bog-cyclops-grin","fuzz-fanged","imp-roar"],
+    "heroRecipeIds": [
+      "bog-cyclops-grin",
+      "fuzz-fanged",
+      "imp-roar"
+    ],
     "selection": "exact-pair-first-generic-fallback",
-    "mouthStage": {"name":"mouth-base-pair-junction","zOrder":8,"replaces":"mouth-base-seam"},
-    "hornStage": {"name":"horn-root-pair-junction","zOrder":3,"replaces":"horn-root-seam"},
+    "mouthStage": {
+      "name": "mouth-base-pair-junction",
+      "zOrder": 8,
+      "replaces": "mouth-base-seam"
+    },
+    "hornStage": {
+      "name": "horn-root-pair-junction",
+      "zOrder": 3,
+      "replaces": "horn-root-seam"
+    },
     "mirrorMode": "full-composition",
-    "requiredPairs": ["base-bog|mouth-grin","base-bog|horn-curved","base-fuzz|mouth-fangs","base-fuzz|horn-bent","base-imp|mouth-roar","base-imp|horn-spiky"],
-    "mayContain": ["local-skin-or-fur-overlap","cheek-or-lip-cover","short-wrinkle-or-fold-lines","cast-shadow","edge-highlight","horn-root-fold","local-distress-or-texture-continuity"],
-    "mustNotContain": ["standalone-teeth","standalone-gums","standalone-eyes","standalone-horns","standalone-ears","standalone-lips","standalone-head-geometry","runtime-generated-geometry"],
-    "validation": ["missing-required-pair-junctions","unknown-pair-keys","incorrect-z-order","anatomy-like-standalone-content","flip-unsafe-configurations"],
+    "requiredPairs": [
+      "base-bog|mouth-grin",
+      "base-bog|horn-curved",
+      "base-fuzz|mouth-fangs",
+      "base-fuzz|horn-bent",
+      "base-imp|mouth-roar",
+      "base-imp|horn-spiky"
+    ],
+    "mayContain": [
+      "local-skin-or-fur-overlap",
+      "cheek-or-lip-cover",
+      "short-wrinkle-or-fold-lines",
+      "cast-shadow",
+      "edge-highlight",
+      "horn-root-fold",
+      "local-distress-or-texture-continuity"
+    ],
+    "mustNotContain": [
+      "standalone-teeth",
+      "standalone-gums",
+      "standalone-eyes",
+      "standalone-horns",
+      "standalone-ears",
+      "standalone-lips",
+      "standalone-head-geometry",
+      "runtime-generated-geometry"
+    ],
+    "validation": [
+      "missing-required-pair-junctions",
+      "unknown-pair-keys",
+      "incorrect-z-order",
+      "anatomy-like-standalone-content",
+      "flip-unsafe-configurations"
+    ],
     "runtimeGeometry": false
   },
   "finishContract": {
     "stage": "after-approved-art-and-junction-composition",
     "transform": "same-as-composition",
     "mask": "destination-in using composed artwork alpha",
-    "mayContain": ["hatching","stipple","blackwork shadow masses","registration accents","scratches","distress"],
-    "mustNotContain": ["head silhouettes","eyes","noses","mouths","teeth","horns","ears","monster anatomy"]
+    "mayContain": [
+      "hatching",
+      "stipple",
+      "blackwork shadow masses",
+      "registration accents",
+      "scratches",
+      "distress"
+    ],
+    "mustNotContain": [
+      "head silhouettes",
+      "eyes",
+      "noses",
+      "mouths",
+      "teeth",
+      "horns",
+      "ears",
+      "monster anatomy"
+    ]
   },
   "faces": [
-    {"id":"monster-01","name":"Bog Cyclops","mood":"mischievous","eyeCount":1,"palette":"teal"},
-    {"id":"monster-02","name":"Swamp Elder","mood":"sleepy","eyeCount":2,"palette":"olive"},
-    {"id":"monster-03","name":"Sunburst Triplet","mood":"joyful","eyeCount":3,"palette":"orange"},
-    {"id":"monster-04","name":"Bone Oracle","mood":"haunted","eyeCount":2,"palette":"bone"},
-    {"id":"monster-05","name":"Boiler Imp","mood":"angry","eyeCount":2,"palette":"coral"},
-    {"id":"monster-06","name":"Blue Worrywart","mood":"nervous","eyeCount":3,"palette":"blue"},
-    {"id":"monster-07","name":"Purple Lurker","mood":"bored","eyeCount":1,"palette":"purple"},
-    {"id":"monster-08","name":"Moss Grinner","mood":"gleeful","eyeCount":1,"palette":"moss"},
-    {"id":"monster-09","name":"Tongue Tangle","mood":"chaotic","eyeCount":4,"palette":"teal"},
-    {"id":"monster-10","name":"Amber Brute","mood":"furious","eyeCount":2,"palette":"amber"}
+    {
+      "id": "monster-01",
+      "name": "Bog Cyclops",
+      "mood": "mischievous",
+      "eyeCount": 1,
+      "palette": "teal"
+    },
+    {
+      "id": "monster-02",
+      "name": "Swamp Elder",
+      "mood": "sleepy",
+      "eyeCount": 2,
+      "palette": "olive"
+    },
+    {
+      "id": "monster-03",
+      "name": "Sunburst Triplet",
+      "mood": "joyful",
+      "eyeCount": 3,
+      "palette": "orange"
+    },
+    {
+      "id": "monster-04",
+      "name": "Bone Oracle",
+      "mood": "haunted",
+      "eyeCount": 2,
+      "palette": "bone"
+    },
+    {
+      "id": "monster-05",
+      "name": "Boiler Imp",
+      "mood": "angry",
+      "eyeCount": 2,
+      "palette": "coral"
+    },
+    {
+      "id": "monster-06",
+      "name": "Blue Worrywart",
+      "mood": "nervous",
+      "eyeCount": 3,
+      "palette": "blue"
+    },
+    {
+      "id": "monster-07",
+      "name": "Purple Lurker",
+      "mood": "bored",
+      "eyeCount": 1,
+      "palette": "purple"
+    },
+    {
+      "id": "monster-08",
+      "name": "Moss Grinner",
+      "mood": "gleeful",
+      "eyeCount": 1,
+      "palette": "moss"
+    },
+    {
+      "id": "monster-09",
+      "name": "Tongue Tangle",
+      "mood": "chaotic",
+      "eyeCount": 4,
+      "palette": "teal"
+    },
+    {
+      "id": "monster-10",
+      "name": "Amber Brute",
+      "mood": "furious",
+      "eyeCount": 2,
+      "palette": "amber"
+    }
   ],
   "partFamilies": {
-    "bases": ["base-bog","base-fuzz","base-skull","base-imp","base-moss","base-blue"],
-    "eyes": ["eye-none","eye-cyclops","eye-droopy","eye-beady","eye-wide","eye-triple","eye-stacked","eye-crossed","eye-sleepy","eye-wild"],
-    "noses": ["nose-none","nose-button","nose-piggy","nose-skeletal","nose-beak","nose-trihole","nose-elephant","nose-warty","nose-hook"],
-    "mouths": ["mouth-none","mouth-grin","mouth-gummy","mouth-fangs","mouth-jagged","mouth-tongue","mouth-buck","mouth-roar","mouth-gapped"],
-    "horns": ["horn-none","horn-curved","horn-spiky","horn-nubs","horn-long","horn-rams","horn-bat","horn-tufted","horn-bent"],
-    "patterns": ["pattern-none","pattern-spots","pattern-freckles","pattern-scales","pattern-warts","pattern-stripes","pattern-cracked","pattern-fur","pattern-pores"],
-    "extras": ["extra-none","extra-earring","extra-bandage","extra-scar","extra-slime","extra-bumps","extra-spikes","extra-patch","extra-snot"]
+    "bases": [
+      "base-bog",
+      "base-fuzz",
+      "base-skull",
+      "base-imp",
+      "base-moss",
+      "base-blue"
+    ],
+    "eyes": [
+      "eye-none",
+      "eye-cyclops",
+      "eye-droopy",
+      "eye-beady",
+      "eye-wide",
+      "eye-triple",
+      "eye-stacked",
+      "eye-crossed",
+      "eye-sleepy",
+      "eye-wild"
+    ],
+    "noses": [
+      "nose-none",
+      "nose-button",
+      "nose-piggy",
+      "nose-skeletal",
+      "nose-beak",
+      "nose-trihole",
+      "nose-elephant",
+      "nose-warty",
+      "nose-hook"
+    ],
+    "mouths": [
+      "mouth-none",
+      "mouth-grin",
+      "mouth-gummy",
+      "mouth-fangs",
+      "mouth-jagged",
+      "mouth-tongue",
+      "mouth-buck",
+      "mouth-roar",
+      "mouth-gapped"
+    ],
+    "horns": [
+      "horn-none",
+      "horn-curved",
+      "horn-spiky",
+      "horn-nubs",
+      "horn-long",
+      "horn-rams",
+      "horn-bat",
+      "horn-tufted",
+      "horn-bent"
+    ],
+    "patterns": [
+      "pattern-none",
+      "pattern-spots",
+      "pattern-freckles",
+      "pattern-scales",
+      "pattern-warts",
+      "pattern-stripes",
+      "pattern-cracked",
+      "pattern-fur",
+      "pattern-pores"
+    ],
+    "extras": [
+      "extra-none",
+      "extra-earring",
+      "extra-bandage",
+      "extra-scar",
+      "extra-slime",
+      "extra-bumps",
+      "extra-spikes",
+      "extra-patch",
+      "extra-snot"
+    ]
   },
   "finishes": [
-    {"id":"finish-etched","name":"Etched MVP","blendMode":"multiply","opacity":0.58},
-    {"id":"finish-blackwork","name":"Blackwork Punch","blendMode":"multiply","opacity":0.5},
-    {"id":"finish-screenprint","name":"Screenprint Pop","blendMode":"multiply","opacity":0.52},
-    {"id":"finish-distressed","name":"Distressed Ink","blendMode":"multiply","opacity":0.49},
-    {"id":"finish-clean","name":"Clean Asset","blendMode":"source-over","opacity":0}
+    {
+      "id": "finish-etched",
+      "name": "Etched MVP",
+      "blendMode": "multiply",
+      "opacity": 0.58
+    },
+    {
+      "id": "finish-blackwork",
+      "name": "Blackwork Punch",
+      "blendMode": "multiply",
+      "opacity": 0.5
+    },
+    {
+      "id": "finish-screenprint",
+      "name": "Screenprint Pop",
+      "blendMode": "multiply",
+      "opacity": 0.52
+    },
+    {
+      "id": "finish-distressed",
+      "name": "Distressed Ink",
+      "blendMode": "multiply",
+      "opacity": 0.49
+    },
+    {
+      "id": "finish-clean",
+      "name": "Clean Asset",
+      "blendMode": "source-over",
+      "opacity": 0
+    }
   ],
   "junctions": {
-    "mouthSeams": ["mouth-seam-base-bog","mouth-seam-base-fuzz","mouth-seam-base-skull","mouth-seam-base-imp","mouth-seam-base-moss","mouth-seam-base-blue"],
-    "hornSeams": ["horn-seam-curved","horn-seam-spiky","horn-seam-nubs","horn-seam-long","horn-seam-rams","horn-seam-bat","horn-seam-tufted","horn-seam-bent"],
-    "pairSpecific": ["base-bog|mouth-grin","base-bog|horn-curved","base-fuzz|mouth-fangs","base-fuzz|horn-bent","base-imp|mouth-roar","base-imp|horn-spiky"]
+    "mouthSeams": [
+      "mouth-seam-base-bog",
+      "mouth-seam-base-fuzz",
+      "mouth-seam-base-skull",
+      "mouth-seam-base-imp",
+      "mouth-seam-base-moss",
+      "mouth-seam-base-blue"
+    ],
+    "hornSeams": [
+      "horn-seam-curved",
+      "horn-seam-spiky",
+      "horn-seam-nubs",
+      "horn-seam-long",
+      "horn-seam-rams",
+      "horn-seam-bat",
+      "horn-seam-tufted",
+      "horn-seam-bent"
+    ],
+    "pairSpecific": [
+      "base-bog|mouth-grin",
+      "base-bog|horn-curved",
+      "base-fuzz|mouth-fangs",
+      "base-fuzz|horn-bent",
+      "base-imp|mouth-roar",
+      "base-imp|horn-spiky"
+    ]
   },
   "validation": {
-    "commands": ["node tests/compatibility.test.js","node tests/art-direction.test.js","node tests/hybrid-bundle.test.js","node tests/pair-junctions.test.js","node scripts/contact-sheet-qa.js --validate-only","node scripts/hybrid-bundle-qa.js --validate-only","node scripts/pair-junction-qa.js --validate-only","node scripts/contact-sheet-qa.js","node scripts/hybrid-bundle-qa.js","node scripts/pair-junction-qa.js"],
+    "commands": [
+      "node tests/compatibility.test.js",
+      "node tests/art-direction.test.js",
+      "node tests/hybrid-bundle.test.js",
+      "node tests/pair-junctions.test.js",
+      "node scripts/contact-sheet-qa.js --validate-only",
+      "node scripts/hybrid-bundle-qa.js --validate-only",
+      "node scripts/pair-junction-qa.js --validate-only",
+      "node scripts/contact-sheet-qa.js",
+      "node scripts/hybrid-bundle-qa.js",
+      "node scripts/pair-junction-qa.js",
+      "node tests/hero-fidelity.test.js",
+      "node scripts/hero-fidelity-qa.js --validate-only",
+      "node scripts/hero-fidelity-qa.js"
+    ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
     "hybridReport": "generated/qa/hybrid-bundle-validation-report.json",
@@ -208,20 +666,162 @@
     "requiresPairJunctionCoverage": true,
     "requiresLayerOrder": true,
     "requiresHybridBundleValidation": true,
-    "requiresRuntimeAnatomyGenerationFalse": true
+    "requiresRuntimeAnatomyGenerationFalse": true,
+    "heroFidelityReport": "generated/qa/hero-fidelity-validation-report.json",
+    "heroFidelityReportSchema": "schemas/hero-fidelity-validation-report.schema.json",
+    "requiresHeroFidelityValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
     "authoredAssetsOnly": true,
-    "formats": ["svg","png","json"],
-    "backgrounds": ["cream","white","black","transparent"],
-    "pairSheets": ["mouth-base","horn-base","pair-junction-mouth-crops","pair-junction-horn-crops"],
-    "variants": ["unflipped","flipped"],
+    "formats": [
+      "svg",
+      "png",
+      "json"
+    ],
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "pairSheets": [
+      "mouth-base",
+      "horn-base",
+      "pair-junction-mouth-crops",
+      "pair-junction-horn-crops"
+    ],
+    "variants": [
+      "unflipped",
+      "flipped"
+    ],
     "recipeReview": "every finish on every approved recipe",
     "highResolutionReview": "approved recipe crops",
     "pairJunctionReview": "before and after hero mouth and horn crops at 100 percent, 25 percent, 96 px, 48 px, and flipped",
     "hybridFixtureReview": "legacy single SVG beside stable-parent hybrid bundle on every background plus 3600 export",
-    "cellMetadata": ["stable-base-id","stable-part-id","compatibility-state","pair-junction-id","fallback-id","bundle-id","bundle-revision","source-hashes"],
-    "outputRoot": "generated/qa"
+    "cellMetadata": [
+      "stable-base-id",
+      "stable-part-id",
+      "compatibility-state",
+      "pair-junction-id",
+      "fallback-id",
+      "bundle-id",
+      "bundle-revision",
+      "source-hashes"
+    ],
+    "outputRoot": "generated/qa",
+    "heroFidelityReview": "one before/after summary and one full comparison board per locked hero on cream, white, black, and transparent backgrounds",
+    "heroFidelityVariants": [
+      "baseline-clean",
+      "hero-clean",
+      "hero-flipped",
+      "hero-etched",
+      "25-percent",
+      "96px",
+      "48px"
+    ]
+  },
+  "heroFidelityContract": {
+    "version": 9,
+    "revision": "9.4.0",
+    "source": "supplied-mvp-reference-boards",
+    "heroRecipeIds": [
+      "bog-cyclops-grin",
+      "fuzz-fanged",
+      "imp-roar"
+    ],
+    "stableIdPolicy": "replace artwork behind published IDs; do not rename exported recipe components",
+    "authoredReplacementCount": 21,
+    "families": {
+      "bases": [
+        "base-bog",
+        "base-fuzz",
+        "base-imp"
+      ],
+      "eyes": [
+        "eye-cyclops",
+        "eye-sleepy",
+        "eye-wide"
+      ],
+      "noses": [
+        "nose-button",
+        "nose-hook",
+        "nose-piggy"
+      ],
+      "mouths": [
+        "mouth-grin",
+        "mouth-fangs",
+        "mouth-roar"
+      ],
+      "horns": [
+        "horn-curved",
+        "horn-bent",
+        "horn-spiky"
+      ],
+      "patterns": [
+        "pattern-spots",
+        "pattern-stripes",
+        "pattern-freckles"
+      ],
+      "extras": [
+        "extra-earring",
+        "extra-scar",
+        "extra-spikes"
+      ]
+    },
+    "hybridBundle": {
+      "id": "base-bog-hybrid-v2",
+      "parentAssetId": "base-bog",
+      "revision": "2.0.0"
+    },
+    "pairJunctions": [
+      "base-bog|mouth-grin",
+      "base-bog|horn-curved",
+      "base-fuzz|mouth-fangs",
+      "base-fuzz|horn-bent",
+      "base-imp|mouth-roar",
+      "base-imp|horn-spiky"
+    ],
+    "reviewSizes": [
+      "100-percent",
+      "25-percent",
+      "96px",
+      "48px"
+    ],
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "finishes": [
+      "finish-clean",
+      "finish-etched"
+    ],
+    "humanReviewTargets": {
+      "silhouetteStrength": 4,
+      "attachmentIntegration": 4,
+      "expressionRead": 4,
+      "detailDensity": 4,
+      "thumbnailRead": 4
+    },
+    "requiredComparisons": [
+      "baseline-clean",
+      "hero-clean",
+      "hero-flipped",
+      "hero-etched",
+      "hero-25-percent",
+      "hero-96px",
+      "hero-48px"
+    ],
+    "forbidden": [
+      "rough-js-anatomy",
+      "runtime-sketch-effects",
+      "cropped-reference-artwork",
+      "runtime-path-generation",
+      "landmark-inference",
+      "path-morphing"
+    ],
+    "runtimeGeometry": false
   }
 }
