@@ -55,8 +55,8 @@ Every layer must use the bundle's full-canvas dimensions and `0 0 600 600` viewB
 - `alpha` must be between 0 and 1.
 - Allowed blend modes are `source-over`, `multiply`, `screen`, and `overlay`.
 - Layers use `masked: true` by default.
-- Authored local shadows may use `masked: false`.
-- The silhouette mask is applied with destination-in alpha compositing after masked layers are assembled.
+- Authored local shadows and outer contour linework may use `masked: false` when they intentionally extend beyond the silhouette alpha.
+- The compositor applies the silhouette mask separately to each designated masked layer in deterministic z-order, preserving authored interleaving with unmasked layers.
 - The compositor rasterizes at the actual preview or export draw size, so the same bundle supports the 1600 preview and 3600 × 3600 export without a fixed 600 px intermediate.
 
 ### Stable IDs, revisions, and hashes
