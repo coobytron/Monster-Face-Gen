@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monster-face-gen.local/schemas/hybrid-bundle-validation-report.schema.json",
+  "title": "Hybrid Bundle Validation Report",
+  "type": "object",
+  "required": ["schemaVersion", "generator", "deterministic", "generatedAt", "sourceDigest", "summary", "checks", "errors", "warnings", "counts"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "generator": {"const": "scripts/hybrid-bundle-contract.js"},
+    "deterministic": {"const": true},
+    "generatedAt": {"const": "1970-01-01T00:00:00.000Z"},
+    "sourceDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "summary": {"type": "object", "required": ["passed", "errorCount", "warningCount", "checkCount"]},
+    "checks": {"type": "array"},
+    "errors": {"type": "array"},
+    "warnings": {"type": "array"},
+    "counts": {"type": "object", "required": ["bundles", "layers"]}
+  },
+  "additionalProperties": false
+}
