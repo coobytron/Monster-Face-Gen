@@ -21,6 +21,7 @@ on:
       - 'scripts/hero-fidelity-*.js'
       - 'scripts/update-hero-manifest.js'
       - 'scripts/update-hero-docs.js'
+      - 'scripts/update-hero-qa.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
       - 'tests/hero-fidelity.test.js'
@@ -44,6 +45,7 @@ on:
       - 'scripts/hero-fidelity-*.js'
       - 'scripts/update-hero-manifest.js'
       - 'scripts/update-hero-docs.js'
+      - 'scripts/update-hero-qa.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
       - 'tests/hero-fidelity.test.js'
@@ -95,7 +97,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md generated/qa
+          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md scripts/hero-fidelity-qa.js generated/qa
           if git diff --cached --quiet; then
             echo "Generated artifacts are already current."
           else
