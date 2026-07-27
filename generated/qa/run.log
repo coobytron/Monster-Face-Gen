@@ -1,6 +1,12 @@
 
-> monster-face-gen-qa@8.2.0 qa
-> node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js
+> monster-face-gen-qa@9.4.0 preqa
+> node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js
+
+Hero fidelity manifest metadata is current.
+Hero fidelity README and asset guide sections are current.
+
+> monster-face-gen-qa@9.4.0 qa
+> node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js
 
 Fontconfig warning: using without calling FcInit()
 [qa] normalized duplicate XML attributes in 10 SVG tag(s) for strict PNG rasterization
@@ -16,3 +22,5 @@ Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":6}
+Fontconfig warning: using without calling FcInit()
+{"passed":true,"errorCount":0,"warningCount":0,"checkCount":5}
