@@ -1,35 +1,27 @@
 {
   "schemaVersion": 1,
-  "generator": "scripts/contact-sheet-qa.js",
+  "generator": "scripts/pair-junction-contract.js",
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "sourceManifestVersion": 9,
-  "sourceDigest": "b37353acb2a18dd3ce354fa274db677de515484bea545dcfb18efc0cb29fbd9d",
+  "sourceDigest": "3c55cd9aae7d253bacd420fa3fa100771c312d3c4060bcdd2122355d0b50bc72",
   "summary": {
     "passed": true,
     "errorCount": 0,
     "warningCount": 0,
-    "checkCount": 7
+    "checkCount": 6
   },
   "checks": [
     {
-      "name": "stable",
+      "name": "ids",
       "passed": true
     },
     {
-      "name": "metadata",
+      "name": "coverage",
       "passed": true
     },
     {
-      "name": "compatibility",
-      "passed": true
-    },
-    {
-      "name": "junctions",
-      "passed": true
-    },
-    {
-      "name": "recipes",
+      "name": "references",
       "passed": true
     },
     {
@@ -39,16 +31,19 @@
     {
       "name": "authored",
       "passed": true
+    },
+    {
+      "name": "flip",
+      "passed": true
     }
   ],
   "errors": [],
   "warnings": [],
   "counts": {
-    "bases": 6,
-    "mouths": 9,
-    "horns": 9,
-    "finishes": 5,
-    "recipes": 16,
-    "visualAssets": 80
+    "heroRecipes": 3,
+    "requiredPairs": 6,
+    "publishedPairs": 6,
+    "mouthPairs": 3,
+    "hornPairs": 3
   }
 }
