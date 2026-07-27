@@ -10,6 +10,16 @@ Every visible monster feature originates from an authored asset. Canvas and QA t
 
 Randomisation is selection, not generation. QA is review of authored objects, not asset creation.
 
+## V9 MVP fidelity baseline
+
+`docs/MVP-FIDELITY-TARGETS.md` locks three hero recipes for the next fidelity track:
+
+- `bog-cyclops-grin` — rounded / blob silhouette
+- `fuzz-fanged` — furry broken silhouette
+- `imp-roar` — compact imp silhouette and wide-mouth stress test
+
+The document records every stable asset ID, measurable art-direction targets, a 1–5 before-state scorecard, thumbnail and flip review requirements, and the boundary between authored anatomy and non-anatomical support layers. Later v9 issues must use these heroes and the locked scoring rubric rather than reinterpret the supplied MVP boards.
+
 ## V8 compatibility and recipes
 
 `assets/compatibility.js` classifies every base × eye, base × nose, base × mouth, and base × horn pairing as `approved`, `acceptable`, or `blocked`.
@@ -117,7 +127,8 @@ The report uses a deterministic source digest and a fixed epoch timestamp so unc
 
 ## Key files
 
-- `assets/manifest.json` — canonical inventory, render contract, and QA contract
+- `docs/MVP-FIDELITY-TARGETS.md` — locked v9 hero recipes, measurable visual targets, and before-state scorecard
+- `assets/manifest.json` — canonical inventory, render contract, QA contract, and fidelity-audit contract
 - `assets/compatibility.js` — compatibility matrix, recipes, and pair overrides
 - `assets/expression-direction.js` — authored expression vocabulary and eye × mouth pairing direction
 - `assets/silhouette-direction.js` — head contour rhythm, root profiles, pair corrections, and flip safety
@@ -134,4 +145,4 @@ The report uses a deterministic source digest and a fixed epoch timestamp so unc
 
 ## Production direction
 
-Future replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, expression tags, silhouette profiles, placement overrides, and junction profiles remain intact.
+Future replacements may use transparent PNG, WebP, or SVG exported from original layered artwork, provided stable IDs, full-canvas alignment, authored z-order, compatibility classifications, expression tags, silhouette profiles, placement overrides, junction profiles, and the locked fidelity-audit targets remain intact.
