@@ -62,17 +62,19 @@
     const mask=descriptor.layers.find(layer=>layer.role==='silhouette-mask');
     for(const layer of descriptor.layers){
       if(layer.role==='silhouette-mask') continue;
-      if(layer.masked===false) drawLayer(finalCtx,layer,pixelSize);
-      else drawLayer(artCtx,layer,pixelSize);
-    }
-    if(mask){
+      if(layer.masked===false||!mask){
+        drawLayer(finalCtx,layer,pixelSize);
+        continue;
+      }
+      artCtx.clearRect(0,0,pixelSize,pixelSize);
+      drawLayer(artCtx,layer,pixelSize);
       artCtx.save();
       artCtx.globalCompositeOperation='destination-in';
       artCtx.globalAlpha=mask.alpha==null?1:mask.alpha;
       artCtx.drawImage(mask.image,0,0,pixelSize,pixelSize);
       artCtx.restore();
+      finalCtx.drawImage(artCanvas,0,0);
     }
-    finalCtx.drawImage(artCanvas,0,0);
     bundleCanvasCache.set(cacheKey,finalCanvas);
     return finalCanvas;
   }
