@@ -3,9 +3,9 @@
   "private": true,
   "version": "9.4.0",
   "scripts": {
-    "pretest": "node scripts/update-hero-manifest.js",
+    "pretest": "node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js",
     "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node tests/hybrid-bundle.test.js && node tests/pair-junctions.test.js && node tests/hero-fidelity.test.js && node scripts/contact-sheet-qa.js --validate-only && node scripts/hybrid-bundle-qa.js --validate-only && node scripts/pair-junction-qa.js --validate-only && node scripts/hero-fidelity-qa.js --validate-only",
-    "preqa": "node scripts/update-hero-manifest.js",
+    "preqa": "node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js",
     "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js"
   },
   "dependencies": {
