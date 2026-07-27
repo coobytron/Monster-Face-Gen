@@ -16,11 +16,15 @@ on:
       - 'scripts/contact-sheet-qa.js'
       - 'scripts/hybrid-bundle-*.js'
       - 'scripts/pair-junction-*.js'
+      - 'scripts/hero-fidelity-*.js'
+      - 'scripts/update-hero-manifest.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
+      - 'tests/hero-fidelity.test.js'
       - 'schemas/qa-validation-report.schema.json'
       - 'schemas/hybrid-*.schema.json'
       - 'schemas/pair-junction-*.schema.json'
+      - 'schemas/hero-fidelity-*.schema.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/contact-sheet-qa.yml'
@@ -32,11 +36,15 @@ on:
       - 'scripts/contact-sheet-qa.js'
       - 'scripts/hybrid-bundle-*.js'
       - 'scripts/pair-junction-*.js'
+      - 'scripts/hero-fidelity-*.js'
+      - 'scripts/update-hero-manifest.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
+      - 'tests/hero-fidelity.test.js'
       - 'schemas/qa-validation-report.schema.json'
       - 'schemas/hybrid-*.schema.json'
       - 'schemas/pair-junction-*.schema.json'
+      - 'schemas/hero-fidelity-*.schema.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/contact-sheet-qa.yml'
@@ -81,7 +89,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json generated/qa
+          git add package-lock.json assets/manifest.json generated/qa
           if git diff --cached --quiet; then
             echo "Generated artifacts are already current."
           else
