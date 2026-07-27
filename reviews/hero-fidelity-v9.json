@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "reviewSetId": "hero-fidelity-v9-05",
+  "status": "human-confirmation-required",
+  "scoreScale": [1, 2, 3, 4, 5],
+  "targets": {
+    "silhouetteStrength": 4,
+    "attachmentIntegration": 4,
+    "expressionRead": 4,
+    "detailDensity": 4,
+    "thumbnailRead": 4,
+    "mvpSimilarity": 4
+  },
+  "reviews": [
+    {
+      "recipeId": "bog-cyclops-grin",
+      "reviewer": "agent-assisted-initial-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "assetIds": {"base":"base-bog","eyes":"eye-cyclops","nose":"nose-button","mouth":"mouth-grin","hornOrEar":"horn-curved","pattern":"pattern-spots","extra":"extra-earring","finish":"finish-etched"},
+      "junctionIds": ["base-bog|mouth-grin", "base-bog|horn-curved"],
+      "baseline": {"silhouetteStrength":3,"attachmentIntegration":3,"expressionRead":3,"detailDensity":3,"thumbnailRead":3,"mvpSimilarity":3},
+      "current": {"silhouetteStrength":4,"attachmentIntegration":4,"expressionRead":5,"detailDensity":4,"thumbnailRead":4,"mvpSimilarity":4},
+      "notes": [
+        {"scope":"recipe","stableId":"bog-cyclops-grin","text":"Strong cyclops read and irregular teal silhouette; confirm final MVP similarity against the supplied source board."},
+        {"scope":"junction","stableId":"base-bog|mouth-grin","text":"Cheek plates visually integrate the grin without introducing standalone anatomy."}
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "fuzz-fanged",
+      "reviewer": "agent-assisted-initial-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "assetIds": {"base":"base-fuzz","eyes":"eye-sleepy","nose":"nose-hook","mouth":"mouth-fangs","hornOrEar":"horn-bent","pattern":"pattern-stripes","extra":"extra-scar","finish":"finish-etched"},
+      "junctionIds": ["base-fuzz|mouth-fangs", "base-fuzz|horn-bent"],
+      "baseline": {"silhouetteStrength":3,"attachmentIntegration":3,"expressionRead":3,"detailDensity":3,"thumbnailRead":3,"mvpSimilarity":3},
+      "current": {"silhouetteStrength":4,"attachmentIntegration":4,"expressionRead":4,"detailDensity":4,"thumbnailRead":4,"mvpSimilarity":4},
+      "notes": [
+        {"scope":"recipe","stableId":"fuzz-fanged","text":"Broken fur rhythm, sleepy lids, and long fangs remain legible at thumbnail scale."},
+        {"scope":"junction","stableId":"base-fuzz|horn-bent","text":"Root plate continues local fur and highlight rhythm at both horn attachments."}
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "imp-roar",
+      "reviewer": "agent-assisted-initial-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "assetIds": {"base":"base-imp","eyes":"eye-wide","nose":"nose-piggy","mouth":"mouth-roar","hornOrEar":"horn-spiky","pattern":"pattern-freckles","extra":"extra-spikes","finish":"finish-etched"},
+      "junctionIds": ["base-imp|mouth-roar", "base-imp|horn-spiky"],
+      "baseline": {"silhouetteStrength":3,"attachmentIntegration":3,"expressionRead":3,"detailDensity":3,"thumbnailRead":3,"mvpSimilarity":3},
+      "current": {"silhouetteStrength":4,"attachmentIntegration":4,"expressionRead":5,"detailDensity":4,"thumbnailRead":4,"mvpSimilarity":4},
+      "notes": [
+        {"scope":"recipe","stableId":"imp-roar","text":"Compressed imp silhouette and open roar provide the strongest stress test for expression and mouth integration."},
+        {"scope":"junction","stableId":"base-imp|mouth-roar","text":"The wide-mouth plate preserves cheek continuity around the deep roar."}
+      ],
+      "humanConfirmed": false
+    }
+  ]
+}
