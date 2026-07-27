@@ -1,0 +1,26 @@
+'use strict';
+const assert=require('assert');
+const sharp=require('sharp');
+const {loadRegistry,validateRegistry,renderBundleSvg,bundleMetadata}=require('../scripts/hybrid-bundle-contract');
+(async()=>{
+  const registry=loadRegistry();
+  const report=await validateRegistry(registry);
+  assert.strictEqual(report.summary.passed,true,JSON.stringify(report.errors,null,2));
+  assert.strictEqual(registry.runtimeGeometry,false);
+  assert.strictEqual(registry.bundles.length,1);
+  const bundle=registry.bundles[0];
+  assert.strictEqual(bundle.parentAssetId,'base-bog');
+  assert.strictEqual(bundle.revision,'1.0.0');
+  assert.deepStrictEqual(bundle.layers.map(layer=>layer.role),registry.roleOrder);
+  assert.strictEqual(renderBundleSvg(bundle),renderBundleSvg(bundle),'bundle rendering must be byte-deterministic');
+  const metadata=bundleMetadata(bundle);
+  assert.strictEqual(metadata.bundleId,bundle.id);
+  assert.strictEqual(Object.keys(metadata.sourceHashes).length,bundle.layers.length);
+  const svg=Buffer.from(renderBundleSvg(bundle));
+  const raw=await sharp(svg).resize(600,600).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  const cornerAlpha=[raw.data[3],raw.data[(599*4)+3],raw.data[((599*600)*4)+3],raw.data[((600*600-1)*4)+3]];
+  assert.deepStrictEqual(cornerAlpha,[0,0,0,0],'transparent corners must remain clean');
+  const exported=await sharp(svg).resize(3600,3600).png().toBuffer({resolveWithObject:true});
+  assert.strictEqual(exported.info.width,3600);assert.strictEqual(exported.info.height,3600);
+  console.log('hybrid bundle contract tests passed');
+})().catch(error=>{console.error(error);process.exit(1);});
