@@ -37,6 +37,7 @@
     "compatibility": ["assets/compatibility.js"],
     "expressionDirection": ["assets/expression-direction.js"],
     "silhouetteDirection": ["assets/silhouette-direction.js"],
+    "fidelityTargets": ["docs/MVP-FIDELITY-TARGETS.md"],
     "runtime": ["v8-compatibility.js"],
     "validation": [
       "tests/compatibility.test.js",
@@ -62,6 +63,7 @@
     "hornSeams": 8,
     "junctions": 14,
     "approvedRecipes": 16,
+    "heroFidelityRecipes": 3,
     "approvedExpressionPairs": 12,
     "expressionVocabulary": 6,
     "pairPlacementOverrides": 16,
@@ -81,6 +83,25 @@
     "extras",
     "finishes"
   ],
+  "fidelityAuditContract": {
+    "version": 9,
+    "document": "docs/MVP-FIDELITY-TARGETS.md",
+    "heroRecipeIds": ["bog-cyclops-grin", "fuzz-fanged", "imp-roar"],
+    "defaultReviewFinishId": "finish-etched",
+    "scoreScale": [1, 2, 3, 4, 5],
+    "scoreCategories": [
+      "silhouette-strength",
+      "attachment-integration",
+      "expression-read",
+      "detail-density",
+      "thumbnail-read",
+      "mvp-similarity"
+    ],
+    "reviewSizes": ["100-percent", "25-percent", "192px", "96px", "48px"],
+    "requiresMatchingBeforeAfterBackground": true,
+    "requiresStableHeroIds": true,
+    "runtimeGeometry": false
+  },
   "compatibilityContract": {
     "version": 8,
     "states": ["approved", "acceptable", "blocked"],

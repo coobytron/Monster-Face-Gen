@@ -57,6 +57,18 @@ A recipe is a complete stable-ID selection. Recipes are authored compositions, n
 
 Recipe IDs remain stable because exported PNG metadata and QA reports may reference them.
 
+## V9 fidelity audit contract
+
+`docs/MVP-FIDELITY-TARGETS.md` locks three approved recipes as the common review set for the v9 fidelity track:
+
+- `bog-cyclops-grin`
+- `fuzz-fanged`
+- `imp-roar`
+
+Later fidelity changes must preserve every stable ID in those recipes, compare before and after states at matching scale and background, and score the same six categories: silhouette strength, attachment integration, expression read, detail density, thumbnail read, and MVP similarity.
+
+The locked baseline is descriptive review metadata. It may guide asset replacement, curation, QA, and issue acceptance, but it must not be interpreted as runtime drawing instructions.
+
 ## Placement overrides
 
 Per-pair placement overrides use the key `<base-id>|<part-id>` and may only:
@@ -164,6 +176,7 @@ The report uses a stable digest of the manifest, IDs, and recipes. Its timestamp
 10. Keep generated review artifacts with asset-changing pull requests when appropriate.
 11. Run the compatibility-aware shuffle test with no blocked selections.
 12. Confirm finish and junction plates remain non-anatomical by themselves.
+13. For v9 fidelity work, score all three locked heroes using `docs/MVP-FIDELITY-TARGETS.md` and include matching before/after review crops.
 
 ## GitHub Actions
 
