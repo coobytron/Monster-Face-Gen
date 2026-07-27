@@ -11,6 +11,8 @@ on:
   push:
     paths:
       - 'assets/**'
+      - 'docs/**'
+      - 'README.md'
       - 'v9-hybrid-bundles.js'
       - 'v9-pair-junctions.js'
       - 'scripts/contact-sheet-qa.js'
@@ -18,6 +20,7 @@ on:
       - 'scripts/pair-junction-*.js'
       - 'scripts/hero-fidelity-*.js'
       - 'scripts/update-hero-manifest.js'
+      - 'scripts/update-hero-docs.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
       - 'tests/hero-fidelity.test.js'
@@ -31,6 +34,8 @@ on:
   pull_request:
     paths:
       - 'assets/**'
+      - 'docs/**'
+      - 'README.md'
       - 'v9-hybrid-bundles.js'
       - 'v9-pair-junctions.js'
       - 'scripts/contact-sheet-qa.js'
@@ -38,6 +43,7 @@ on:
       - 'scripts/pair-junction-*.js'
       - 'scripts/hero-fidelity-*.js'
       - 'scripts/update-hero-manifest.js'
+      - 'scripts/update-hero-docs.js'
       - 'tests/hybrid-bundle.test.js'
       - 'tests/pair-junctions.test.js'
       - 'tests/hero-fidelity.test.js'
@@ -89,7 +95,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json assets/manifest.json generated/qa
+          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md generated/qa
           if git diff --cached --quiet; then
             echo "Generated artifacts are already current."
           else
