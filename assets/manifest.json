@@ -1,8 +1,9 @@
 {
-  "version": 8,
+  "version": 9,
   "mode": "pre-drawn-builder",
   "completeFaceType": "inline-svg",
   "composablePartType": "inline-svg-full-canvas",
+  "hybridBundleType": "authored-layer-bundle-full-canvas",
   "finishType": "inline-svg-full-canvas-alpha-masked",
   "junctionType": "inline-svg-full-canvas-authored-transition",
   "compatibilityType": "authored-stable-id-matrix-and-recipes",
@@ -11,40 +12,18 @@
   "sourceOfTruth": "attached-mvp-reference-boards",
   "runtimeAnatomyGeneration": false,
   "files": {
-    "faces": [
-      "assets/faces/monster-01.js",
-      "assets/faces/monster-02.js",
-      "assets/faces/monster-03.js",
-      "assets/faces/monster-04.js",
-      "assets/faces/monster-05.js",
-      "assets/faces/monster-06.js",
-      "assets/faces/monster-07.js",
-      "assets/faces/monster-08.js",
-      "assets/faces/monster-09.js",
-      "assets/faces/monster-10.js"
-    ],
-    "parts": [
-      "assets/parts/bases.js",
-      "assets/parts/eyes.js",
-      "assets/parts/noses.js",
-      "assets/parts/mouths.js",
-      "assets/parts/horns.js",
-      "assets/parts/patterns-compact.js",
-      "assets/parts/extras.js"
-    ],
+    "faces": ["assets/faces/monster-01.js","assets/faces/monster-02.js","assets/faces/monster-03.js","assets/faces/monster-04.js","assets/faces/monster-05.js","assets/faces/monster-06.js","assets/faces/monster-07.js","assets/faces/monster-08.js","assets/faces/monster-09.js","assets/faces/monster-10.js"],
+    "parts": ["assets/parts/bases.js","assets/parts/eyes.js","assets/parts/noses.js","assets/parts/mouths.js","assets/parts/horns.js","assets/parts/patterns-compact.js","assets/parts/extras.js"],
+    "hybridBundles": ["assets/hybrid-bundles.js"],
+    "hybridFixture": ["assets/hybrid-fixture/base-bog-mask.svg","assets/hybrid-fixture/base-bog-shadow.svg","assets/hybrid-fixture/base-bog-underpaint.svg","assets/hybrid-fixture/base-bog-linework.svg","assets/hybrid-fixture/base-bog-highlights.svg","assets/hybrid-fixture/base-bog-texture.svg"],
     "finishes": ["assets/finishes.js"],
     "junctions": ["assets/junctions.js"],
     "compatibility": ["assets/compatibility.js"],
     "expressionDirection": ["assets/expression-direction.js"],
     "silhouetteDirection": ["assets/silhouette-direction.js"],
     "fidelityTargets": ["docs/MVP-FIDELITY-TARGETS.md"],
-    "runtime": ["v8-compatibility.js"],
-    "validation": [
-      "tests/compatibility.test.js",
-      "tests/art-direction.test.js",
-      "scripts/contact-sheet-qa.js",
-      "schemas/qa-validation-report.schema.json"
-    ],
+    "runtime": ["v8-compatibility.js","v9-hybrid-bundles.js"],
+    "validation": ["tests/compatibility.test.js","tests/art-direction.test.js","tests/hybrid-bundle.test.js","scripts/contact-sheet-qa.js","scripts/hybrid-bundle-contract.js","scripts/hybrid-bundle-qa.js","schemas/qa-validation-report.schema.json","schemas/hybrid-asset-bundle.schema.json","schemas/hybrid-bundle-validation-report.schema.json"],
     "workflows": [".github/workflows/contact-sheet-qa.yml"],
     "generatedReviewRoot": "generated/qa"
   },
@@ -69,43 +48,45 @@
     "pairPlacementOverrides": 16,
     "silhouettePairOverrides": 11,
     "primaryPairClassifications": 222,
-    "totalAuthoredVisualObjects": 90
+    "hybridLogicalBundles": 1,
+    "hybridBundleLayers": 6,
+    "totalAuthoredVisualObjects": 96
   },
-  "layerOrder": [
-    "horns",
-    "bases",
-    "horn-root-seam",
-    "patterns",
-    "eyes",
-    "noses",
-    "mouths-clipped-to-base-alpha",
-    "mouth-base-seam",
-    "extras",
-    "finishes"
-  ],
+  "layerOrder": ["horns","bases","horn-root-seam","patterns","eyes","noses","mouths-clipped-to-base-alpha","mouth-base-seam","extras","finishes"],
+  "hybridBundleContract": {
+    "version": 1,
+    "registry": "assets/hybrid-bundles.js",
+    "schema": "schemas/hybrid-asset-bundle.schema.json",
+    "stableIdentity": "parentAssetId remains the published recipe and compatibility ID",
+    "coordinateSystem": {"width":600,"height":600,"viewBox":"0 0 600 600"},
+    "roleOrder": ["silhouette-mask","local-shadow","colour-underpaint","black-linework","highlights","texture-detail"],
+    "requiredRoles": ["silhouette-mask","colour-underpaint","black-linework"],
+    "allowedKinds": ["svg","svg-mask","png","webp"],
+    "allowedBlendModes": ["source-over","multiply","screen","overlay"],
+    "deterministicOrder": "numeric z then role order then source path",
+    "alpha": "0..1; mask uses destination-in; masked false allowed for authored local shadow",
+    "sourceIntegrity": "SHA-256 per layer; inline fixture must match file source",
+    "exportMetadata": ["bundle-contract-version","stable-parent-asset-id","bundle-id","bundle-revision","ordered-layer-metadata","source-hashes"],
+    "backwardsCompatibility": "single SVG remains the fallback when no bundleId is attached",
+    "forbidden": ["runtime-path-generation","procedural-anatomy","landmark-inference","path-morphing","scripts","event-handlers","foreignObject","non-deterministic-order"],
+    "runtimeGeometry": false
+  },
   "fidelityAuditContract": {
     "version": 9,
     "document": "docs/MVP-FIDELITY-TARGETS.md",
-    "heroRecipeIds": ["bog-cyclops-grin", "fuzz-fanged", "imp-roar"],
+    "heroRecipeIds": ["bog-cyclops-grin","fuzz-fanged","imp-roar"],
     "defaultReviewFinishId": "finish-etched",
-    "scoreScale": [1, 2, 3, 4, 5],
-    "scoreCategories": [
-      "silhouette-strength",
-      "attachment-integration",
-      "expression-read",
-      "detail-density",
-      "thumbnail-read",
-      "mvp-similarity"
-    ],
-    "reviewSizes": ["100-percent", "25-percent", "192px", "96px", "48px"],
+    "scoreScale": [1,2,3,4,5],
+    "scoreCategories": ["silhouette-strength","attachment-integration","expression-read","detail-density","thumbnail-read","mvp-similarity"],
+    "reviewSizes": ["100-percent","25-percent","192px","96px","48px"],
     "requiresMatchingBeforeAfterBackground": true,
     "requiresStableHeroIds": true,
     "runtimeGeometry": false
   },
   "compatibilityContract": {
     "version": 8,
-    "states": ["approved", "acceptable", "blocked"],
-    "primaryFamilies": ["eyes", "noses", "mouths", "horns"],
+    "states": ["approved","acceptable","blocked"],
+    "primaryFamilies": ["eyes","noses","mouths","horns"],
     "coverage": "every stable primary-family ID classified exactly once for every base",
     "manualSelection": "approved-or-acceptable-only",
     "baseChange": "repair newly blocked selections to an approved ID",
@@ -117,11 +98,11 @@
   },
   "expressionContract": {
     "version": 8,
-    "vocabulary": ["sleepy", "uneasy", "feral", "goofy", "stern", "startled"],
+    "vocabulary": ["sleepy","uneasy","feral","goofy","stern","startled"],
     "eyeAndMouthTags": "stable authored metadata",
     "approvedPairings": "reviewed eye-mouth combinations with one dominant expression",
     "recipeCoverage": "every approved recipe carries one stable expression assignment",
-    "allowedUses": ["curation", "QA labels", "future shuffle weighting", "export metadata"],
+    "allowedUses": ["curation","QA labels","future shuffle weighting","export metadata"],
     "runtimeGeometry": false
   },
   "silhouetteContract": {
@@ -130,55 +111,28 @@
     "rootCoverage": "every approved or acceptable visible horn pair has an authored root profile and seam profile",
     "flipSafety": "all visible approved or acceptable horn pairs are explicitly flip-safe",
     "pairOverrides": "rigid transforms only for reviewed weak joins",
-    "forbidden": ["path-generation", "landmark-inference", "path-morphing", "runtime-seam-generation"]
+    "forbidden": ["path-generation","landmark-inference","path-morphing","runtime-seam-generation"]
   },
   "placementOverrideContract": {
     "key": "<base-id>|<part-id>",
-    "allowed": ["translate-x", "translate-y", "uniform-scale", "rotation"],
-    "merge": {
-      "translation": "add-to-base-slot",
-      "scale": "multiply-base-slot",
-      "rotation": "add-to-base-slot"
-    },
-    "forbidden": [
-      "path-generation",
-      "landmark-inference",
-      "nonuniform-anatomy-distortion",
-      "procedural-anatomy",
-      "asset-id-renaming"
-    ]
+    "allowed": ["translate-x","translate-y","uniform-scale","rotation"],
+    "merge": {"translation":"add-to-base-slot","scale":"multiply-base-slot","rotation":"add-to-base-slot"},
+    "forbidden": ["path-generation","landmark-inference","nonuniform-anatomy-distortion","procedural-anatomy","asset-id-renaming"]
   },
   "junctionContract": {
     "selection": "deterministic lookup by stable authored targetId",
     "mouthClip": "destination-in using selected authored base alpha",
     "mouthSeamTransform": "same as composition; full-canvas base alignment",
     "hornSeamTransform": "same as horn authored placement slot and pair override",
-    "mayContain": [
-      "overlap shadows",
-      "cheek-colour cover shapes",
-      "lip-edge cover shapes",
-      "horn-root contour folds",
-      "short highlight marks",
-      "authored local distress"
-    ],
-    "mustNotContain": [
-      "complete head silhouettes",
-      "complete mouths",
-      "teeth",
-      "complete horns",
-      "complete ears",
-      "eyes",
-      "noses",
-      "runtime-generated geometry",
-      "monster anatomy that reads independently"
-    ]
+    "mayContain": ["overlap shadows","cheek-colour cover shapes","lip-edge cover shapes","horn-root contour folds","short highlight marks","authored local distress"],
+    "mustNotContain": ["complete head silhouettes","complete mouths","teeth","complete horns","complete ears","eyes","noses","runtime-generated geometry","monster anatomy that reads independently"]
   },
   "finishContract": {
     "stage": "after-approved-art-and-junction-composition",
     "transform": "same-as-composition",
     "mask": "destination-in using composed artwork alpha",
-    "mayContain": ["hatching", "stipple", "blackwork shadow masses", "registration accents", "scratches", "distress"],
-    "mustNotContain": ["head silhouettes", "eyes", "noses", "mouths", "teeth", "horns", "ears", "monster anatomy"]
+    "mayContain": ["hatching","stipple","blackwork shadow masses","registration accents","scratches","distress"],
+    "mustNotContain": ["head silhouettes","eyes","noses","mouths","teeth","horns","ears","monster anatomy"]
   },
   "faces": [
     {"id":"monster-01","name":"Bog Cyclops","mood":"mischievous","eyeCount":1,"palette":"teal"},
@@ -213,14 +167,11 @@
     "hornSeams": ["horn-seam-curved","horn-seam-spiky","horn-seam-nubs","horn-seam-long","horn-seam-rams","horn-seam-bat","horn-seam-tufted","horn-seam-bent"]
   },
   "validation": {
-    "commands": [
-      "node tests/compatibility.test.js",
-      "node tests/art-direction.test.js",
-      "node scripts/contact-sheet-qa.js --validate-only",
-      "node scripts/contact-sheet-qa.js"
-    ],
+    "commands": ["node tests/compatibility.test.js","node tests/art-direction.test.js","node tests/hybrid-bundle.test.js","node scripts/contact-sheet-qa.js --validate-only","node scripts/hybrid-bundle-qa.js --validate-only","node scripts/contact-sheet-qa.js","node scripts/hybrid-bundle-qa.js"],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
+    "hybridReport": "generated/qa/hybrid-bundle-validation-report.json",
+    "hybridReportSchema": "schemas/hybrid-bundle-validation-report.schema.json",
     "shuffleSamples": 100,
     "requiresNoBlockedSelections": true,
     "requiresCompleteMatrixCoverage": true,
@@ -232,18 +183,20 @@
     "requiresViewBox": "0 0 600 600",
     "requiresJunctionCoverage": true,
     "requiresLayerOrder": true,
+    "requiresHybridBundleValidation": true,
     "requiresRuntimeAnatomyGenerationFalse": true
   },
   "contactSheetContract": {
     "deterministic": true,
     "authoredAssetsOnly": true,
-    "formats": ["svg", "png", "json"],
-    "backgrounds": ["cream", "white", "black", "transparent"],
-    "pairSheets": ["mouth-base", "horn-base"],
-    "variants": ["unflipped", "flipped"],
+    "formats": ["svg","png","json"],
+    "backgrounds": ["cream","white","black","transparent"],
+    "pairSheets": ["mouth-base","horn-base"],
+    "variants": ["unflipped","flipped"],
     "recipeReview": "every finish on every approved recipe",
     "highResolutionReview": "approved recipe crops",
-    "cellMetadata": ["stable-base-id", "stable-part-id", "compatibility-state"],
+    "hybridFixtureReview": "legacy single SVG beside stable-parent hybrid bundle on every background plus 3600 export",
+    "cellMetadata": ["stable-base-id","stable-part-id","compatibility-state","bundle-id","bundle-revision","source-hashes"],
     "outputRoot": "generated/qa"
   }
 }
