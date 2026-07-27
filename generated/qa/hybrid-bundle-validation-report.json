@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/hybrid-bundle-contract.js",
+  "deterministic": true,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceDigest": "fc2f6f6fa7128f8794d6b9ea14df39dc1dd024a45181464b74af31579f25e90c",
+  "summary": {
+    "passed": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "checkCount": 7
+  },
+  "checks": [
+    {"name":"identity","passed":true},
+    {"name":"layers","passed":true},
+    {"name":"dimensions","passed":true},
+    {"name":"ordering","passed":true},
+    {"name":"alpha","passed":true},
+    {"name":"hashes","passed":true},
+    {"name":"authored","passed":true}
+  ],
+  "errors": [],
+  "warnings": [],
+  "counts": {"bundles":1,"layers":6}
+}
