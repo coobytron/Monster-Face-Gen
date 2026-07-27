@@ -24,5 +24,11 @@ const oldClip='`<defs><clipPath id="${clipId}">${renderAsset(base,\'\',`${token}
 const newClip='`<defs><clipPath id="${clipId}">${clipShape(base)}</clipPath></defs>`';
 if(source.includes(oldClip))source=source.replace(oldClip,newClip);
 if(!source.includes(newClip))throw new Error('Hero QA clip replacement failed');
+
+const clippedMouth='`<g clip-path="url(#${clipId})">${renderAsset(idx.mouths[selection.mouthId],transforms.mouths,`${token}-mouth`)}</g>`';
+const directMouth='renderAsset(idx.mouths[selection.mouthId],transforms.mouths,`${token}-mouth`)';
+if(source.includes(clippedMouth))source=source.replace(clippedMouth,directMouth);
+if(!source.includes(directMouth))throw new Error('Hero QA mouth review replacement failed');
+
 fs.writeFileSync(filename,source);
-console.log('Hero QA uses authored silhouette geometry for mouth clipping.');
+console.log('Hero QA renders authored mouth plates directly for review; runtime Canvas alpha clipping remains unchanged.');
