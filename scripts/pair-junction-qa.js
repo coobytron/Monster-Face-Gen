@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const {
-  ROOT,BACKGROUNDS,loadBrowserData,readManifest,validate,heroCells,sheetSvg
+  ROOT,BACKGROUNDS,loadBrowserData,readManifest,validate,recipeCells,sheetSvg
 } = require('./pair-junction-contract');
 
 const OUT = path.join(ROOT,'generated','qa');
@@ -28,14 +28,14 @@ async function main(){
   if(!VALIDATE_ONLY){
     for(const [backgroundName,background] of Object.entries(BACKGROUNDS)){
       await writeSheet(`pair-junction-mouth-crops-${backgroundName}`,sheetSvg({
-        title:'Hero Mouth Junctions — Before / After',
-        subtitle:`Pair-specific cheek, corner, lower-lip, flip, 25%, 96 px, and 48 px review · background:${backgroundName}`,
-        cells:heroCells(data,'mouth'),background
+        title:'Reviewed Recipe Mouth Junctions — Generic / Exact',
+        subtitle:`All 16 curated recipes · 100%, 25%, 192 px, 96 px, 48 px, and flipped · background:${backgroundName}`,
+        cells:recipeCells(data,'mouth'),background
       }));
       await writeSheet(`pair-junction-horn-crops-${backgroundName}`,sheetSvg({
-        title:'Hero Horn Junctions — Before / After',
-        subtitle:`Pair-specific root overlap, fold, flip, 25%, 96 px, and 48 px review · background:${backgroundName}`,
-        cells:heroCells(data,'horn'),background
+        title:'Reviewed Recipe Horn / Ear Junctions — Generic / Exact',
+        subtitle:`All 16 curated recipes · root overlap, fold, 25%, 192 px, 96 px, 48 px, and flipped · background:${backgroundName}`,
+        cells:recipeCells(data,'horn'),background
       }));
     }
   }

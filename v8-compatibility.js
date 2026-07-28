@@ -70,18 +70,20 @@
     [...document.querySelectorAll('#libraryGrid .part-card')].forEach((card,index)=>{
       const part=(parts[activeCategory]||[])[index];
       if(!part) return;
+      const pairKey=`${state.baseId}|${part.id}`;
       const status=statusFor(activeCategory,part.id);
       card.dataset.compatibility=status;
+      card.dataset.pairReview=compatibility.reviewedPairKeys?.includes(pairKey)?'exact-reviewed':'generic-fallback';
       card.classList.toggle('blocked',status==='blocked');
       card.disabled=status==='blocked';
       const meta=card.querySelector('small');
-      if(meta) meta.textContent=`${status} · ${meta.textContent}`;
-      card.title=status==='blocked'?`Blocked on ${currentBase()?.name||'this base'}`:`${status} pairing`;
+      if(meta) meta.textContent=`${status} · ${card.dataset.pairReview} · ${meta.textContent}`;
+      card.title=status==='blocked'?`Blocked on ${currentBase()?.name||'this base'}`:`${status} pairing · ${card.dataset.pairReview}`;
     });
   };
 
   function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
-  function chooseCompatible(baseId,categoryId,approvedBias=.78){
+  function chooseCompatible(baseId,categoryId,approvedBias=.9){
     const approved=compatibility.compatibleIds(baseId,categoryId,'approved');
     const all=compatibility.compatibleIds(baseId,categoryId,'acceptable');
     const pool=Math.random()<approvedBias&&approved.length?approved:all;
@@ -93,18 +95,25 @@
     const visible=list.filter(item=>!(item.tags||[]).includes('none'));
     return randomItem(visible)?.id||list[0]?.id;
   }
+  function weightedRecipe(){
+    const pool=[];
+    for(const recipe of compatibility.recipes||[]) for(let i=0;i<Math.max(1,recipe.shuffleWeight||1);i++) pool.push(recipe);
+    return randomItem(pool);
+  }
   function recipeState(recipe){
-    return {...recipe,recipeId:recipe.id,compatibilityState:'approved',scale:1,rotation:0,x:0,y:0,flipped:false,caption:recipe.name.toUpperCase()};
+    return {...recipe,recipeId:recipe.id,compatibilityState:'approved-reviewed',scale:1,rotation:0,x:0,y:0,flipped:false,caption:recipe.name.toUpperCase()};
   }
   function mutateRecipe(recipe){
     const next=recipeState(recipe);
-    const mutable=randomItem(['eyeId','noseId','mouthId','hornId','patternId','extraId']);
+    // Mouth and horn/ear stay locked to the reviewed exact-pair plates. Mutation is
+    // selection-only and limited to approved eyes, noses, patterns, and extras.
+    const mutable=randomItem(['eyeId','noseId','patternId','extraId']);
     const category=keyCategories[mutable];
-    if(category) next[mutable]=chooseCompatible(recipe.baseId,category,.88);
-    else if(mutable==='patternId') next.patternId=chooseOptional('patterns',.12);
-    else next.extraId=chooseOptional('extras',.25);
-    next.recipeId=`${recipe.id}:compatible-mutation`;
-    next.compatibilityState='acceptable';
+    if(category) next[mutable]=chooseCompatible(recipe.baseId,category,.94);
+    else if(mutable==='patternId') next.patternId=chooseOptional('patterns',.08);
+    else next.extraId=chooseOptional('extras',.18);
+    next.recipeId=`${recipe.id}:reviewed-mutation`;
+    next.compatibilityState='approved-reviewed-mutation';
     return next;
   }
 
@@ -116,8 +125,8 @@
       if(next) selectAsset(next.id);
       return;
     }
-    const recipe=randomItem(compatibility.recipes);
-    applyState(Math.random()<.76?recipeState(recipe):mutateRecipe(recipe));
+    const recipe=weightedRecipe();
+    if(recipe) applyState(Math.random()<.84?recipeState(recipe):mutateRecipe(recipe));
   }
   shuffle=v8Shuffle;
   $('shuffleBtn').onclick=v8Shuffle;
@@ -126,7 +135,8 @@
   recipeMetadata=function(){
     const metadata=originalRecipeMetadata();
     if(state.mode!=='builder') return metadata;
-    return {...metadata,compatibility:{version:8,recipeId:state.recipeId||null,state:state.compatibilityState||'manual-compatible',pairStates:{eyes:statusFor('eyes',state.eyeId),noses:statusFor('noses',state.noseId),mouths:statusFor('mouths',state.mouthId),horns:statusFor('horns',state.hornId)},placementOverrides:Object.fromEntries(['eyes','noses','mouths','horns'].map(categoryId=>{const item=currentPart(categoryId);const value=item?compatibility.placementOverrides[`${state.baseId}|${item.id}`]:null;return [categoryId,value||null]}))}};
+    const pairKeys={mouth:`${state.baseId}|${state.mouthId}`,horns:`${state.baseId}|${state.hornId}`};
+    return {...metadata,compatibility:{version:9,revision:compatibility.revision||null,recipeId:state.recipeId||null,state:state.compatibilityState||'manual-compatible',reviewedRecipe:Boolean(state.recipeId&&compatibility.reviewedRecipeIds?.some(id=>state.recipeId.startsWith(id))),pairKeys,pairReview:{mouth:compatibility.reviewedPairKeys?.includes(pairKeys.mouth)?'exact-reviewed':'generic-fallback',horns:compatibility.reviewedPairKeys?.includes(pairKeys.horns)?'exact-reviewed':'generic-fallback'},pairStates:{eyes:statusFor('eyes',state.eyeId),noses:statusFor('noses',state.noseId),mouths:statusFor('mouths',state.mouthId),horns:statusFor('horns',state.hornId)},placementOverrides:Object.fromEntries(['eyes','noses','mouths','horns'].map(categoryId=>{const item=currentPart(categoryId);const value=item?compatibility.placementOverrides[`${state.baseId}|${item.id}`]:null;return [categoryId,value||null]}))}};
   };
 
   compositeLayerItems=function(snapshot=state){

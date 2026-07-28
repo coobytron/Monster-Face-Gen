@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/pair-junction-validation-report.schema.json",
-  "title": "Monster Face Reviewed Library Pair Junction Validation Report",
+  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/library-fidelity-validation-report.schema.json",
+  "title": "Monster Face Library Fidelity Rollout Validation Report",
   "type": "object",
   "required": [
     "schemaVersion",
@@ -21,7 +21,7 @@
       "const": 1
     },
     "generator": {
-      "const": "scripts/pair-junction-contract.js"
+      "const": "scripts/library-fidelity-contract.js"
     },
     "deterministic": {
       "const": true
@@ -115,31 +115,27 @@
     "counts": {
       "type": "object",
       "required": [
-        "heroRecipes",
-        "reviewedRecipes",
-        "requiredPairs",
-        "publishedPairs",
-        "mouthPairs",
-        "hornPairs"
+        "heroReviews",
+        "libraryReviews",
+        "totalReviewedRecipes",
+        "libraryAuthoredReplacements",
+        "exactPairJunctions"
       ],
       "properties": {
-        "heroRecipes": {
+        "heroReviews": {
           "const": 3
         },
-        "reviewedRecipes": {
+        "libraryReviews": {
+          "const": 13
+        },
+        "totalReviewedRecipes": {
           "const": 16
         },
-        "requiredPairs": {
+        "libraryAuthoredReplacements": {
+          "const": 34
+        },
+        "exactPairJunctions": {
           "const": 32
-        },
-        "publishedPairs": {
-          "const": 32
-        },
-        "mouthPairs": {
-          "const": 16
-        },
-        "hornPairs": {
-          "const": 16
         }
       },
       "additionalProperties": false

@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 1,
+  "reviewSetId": "library-fidelity-v9-08",
+  "revision": "9.8.0",
+  "status": "agent-reviewed-pending-art-director",
+  "source": "supplied-mvp-reference-boards",
+  "heroReviewSet": "reviews/hero-fidelity-v9.json",
+  "scoreScale": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "targets": {
+    "silhouetteStrength": 4,
+    "attachmentIntegration": 4,
+    "expressionRead": 4,
+    "detailDensity": 4,
+    "thumbnailRead": 4,
+    "mvpSimilarity": 4
+  },
+  "reviewedRecipeIds": [
+    "bog-sleepy-gummy",
+    "fuzz-buck",
+    "skull-oracle",
+    "skull-jagged",
+    "imp-bat",
+    "imp-bent-grin",
+    "moss-grinner",
+    "moss-tongue",
+    "moss-gummy",
+    "blue-worry",
+    "blue-tangle",
+    "blue-wild",
+    "bog-gapped"
+  ],
+  "reviews": [
+    {
+      "recipeId": "bog-sleepy-gummy",
+      "recipeName": "Sleepy Bog",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-bog",
+        "eyes": "eye-droopy",
+        "nose": "nose-warty",
+        "mouth": "mouth-gummy",
+        "hornOrEar": "horn-nubs",
+        "pattern": "pattern-pores",
+        "extra": "extra-slime",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-bog|mouth-gummy",
+        "base-bog|horn-nubs"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "generic mouth corners read pasted-on"
+        },
+        {
+          "code": "finding-2",
+          "text": "horn nubs lacked cheek/root compression"
+        },
+        {
+          "code": "finding-3",
+          "text": "detail density fell away at 96 px"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "bog-sleepy-gummy",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-bog|mouth-gummy",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-bog|horn-nubs",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "fuzz-buck",
+      "recipeName": "Fuzzy Bucktooth",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-fuzz",
+        "eyes": "eye-wide",
+        "nose": "nose-button",
+        "mouth": "mouth-buck",
+        "hornOrEar": "horn-tufted",
+        "pattern": "pattern-fur",
+        "extra": "extra-bandage",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-fuzz|mouth-buck",
+        "base-fuzz|horn-tufted"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "buck mouth lower-lip ownership was weak"
+        },
+        {
+          "code": "finding-2",
+          "text": "tuft roots read as separate stickers"
+        },
+        {
+          "code": "finding-3",
+          "text": "fur hierarchy was too even"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "fuzz-buck",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-fuzz|mouth-buck",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-fuzz|horn-tufted",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "skull-oracle",
+      "recipeName": "Bone Oracle",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "high",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-skull",
+        "eyes": "eye-sleepy",
+        "nose": "nose-skeletal",
+        "mouth": "mouth-gapped",
+        "hornOrEar": "horn-long",
+        "pattern": "pattern-cracked",
+        "extra": "extra-earring",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-skull|mouth-gapped",
+        "base-skull|horn-long"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 2,
+        "expressionRead": 3,
+        "detailDensity": 2,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 2
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "bone mouth seam broke the jaw rhythm"
+        },
+        {
+          "code": "finding-2",
+          "text": "long horn roots lacked compression"
+        },
+        {
+          "code": "finding-3",
+          "text": "crack and pore density was inconsistent"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "skull-oracle",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-skull|mouth-gapped",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-skull|horn-long",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "skull-jagged",
+      "recipeName": "Jagged Relic",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-skull",
+        "eyes": "eye-beady",
+        "nose": "nose-hook",
+        "mouth": "mouth-jagged",
+        "hornOrEar": "horn-nubs",
+        "pattern": "pattern-pores",
+        "extra": "extra-patch",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-skull|mouth-jagged",
+        "base-skull|horn-nubs"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "jagged mouth corners escaped the skull aperture"
+        },
+        {
+          "code": "finding-2",
+          "text": "nub roots needed bone overlap"
+        },
+        {
+          "code": "finding-3",
+          "text": "black-mass distribution was too flat"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "skull-jagged",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-skull|mouth-jagged",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-skull|horn-nubs",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "imp-bat",
+      "recipeName": "Bat Imp",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "high",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-imp",
+        "eyes": "eye-crossed",
+        "nose": "nose-beak",
+        "mouth": "mouth-fangs",
+        "hornOrEar": "horn-bat",
+        "pattern": "pattern-stripes",
+        "extra": "extra-scar",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-imp|mouth-fangs",
+        "base-imp|horn-bat"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 2,
+        "expressionRead": 3,
+        "detailDensity": 2,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 2
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "bat-ear roots created hard tangencies"
+        },
+        {
+          "code": "finding-2",
+          "text": "fang corners needed cheek restoration"
+        },
+        {
+          "code": "finding-3",
+          "text": "eye hierarchy competed with the mouth"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "imp-bat",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-imp|mouth-fangs",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-imp|horn-bat",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "imp-bent-grin",
+      "recipeName": "Bent Imp",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-imp",
+        "eyes": "eye-wild",
+        "nose": "nose-hook",
+        "mouth": "mouth-gapped",
+        "hornOrEar": "horn-bent",
+        "pattern": "pattern-cracked",
+        "extra": "extra-bandage",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-imp|mouth-gapped",
+        "base-imp|horn-bent"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "gapped mouth lower edge lacked ownership"
+        },
+        {
+          "code": "finding-2",
+          "text": "bent roots did not follow crown rhythm"
+        },
+        {
+          "code": "finding-3",
+          "text": "finish density crowded the first-read features"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "imp-bent-grin",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-imp|mouth-gapped",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-imp|horn-bent",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "moss-grinner",
+      "recipeName": "Moss Grinner",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-moss",
+        "eyes": "eye-cyclops",
+        "nose": "nose-warty",
+        "mouth": "mouth-grin",
+        "hornOrEar": "horn-rams",
+        "pattern": "pattern-warts",
+        "extra": "extra-bumps",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-moss|mouth-grin",
+        "base-moss|horn-rams"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "ram roots floated above the crown"
+        },
+        {
+          "code": "finding-2",
+          "text": "grin corners needed cheek compression"
+        },
+        {
+          "code": "finding-3",
+          "text": "wart detail needed stronger size rhythm"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "moss-grinner",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|mouth-grin",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|horn-rams",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "moss-tongue",
+      "recipeName": "Moss Tongue",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "high",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-moss",
+        "eyes": "eye-triple",
+        "nose": "nose-trihole",
+        "mouth": "mouth-tongue",
+        "hornOrEar": "horn-curved",
+        "pattern": "pattern-spots",
+        "extra": "extra-slime",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-moss|mouth-tongue",
+        "base-moss|horn-curved"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 2,
+        "expressionRead": 3,
+        "detailDensity": 2,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 2
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "tongue mouth corners clipped abruptly"
+        },
+        {
+          "code": "finding-2",
+          "text": "curved roots needed moss overlap"
+        },
+        {
+          "code": "finding-3",
+          "text": "triple-eye and mouth hierarchy needed quiet zones"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "moss-tongue",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|mouth-tongue",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|horn-curved",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "moss-gummy",
+      "recipeName": "Old Moss",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-moss",
+        "eyes": "eye-droopy",
+        "nose": "nose-button",
+        "mouth": "mouth-gummy",
+        "hornOrEar": "horn-nubs",
+        "pattern": "pattern-pores",
+        "extra": "extra-earring",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-moss|mouth-gummy",
+        "base-moss|horn-nubs"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "gummy seam flattened the lower cheek"
+        },
+        {
+          "code": "finding-2",
+          "text": "nub roots needed asymmetric folds"
+        },
+        {
+          "code": "finding-3",
+          "text": "pore finish density was too uniform"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "moss-gummy",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|mouth-gummy",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-moss|horn-nubs",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "blue-worry",
+      "recipeName": "Blue Worrywart",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-blue",
+        "eyes": "eye-triple",
+        "nose": "nose-elephant",
+        "mouth": "mouth-gummy",
+        "hornOrEar": "horn-tufted",
+        "pattern": "pattern-freckles",
+        "extra": "extra-snot",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-blue|mouth-gummy",
+        "base-blue|horn-tufted"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "gummy mouth felt detached from the blue base"
+        },
+        {
+          "code": "finding-2",
+          "text": "tuft roots interrupted the crown rhythm"
+        },
+        {
+          "code": "finding-3",
+          "text": "snot and freckles competed at thumbnail size"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "blue-worry",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|mouth-gummy",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|horn-tufted",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "blue-tangle",
+      "recipeName": "Tongue Tangle",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "high",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-blue",
+        "eyes": "eye-stacked",
+        "nose": "nose-trihole",
+        "mouth": "mouth-tongue",
+        "hornOrEar": "horn-bat",
+        "pattern": "pattern-spots",
+        "extra": "extra-slime",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-blue|mouth-tongue",
+        "base-blue|horn-bat"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 2,
+        "expressionRead": 3,
+        "detailDensity": 2,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 2
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "tongue mouth required stronger corner containment"
+        },
+        {
+          "code": "finding-2",
+          "text": "bat roots created silhouette tangencies"
+        },
+        {
+          "code": "finding-3",
+          "text": "stacked eyes needed a clearer first-read hierarchy"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "blue-tangle",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|mouth-tongue",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|horn-bat",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "blue-wild",
+      "recipeName": "Wild Blue",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-blue",
+        "eyes": "eye-wild",
+        "nose": "nose-button",
+        "mouth": "mouth-gapped",
+        "hornOrEar": "horn-nubs",
+        "pattern": "pattern-scales",
+        "extra": "extra-spikes",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-blue|mouth-gapped",
+        "base-blue|horn-nubs"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "gapped mouth had weak lower-lip ownership"
+        },
+        {
+          "code": "finding-2",
+          "text": "nub roots needed tuft continuity"
+        },
+        {
+          "code": "finding-3",
+          "text": "scale density crowded the wild eyes"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "blue-wild",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|mouth-gapped",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-blue|horn-nubs",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    },
+    {
+      "recipeId": "bog-gapped",
+      "recipeName": "Bog Gapped",
+      "reviewer": "agent-assisted-rollout-pass",
+      "reviewedAt": "1970-01-01T00:00:00.000Z",
+      "severity": "medium",
+      "status": "production-candidate-pending-art-director",
+      "assetIds": {
+        "base": "base-bog",
+        "eyes": "eye-wide",
+        "nose": "nose-piggy",
+        "mouth": "mouth-gapped",
+        "hornOrEar": "horn-tufted",
+        "pattern": "pattern-warts",
+        "extra": "extra-patch",
+        "finish": "finish-etched"
+      },
+      "junctionIds": [
+        "base-bog|mouth-gapped",
+        "base-bog|horn-tufted"
+      ],
+      "baseline": {
+        "silhouetteStrength": 3,
+        "attachmentIntegration": 3,
+        "expressionRead": 3,
+        "detailDensity": 3,
+        "thumbnailRead": 3,
+        "mvpSimilarity": 3
+      },
+      "current": {
+        "silhouetteStrength": 4,
+        "attachmentIntegration": 4,
+        "expressionRead": 4,
+        "detailDensity": 4,
+        "thumbnailRead": 4,
+        "mvpSimilarity": 4
+      },
+      "findings": [
+        {
+          "code": "finding-1",
+          "text": "gapped mouth corners read as a separate object"
+        },
+        {
+          "code": "finding-2",
+          "text": "tuft roots needed teal overlap"
+        },
+        {
+          "code": "finding-3",
+          "text": "wart clusters needed controlled quiet zones"
+        }
+      ],
+      "resolution": {
+        "assetStrategy": "re-authored-behind-stable-ids",
+        "pairStrategy": "exact-mouth-and-horn-pair-plates",
+        "flipReviewed": true,
+        "backgroundsReviewed": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "sizesReviewed": [
+          "100-percent",
+          "25-percent",
+          "192px",
+          "96px",
+          "48px"
+        ]
+      },
+      "notes": [
+        {
+          "scope": "recipe",
+          "stableId": "bog-gapped",
+          "text": "Original authored replacements strengthen asymmetry, black-mass distribution, selective texture density, and first-read hierarchy while retaining the published recipe ID."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-bog|mouth-gapped",
+          "text": "Exact mouth plate restores cheek colour, corner containment, lower-edge ownership, and local texture continuity without embedding mouth anatomy."
+        },
+        {
+          "scope": "junction",
+          "stableId": "base-bog|horn-tufted",
+          "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
+        }
+      ],
+      "humanConfirmed": false
+    }
+  ]
+}
