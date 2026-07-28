@@ -81,7 +81,7 @@ jobs:
             echo "Rollout source is already materialized."
           else
             git commit -m "Roll hero-quality art across reviewed recipe library [skip ci]"
-            git push
+            git push origin HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
           fi
       - run: npm install --package-lock-only
       - run: npm ci
@@ -115,7 +115,7 @@ jobs:
             echo "Generated artifacts are already current."
           else
             git commit -m "Update deterministic QA review artifacts [skip ci]"
-            git push
+            git push origin HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
           fi
       - name: Enforce renderer result
         if: steps.qa.outputs.exit_code != '0'
