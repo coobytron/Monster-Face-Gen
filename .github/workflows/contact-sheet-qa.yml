@@ -73,6 +73,9 @@ jobs:
           if [ -f scripts/apply-library-rollout.js ]; then
             node scripts/apply-library-rollout.js
           fi
+          if [ -f scripts/fix-library-review-contract.js ]; then
+            node scripts/fix-library-review-contract.js
+          fi
       - name: Commit rollout source
         run: |
           git config user.name "github-actions[bot]"
@@ -81,7 +84,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Rollout source is already materialized."
           else
-            git commit -m "Roll hero-quality art across reviewed recipe library [skip ci]"
+            git commit -m "Complete structured library fidelity reviews [skip ci]"
             git push origin HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
           fi
       - run: npm install --package-lock-only
