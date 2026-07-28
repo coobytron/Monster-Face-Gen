@@ -10,6 +10,18 @@ Every visible monster feature originates from an authored asset. Canvas and QA t
 
 Randomisation is selection, not generation. QA is review of authored objects, not asset creation.
 
+<!-- LIBRARY-FIDELITY-V9:START -->
+## V9.8 reviewed-library fidelity rollout
+
+The three locked heroes remain the visual baseline, and the same authored production method now covers the other **13 curated recipes**. The rollout adds **34 load-after stable-ID replacements** in `assets/library-v9/` and expands exact mouth/base and horn-or-ear/root integration from six hero plates to **32 exact pair plates** across all 16 curated recipes.
+
+Shuffle now strongly prefers complete reviewed recipes. Its compatible mutation path keeps the reviewed mouth and horn pair locked and changes only eyes, nose, pattern, or extra, preventing a high-quality recipe from falling back to an unreviewed attachment during randomisation.
+
+`reviews/library-fidelity-v9.json` records stable IDs, findings, actions, baseline/current scores, required scales, backgrounds, and pair keys for the 13 non-hero recipes. These records are **agent-assisted production candidates, not human art-direction approval**. The three hero records also remain human-confirmation-required until reviewed in the internal recipe director against the supplied MVP boards.
+
+See `docs/LIBRARY-FIDELITY-V9.md` for the replacement inventory, exact-pair coverage, review workflow, and source-of-truth boundary.
+<!-- LIBRARY-FIDELITY-V9:END -->
+
 <!-- HERO-FIDELITY-V9:START -->
 ## V9.4 near-final hero artwork
 
@@ -71,9 +83,9 @@ The complete composition, pair placement transform, hybrid base, clip, pair plat
 
 `assets/compatibility.js` classifies every base × eye, base × nose, base × mouth, and base × horn pairing as `approved`, `acceptable`, or `blocked`.
 
-The builder includes 16 complete hand-directed recipes and authored per-pair placement overrides. The three locked hero recipes additionally carry their required pair-junction keys. Blocked parts are disabled, filtered before composition, and excluded from compatibility-aware shuffle.
+The builder includes 16 complete hand-directed recipes, and every curated recipe carries exact reviewed mouth and horn-or-ear pair-junction keys plus authored rigid placement overrides. Blocked parts are disabled, filtered before composition, and excluded from compatibility-aware shuffle.
 
-The retained v7 generic assembly stages remain available for every non-hero combination: mouths clip to the authored base alpha, six base-specific mouth seams cover joins, and eight horn/ear family seams cover roots.
+The retained v7 generic assembly stages remain available for any compatible non-curated combination: mouths clip to the authored base alpha, six base-specific mouth seams cover joins, and eight horn/ear family seams cover roots.
 
 ## Expression direction
 
@@ -158,8 +170,8 @@ Reports use a fixed Unix-epoch timestamp and deterministic source digest.
 | Illustration finishes | 5 |
 | Generic mouth seam plates | 6 |
 | Generic horn / ear root seam plates | 8 |
-| Hero pair-specific mouth plates | 3 |
-| Hero pair-specific horn plates | 3 |
+| Reviewed exact mouth pair plates | 16 |
+| Reviewed exact horn / ear pair plates | 16 |
 | Approved recipes | 16 |
 | Approved expression pairings | 12 |
 | Pair placement overrides | 16 |

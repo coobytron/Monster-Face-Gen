@@ -3,7 +3,7 @@
   "generator": "scripts/hero-fidelity-qa.js",
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "sourceDigest": "13f37896cb5c3e0c1c6c1197cd56a0f42b4f50ab58fcb3df5b95c279b7dddf15",
+  "sourceDigest": "1e4d457b3e9ae1cc8a777d368c56a25fbc940c6d04488c97bc7e7e5afcb40dcb",
   "summary": {
     "passed": true,
     "errorCount": 0,

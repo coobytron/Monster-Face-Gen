@@ -63,7 +63,8 @@
       "assets/silhouette-direction.js"
     ],
     "fidelityTargets": [
-      "docs/MVP-FIDELITY-TARGETS.md"
+      "docs/MVP-FIDELITY-TARGETS.md",
+      "docs/LIBRARY-FIDELITY-V9.md"
     ],
     "runtime": [
       "v8-compatibility.js",
@@ -86,7 +87,11 @@
       "schemas/pair-junction-validation-report.schema.json",
       "tests/hero-fidelity.test.js",
       "scripts/hero-fidelity-qa.js",
-      "schemas/hero-fidelity-validation-report.schema.json"
+      "schemas/hero-fidelity-validation-report.schema.json",
+      "tests/library-fidelity.test.js",
+      "scripts/library-fidelity-contract.js",
+      "scripts/library-fidelity-qa.js",
+      "schemas/library-fidelity-validation-report.schema.json"
     ],
     "workflows": [
       ".github/workflows/contact-sheet-qa.yml"
@@ -100,6 +105,19 @@
       "assets/hero-v9/horns.js",
       "assets/hero-v9/patterns.js",
       "assets/hero-v9/extras.js"
+    ],
+    "libraryFidelity": [
+      "assets/library-v9/bases.js",
+      "assets/library-v9/eyes.js",
+      "assets/library-v9/noses.js",
+      "assets/library-v9/mouths.js",
+      "assets/library-v9/horns.js",
+      "assets/library-v9/patterns.js",
+      "assets/library-v9/extras.js"
+    ],
+    "structuredReviews": [
+      "reviews/hero-fidelity-v9.json",
+      "reviews/library-fidelity-v9.json"
     ]
   },
   "counts": {
@@ -116,9 +134,9 @@
     "mouthSeams": 6,
     "hornSeams": 8,
     "junctions": 14,
-    "pairSpecificMouthJunctions": 3,
-    "pairSpecificHornJunctions": 3,
-    "pairSpecificJunctions": 6,
+    "pairSpecificMouthJunctions": 16,
+    "pairSpecificHornJunctions": 16,
+    "pairSpecificJunctions": 32,
     "approvedRecipes": 16,
     "heroFidelityRecipes": 3,
     "approvedExpressionPairs": 12,
@@ -128,8 +146,11 @@
     "primaryPairClassifications": 222,
     "hybridLogicalBundles": 1,
     "hybridBundleLayers": 6,
-    "totalAuthoredVisualObjects": 102,
-    "heroAuthoredReplacements": 21
+    "totalAuthoredVisualObjects": 162,
+    "heroAuthoredReplacements": 21,
+    "libraryFidelityRecipes": 13,
+    "reviewedFidelityRecipes": 16,
+    "libraryAuthoredReplacements": 34
   },
   "layerOrder": [
     "horns",
@@ -256,11 +277,63 @@
     "manualSelection": "approved-or-acceptable-only",
     "baseChange": "repair newly blocked selections to an approved ID",
     "renderSafety": "filter blocked primary anatomy before composition",
-    "shuffle": "76-percent approved complete recipe; otherwise one compatible-family mutation",
+    "shuffle": "84-percent fully reviewed exact-pair recipe; otherwise mutate eyes, nose, pattern, or extra while preserving the reviewed mouth and horn pair",
     "wideMouthRule": "narrow bases block mouth-roar unless a reviewed authored override exists",
     "heroPairJunctions": "three locked hero recipes publish exact mouth and horn pair keys",
     "flipRule": "mirror complete authored composition and junction transforms together",
-    "runtimeGeometry": false
+    "runtimeGeometry": false,
+    "reviewedRecipeIds": [
+      "bog-cyclops-grin",
+      "bog-sleepy-gummy",
+      "fuzz-buck",
+      "fuzz-fanged",
+      "skull-oracle",
+      "skull-jagged",
+      "imp-roar",
+      "imp-bat",
+      "imp-bent-grin",
+      "moss-grinner",
+      "moss-tongue",
+      "moss-gummy",
+      "blue-worry",
+      "blue-tangle",
+      "blue-wild",
+      "bog-gapped"
+    ],
+    "reviewedPairKeys": [
+      "base-bog|mouth-grin",
+      "base-bog|horn-curved",
+      "base-bog|mouth-gummy",
+      "base-bog|horn-nubs",
+      "base-fuzz|mouth-buck",
+      "base-fuzz|horn-tufted",
+      "base-fuzz|mouth-fangs",
+      "base-fuzz|horn-bent",
+      "base-skull|mouth-gapped",
+      "base-skull|horn-long",
+      "base-skull|mouth-jagged",
+      "base-skull|horn-nubs",
+      "base-imp|mouth-roar",
+      "base-imp|horn-spiky",
+      "base-imp|mouth-fangs",
+      "base-imp|horn-bat",
+      "base-imp|mouth-gapped",
+      "base-imp|horn-bent",
+      "base-moss|mouth-grin",
+      "base-moss|horn-rams",
+      "base-moss|mouth-tongue",
+      "base-moss|horn-curved",
+      "base-moss|mouth-gummy",
+      "base-moss|horn-nubs",
+      "base-blue|mouth-gummy",
+      "base-blue|horn-tufted",
+      "base-blue|mouth-tongue",
+      "base-blue|horn-bat",
+      "base-blue|mouth-gapped",
+      "base-blue|horn-nubs",
+      "base-bog|mouth-gapped",
+      "base-bog|horn-tufted"
+    ]
   },
   "expressionContract": {
     "version": 8,
@@ -366,10 +439,36 @@
     "requiredPairs": [
       "base-bog|mouth-grin",
       "base-bog|horn-curved",
+      "base-bog|mouth-gummy",
+      "base-bog|horn-nubs",
+      "base-fuzz|mouth-buck",
+      "base-fuzz|horn-tufted",
       "base-fuzz|mouth-fangs",
       "base-fuzz|horn-bent",
+      "base-skull|mouth-gapped",
+      "base-skull|horn-long",
+      "base-skull|mouth-jagged",
+      "base-skull|horn-nubs",
       "base-imp|mouth-roar",
-      "base-imp|horn-spiky"
+      "base-imp|horn-spiky",
+      "base-imp|mouth-fangs",
+      "base-imp|horn-bat",
+      "base-imp|mouth-gapped",
+      "base-imp|horn-bent",
+      "base-moss|mouth-grin",
+      "base-moss|horn-rams",
+      "base-moss|mouth-tongue",
+      "base-moss|horn-curved",
+      "base-moss|mouth-gummy",
+      "base-moss|horn-nubs",
+      "base-blue|mouth-gummy",
+      "base-blue|horn-tufted",
+      "base-blue|mouth-tongue",
+      "base-blue|horn-bat",
+      "base-blue|mouth-gapped",
+      "base-blue|horn-nubs",
+      "base-bog|mouth-gapped",
+      "base-bog|horn-tufted"
     ],
     "mayContain": [
       "local-skin-or-fur-overlap",
@@ -397,7 +496,26 @@
       "anatomy-like-standalone-content",
       "flip-unsafe-configurations"
     ],
-    "runtimeGeometry": false
+    "runtimeGeometry": false,
+    "revision": "9.8.0",
+    "reviewedRecipeIds": [
+      "bog-cyclops-grin",
+      "bog-sleepy-gummy",
+      "fuzz-buck",
+      "fuzz-fanged",
+      "skull-oracle",
+      "skull-jagged",
+      "imp-roar",
+      "imp-bat",
+      "imp-bent-grin",
+      "moss-grinner",
+      "moss-tongue",
+      "moss-gummy",
+      "blue-worry",
+      "blue-tangle",
+      "blue-wild",
+      "bog-gapped"
+    ]
   },
   "finishContract": {
     "stage": "after-approved-art-and-junction-composition",
@@ -625,10 +743,36 @@
     "pairSpecific": [
       "base-bog|mouth-grin",
       "base-bog|horn-curved",
+      "base-bog|mouth-gummy",
+      "base-bog|horn-nubs",
+      "base-fuzz|mouth-buck",
+      "base-fuzz|horn-tufted",
       "base-fuzz|mouth-fangs",
       "base-fuzz|horn-bent",
+      "base-skull|mouth-gapped",
+      "base-skull|horn-long",
+      "base-skull|mouth-jagged",
+      "base-skull|horn-nubs",
       "base-imp|mouth-roar",
-      "base-imp|horn-spiky"
+      "base-imp|horn-spiky",
+      "base-imp|mouth-fangs",
+      "base-imp|horn-bat",
+      "base-imp|mouth-gapped",
+      "base-imp|horn-bent",
+      "base-moss|mouth-grin",
+      "base-moss|horn-rams",
+      "base-moss|mouth-tongue",
+      "base-moss|horn-curved",
+      "base-moss|mouth-gummy",
+      "base-moss|horn-nubs",
+      "base-blue|mouth-gummy",
+      "base-blue|horn-tufted",
+      "base-blue|mouth-tongue",
+      "base-blue|horn-bat",
+      "base-blue|mouth-gapped",
+      "base-blue|horn-nubs",
+      "base-bog|mouth-gapped",
+      "base-bog|horn-tufted"
     ]
   },
   "validation": {
@@ -645,7 +789,10 @@
       "node scripts/pair-junction-qa.js",
       "node tests/hero-fidelity.test.js",
       "node scripts/hero-fidelity-qa.js --validate-only",
-      "node scripts/hero-fidelity-qa.js"
+      "node scripts/hero-fidelity-qa.js",
+      "node tests/library-fidelity.test.js",
+      "node scripts/library-fidelity-qa.js --validate-only",
+      "node scripts/library-fidelity-qa.js"
     ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
@@ -669,7 +816,10 @@
     "requiresRuntimeAnatomyGenerationFalse": true,
     "heroFidelityReport": "generated/qa/hero-fidelity-validation-report.json",
     "heroFidelityReportSchema": "schemas/hero-fidelity-validation-report.schema.json",
-    "requiresHeroFidelityValidation": true
+    "requiresHeroFidelityValidation": true,
+    "libraryFidelityReport": "generated/qa/library-fidelity-validation-report.json",
+    "libraryFidelityReportSchema": "schemas/library-fidelity-validation-report.schema.json",
+    "requiresLibraryFidelityValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
@@ -697,7 +847,7 @@
     ],
     "recipeReview": "every finish on every approved recipe",
     "highResolutionReview": "approved recipe crops",
-    "pairJunctionReview": "before and after hero mouth and horn crops at 100 percent, 25 percent, 96 px, 48 px, and flipped",
+    "pairJunctionReview": "generic versus exact authored junctions for all 16 reviewed recipes at 100 percent, 25 percent, 192 px, 96 px, 48 px, and flipped",
     "hybridFixtureReview": "legacy single SVG beside stable-parent hybrid bundle on every background plus 3600 export",
     "cellMetadata": [
       "stable-base-id",
@@ -707,7 +857,10 @@
       "fallback-id",
       "bundle-id",
       "bundle-revision",
-      "source-hashes"
+      "source-hashes",
+      "review-status",
+      "asset-revision",
+      "structured-review-id"
     ],
     "outputRoot": "generated/qa",
     "heroFidelityReview": "one before/after summary and one full comparison board per locked hero on cream, white, black, and transparent backgrounds",
@@ -719,7 +872,8 @@
       "25-percent",
       "96px",
       "48px"
-    ]
+    ],
+    "libraryFidelityReview": "13 non-hero structured production-candidate reviews plus the separate three-hero review set; human acceptance remains pending"
   },
   "heroFidelityContract": {
     "version": 9,
@@ -821,6 +975,95 @@
       "runtime-path-generation",
       "landmark-inference",
       "path-morphing"
+    ],
+    "runtimeGeometry": false
+  },
+  "libraryFidelityContract": {
+    "version": 9,
+    "revision": "9.8.0",
+    "source": "supplied-mvp-reference-boards",
+    "document": "docs/LIBRARY-FIDELITY-V9.md",
+    "reviewFile": "reviews/library-fidelity-v9.json",
+    "heroReviewFile": "reviews/hero-fidelity-v9.json",
+    "heroRecipeIds": [
+      "bog-cyclops-grin",
+      "fuzz-fanged",
+      "imp-roar"
+    ],
+    "libraryRecipeIds": [
+      "bog-sleepy-gummy",
+      "fuzz-buck",
+      "skull-oracle",
+      "skull-jagged",
+      "imp-bat",
+      "imp-bent-grin",
+      "moss-grinner",
+      "moss-tongue",
+      "moss-gummy",
+      "blue-worry",
+      "blue-tangle",
+      "blue-wild",
+      "bog-gapped"
+    ],
+    "reviewedRecipeIds": [
+      "bog-cyclops-grin",
+      "bog-sleepy-gummy",
+      "fuzz-buck",
+      "fuzz-fanged",
+      "skull-oracle",
+      "skull-jagged",
+      "imp-roar",
+      "imp-bat",
+      "imp-bent-grin",
+      "moss-grinner",
+      "moss-tongue",
+      "moss-gummy",
+      "blue-worry",
+      "blue-tangle",
+      "blue-wild",
+      "bog-gapped"
+    ],
+    "authoredReplacementCount": 34,
+    "exactPairJunctionCount": 32,
+    "stableIdPolicy": "replace authored artwork behind published IDs; retain recipe, asset, pair, finish, and export identity",
+    "reviewSizes": [
+      "100-percent",
+      "25-percent",
+      "192px",
+      "96px",
+      "48px"
+    ],
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "finishes": [
+      "finish-clean",
+      "finish-etched"
+    ],
+    "humanConfirmationRequired": true,
+    "automatedApproval": false,
+    "allowedRuntimeOperations": [
+      "select",
+      "position",
+      "uniform-scale",
+      "rotate",
+      "layer",
+      "clip",
+      "mask",
+      "mirror",
+      "finish",
+      "export"
+    ],
+    "forbidden": [
+      "runtime-path-generation",
+      "procedural-anatomy",
+      "landmark-inference",
+      "path-morphing",
+      "non-uniform-distortion",
+      "cropped-reference-artwork"
     ],
     "runtimeGeometry": false
   }

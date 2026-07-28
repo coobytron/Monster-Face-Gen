@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/library-fidelity-contract.js",
+  "deterministic": true,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceManifestVersion": 9,
+  "sourceDigest": "37ee5a691e8699fda5eefd0f7aa1e6d794398e0678dec3e736b4ffa81f1a6a47",
+  "summary": {
+    "passed": true,
+    "errorCount": 0,
+    "warningCount": 16,
+    "checkCount": 6
+  },
+  "checks": [
+    {
+      "name": "review",
+      "passed": true
+    },
+    {
+      "name": "references",
+      "passed": true
+    },
+    {
+      "name": "scores",
+      "passed": true
+    },
+    {
+      "name": "production",
+      "passed": true
+    },
+    {
+      "name": "manifest",
+      "passed": true
+    },
+    {
+      "name": "authored",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "bog-sleepy-gummy",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "fuzz-buck",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "skull-oracle",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "skull-jagged",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "imp-bat",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "imp-bent-grin",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "moss-grinner",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "moss-tongue",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "moss-gummy",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "blue-worry",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "blue-tangle",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "blue-wild",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "bog-gapped",
+      "status": "production-candidate-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "bog-cyclops-grin",
+      "status": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "fuzz-fanged",
+      "status": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "recipeId": "imp-roar",
+      "status": "locked-hero-pending-art-director"
+    }
+  ],
+  "counts": {
+    "heroReviews": 3,
+    "libraryReviews": 13,
+    "totalReviewedRecipes": 16,
+    "libraryAuthoredReplacements": 34,
+    "exactPairJunctions": 32
+  }
+}
