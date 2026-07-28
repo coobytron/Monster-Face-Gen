@@ -122,7 +122,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-bog|mouth-gummy and base-bog|horn-nubs without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "fuzz-buck",
@@ -210,7 +249,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-fuzz|mouth-buck and base-fuzz|horn-tufted without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "skull-oracle",
@@ -298,7 +376,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-skull|mouth-gapped and base-skull|horn-long without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "skull-jagged",
@@ -386,7 +503,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-skull|mouth-jagged and base-skull|horn-nubs without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "imp-bat",
@@ -474,7 +630,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-imp|mouth-fangs and base-imp|horn-bat without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "imp-bent-grin",
@@ -562,7 +757,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-imp|mouth-gapped and base-imp|horn-bent without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "moss-grinner",
@@ -650,7 +884,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-moss|mouth-grin and base-moss|horn-rams without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "moss-tongue",
@@ -738,7 +1011,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-moss|mouth-tongue and base-moss|horn-curved without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "moss-gummy",
@@ -826,7 +1138,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-moss|mouth-gummy and base-moss|horn-nubs without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "blue-worry",
@@ -914,7 +1265,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-blue|mouth-gummy and base-blue|horn-tufted without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "blue-tangle",
@@ -1002,7 +1392,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-blue|mouth-tongue and base-blue|horn-bat without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "blue-wild",
@@ -1090,7 +1519,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-blue|mouth-gapped and base-blue|horn-nubs without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     },
     {
       "recipeId": "bog-gapped",
@@ -1178,7 +1646,46 @@
           "text": "Exact root plate adds local overlap, compression folds, edge highlight, and distress continuity without embedding horn or ear anatomy."
         }
       ],
-      "humanConfirmed": false
+      "humanConfirmed": false,
+      "actions": [
+        {
+          "code": "action-1",
+          "text": "Re-authored weak selected assets behind their published stable IDs while preserving recipe identity."
+        },
+        {
+          "code": "action-2",
+          "text": "Added exact authored integration plates for base-bog|mouth-gapped and base-bog|horn-tufted without embedding standalone anatomy."
+        },
+        {
+          "code": "action-3",
+          "text": "Verified the production candidate in generic and exact modes, normal and flipped, at composition and thumbnail scales across all required backgrounds."
+        }
+      ],
+      "reviewRequirements": {
+        "modes": [
+          "generic",
+          "exact"
+        ],
+        "flipStates": [
+          "normal",
+          "flipped"
+        ],
+        "scales": [
+          "100-percent",
+          "25-percent"
+        ],
+        "sizes": [
+          "192px",
+          "96px",
+          "48px"
+        ],
+        "backgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ]
+      }
     }
   ]
 }
