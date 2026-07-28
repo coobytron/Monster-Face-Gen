@@ -1,5 +1,4 @@
 name: Contact Sheet QA
-
 on:
   workflow_dispatch:
     inputs:
@@ -11,55 +10,53 @@ on:
   push:
     paths:
       - 'assets/**'
+      - 'reviews/**'
       - 'docs/**'
       - 'README.md'
+      - 'index.html'
+      - 'internal/recipe-director/**'
+      - 'v8-compatibility.js'
       - 'v9-hybrid-bundles.js'
       - 'v9-pair-junctions.js'
       - 'scripts/contact-sheet-qa.js'
       - 'scripts/hybrid-bundle-*.js'
       - 'scripts/pair-junction-*.js'
       - 'scripts/hero-fidelity-*.js'
-      - 'scripts/update-hero-manifest.js'
-      - 'scripts/update-hero-docs.js'
-      - 'scripts/update-hero-qa.js'
-      - 'tests/hybrid-bundle.test.js'
-      - 'tests/pair-junctions.test.js'
-      - 'tests/hero-fidelity.test.js'
-      - 'schemas/qa-validation-report.schema.json'
-      - 'schemas/hybrid-*.schema.json'
-      - 'schemas/pair-junction-*.schema.json'
-      - 'schemas/hero-fidelity-*.schema.json'
+      - 'scripts/hero-review-*.js'
+      - 'scripts/library-fidelity-*.js'
+      - 'scripts/update-hero-*.js'
+      - 'scripts/update-library-rollout-*.js'
+      - 'tests/**'
+      - 'schemas/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/contact-sheet-qa.yml'
   pull_request:
     paths:
       - 'assets/**'
+      - 'reviews/**'
       - 'docs/**'
       - 'README.md'
+      - 'index.html'
+      - 'internal/recipe-director/**'
+      - 'v8-compatibility.js'
       - 'v9-hybrid-bundles.js'
       - 'v9-pair-junctions.js'
       - 'scripts/contact-sheet-qa.js'
       - 'scripts/hybrid-bundle-*.js'
       - 'scripts/pair-junction-*.js'
       - 'scripts/hero-fidelity-*.js'
-      - 'scripts/update-hero-manifest.js'
-      - 'scripts/update-hero-docs.js'
-      - 'scripts/update-hero-qa.js'
-      - 'tests/hybrid-bundle.test.js'
-      - 'tests/pair-junctions.test.js'
-      - 'tests/hero-fidelity.test.js'
-      - 'schemas/qa-validation-report.schema.json'
-      - 'schemas/hybrid-*.schema.json'
-      - 'schemas/pair-junction-*.schema.json'
-      - 'schemas/hero-fidelity-*.schema.json'
+      - 'scripts/hero-review-*.js'
+      - 'scripts/library-fidelity-*.js'
+      - 'scripts/update-hero-*.js'
+      - 'scripts/update-library-rollout-*.js'
+      - 'tests/**'
+      - 'schemas/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/contact-sheet-qa.yml'
-
 permissions:
   contents: write
-
 jobs:
   generate-and-validate:
     runs-on: ubuntu-latest
@@ -70,6 +67,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Apply prepared library rollout
+        run: |
+          if [ -f scripts/apply-library-rollout.js ]; then
+            node scripts/apply-library-rollout.js
+          fi
+      - name: Commit rollout source
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rollout source is already materialized."
+          else
+            git commit -m "Roll hero-quality art across reviewed recipe library [skip ci]"
+            git push
+          fi
       - run: npm install --package-lock-only
       - run: npm ci
       - run: npm test
@@ -97,7 +111,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md scripts/hero-fidelity-qa.js generated/qa
+          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md generated/qa
           if git diff --cached --quiet; then
             echo "Generated artifacts are already current."
           else
