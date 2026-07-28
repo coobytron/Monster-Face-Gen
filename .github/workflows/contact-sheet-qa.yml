@@ -73,7 +73,6 @@ jobs:
             node scripts/apply-library-rollout.js
           fi
       - name: Commit rollout source
-        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
