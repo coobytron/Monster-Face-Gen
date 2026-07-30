@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/library-fidelity-validation-report.schema.json",
+  "title": "Monster Face Library Fidelity Rollout Validation Report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generator",
+    "deterministic",
+    "generatedAt",
+    "sourceManifestVersion",
+    "sourceDigest",
+    "summary",
+    "checks",
+    "errors",
+    "warnings",
+    "counts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "generator": {
+      "const": "scripts/library-fidelity-contract.js"
+    },
+    "deterministic": {
+      "const": true
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "sourceManifestVersion": {
+      "type": "integer"
+    },
+    "sourceDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "passed",
+        "errorCount",
+        "warningCount",
+        "checkCount"
+      ],
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "errorCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warningCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "checkCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "passed"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "heroReviews",
+        "libraryReviews",
+        "totalReviewedRecipes",
+        "libraryAuthoredReplacements",
+        "exactPairJunctions"
+      ],
+      "properties": {
+        "heroReviews": {
+          "const": 3
+        },
+        "libraryReviews": {
+          "const": 13
+        },
+        "totalReviewedRecipes": {
+          "const": 16
+        },
+        "libraryAuthoredReplacements": {
+          "const": 34
+        },
+        "exactPairJunctions": {
+          "const": 32
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

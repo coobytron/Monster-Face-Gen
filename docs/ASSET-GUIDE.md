@@ -22,6 +22,21 @@ Recommended production sources:
 
 A published ID must not be renamed. Replace the art behind the same ID or introduce a new ID.
 
+<!-- LIBRARY-FIDELITY-V9:START -->
+## Reviewed-library production contract
+
+V9.8 extends the locked hero method to all 16 curated recipes without changing the pre-drawn runtime boundary.
+
+- `assets/library-v9/` contains 34 original load-after replacements behind published stable IDs for the non-hero production library.
+- `assets/pair-junctions.js` contains one exact mouth plate and one exact horn-or-ear plate for every curated recipe: 16 + 16 plates.
+- Every plate remains non-anatomical support artwork and retains the exact-pair-first, generic-fallback selection rule.
+- Curated shuffle keeps reviewed mouth and horn pair IDs together. Compatible mutation may change eyes, nose, pattern, or extra only.
+- `reviews/library-fidelity-v9.json` is structured agent-assisted review evidence. It must not be converted to human-confirmed status without an art director comparing the generated boards and supplied MVP references.
+- Review every recipe at 100%, 25%, 192 px, 96 px, and 48 px; flipped and unflipped; on cream, white, black, and transparent backgrounds.
+
+Runtime code may select, rigidly place, uniformly scale, rotate, layer, clip, mask, mirror, finish, and export these authored assets. It may not generate or infer anatomy.
+<!-- LIBRARY-FIDELITY-V9:END -->
+
 <!-- HERO-FIDELITY-V9:START -->
 ## Near-final hero replacement contract
 
@@ -134,7 +149,7 @@ Mouth interiors remain inside authored apertures and are clipped to the selected
 
 Pair-specific plates are published in `assets/pair-junctions.js`. Their stable `id` and `pairKey` must both equal `<base-id>|<part-id>`.
 
-The current required set is:
+The original locked-hero set is listed below; V9.8 additionally requires both exact pair keys for every curated recipe as recorded in `assets/compatibility.js` and `reviews/library-fidelity-v9.json`:
 
 - `base-bog|mouth-grin`
 - `base-bog|horn-curved`

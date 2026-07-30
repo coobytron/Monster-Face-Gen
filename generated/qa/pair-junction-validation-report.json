@@ -4,12 +4,12 @@
   "deterministic": true,
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "sourceManifestVersion": 9,
-  "sourceDigest": "3c55cd9aae7d253bacd420fa3fa100771c312d3c4060bcdd2122355d0b50bc72",
+  "sourceDigest": "7a8ef56ef87c2a94ecd969f9110c8153abb6132c72e5c5d4f65385eae2151ee2",
   "summary": {
     "passed": true,
     "errorCount": 0,
-    "warningCount": 0,
-    "checkCount": 6
+    "warningCount": 32,
+    "checkCount": 7
   },
   "checks": [
     {
@@ -35,15 +35,181 @@
     {
       "name": "flip",
       "passed": true
+    },
+    {
+      "name": "review",
+      "passed": true
     }
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|mouth-grin",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|mouth-gummy",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-fuzz|mouth-buck",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-fuzz|mouth-fangs",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-skull|mouth-gapped",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-skull|mouth-jagged",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|mouth-roar",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|mouth-fangs",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|mouth-gapped",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|mouth-grin",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|mouth-tongue",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|mouth-gummy",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|mouth-gummy",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|mouth-tongue",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|mouth-gapped",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|mouth-gapped",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|horn-curved",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|horn-nubs",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-fuzz|horn-tufted",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-fuzz|horn-bent",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-skull|horn-long",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-skull|horn-nubs",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|horn-spiky",
+      "reviewStatus": "locked-hero-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|horn-bat",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-imp|horn-bent",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|horn-rams",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|horn-curved",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-moss|horn-nubs",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|horn-tufted",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|horn-bat",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-blue|horn-nubs",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    },
+    {
+      "code": "human-confirmation-required",
+      "pairKey": "base-bog|horn-tufted",
+      "reviewStatus": "agent-reviewed-pending-art-director"
+    }
+  ],
   "counts": {
     "heroRecipes": 3,
-    "requiredPairs": 6,
-    "publishedPairs": 6,
-    "mouthPairs": 3,
-    "hornPairs": 3
+    "reviewedRecipes": 16,
+    "requiredPairs": 32,
+    "publishedPairs": 32,
+    "mouthPairs": 16,
+    "hornPairs": 16
   }
 }

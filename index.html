@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#ead9b7" />
-<title>Monster Face Builder — Pre-Drawn v9</title>
+<title>Monster Face Builder — Pre-Drawn v9.8</title>
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="v6-art-finish.css" />
 <style>
@@ -15,111 +15,33 @@
 <div class="grain"></div>
 <div class="app">
   <header>
-    <div class="brand">
-      <div class="brand-copy">
-        <div class="eyebrow">Pre-drawn monster assembly system</div>
-        <h1>Monster<span>Face Builder</span></h1>
-      </div>
-      <div class="speech">Drawn once.<br>Mixed forever.<br>Curated by hand.</div>
-    </div>
-    <div class="intro">A curated library of approved monster art with <b>near-final authored hero assets, compatibility-aware recipes, hybrid layered bundles, exact mouth and horn junction plates, generic seam fallbacks, and fixed print finishes</b>.</div>
-    <div class="top-actions">
-      <button class="icon-action" id="shuffleBtn"><span>⚄</span>Shuffle</button>
-      <button class="icon-action" id="resetBtn"><span>↻</span>Reset</button>
-      <button class="icon-action" id="favoriteBtn"><span>♡</span>Favorite</button>
-      <button class="icon-action" id="exportBtn"><span>⇩</span>Export</button>
-    </div>
+    <div class="brand"><div class="brand-copy"><div class="eyebrow">Pre-drawn monster assembly system</div><h1>Monster<span>Face Builder</span></h1></div><div class="speech">Drawn once.<br>Mixed forever.<br>Curated by hand.</div></div>
+    <div class="intro">A curated library of approved monster art with <b>16 reviewed recipes, stable-ID authored replacements, exact mouth and horn junction plates, compatibility-aware shuffle, deterministic QA, and fixed print finishes</b>.</div>
+    <div class="top-actions"><button class="icon-action" id="shuffleBtn"><span>⚄</span>Shuffle</button><button class="icon-action" id="resetBtn"><span>↻</span>Reset</button><button class="icon-action" id="favoriteBtn"><span>♡</span>Favorite</button><button class="icon-action" id="exportBtn"><span>⇩</span>Export</button></div>
   </header>
-
   <main class="layout">
-    <aside class="panel left-panel">
-      <div class="panel-title"><span>☠ Authored assets</span><small id="assetCount">10 faces</small></div>
-      <div class="panel-body">
-        <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>The three locked heroes now use original near-final authored replacements behind their existing stable IDs. Canvas only composes, clips, masks, mirrors, finishes, and exports approved assets.</div>
-        <div class="mode-switch" aria-label="Builder mode">
-          <button class="mode-btn active" data-mode="faces">Complete faces</button>
-          <button class="mode-btn" data-mode="builder">Build a monster</button>
-        </div>
-        <div class="filter-row" id="filterRow"></div>
-        <div class="category-tabs" id="categoryRow" hidden></div>
-        <div class="library-grid" id="libraryGrid"></div>
-      </div>
-    </aside>
-
-    <section class="stage">
-      <div class="stage-bar"><span>↗</span><span class="title" id="currentTitle">Current Monster</span><span class="mode" id="stageMode">Complete face</span></div>
-      <div class="canvas-wrap" id="canvasWrap">
-        <canvas id="monsterCanvas" width="1600" height="1600" aria-label="Pre-drawn monster face composition preview"></canvas>
-        <div class="asset-badge" id="assetBadge">Curated complete face</div>
-        <div class="drag-tip">Drag to position</div>
-      </div>
-      <div class="stage-footer">
-        <button class="mini-btn" id="undoBtn"><b>↶</b>Undo</button>
-        <button class="mini-btn" id="redoBtn"><b>↷</b>Redo</button>
-        <button class="mini-btn" id="flipBtn"><b>↔</b>Flip H</button>
-        <button class="mini-btn" id="fitBtn"><b>⌖</b>Fit</button>
-        <button class="mini-btn" id="saveVariationBtn"><b>♥</b>Save version</button>
-        <button class="mini-btn" id="backgroundBtn"><b>◉</b>Background</button>
-      </div>
-    </section>
-
-    <aside class="panel right-panel">
-      <div class="panel-title"><span>☷ Art direction</span><small>Non-destructive</small></div>
-      <div class="panel-body">
-        <div class="control-group builder-summary-group" id="builderSummaryGroup" hidden>
-          <div class="group-label"><span>Selected authored parts</span><output id="partCountOut">7</output></div>
-          <div class="builder-summary" id="builderSummary"></div>
-        </div>
-        <div class="control-group">
-          <div class="group-label"><span>Composition scale</span><output id="scaleOut">100%</output></div>
-          <input id="scale" type="range" min="55" max="145" value="100" />
-        </div>
-        <div class="control-group">
-          <div class="group-label"><span>Rotation</span><output id="rotationOut">0°</output></div>
-          <input id="rotation" type="range" min="-15" max="15" value="0" />
-        </div>
-        <div class="control-group">
-          <div class="group-label"><span>Print treatment</span></div>
-          <div class="preset-grid" id="presetGrid">
-            <button class="preset active" data-preset="classic">Classic paper</button>
-            <button class="preset" data-preset="clean">Clean studio</button>
-            <button class="preset" data-preset="noir">Noir ink</button>
-            <button class="preset" data-preset="thermal">Thermal print</button>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="group-label"><span>Format</span></div>
-          <div class="select-row">
-            <select id="frameStyle" aria-label="Frame style">
-              <option value="none">No frame</option><option value="poster">Poster border</option><option value="badge">Badge circle</option>
-            </select>
-            <select id="paperColor" aria-label="Paper colour">
-              <option value="cream">Cream paper</option><option value="warm">Warm kraft</option><option value="white">Off white</option><option value="black">Black stock</option>
-            </select>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="group-label"><span>Caption</span></div>
-          <input class="text-input" id="caption" type="text" maxlength="28" value="MONSTER No. 01" />
-          <div class="toggle-row"><span>Show caption</span><input type="checkbox" id="captionToggle" checked /></div>
-          <div class="toggle-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle" /></div>
-        </div>
-        <button class="primary" id="shufflePrimary">Shuffle face</button>
-        <div class="tip">The three locked hero recipes retain their published IDs while using 21 re-authored components, exact pair junctions, and the Bog hybrid bundle v2. Non-hero combinations continue through the existing compatibility and fallback paths.</div>
-      </div>
-    </aside>
+    <aside class="panel left-panel"><div class="panel-title"><span>☠ Authored assets</span><small id="assetCount">10 faces</small></div><div class="panel-body">
+      <div class="source-note" id="sourceNote"><strong>Pre-drawn source of truth</strong>All 16 curated recipes now use reviewed stable-ID artwork and exact mouth plus horn-or-ear integration. Canvas only composes, clips, masks, mirrors, finishes, and exports approved objects.</div>
+      <div class="mode-switch" aria-label="Builder mode"><button class="mode-btn active" data-mode="faces">Complete faces</button><button class="mode-btn" data-mode="builder">Build a monster</button></div>
+      <div class="filter-row" id="filterRow"></div><div class="category-tabs" id="categoryRow" hidden></div><div class="library-grid" id="libraryGrid"></div>
+    </div></aside>
+    <section class="stage"><div class="stage-bar"><span>↗</span><span class="title" id="currentTitle">Current Monster</span><span class="mode" id="stageMode">Complete face</span></div><div class="canvas-wrap" id="canvasWrap"><canvas id="monsterCanvas" width="1600" height="1600" aria-label="Pre-drawn monster face composition preview"></canvas><div class="asset-badge" id="assetBadge">Curated complete face</div><div class="drag-tip">Drag to position</div></div><div class="stage-footer"><button class="mini-btn" id="undoBtn"><b>↶</b>Undo</button><button class="mini-btn" id="redoBtn"><b>↷</b>Redo</button><button class="mini-btn" id="flipBtn"><b>↔</b>Flip H</button><button class="mini-btn" id="fitBtn"><b>⌖</b>Fit</button><button class="mini-btn" id="saveVariationBtn"><b>♥</b>Save version</button><button class="mini-btn" id="backgroundBtn"><b>◉</b>Background</button></div></section>
+    <aside class="panel right-panel"><div class="panel-title"><span>☷ Art direction</span><small>Non-destructive</small></div><div class="panel-body">
+      <div class="control-group builder-summary-group" id="builderSummaryGroup" hidden><div class="group-label"><span>Selected authored parts</span><output id="partCountOut">7</output></div><div class="builder-summary" id="builderSummary"></div></div>
+      <div class="control-group"><div class="group-label"><span>Composition scale</span><output id="scaleOut">100%</output></div><input id="scale" type="range" min="55" max="145" value="100" /></div>
+      <div class="control-group"><div class="group-label"><span>Rotation</span><output id="rotationOut">0°</output></div><input id="rotation" type="range" min="-15" max="15" value="0" /></div>
+      <div class="control-group"><div class="group-label"><span>Print treatment</span></div><div class="preset-grid" id="presetGrid"><button class="preset active" data-preset="classic">Classic paper</button><button class="preset" data-preset="clean">Clean studio</button><button class="preset" data-preset="noir">Noir ink</button><button class="preset" data-preset="thermal">Thermal print</button></div></div>
+      <div class="control-group"><div class="group-label"><span>Format</span></div><div class="select-row"><select id="frameStyle" aria-label="Frame style"><option value="none">No frame</option><option value="poster">Poster border</option><option value="badge">Badge circle</option></select><select id="paperColor" aria-label="Paper colour"><option value="cream">Cream paper</option><option value="warm">Warm kraft</option><option value="white">Off white</option><option value="black">Black stock</option></select></div></div>
+      <div class="control-group"><div class="group-label"><span>Caption</span></div><input class="text-input" id="caption" type="text" maxlength="28" value="MONSTER No. 01" /><div class="toggle-row"><span>Show caption</span><input type="checkbox" id="captionToggle" checked /></div><div class="toggle-row"><span>Transparent export</span><input type="checkbox" id="transparentToggle" /></div></div>
+      <button class="primary" id="shufflePrimary">Shuffle face</button><div class="tip">Every curated recipe keeps an exact reviewed mouth and horn-or-ear pair. Compatible mutations preserve those attachment pairs and change only eyes, nose, pattern, or extra. Human art-direction confirmation remains a separate review step.</div>
+    </div></aside>
   </main>
-
-  <section class="variations">
-    <div class="variations-title"><b>ϟ</b>Saved<br>Compositions →</div>
-    <div class="variation-grid" id="variationGrid"></div>
-  </section>
-  <div class="footer-note"><span>☠</span>Selected by hand. Joined like one drawing.<span>☠</span></div>
+  <section class="variations"><div class="variations-title"><b>ϟ</b>Saved<br>Compositions →</div><div class="variation-grid" id="variationGrid"></div></section><div class="footer-note"><span>☠</span>Selected by hand. Joined like one drawing.<span>☠</span></div>
 </div>
-
-<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};window.MONSTER_FINISHES=[];window.MONSTER_JUNCTIONS={mouthSeams:[],hornSeams:[]};window.MONSTER_PAIR_JUNCTIONS=null;window.MONSTER_HYBRID_BUNDLES=null;window.MONSTER_HERO_FIDELITY=null;</script>
+<script>window.MONSTER_ASSETS=[];window.MONSTER_PARTS={};window.MONSTER_FINISHES=[];window.MONSTER_JUNCTIONS={mouthSeams:[],hornSeams:[]};window.MONSTER_PAIR_JUNCTIONS=null;window.MONSTER_HYBRID_BUNDLES=null;window.MONSTER_HERO_FIDELITY=null;window.MONSTER_LIBRARY_FIDELITY=null;</script>
 <script src="assets/faces/monster-01.js"></script><script src="assets/faces/monster-02.js"></script><script src="assets/faces/monster-03.js"></script><script src="assets/faces/monster-04.js"></script><script src="assets/faces/monster-05.js"></script><script src="assets/faces/monster-06.js"></script><script src="assets/faces/monster-07.js"></script><script src="assets/faces/monster-08.js"></script><script src="assets/faces/monster-09.js"></script><script src="assets/faces/monster-10.js"></script>
 <script src="assets/parts/bases.js"></script><script src="assets/parts/eyes.js"></script><script src="assets/parts/noses.js"></script><script src="assets/parts/mouths.js"></script><script src="assets/parts/horns.js"></script><script src="assets/parts/patterns-compact.js"></script><script src="assets/parts/extras.js"></script>
+<script src="assets/library-v9/bases.js"></script><script src="assets/library-v9/eyes.js"></script><script src="assets/library-v9/noses.js"></script><script src="assets/library-v9/mouths.js"></script><script src="assets/library-v9/horns.js"></script><script src="assets/library-v9/patterns.js"></script><script src="assets/library-v9/extras.js"></script>
 <script src="assets/hero-v9/bases.js"></script><script src="assets/hero-v9/eyes.js"></script><script src="assets/hero-v9/noses.js"></script><script src="assets/hero-v9/mouths.js"></script><script src="assets/hero-v9/horns.js"></script><script src="assets/hero-v9/patterns.js"></script><script src="assets/hero-v9/extras.js"></script>
 <script src="assets/hybrid-bundles.js"></script><script src="assets/finishes.js"></script><script src="assets/junctions.js"></script><script src="assets/pair-junctions.js"></script><script src="assets/compatibility.js"></script>
 <script src="png-metadata.js"></script><script src="app-core.js"></script><script src="app.js"></script><script src="v6-art-finish.js"></script><script src="v7-integration.js"></script><script src="v8-compatibility.js"></script><script src="v9-hybrid-bundles.js"></script><script src="v9-pair-junctions.js"></script>
