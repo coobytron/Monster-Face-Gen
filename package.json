@@ -1,13 +1,14 @@
 {
   "name": "monster-face-gen-qa",
   "private": true,
-  "version": "9.8.0",
+  "version": "10.0.0",
   "scripts": {
     "pretest": "node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js && node scripts/update-hero-qa.js && node scripts/update-library-rollout-manifest.js && node scripts/update-library-rollout-docs.js",
-    "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node tests/hybrid-bundle.test.js && node tests/pair-junctions.test.js && node tests/hero-fidelity.test.js && node tests/hero-review.test.js && node tests/recipe-director.test.js && node tests/library-fidelity.test.js && node tests/stroke-lab.test.js && node scripts/contact-sheet-qa.js --validate-only && node scripts/hybrid-bundle-qa.js --validate-only && node scripts/pair-junction-qa.js --validate-only && node scripts/hero-fidelity-qa.js --validate-only && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js --validate-only",
+    "test": "node tests/compatibility.test.js && node tests/art-direction.test.js && node tests/hybrid-bundle.test.js && node tests/pair-junctions.test.js && node tests/hero-fidelity.test.js && node tests/hero-review.test.js && node tests/recipe-director.test.js && node tests/library-fidelity.test.js && node tests/stroke-lab.test.js && node tests/v10-expansion-contract.test.js && node scripts/contact-sheet-qa.js --validate-only && node scripts/hybrid-bundle-qa.js --validate-only && node scripts/pair-junction-qa.js --validate-only && node scripts/hero-fidelity-qa.js --validate-only && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js --validate-only && node scripts/v10-expansion-contract.js",
     "preqa": "node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js && node scripts/update-hero-qa.js && node scripts/update-library-rollout-manifest.js && node scripts/update-library-rollout-docs.js",
-    "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js",
-    "stroke-lab": "node tools/stroke-lab/stroke-lab.js"
+    "qa": "node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js && node scripts/v10-expansion-contract.js --write",
+    "stroke-lab": "node tools/stroke-lab/stroke-lab.js",
+    "v10:validate": "node scripts/v10-expansion-contract.js --write"
   },
   "dependencies": {
     "sharp": "0.34.3"
