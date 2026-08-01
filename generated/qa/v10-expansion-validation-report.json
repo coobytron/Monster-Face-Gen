@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "bases": 6,
+    "extras": 9,
+    "eyes": 10,
+    "finishes": 5,
+    "hornsOrEars": 9,
+    "mouths": 9,
+    "noses": 9,
+    "patterns": 9,
+    "recipes": 16
+  },
+  "contractVersion": "10.0.0",
+  "digest": "9c726c6907a1b5524bf62e45aa9145c79140931c1fafe3b3c7054d3fba62278c",
+  "errors": [],
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "schemaVersion": "1.0.0",
+  "targets": {
+    "bases": 18,
+    "extras": 27,
+    "eyes": 30,
+    "finishes": 12,
+    "hornsOrEars": 27,
+    "mouths": 27,
+    "noses": 27,
+    "patterns": 27,
+    "recipes": 48
+  },
+  "valid": true
+}
