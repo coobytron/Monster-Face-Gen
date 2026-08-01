@@ -1,0 +1,79 @@
+{
+  "contractVersion": "10.0.0",
+  "parentIssue": 31,
+  "status": "candidate",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "baseline": {
+    "bases": 6,
+    "eyes": 10,
+    "noses": 9,
+    "mouths": 9,
+    "hornsOrEars": 9,
+    "patterns": 9,
+    "extras": 9,
+    "finishes": 5,
+    "recipes": 16
+  },
+  "targets": {
+    "bases": 18,
+    "eyes": 30,
+    "noses": 27,
+    "mouths": 27,
+    "hornsOrEars": 27,
+    "patterns": 27,
+    "extras": 27,
+    "finishes": 12,
+    "recipes": 48
+  },
+  "requiredCharacterArchetypes": [
+    "cyclops",
+    "multi-eye",
+    "skull-like",
+    "furry",
+    "blob",
+    "compact-imp",
+    "long-face",
+    "squat",
+    "soft-cute",
+    "sharp-creepy",
+    "calm",
+    "wild"
+  ],
+  "requiredMouthFamilies": [
+    "sparse",
+    "crowded",
+    "tusked",
+    "buck-toothed",
+    "zipper-like",
+    "gummy",
+    "fang-led",
+    "open-roar",
+    "underbite",
+    "tongue-led"
+  ],
+  "requiredEffectFamilies": [
+    "etched-ink",
+    "blackwork-shadow",
+    "screenprint-registration",
+    "distressed-xerox",
+    "halftone-pulp",
+    "dry-brush-mask",
+    "chromatic-edge-split",
+    "metallic-highlight",
+    "paper-cut-shadow",
+    "soft-airbrush-underpaint",
+    "limited-palette-risograph",
+    "clean-asset"
+  ],
+  "reviewScales": ["100%", "25%", "192px", "96px", "48px"],
+  "reviewBackgrounds": ["cream", "white", "black", "transparent"],
+  "rules": {
+    "stableIdsRequired": true,
+    "recolorOnlyDoesNotCount": true,
+    "authoredAnatomyOnly": true,
+    "runtimeMayComposeOnly": true,
+    "exactPairKeysRequiredForCuratedRecipes": true,
+    "agentCandidateIsNotHumanApproval": true
+  }
+}
