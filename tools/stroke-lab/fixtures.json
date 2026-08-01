@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "junction-horn-root-fold-01",
+      "role": "junction-accent",
+      "approach": "averaged-normal",
+      "width": { "start": 16, "end": 5 },
+      "flipReview": true,
+      "points": [
+        { "x": 166, "y": 185 },
+        { "x": 183, "y": 171 },
+        { "x": 205, "y": 166 },
+        { "x": 226, "y": 171 },
+        { "x": 242, "y": 187 }
+      ]
+    },
+    {
+      "id": "finish-highlight-cut-01",
+      "role": "finish-detail",
+      "approach": "segment-normal",
+      "width": 7,
+      "flipReview": false,
+      "points": [
+        { "x": 338, "y": 356 },
+        { "x": 360, "y": 345 },
+        { "x": 384, "y": 341 },
+        { "x": 407, "y": 347 }
+      ]
+    }
+  ]
+}
