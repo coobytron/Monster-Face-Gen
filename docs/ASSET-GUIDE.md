@@ -277,3 +277,9 @@ All reports use stable digests and a fixed Unix-epoch timestamp so unchanged aut
 ## Source of truth
 
 The supplied MVP boards define the approved families, tone, silhouette, expression language, and attachment quality. Production assets should come from underlying layered artwork whenever available rather than crops from flattened reference sheets.
+
+<!-- V10-MOUTH-PACK:START -->
+## V10 mouth candidate contract
+
+Load `assets/v10-mouths.js` after the v9 mouth replacements and `assets/v10-mouth-integration.js` after pair junctions plus compatibility. New mouths are full-canvas authored SVGs with stable `mouth-*` IDs, explicit mouth-family and seam-profile metadata, runtime geometry disabled, and candidate review status. Exact pair plates may contain only local overlap, cheek/lip covers, short folds, cast shadow, edge highlight, and local distress; they must not contain standalone mouth anatomy.
+<!-- V10-MOUTH-PACK:END -->
