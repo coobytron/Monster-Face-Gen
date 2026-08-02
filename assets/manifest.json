@@ -36,7 +36,15 @@
       "assets/v10-mouth-assets-02.js",
       "assets/v10-mouth-assets-03.js",
       "assets/v10-mouth-fixtures.js",
-      "assets/v10-mouths.js"
+      "assets/v10-mouths.js",
+      "assets/v10-head-assets-01.js",
+      "assets/v10-head-assets-02.js",
+      "assets/v10-head-assets-03.js",
+      "assets/v10-head-fixtures.js",
+      "assets/v10-heads.js",
+      "assets/v10-head-assets-04.js",
+      "assets/v10-head-assets-05.js",
+      "assets/v10-head-assets-06.js"
     ],
     "hybridBundles": [
       "assets/hybrid-bundles.js"
@@ -63,7 +71,24 @@
       "assets/v10-mouth-junctions-04.js",
       "assets/v10-mouth-junctions-05.js",
       "assets/v10-mouth-integration-data.js",
-      "assets/v10-mouth-integration.js"
+      "assets/v10-mouth-integration.js",
+      "assets/v10-head-seams.js",
+      "assets/v10-head-junctions-01.js",
+      "assets/v10-head-junctions-02.js",
+      "assets/v10-head-junctions-03.js",
+      "assets/v10-head-integration-data.js",
+      "assets/v10-head-integration.js",
+      "assets/v10-head-seams-01.js",
+      "assets/v10-head-seams-02.js",
+      "assets/v10-head-seams-03.js",
+      "assets/v10-head-seams-04.js",
+      "assets/v10-head-seams-05.js",
+      "assets/v10-head-junctions-04.js",
+      "assets/v10-head-junctions-05.js",
+      "assets/v10-head-junctions-06.js",
+      "assets/v10-head-compatibility-01.js",
+      "assets/v10-head-compatibility-02.js",
+      "assets/v10-head-placements.js"
     ],
     "compatibility": [
       "assets/compatibility.js"
@@ -77,7 +102,8 @@
     "fidelityTargets": [
       "docs/MVP-FIDELITY-TARGETS.md",
       "docs/LIBRARY-FIDELITY-V9.md",
-      "docs/V10-MOUTH-PACK.md"
+      "docs/V10-MOUTH-PACK.md",
+      "docs/V10-HEAD-BASE-PACK.md"
     ],
     "runtime": [
       "v8-compatibility.js",
@@ -107,7 +133,10 @@
       "schemas/library-fidelity-validation-report.schema.json",
       "tests/v10-mouths.test.js",
       "scripts/v10-mouth-qa.js",
-      "schemas/v10-mouth-validation-report.schema.json"
+      "schemas/v10-mouth-validation-report.schema.json",
+      "tests/v10-heads.test.js",
+      "scripts/v10-head-qa.js",
+      "schemas/v10-head-validation-report.schema.json"
     ],
     "workflows": [
       ".github/workflows/contact-sheet-qa.yml"
@@ -138,7 +167,7 @@
   },
   "counts": {
     "completeFaces": 10,
-    "bases": 6,
+    "bases": 18,
     "eyes": 10,
     "noses": 9,
     "mouths": 27,
@@ -168,7 +197,10 @@
     "reviewedFidelityRecipes": 16,
     "libraryAuthoredReplacements": 34,
     "v10MouthCandidates": 18,
-    "v10MouthCandidatePairJunctions": 18
+    "v10MouthCandidatePairJunctions": 18,
+    "v10HeadCandidates": 12,
+    "v10HeadCandidateBaseSeams": 24,
+    "v10HeadCandidatePairJunctions": 24
   },
   "layerOrder": [
     "horns",
@@ -813,7 +845,10 @@
       "node scripts/library-fidelity-qa.js",
       "node tests/v10-mouths.test.js",
       "node scripts/v10-mouth-qa.js --validate-only",
-      "node scripts/v10-mouth-qa.js --write"
+      "node scripts/v10-mouth-qa.js --write",
+      "node tests/v10-heads.test.js",
+      "node scripts/v10-head-qa.js --validate-only",
+      "node scripts/v10-head-qa.js --write"
     ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
@@ -842,7 +877,9 @@
     "libraryFidelityReportSchema": "schemas/library-fidelity-validation-report.schema.json",
     "requiresLibraryFidelityValidation": true,
     "v10MouthReport": "generated/qa/v10-mouths/validation-report.json",
-    "requiresV10MouthValidation": true
+    "requiresV10MouthValidation": true,
+    "v10HeadReport": "generated/qa/v10-heads/validation-report.json",
+    "requiresV10HeadValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
@@ -897,7 +934,8 @@
       "48px"
     ],
     "libraryFidelityReview": "13 non-hero structured production-candidate reviews plus the separate three-hero review set; human acceptance remains pending",
-    "v10MouthReview": "18 candidate mouths with exact base-pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px"
+    "v10MouthReview": "18 candidate mouths with exact base-pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px",
+    "v10HeadReview": "12 candidate head bases with exact mouth and crown pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px"
   },
   "heroFidelityContract": {
     "version": 9,
@@ -1152,5 +1190,81 @@
       "base-bog|mouth-tongue-loll"
     ],
     "report": "generated/qa/v10-mouths/validation-report.json"
+  },
+  "v10HeadContract": {
+    "version": 10,
+    "revision": "10.2.0",
+    "issue": 40,
+    "status": "candidate",
+    "humanApprovalRequired": true,
+    "runtimeGeometry": false,
+    "baseline": 6,
+    "added": 12,
+    "target": 18,
+    "manifest": "assets/v10-head-manifest.json",
+    "archetypes": [
+      "blob",
+      "calm",
+      "compact-imp",
+      "cyclops",
+      "furry",
+      "long-face",
+      "multi-eye",
+      "sharp-creepy",
+      "skull-like",
+      "soft-cute",
+      "squat",
+      "wild"
+    ],
+    "integrationZones": [
+      "mouth",
+      "crown",
+      "eyes",
+      "nose"
+    ],
+    "reviewScales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ],
+    "reviewBackgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "reviewOrientations": [
+      "normal",
+      "flipped"
+    ],
+    "exactPairKeys": [
+      "base-cyclops-dome|mouth-grin",
+      "base-cyclops-dome|horn-curved",
+      "base-multi-eye-cluster|mouth-crowded-grit",
+      "base-multi-eye-cluster|horn-nubs",
+      "base-skull-cracked|mouth-jagged",
+      "base-skull-cracked|horn-long",
+      "base-furry-mane|mouth-buck-crooked",
+      "base-furry-mane|horn-tufted",
+      "base-blob-melt|mouth-gummy-droop",
+      "base-blob-melt|horn-nubs",
+      "base-imp-compact|mouth-fangs",
+      "base-imp-compact|horn-bat",
+      "base-long-face|mouth-sparse-frown",
+      "base-long-face|horn-bent",
+      "base-squat-slab|mouth-open-roar-square",
+      "base-squat-slab|horn-rams",
+      "base-soft-pillow|mouth-gummy",
+      "base-soft-pillow|horn-tufted",
+      "base-sharp-shard|mouth-fang-sneer",
+      "base-sharp-shard|horn-spiky",
+      "base-calm-stone|mouth-sparse-three",
+      "base-calm-stone|horn-curved",
+      "base-wild-bramble|mouth-tusked-wide",
+      "base-wild-bramble|horn-bat"
+    ],
+    "report": "generated/qa/v10-heads/validation-report.json"
   }
 }

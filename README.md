@@ -230,3 +230,9 @@ Production replacements may use transparent PNG, WebP, or genuine SVG exported f
 
 Issue #34 adds 18 static mouth candidates, bringing the authored library to 27 mouths. Every candidate has stable metadata, all-base compatibility classification, a rigid review placement, an exact pair-specific junction plate, and deterministic normal/flipped QA across four backgrounds and five scales. See [docs/V10-MOUTH-PACK.md](docs/V10-MOUTH-PACK.md). Human Art Director approval remains required before production promotion.
 <!-- V10-MOUTH-PACK:END -->
+
+<!-- V10-HEAD-BASE-PACK:START -->
+## V10 authored head-base expansion
+
+Issue #40 adds 12 structurally distinct head bases, bringing the authored library to 18 bases across the cyclops, multi-eye, skull-like, furry, blob, compact-imp, long-face, squat, soft-cute, sharp-creepy, calm, and wild directions. Every candidate carries a stable `base-*` ID, archetype and silhouette metadata, mouth/crown/eye/nose integration zones, compatibility against the full 10 eye, 9 nose, 27 mouth, and 9 horn catalogue, fallback seams, exact mouth and crown pair plates, and deterministic normal/flipped QA across four backgrounds and five scales. See [docs/V10-HEAD-BASE-PACK.md](docs/V10-HEAD-BASE-PACK.md). Human Art Director approval remains required before production promotion.
+<!-- V10-HEAD-BASE-PACK:END -->

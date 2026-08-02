@@ -283,3 +283,9 @@ The supplied MVP boards define the approved families, tone, silhouette, expressi
 
 Load `assets/v10-mouths.js` after the v9 mouth replacements and `assets/v10-mouth-integration.js` after pair junctions plus compatibility. New mouths are full-canvas authored SVGs with stable `mouth-*` IDs, explicit mouth-family and seam-profile metadata, runtime geometry disabled, and candidate review status. Exact pair plates may contain only local overlap, cheek/lip covers, short folds, cast shadow, edge highlight, and local distress; they must not contain standalone mouth anatomy.
 <!-- V10-MOUTH-PACK:END -->
+
+<!-- V10-HEAD-BASE-PACK:START -->
+## V10 head-base candidate contract
+
+Load `assets/v10-heads.js` after the v9 base replacements, and `assets/v10-head-integration.js` after junctions, pair junctions, and compatibility. New bases are full-canvas authored SVGs with stable `base-*` IDs, an `archetype` tag, a `silhouette` descriptor, `integrationZones` for mouth, crown, eyes, and nose, an `outlinePath` copy of the silhouette for QA, runtime geometry disabled, and candidate review status. Structural distinction is measured against the v9 baseline: a new base must sit at least as far from every other base as the closest approved v9 pair, so a recolour scores zero and cannot be counted as new anatomy.
+<!-- V10-HEAD-BASE-PACK:END -->

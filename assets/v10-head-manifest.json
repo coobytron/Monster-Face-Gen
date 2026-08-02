@@ -1,0 +1,967 @@
+{
+  "version": 10,
+  "revision": "10.2.0",
+  "issue": 40,
+  "status": "candidate",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "baselineCount": 6,
+  "addedCount": 12,
+  "targetCount": 18,
+  "requiredArchetypes": [
+    "blob",
+    "calm",
+    "compact-imp",
+    "cyclops",
+    "furry",
+    "long-face",
+    "multi-eye",
+    "sharp-creepy",
+    "skull-like",
+    "soft-cute",
+    "squat",
+    "wild"
+  ],
+  "assets": [
+    {
+      "id": "base-cyclops-dome",
+      "name": "Dome Cyclops",
+      "archetype": "cyclops",
+      "palette": "violet",
+      "silhouette": {
+        "profile": "tall-brow-dome",
+        "crown": "single-socket-dome",
+        "cheek": "shelf-cut",
+        "jaw": "narrow-drop",
+        "chin": "rounded-notch"
+      },
+      "integrationZones": {
+        "mouth": [
+          200,
+          402,
+          200,
+          100
+        ],
+        "crown": [
+          148,
+          100,
+          306,
+          116
+        ],
+        "eyes": [
+          156,
+          218,
+          288,
+          150
+        ],
+        "nose": [
+          244,
+          336,
+          112,
+          78
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-multi-eye-cluster",
+      "name": "Cluster Watcher",
+      "archetype": "multi-eye",
+      "palette": "acid",
+      "silhouette": {
+        "profile": "triple-lobe-bulb",
+        "crown": "three-pod-cluster",
+        "cheek": "stepped-bulge",
+        "jaw": "tapered-sack",
+        "chin": "off-centre-point"
+      },
+      "integrationZones": {
+        "mouth": [
+          206,
+          388,
+          188,
+          92
+        ],
+        "crown": [
+          172,
+          86,
+          268,
+          126
+        ],
+        "eyes": [
+          146,
+          210,
+          308,
+          150
+        ],
+        "nose": [
+          242,
+          340,
+          116,
+          74
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-skull-cracked",
+      "name": "Split Cranium",
+      "archetype": "skull-like",
+      "palette": "bone",
+      "silhouette": {
+        "profile": "faceted-cleft-skull",
+        "crown": "notched-wedge",
+        "cheek": "flat-plate",
+        "jaw": "stepped-teeth",
+        "chin": "square-tooth"
+      },
+      "integrationZones": {
+        "mouth": [
+          206,
+          398,
+          190,
+          98
+        ],
+        "crown": [
+          186,
+          104,
+          232,
+          96
+        ],
+        "eyes": [
+          160,
+          212,
+          280,
+          144
+        ],
+        "nose": [
+          252,
+          340,
+          96,
+          72
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-furry-mane",
+      "name": "Mane Mop",
+      "archetype": "furry",
+      "palette": "rust",
+      "silhouette": {
+        "profile": "curled-tuft-ring",
+        "crown": "shaggy-fringe",
+        "cheek": "mane-broken",
+        "jaw": "fringed-drop",
+        "chin": "tuft-split"
+      },
+      "integrationZones": {
+        "mouth": [
+          200,
+          386,
+          200,
+          96
+        ],
+        "crown": [
+          160,
+          100,
+          280,
+          110
+        ],
+        "eyes": [
+          168,
+          236,
+          264,
+          138
+        ],
+        "nose": [
+          252,
+          336,
+          96,
+          68
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-blob-melt",
+      "name": "Melt Blob",
+      "archetype": "blob",
+      "palette": "slime",
+      "silhouette": {
+        "profile": "left-lean-melt",
+        "crown": "sagging-dome",
+        "cheek": "soft-slump",
+        "jaw": "drip-hem",
+        "chin": "pendant-drip"
+      },
+      "integrationZones": {
+        "mouth": [
+          186,
+          380,
+          214,
+          100
+        ],
+        "crown": [
+          150,
+          112,
+          296,
+          112
+        ],
+        "eyes": [
+          148,
+          222,
+          296,
+          144
+        ],
+        "nose": [
+          244,
+          330,
+          108,
+          72
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-imp-compact",
+      "name": "Pocket Imp",
+      "archetype": "compact-imp",
+      "palette": "ember",
+      "silhouette": {
+        "profile": "low-set-compact",
+        "crown": "flat-shell",
+        "cheek": "ear-pocket-cut",
+        "jaw": "broad-round",
+        "chin": "tucked"
+      },
+      "integrationZones": {
+        "mouth": [
+          204,
+          398,
+          192,
+          94
+        ],
+        "crown": [
+          156,
+          148,
+          288,
+          96
+        ],
+        "eyes": [
+          162,
+          240,
+          276,
+          140
+        ],
+        "nose": [
+          250,
+          348,
+          100,
+          66
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-long-face",
+      "name": "Long Lantern",
+      "archetype": "long-face",
+      "palette": "indigo",
+      "silhouette": {
+        "profile": "tall-lantern",
+        "crown": "narrow-cap",
+        "cheek": "long-flat",
+        "jaw": "pinched-drop",
+        "chin": "rounded-tip"
+      },
+      "integrationZones": {
+        "mouth": [
+          214,
+          398,
+          172,
+          104
+        ],
+        "crown": [
+          186,
+          96,
+          228,
+          104
+        ],
+        "eyes": [
+          180,
+          208,
+          240,
+          152
+        ],
+        "nose": [
+          256,
+          338,
+          88,
+          76
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-squat-slab",
+      "name": "Squat Slab",
+      "archetype": "squat",
+      "palette": "mustard",
+      "silhouette": {
+        "profile": "wide-low-slab",
+        "crown": "flat-lid",
+        "cheek": "blocky-wide",
+        "jaw": "shelf-heavy",
+        "chin": "flat-hem"
+      },
+      "integrationZones": {
+        "mouth": [
+          190,
+          394,
+          220,
+          106
+        ],
+        "crown": [
+          130,
+          176,
+          344,
+          78
+        ],
+        "eyes": [
+          130,
+          258,
+          340,
+          130
+        ],
+        "nose": [
+          242,
+          344,
+          116,
+          68
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-soft-pillow",
+      "name": "Pillow Pal",
+      "archetype": "soft-cute",
+      "palette": "blush",
+      "silhouette": {
+        "profile": "puffed-pillow",
+        "crown": "soft-lid",
+        "cheek": "pinched-puff",
+        "jaw": "plush-round",
+        "chin": "dimple"
+      },
+      "integrationZones": {
+        "mouth": [
+          200,
+          392,
+          200,
+          102
+        ],
+        "crown": [
+          154,
+          150,
+          292,
+          92
+        ],
+        "eyes": [
+          156,
+          240,
+          288,
+          140
+        ],
+        "nose": [
+          248,
+          340,
+          104,
+          70
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-sharp-shard",
+      "name": "Shard Creep",
+      "archetype": "sharp-creepy",
+      "palette": "steel",
+      "silhouette": {
+        "profile": "leaning-shard",
+        "crown": "split-point",
+        "cheek": "knife-facet",
+        "jaw": "angled-hook",
+        "chin": "spur"
+      },
+      "integrationZones": {
+        "mouth": [
+          204,
+          372,
+          184,
+          96
+        ],
+        "crown": [
+          176,
+          100,
+          252,
+          96
+        ],
+        "eyes": [
+          158,
+          206,
+          284,
+          142
+        ],
+        "nose": [
+          252,
+          326,
+          96,
+          70
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-calm-stone",
+      "name": "Calm Stone",
+      "archetype": "calm",
+      "palette": "sage",
+      "silhouette": {
+        "profile": "settled-boulder",
+        "crown": "even-dome",
+        "cheek": "broad-smooth",
+        "jaw": "wide-base",
+        "chin": "flat-seat"
+      },
+      "integrationZones": {
+        "mouth": [
+          200,
+          384,
+          200,
+          96
+        ],
+        "crown": [
+          156,
+          130,
+          292,
+          100
+        ],
+        "eyes": [
+          158,
+          226,
+          284,
+          140
+        ],
+        "nose": [
+          250,
+          330,
+          100,
+          68
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    },
+    {
+      "id": "base-wild-bramble",
+      "name": "Bramble Wild",
+      "archetype": "wild",
+      "palette": "magenta",
+      "silhouette": {
+        "profile": "spiked-bramble-ring",
+        "crown": "thorn-crest",
+        "cheek": "barbed-step",
+        "jaw": "smooth-underside",
+        "chin": "round-hem"
+      },
+      "integrationZones": {
+        "mouth": [
+          196,
+          396,
+          208,
+          104
+        ],
+        "crown": [
+          150,
+          108,
+          300,
+          116
+        ],
+        "eyes": [
+          160,
+          240,
+          280,
+          138
+        ],
+        "nose": [
+          250,
+          342,
+          100,
+          68
+        ]
+      },
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "assetRevision": "10.2.0"
+    }
+  ],
+  "baseSeams": [
+    {
+      "id": "mouth-seam-base-cyclops-dome",
+      "targetId": "base-cyclops-dome",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-cyclops-dome",
+      "targetId": "base-cyclops-dome",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-multi-eye-cluster",
+      "targetId": "base-multi-eye-cluster",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-multi-eye-cluster",
+      "targetId": "base-multi-eye-cluster",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-skull-cracked",
+      "targetId": "base-skull-cracked",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-skull-cracked",
+      "targetId": "base-skull-cracked",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-furry-mane",
+      "targetId": "base-furry-mane",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-furry-mane",
+      "targetId": "base-furry-mane",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-blob-melt",
+      "targetId": "base-blob-melt",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-blob-melt",
+      "targetId": "base-blob-melt",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-imp-compact",
+      "targetId": "base-imp-compact",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-imp-compact",
+      "targetId": "base-imp-compact",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-long-face",
+      "targetId": "base-long-face",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-long-face",
+      "targetId": "base-long-face",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-squat-slab",
+      "targetId": "base-squat-slab",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-squat-slab",
+      "targetId": "base-squat-slab",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-soft-pillow",
+      "targetId": "base-soft-pillow",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-soft-pillow",
+      "targetId": "base-soft-pillow",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-sharp-shard",
+      "targetId": "base-sharp-shard",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-sharp-shard",
+      "targetId": "base-sharp-shard",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-calm-stone",
+      "targetId": "base-calm-stone",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-calm-stone",
+      "targetId": "base-calm-stone",
+      "family": "horns"
+    },
+    {
+      "id": "mouth-seam-base-wild-bramble",
+      "targetId": "base-wild-bramble",
+      "family": "mouths"
+    },
+    {
+      "id": "horn-seam-base-wild-bramble",
+      "targetId": "base-wild-bramble",
+      "family": "horns"
+    }
+  ],
+  "pairJunctions": [
+    {
+      "pairKey": "base-cyclops-dome|mouth-grin",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-cyclops-dome"
+    },
+    {
+      "pairKey": "base-cyclops-dome|horn-curved",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-cyclops-dome"
+    },
+    {
+      "pairKey": "base-multi-eye-cluster|mouth-crowded-grit",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-multi-eye-cluster"
+    },
+    {
+      "pairKey": "base-multi-eye-cluster|horn-nubs",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-multi-eye-cluster"
+    },
+    {
+      "pairKey": "base-skull-cracked|mouth-jagged",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-skull-cracked"
+    },
+    {
+      "pairKey": "base-skull-cracked|horn-long",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-skull-cracked"
+    },
+    {
+      "pairKey": "base-furry-mane|mouth-buck-crooked",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-furry-mane"
+    },
+    {
+      "pairKey": "base-furry-mane|horn-tufted",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-furry-mane"
+    },
+    {
+      "pairKey": "base-blob-melt|mouth-gummy-droop",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-blob-melt"
+    },
+    {
+      "pairKey": "base-blob-melt|horn-nubs",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-blob-melt"
+    },
+    {
+      "pairKey": "base-imp-compact|mouth-fangs",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-imp-compact"
+    },
+    {
+      "pairKey": "base-imp-compact|horn-bat",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-imp-compact"
+    },
+    {
+      "pairKey": "base-long-face|mouth-sparse-frown",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-long-face"
+    },
+    {
+      "pairKey": "base-long-face|horn-bent",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-long-face"
+    },
+    {
+      "pairKey": "base-squat-slab|mouth-open-roar-square",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-squat-slab"
+    },
+    {
+      "pairKey": "base-squat-slab|horn-rams",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-squat-slab"
+    },
+    {
+      "pairKey": "base-soft-pillow|mouth-gummy",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-soft-pillow"
+    },
+    {
+      "pairKey": "base-soft-pillow|horn-tufted",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-soft-pillow"
+    },
+    {
+      "pairKey": "base-sharp-shard|mouth-fang-sneer",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-sharp-shard"
+    },
+    {
+      "pairKey": "base-sharp-shard|horn-spiky",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-sharp-shard"
+    },
+    {
+      "pairKey": "base-calm-stone|mouth-sparse-three",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-calm-stone"
+    },
+    {
+      "pairKey": "base-calm-stone|horn-curved",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-calm-stone"
+    },
+    {
+      "pairKey": "base-wild-bramble|mouth-tusked-wide",
+      "family": "mouths",
+      "fallbackId": "mouth-seam-base-wild-bramble"
+    },
+    {
+      "pairKey": "base-wild-bramble|horn-bat",
+      "family": "horns",
+      "fallbackId": "horn-seam-base-wild-bramble"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "v10-head-review-01",
+      "baseId": "base-cyclops-dome",
+      "archetype": "cyclops",
+      "mouthId": "mouth-grin",
+      "hornId": "horn-curved",
+      "mouthPairKey": "base-cyclops-dome|mouth-grin",
+      "hornPairKey": "base-cyclops-dome|horn-curved",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-02",
+      "baseId": "base-multi-eye-cluster",
+      "archetype": "multi-eye",
+      "mouthId": "mouth-crowded-grit",
+      "hornId": "horn-nubs",
+      "mouthPairKey": "base-multi-eye-cluster|mouth-crowded-grit",
+      "hornPairKey": "base-multi-eye-cluster|horn-nubs",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-03",
+      "baseId": "base-skull-cracked",
+      "archetype": "skull-like",
+      "mouthId": "mouth-jagged",
+      "hornId": "horn-long",
+      "mouthPairKey": "base-skull-cracked|mouth-jagged",
+      "hornPairKey": "base-skull-cracked|horn-long",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-04",
+      "baseId": "base-furry-mane",
+      "archetype": "furry",
+      "mouthId": "mouth-buck-crooked",
+      "hornId": "horn-tufted",
+      "mouthPairKey": "base-furry-mane|mouth-buck-crooked",
+      "hornPairKey": "base-furry-mane|horn-tufted",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-05",
+      "baseId": "base-blob-melt",
+      "archetype": "blob",
+      "mouthId": "mouth-gummy-droop",
+      "hornId": "horn-nubs",
+      "mouthPairKey": "base-blob-melt|mouth-gummy-droop",
+      "hornPairKey": "base-blob-melt|horn-nubs",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-06",
+      "baseId": "base-imp-compact",
+      "archetype": "compact-imp",
+      "mouthId": "mouth-fangs",
+      "hornId": "horn-bat",
+      "mouthPairKey": "base-imp-compact|mouth-fangs",
+      "hornPairKey": "base-imp-compact|horn-bat",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-07",
+      "baseId": "base-long-face",
+      "archetype": "long-face",
+      "mouthId": "mouth-sparse-frown",
+      "hornId": "horn-bent",
+      "mouthPairKey": "base-long-face|mouth-sparse-frown",
+      "hornPairKey": "base-long-face|horn-bent",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-08",
+      "baseId": "base-squat-slab",
+      "archetype": "squat",
+      "mouthId": "mouth-open-roar-square",
+      "hornId": "horn-rams",
+      "mouthPairKey": "base-squat-slab|mouth-open-roar-square",
+      "hornPairKey": "base-squat-slab|horn-rams",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-09",
+      "baseId": "base-soft-pillow",
+      "archetype": "soft-cute",
+      "mouthId": "mouth-gummy",
+      "hornId": "horn-tufted",
+      "mouthPairKey": "base-soft-pillow|mouth-gummy",
+      "hornPairKey": "base-soft-pillow|horn-tufted",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-10",
+      "baseId": "base-sharp-shard",
+      "archetype": "sharp-creepy",
+      "mouthId": "mouth-fang-sneer",
+      "hornId": "horn-spiky",
+      "mouthPairKey": "base-sharp-shard|mouth-fang-sneer",
+      "hornPairKey": "base-sharp-shard|horn-spiky",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-11",
+      "baseId": "base-calm-stone",
+      "archetype": "calm",
+      "mouthId": "mouth-sparse-three",
+      "hornId": "horn-curved",
+      "mouthPairKey": "base-calm-stone|mouth-sparse-three",
+      "hornPairKey": "base-calm-stone|horn-curved",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    },
+    {
+      "id": "v10-head-review-12",
+      "baseId": "base-wild-bramble",
+      "archetype": "wild",
+      "mouthId": "mouth-tusked-wide",
+      "hornId": "horn-bat",
+      "mouthPairKey": "base-wild-bramble|mouth-tusked-wide",
+      "hornPairKey": "base-wild-bramble|horn-bat",
+      "reviewStatus": "agent-candidate-pending-art-director",
+      "flipSafe": true,
+      "transparentEdgeSafe": true,
+      "clipSafe": true
+    }
+  ],
+  "reviewScales": [
+    "100%",
+    "25%",
+    "192px",
+    "96px",
+    "48px"
+  ],
+  "reviewBackgrounds": [
+    "cream",
+    "white",
+    "black",
+    "transparent"
+  ],
+  "reviewOrientations": [
+    "normal",
+    "flipped"
+  ],
+  "modules": {
+    "assets": [
+      "assets/v10-head-assets-01.js",
+      "assets/v10-head-assets-02.js",
+      "assets/v10-head-assets-03.js",
+      "assets/v10-head-assets-04.js",
+      "assets/v10-head-assets-05.js",
+      "assets/v10-head-assets-06.js"
+    ],
+    "junctions": [
+      "assets/v10-head-junctions-01.js",
+      "assets/v10-head-junctions-02.js",
+      "assets/v10-head-junctions-03.js",
+      "assets/v10-head-junctions-04.js",
+      "assets/v10-head-junctions-05.js",
+      "assets/v10-head-junctions-06.js"
+    ],
+    "seams": [
+      "assets/v10-head-seams-01.js",
+      "assets/v10-head-seams-02.js",
+      "assets/v10-head-seams-03.js",
+      "assets/v10-head-seams-04.js",
+      "assets/v10-head-seams-05.js"
+    ],
+    "compatibility": [
+      "assets/v10-head-compatibility-01.js",
+      "assets/v10-head-compatibility-02.js"
+    ]
+  }
+}
