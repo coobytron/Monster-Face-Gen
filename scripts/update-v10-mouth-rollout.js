@@ -7,8 +7,8 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'))
 const source=JSON.parse(fs.readFileSync(path.join(ROOT,'assets','v10-mouth-manifest.json'),'utf8'))
 const appendUnique=(list,values)=>[...new Set([...(list||[]),...values])]
 manifest.files=manifest.files||{}
-manifest.files.parts=appendUnique(manifest.files.parts,['assets/v10-mouths.js'])
-manifest.files.pairJunctions=appendUnique(manifest.files.pairJunctions,['assets/v10-mouth-integration.js'])
+manifest.files.parts=appendUnique(manifest.files.parts,["assets/v10-mouth-assets-01.js","assets/v10-mouth-assets-02.js","assets/v10-mouth-assets-03.js","assets/v10-mouth-fixtures.js","assets/v10-mouths.js"])
+manifest.files.pairJunctions=appendUnique(manifest.files.pairJunctions,["assets/v10-mouth-junctions-01.js","assets/v10-mouth-junctions-02.js","assets/v10-mouth-junctions-03.js","assets/v10-mouth-junctions-04.js","assets/v10-mouth-junctions-05.js","assets/v10-mouth-integration-data.js","assets/v10-mouth-integration.js"])
 manifest.files.validation=appendUnique(manifest.files.validation,['tests/v10-mouths.test.js','scripts/v10-mouth-qa.js','schemas/v10-mouth-validation-report.schema.json'])
 manifest.files.fidelityTargets=appendUnique(manifest.files.fidelityTargets,['docs/V10-MOUTH-PACK.md'])
 manifest.counts=manifest.counts||{}

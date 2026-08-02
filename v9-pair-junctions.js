@@ -1,5 +1,5 @@
 (function(){
-  const sources = ['assets/v10-mouths.js', 'assets/v10-mouth-integration.js'];
+  const sources = ["assets/v10-mouth-assets-01.js","assets/v10-mouth-assets-02.js","assets/v10-mouth-assets-03.js","assets/v10-mouth-fixtures.js","assets/v10-mouths.js","assets/v10-mouth-junctions-01.js","assets/v10-mouth-junctions-02.js","assets/v10-mouth-junctions-03.js","assets/v10-mouth-junctions-04.js","assets/v10-mouth-junctions-05.js","assets/v10-mouth-integration-data.js","assets/v10-mouth-integration.js"];
 
   function loadSource(index){
     if(index >= sources.length){

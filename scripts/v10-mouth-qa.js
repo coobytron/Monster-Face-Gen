@@ -10,7 +10,7 @@ const manifest=require('../assets/v10-mouth-manifest.json')
 function stable(value){if(Array.isArray(value))return value.map(stable);if(value&&typeof value==='object')return Object.keys(value).sort().reduce((out,key)=>(out[key]=stable(value[key]),out),{});return value}
 function loadBrowserState(){
   const context={window:{},console};vm.createContext(context)
-  for(const file of ['assets/parts/bases.js','assets/parts/mouths.js','assets/v10-mouths.js','assets/pair-junctions.js','assets/compatibility.js','assets/v10-mouth-integration.js']){
+  for(const file of ["assets/parts/bases.js","assets/parts/mouths.js","assets/v10-mouth-assets-01.js","assets/v10-mouth-assets-02.js","assets/v10-mouth-assets-03.js","assets/v10-mouth-fixtures.js","assets/v10-mouths.js","assets/pair-junctions.js","assets/compatibility.js","assets/v10-mouth-junctions-01.js","assets/v10-mouth-junctions-02.js","assets/v10-mouth-junctions-03.js","assets/v10-mouth-junctions-04.js","assets/v10-mouth-junctions-05.js","assets/v10-mouth-integration-data.js","assets/v10-mouth-integration.js"]){
     vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file})
   }
   return context.window
