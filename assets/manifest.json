@@ -31,7 +31,12 @@
       "assets/parts/mouths.js",
       "assets/parts/horns.js",
       "assets/parts/patterns-compact.js",
-      "assets/parts/extras.js"
+      "assets/parts/extras.js",
+      "assets/v10-mouth-assets-01.js",
+      "assets/v10-mouth-assets-02.js",
+      "assets/v10-mouth-assets-03.js",
+      "assets/v10-mouth-fixtures.js",
+      "assets/v10-mouths.js"
     ],
     "hybridBundles": [
       "assets/hybrid-bundles.js"
@@ -51,7 +56,14 @@
       "assets/junctions.js"
     ],
     "pairJunctions": [
-      "assets/pair-junctions.js"
+      "assets/pair-junctions.js",
+      "assets/v10-mouth-junctions-01.js",
+      "assets/v10-mouth-junctions-02.js",
+      "assets/v10-mouth-junctions-03.js",
+      "assets/v10-mouth-junctions-04.js",
+      "assets/v10-mouth-junctions-05.js",
+      "assets/v10-mouth-integration-data.js",
+      "assets/v10-mouth-integration.js"
     ],
     "compatibility": [
       "assets/compatibility.js"
@@ -64,7 +76,8 @@
     ],
     "fidelityTargets": [
       "docs/MVP-FIDELITY-TARGETS.md",
-      "docs/LIBRARY-FIDELITY-V9.md"
+      "docs/LIBRARY-FIDELITY-V9.md",
+      "docs/V10-MOUTH-PACK.md"
     ],
     "runtime": [
       "v8-compatibility.js",
@@ -91,7 +104,10 @@
       "tests/library-fidelity.test.js",
       "scripts/library-fidelity-contract.js",
       "scripts/library-fidelity-qa.js",
-      "schemas/library-fidelity-validation-report.schema.json"
+      "schemas/library-fidelity-validation-report.schema.json",
+      "tests/v10-mouths.test.js",
+      "scripts/v10-mouth-qa.js",
+      "schemas/v10-mouth-validation-report.schema.json"
     ],
     "workflows": [
       ".github/workflows/contact-sheet-qa.yml"
@@ -125,7 +141,7 @@
     "bases": 6,
     "eyes": 10,
     "noses": 9,
-    "mouths": 9,
+    "mouths": 27,
     "horns": 9,
     "patterns": 9,
     "extras": 9,
@@ -134,9 +150,9 @@
     "mouthSeams": 6,
     "hornSeams": 8,
     "junctions": 14,
-    "pairSpecificMouthJunctions": 16,
+    "pairSpecificMouthJunctions": 34,
     "pairSpecificHornJunctions": 16,
-    "pairSpecificJunctions": 32,
+    "pairSpecificJunctions": 50,
     "approvedRecipes": 16,
     "heroFidelityRecipes": 3,
     "approvedExpressionPairs": 12,
@@ -146,11 +162,13 @@
     "primaryPairClassifications": 222,
     "hybridLogicalBundles": 1,
     "hybridBundleLayers": 6,
-    "totalAuthoredVisualObjects": 162,
+    "totalAuthoredVisualObjects": 198,
     "heroAuthoredReplacements": 21,
     "libraryFidelityRecipes": 13,
     "reviewedFidelityRecipes": 16,
-    "libraryAuthoredReplacements": 34
+    "libraryAuthoredReplacements": 34,
+    "v10MouthCandidates": 18,
+    "v10MouthCandidatePairJunctions": 18
   },
   "layerOrder": [
     "horns",
@@ -792,7 +810,10 @@
       "node scripts/hero-fidelity-qa.js",
       "node tests/library-fidelity.test.js",
       "node scripts/library-fidelity-qa.js --validate-only",
-      "node scripts/library-fidelity-qa.js"
+      "node scripts/library-fidelity-qa.js",
+      "node tests/v10-mouths.test.js",
+      "node scripts/v10-mouth-qa.js --validate-only",
+      "node scripts/v10-mouth-qa.js --write"
     ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
@@ -819,7 +840,9 @@
     "requiresHeroFidelityValidation": true,
     "libraryFidelityReport": "generated/qa/library-fidelity-validation-report.json",
     "libraryFidelityReportSchema": "schemas/library-fidelity-validation-report.schema.json",
-    "requiresLibraryFidelityValidation": true
+    "requiresLibraryFidelityValidation": true,
+    "v10MouthReport": "generated/qa/v10-mouths/validation-report.json",
+    "requiresV10MouthValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
@@ -873,7 +896,8 @@
       "96px",
       "48px"
     ],
-    "libraryFidelityReview": "13 non-hero structured production-candidate reviews plus the separate three-hero review set; human acceptance remains pending"
+    "libraryFidelityReview": "13 non-hero structured production-candidate reviews plus the separate three-hero review set; human acceptance remains pending",
+    "v10MouthReview": "18 candidate mouths with exact base-pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px"
   },
   "heroFidelityContract": {
     "version": 9,
@@ -1066,5 +1090,67 @@
       "cropped-reference-artwork"
     ],
     "runtimeGeometry": false
+  },
+  "v10MouthContract": {
+    "version": 10,
+    "revision": "10.1.0",
+    "issue": 34,
+    "status": "candidate",
+    "humanApprovalRequired": true,
+    "runtimeGeometry": false,
+    "baseline": 9,
+    "added": 18,
+    "target": 27,
+    "manifest": "assets/v10-mouth-manifest.json",
+    "families": [
+      "sparse",
+      "crowded",
+      "tusked",
+      "buck-toothed",
+      "zipper-like",
+      "gummy",
+      "fang-led",
+      "open-roar",
+      "underbite",
+      "tongue-led"
+    ],
+    "reviewScales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ],
+    "reviewBackgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "reviewOrientations": [
+      "normal",
+      "flipped"
+    ],
+    "exactPairKeys": [
+      "base-bog|mouth-sparse-three",
+      "base-skull|mouth-sparse-frown",
+      "base-fuzz|mouth-crowded-grit",
+      "base-moss|mouth-crowded-zip",
+      "base-blue|mouth-tusked-low",
+      "base-imp|mouth-tusked-wide",
+      "base-moss|mouth-buck-single",
+      "base-fuzz|mouth-buck-crooked",
+      "base-skull|mouth-zipper-seam",
+      "base-blue|mouth-zipper-bite",
+      "base-moss|mouth-gummy-droop",
+      "base-bog|mouth-gummy-wince",
+      "base-fuzz|mouth-fang-sneer",
+      "base-imp|mouth-fang-vamp",
+      "base-imp|mouth-open-roar-square",
+      "base-blue|mouth-open-roar-round",
+      "base-skull|mouth-underbite",
+      "base-bog|mouth-tongue-loll"
+    ],
+    "report": "generated/qa/v10-mouths/validation-report.json"
   }
 }

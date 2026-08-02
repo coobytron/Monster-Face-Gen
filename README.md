@@ -224,3 +224,9 @@ Hybrid bundle internal order is independent from the builder order and is declar
 ## Production direction
 
 Production replacements may use transparent PNG, WebP, or genuine SVG exported from original layered artwork. They must retain stable parent IDs, stable pair-junction IDs, full-canvas alignment, deterministic roles and z-order, source hashes, authored alpha, compatibility classifications, expression tags, silhouette profiles, placement overrides, generic fallbacks, flip safety, and the locked fidelity targets.
+
+<!-- V10-MOUTH-PACK:START -->
+## V10 authored mouth expansion
+
+Issue #34 adds 18 static mouth candidates, bringing the authored library to 27 mouths. Every candidate has stable metadata, all-base compatibility classification, a rigid review placement, an exact pair-specific junction plate, and deterministic normal/flipped QA across four backgrounds and five scales. See [docs/V10-MOUTH-PACK.md](docs/V10-MOUTH-PACK.md). Human Art Director approval remains required before production promotion.
+<!-- V10-MOUTH-PACK:END -->
