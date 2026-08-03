@@ -1,6 +1,6 @@
 
-> monster-face-gen-qa@10.1.0 preqa
-> node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js && node scripts/update-hero-qa.js && node scripts/update-library-rollout-manifest.js && node scripts/update-library-rollout-docs.js && node scripts/update-v10-mouth-rollout.js
+> monster-face-gen-qa@10.2.0 preqa
+> node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js && node scripts/update-hero-qa.js && node scripts/update-library-rollout-manifest.js && node scripts/update-library-rollout-docs.js && node scripts/update-v10-mouth-rollout.js && node scripts/update-v10-head-rollout.js
 
 Hero fidelity manifest metadata is current.
 Hero fidelity README and asset guide sections are current.
@@ -8,9 +8,10 @@ Hero QA renders authored mouth plates directly for review; runtime Canvas alpha 
 Library fidelity rollout manifest metadata is current.
 Library fidelity rollout documentation is current.
 V10 mouth rollout manifest and docs are current.
+V10 head rollout manifest and docs are current.
 
-> monster-face-gen-qa@10.1.0 qa
-> node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js && node scripts/v10-expansion-contract.js --write && node scripts/v10-mouth-qa.js --write
+> monster-face-gen-qa@10.2.0 qa
+> node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js && node scripts/v10-expansion-contract.js --write && node scripts/v10-mouth-qa.js --write && node -r ./scripts/sharp-svg-sanitize.js scripts/v10-head-qa.js --write
 
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
@@ -5853,6 +5854,3898 @@ Fontconfig warning: using without calling FcInit()
     "48px"
   ],
   "revision": "10.1.0",
+  "schemaVersion": "1.0.0",
+  "valid": true
+}
+{
+  "counts": {
+    "baselineBases": 6,
+    "exactPairPlates": 24,
+    "fallbackSeams": 24,
+    "newBases": 12,
+    "reviewCells": 480,
+    "totalBases": 18
+  },
+  "digest": "d18295992f9f10b91d3e11b3159ca1a8145e190658d12ed70052106f49714e72",
+  "distinctionThreshold": 0.086,
+  "errors": [],
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "issue": 40,
+  "minimumDistinction": 0.104,
+  "requiredArchetypes": [
+    "cyclops",
+    "multi-eye",
+    "skull-like",
+    "furry",
+    "blob",
+    "compact-imp",
+    "long-face",
+    "squat",
+    "soft-cute",
+    "sharp-creepy",
+    "calm",
+    "wild"
+  ],
+  "reviewBackgrounds": [
+    "cream",
+    "white",
+    "black",
+    "transparent"
+  ],
+  "reviewMatrix": [
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-cyclops-dome",
+      "fixtureId": "v10-head-review-01",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-multi-eye-cluster",
+      "fixtureId": "v10-head-review-02",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-skull-cracked",
+      "fixtureId": "v10-head-review-03",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-furry-mane",
+      "fixtureId": "v10-head-review-04",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-blob-melt",
+      "fixtureId": "v10-head-review-05",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-imp-compact",
+      "fixtureId": "v10-head-review-06",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-long-face",
+      "fixtureId": "v10-head-review-07",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-squat-slab",
+      "fixtureId": "v10-head-review-08",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-soft-pillow",
+      "fixtureId": "v10-head-review-09",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-sharp-shard",
+      "fixtureId": "v10-head-review-10",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-calm-stone",
+      "fixtureId": "v10-head-review-11",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "cream",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "white",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "black",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "100%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "25%",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "192px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "96px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "normal",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    },
+    {
+      "background": "transparent",
+      "baseId": "base-wild-bramble",
+      "fixtureId": "v10-head-review-12",
+      "orientation": "flipped",
+      "scale": "48px",
+      "status": "candidate-review-required"
+    }
+  ],
+  "reviewOrientations": [
+    "normal",
+    "flipped"
+  ],
+  "reviewScales": [
+    "100%",
+    "25%",
+    "192px",
+    "96px",
+    "48px"
+  ],
+  "revision": "10.2.0",
   "schemaVersion": "1.0.0",
   "valid": true
 }
