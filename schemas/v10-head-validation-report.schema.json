@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v10-head-validation-report.schema.json",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "revision",
+    "issue",
+    "valid",
+    "errors",
+    "counts",
+    "requiredArchetypes",
+    "distinctionThreshold",
+    "minimumDistinction",
+    "digest",
+    "reviewMatrix"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "revision": {
+      "const": "10.2.0"
+    },
+    "issue": {
+      "const": 40
+    },
+    "valid": {
+      "type": "boolean"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "baselineBases",
+        "newBases",
+        "totalBases",
+        "fallbackSeams",
+        "exactPairPlates",
+        "reviewCells"
+      ]
+    },
+    "requiredArchetypes": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "string"
+      }
+    },
+    "distinctionThreshold": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "minimumDistinction": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewMatrix": {
+      "type": "array",
+      "minItems": 480
+    }
+  }
+}
