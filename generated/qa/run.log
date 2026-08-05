@@ -1,5 +1,5 @@
 
-> monster-face-gen-qa@10.2.0 preqa
+> monster-face-gen-qa@10.3.0 preqa
 > node scripts/update-hero-manifest.js && node scripts/update-hero-docs.js && node scripts/update-hero-qa.js && node scripts/update-library-rollout-manifest.js && node scripts/update-library-rollout-docs.js && node scripts/update-v10-mouth-rollout.js && node scripts/update-v10-head-rollout.js
 
 Hero fidelity manifest metadata is current.
@@ -10,12 +10,11 @@ Library fidelity rollout documentation is current.
 V10 mouth rollout manifest and docs are current.
 V10 head rollout manifest and docs are current.
 
-> monster-face-gen-qa@10.2.0 qa
+> monster-face-gen-qa@10.3.0 qa
 > node -r ./scripts/sharp-svg-sanitize.js scripts/contact-sheet-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hybrid-bundle-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/pair-junction-qa.js && node -r ./scripts/sharp-svg-sanitize.js scripts/hero-fidelity-qa.js && node scripts/hero-review-qa.js && node scripts/library-fidelity-qa.js && node scripts/v10-expansion-contract.js --write && node scripts/v10-mouth-qa.js --write && node -r ./scripts/sharp-svg-sanitize.js scripts/v10-head-qa.js --write
 
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
-Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":32,"checkCount":7}
