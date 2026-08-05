@@ -15,6 +15,7 @@ V10 head rollout manifest and docs are current.
 
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
+Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":0,"checkCount":7}
 Fontconfig warning: using without calling FcInit()
 {"passed":true,"errorCount":0,"warningCount":32,"checkCount":7}
