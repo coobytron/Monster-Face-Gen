@@ -8,6 +8,8 @@ on:
         default: true
         type: boolean
   push:
+    branches:
+      - main
     paths:
       - 'assets/**'
       - 'reviews/**'
@@ -26,6 +28,9 @@ on:
       - 'scripts/library-fidelity-*.js'
       - 'scripts/update-hero-*.js'
       - 'scripts/update-library-rollout-*.js'
+      - 'scripts/update-v10-*.js'
+      - 'scripts/v10-*-qa.js'
+      - 'scripts/run-qa-ci.js'
       - 'tests/**'
       - 'schemas/**'
       - 'package.json'
@@ -50,6 +55,9 @@ on:
       - 'scripts/library-fidelity-*.js'
       - 'scripts/update-hero-*.js'
       - 'scripts/update-library-rollout-*.js'
+      - 'scripts/update-v10-*.js'
+      - 'scripts/v10-*-qa.js'
+      - 'scripts/run-qa-ci.js'
       - 'tests/**'
       - 'schemas/**'
       - 'package.json'
@@ -73,13 +81,19 @@ jobs:
       - name: Generate review sheets
         id: qa
         shell: bash
+        env:
+          QA_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || '' }}
+          QA_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
+          set -o pipefail
           set +e
-          npm run qa > qa-run.log 2>&1
-          code=$?
+          timeout --foreground --signal=TERM 10m npm run qa:ci -- --base "$QA_BASE_SHA" --head "$QA_HEAD_SHA" 2>&1 | tee qa-run.log
+          code=${PIPESTATUS[0]}
           mkdir -p generated/qa
           cp qa-run.log generated/qa/run.log
-          cat qa-run.log
+          if [ "$code" -eq 124 ]; then
+            echo "QA rendering exceeded the 10-minute limit." | tee -a qa-run.log
+          fi
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
       - name: Upload review artifacts
