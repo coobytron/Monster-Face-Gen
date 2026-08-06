@@ -83,7 +83,7 @@ jobs:
         id: qa
         shell: bash
         env:
-          QA_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || '' }}
+          QA_BASE_SHA: ${{ github.event.pull_request.base.sha || (github.ref_name != 'main' && 'main') || github.event.before || '' }}
           QA_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -o pipefail
