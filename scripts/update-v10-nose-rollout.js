@@ -1,0 +1,30 @@
+'use strict';
+const fs=require('fs');
+const path=require('path');
+const ROOT=path.resolve(__dirname,'..');
+const manifestPath=path.join(ROOT,'assets','manifest.json');
+const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
+const pack=require('../assets/v10-noses');
+const compatibility=require('../assets/v10-nose-compatibility');
+const placements=require('../assets/v10-nose-placements');
+const appendUnique=(list,values)=>[...new Set([...(list||[]),...values])];
+manifest.files=manifest.files||{};
+manifest.files.parts=appendUnique(manifest.files.parts,['assets/v10-nose-assets-01.js','assets/v10-nose-assets-02.js','assets/v10-noses.js']);
+manifest.files.pairJunctions=appendUnique(manifest.files.pairJunctions,['assets/v10-nose-compatibility.js','assets/v10-nose-placements.js']);
+manifest.files.validation=appendUnique(manifest.files.validation,['tests/v10-noses.test.js','scripts/v10-nose-qa.js','schemas/v10-nose-validation-report.schema.json']);
+manifest.files.fidelityTargets=appendUnique(manifest.files.fidelityTargets,['docs/V10-NOSE-SNOUT-PACK.md']);
+manifest.counts=manifest.counts||{};
+Object.assign(manifest.counts,{noses:pack.baselineCount+pack.assets.length,v10NoseCandidates:pack.assets.length,v10NoseApprovedBasePairs:Object.values(compatibility).reduce((sum,item)=>sum+item.approved.length,0),v10NoseRigidOverrides:Object.keys(placements).length});
+manifest.v10NoseContract={version:pack.version,revision:pack.revision,issue:pack.issue,status:pack.status,humanApprovalRequired:pack.humanApprovalRequired,runtimeGeometry:pack.runtimeGeometry,baseline:pack.baselineCount,added:pack.assets.length,target:pack.targetCount,families:pack.requiredFamilies,reviewScales:pack.reviewScales,reviewBackgrounds:pack.reviewBackgrounds,reviewStates:pack.reviewStates,compatibility:'assets/v10-nose-compatibility.js',placements:'assets/v10-nose-placements.js',report:'generated/qa/v10-noses/validation-report.json'};
+manifest.validation=manifest.validation||{};
+manifest.validation.commands=appendUnique(manifest.validation.commands,['node tests/v10-noses.test.js','node scripts/v10-nose-qa.js --validate-only','node scripts/v10-nose-qa.js --write']);
+manifest.validation.v10NoseReport='generated/qa/v10-noses/validation-report.json';
+manifest.validation.requiresV10NoseValidation=true;
+manifest.contactSheetContract=manifest.contactSheetContract||{};
+manifest.contactSheetContract.v10NoseReview='18 authored nose candidates on approved base fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds';
+fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+
+function updateDoc(file,section){const target=path.join(ROOT,file),start='<!-- V10-NOSE-SNOUT-PACK:START -->',end='<!-- V10-NOSE-SNOUT-PACK:END -->',block=`${start}\n${section.trim()}\n${end}`;let text=fs.readFileSync(target,'utf8'),pattern=new RegExp(`${start}[\\s\\S]*?${end}`);text=pattern.test(text)?text.replace(pattern,block):`${text.trimEnd()}\n\n${block}\n`;fs.writeFileSync(target,text);}
+updateDoc('README.md',`## V10 authored nose and snout expansion\n\nIssue #42 adds **18 structurally distinct nose and snout candidates**, bringing the authored library to the V10 target of **27**. The range includes tiny button, broad animal, hooked, pig-like, skull cavity, beak-adjacent, wrinkled, flat, long, asymmetrical, stitched, soft/cute, and sharp/creepy families. Every asset carries a stable ID, anchor, authored bounds, z-order, complete 18-base compatibility classification, and a reviewed rigid-placement fixture. Runtime registers and places literal SVG objects only; it does not draw or deform anatomy. See [docs/V10-NOSE-SNOUT-PACK.md](docs/V10-NOSE-SNOUT-PACK.md). All additions remain candidates pending human Art Director approval.`);
+updateDoc('docs/ASSET-GUIDE.md',`## V10 nose and snout candidate contract\n\nLoad the two \`assets/v10-nose-assets-*\` chunks before \`assets/v10-noses.js\`. Compatibility and rigid pair overrides live in \`assets/v10-nose-compatibility.js\` and \`assets/v10-nose-placements.js\`. Each nose is a literal full-canvas SVG with stable \`nose-v10-*\` ID, authored anchor and bounds, z-order, compatible-base list, flip-safe flag, runtime geometry disabled, and candidate status. Automated acceptance requires all 18 current bases to be classified exactly once and every candidate to have an approved integration fixture.`);
+console.log('V10 nose rollout manifest and docs are current.');

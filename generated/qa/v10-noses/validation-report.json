@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": 42,
+  "revision": "10.4.0",
+  "status": "passed",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "sourceDigest": "4267e16c63de1d3859a839bb4fb483056035b5c52ad77530c9fd446db441e668",
+  "baselineCount": 9,
+  "candidateCount": 18,
+  "totalCount": 27,
+  "targetCount": 27,
+  "familyCount": 13,
+  "classifiedBasePairs": 324,
+  "approvedPairCount": 112,
+  "rigidOverrideCount": 18,
+  "review": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "96px",
+      "48px"
+    ]
+  },
+  "errors": []
+}

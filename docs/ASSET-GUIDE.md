@@ -289,3 +289,9 @@ Load `assets/v10-mouths.js` after the v9 mouth replacements and `assets/v10-mout
 
 Load `assets/v10-heads.js` after the v9 base replacements, and `assets/v10-head-integration.js` after junctions, pair junctions, and compatibility. New bases are full-canvas authored SVGs with stable `base-*` IDs, an `archetype` tag, a `silhouette` descriptor, `integrationZones` for mouth, crown, eyes, and nose, an `outlinePath` copy of the silhouette for QA, runtime geometry disabled, and candidate review status. Structural distinction is measured against the v9 baseline: a new base must sit at least as far from every other base as the closest approved v9 pair, so a recolour scores zero and cannot be counted as new anatomy.
 <!-- V10-HEAD-BASE-PACK:END -->
+
+<!-- V10-NOSE-SNOUT-PACK:START -->
+## V10 nose and snout candidate contract
+
+Load the two `assets/v10-nose-assets-*` chunks before `assets/v10-noses.js`. Compatibility and rigid pair overrides live in `assets/v10-nose-compatibility.js` and `assets/v10-nose-placements.js`. Each nose is a literal full-canvas SVG with stable `nose-v10-*` ID, authored anchor and bounds, z-order, compatible-base list, flip-safe flag, runtime geometry disabled, and candidate status. Automated acceptance requires all 18 current bases to be classified exactly once and every candidate to have an approved integration fixture.
+<!-- V10-NOSE-SNOUT-PACK:END -->
