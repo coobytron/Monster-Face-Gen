@@ -236,3 +236,9 @@ Issue #34 adds 18 static mouth candidates, bringing the authored library to 27 m
 
 Issue #40 adds 12 structurally distinct head bases, bringing the authored library to 18 bases across the cyclops, multi-eye, skull-like, furry, blob, compact-imp, long-face, squat, soft-cute, sharp-creepy, calm, and wild directions. Every candidate carries a stable `base-*` ID, archetype and silhouette metadata, mouth/crown/eye/nose integration zones, compatibility against the full 10 eye, 9 nose, 27 mouth, and 9 horn catalogue, fallback seams, exact mouth and crown pair plates, and deterministic normal/flipped QA across four backgrounds and five scales. See [docs/V10-HEAD-BASE-PACK.md](docs/V10-HEAD-BASE-PACK.md). Human Art Director approval remains required before production promotion.
 <!-- V10-HEAD-BASE-PACK:END -->
+
+<!-- V10-NOSE-SNOUT-PACK:START -->
+## V10 authored nose and snout expansion
+
+Issue #42 adds **18 structurally distinct nose and snout candidates**, bringing the authored library to the V10 target of **27**. The range includes tiny button, broad animal, hooked, pig-like, skull cavity, beak-adjacent, wrinkled, flat, long, asymmetrical, stitched, soft/cute, and sharp/creepy families. Every asset carries a stable ID, anchor, authored bounds, z-order, complete 18-base compatibility classification, and a reviewed rigid-placement fixture. Runtime registers and places literal SVG objects only; it does not draw or deform anatomy. See [docs/V10-NOSE-SNOUT-PACK.md](docs/V10-NOSE-SNOUT-PACK.md). All additions remain candidates pending human Art Director approval.
+<!-- V10-NOSE-SNOUT-PACK:END -->

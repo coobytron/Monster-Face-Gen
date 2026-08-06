@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monster-face-gen.local/schemas/v10-nose-validation-report.schema.json",
+  "title": "V10 nose and snout validation report",
+  "type": "object",
+  "required": ["schemaVersion", "issue", "revision", "status", "humanApprovalRequired", "runtimeGeometry", "generatedAt", "sourceDigest", "baselineCount", "candidateCount", "totalCount", "targetCount", "familyCount", "classifiedBasePairs", "approvedPairCount", "rigidOverrideCount", "review", "errors"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "issue": {"const": 42},
+    "revision": {"type": "string"},
+    "status": {"enum": ["passed", "failed"]},
+    "humanApprovalRequired": {"const": true},
+    "runtimeGeometry": {"const": false},
+    "generatedAt": {"const": "1970-01-01T00:00:00.000Z"},
+    "sourceDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "baselineCount": {"const": 9},
+    "candidateCount": {"const": 18},
+    "totalCount": {"const": 27},
+    "targetCount": {"const": 27},
+    "familyCount": {"minimum": 13},
+    "classifiedBasePairs": {"const": 324},
+    "approvedPairCount": {"minimum": 90},
+    "rigidOverrideCount": {"const": 18},
+    "review": {"type": "object", "required": ["backgrounds", "states", "scales"]},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
