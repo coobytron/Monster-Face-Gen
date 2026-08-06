@@ -44,6 +44,7 @@ const sharedRollout = new Set([
   'docs/ASSET-GUIDE.md',
   'assets/manifest.json',
   'index.html',
+  'generated/qa/run.log',
   'generated/qa/validation-report.json',
   'package.json',
   'package-lock.json',
