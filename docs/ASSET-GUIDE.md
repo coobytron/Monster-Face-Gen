@@ -295,3 +295,9 @@ Load `assets/v10-heads.js` after the v9 base replacements, and `assets/v10-head-
 
 Load the two `assets/v10-nose-assets-*` chunks before `assets/v10-noses.js`. Compatibility and rigid pair overrides live in `assets/v10-nose-compatibility.js` and `assets/v10-nose-placements.js`. Each nose is a literal full-canvas SVG with stable `nose-v10-*` ID, authored anchor and bounds, z-order, compatible-base list, flip-safe flag, runtime geometry disabled, and candidate status. Automated acceptance requires all 18 current bases to be classified exactly once and every candidate to have an approved integration fixture.
 <!-- V10-NOSE-SNOUT-PACK:END -->
+
+<!-- V10-CROWN-PACK:START -->
+## V10 crown candidate contract
+
+Load the three `assets/v10-crown-assets-*` chunks before `assets/v10-crowns.js`. Load compatibility and exact-root fixtures after the existing compatibility object, then install `assets/v10-crown-integration.js`. Every crown is a literal full-canvas SVG with stable `horn-v10-*` ID, crown kind, family, root profile, authored bounds, rigid review placement, flip-safe flag, runtime geometry disabled, and candidate status. Every candidate must classify all 18 current bases exactly once and publish one approved exact root fixture whose transition plate declares `standaloneAnatomy: false`.
+<!-- V10-CROWN-PACK:END -->
