@@ -32,10 +32,19 @@ const noseSpecific = file =>
   /^schemas\/v10-nose/.test(file) ||
   /^generated\/qa\/v10-noses\//.test(file);
 
+const crownSpecific = file =>
+  /^assets\/v10-crown/.test(file) ||
+  /^scripts\/(?:update-)?v10-crown/.test(file) ||
+  /^tests\/v10-crowns\.test\.js$/.test(file) ||
+  /^schemas\/v10-crown/.test(file) ||
+  /^generated\/qa\/v10-crowns\//.test(file);
+
 const sharedRollout = new Set([
   'README.md',
   'docs/ASSET-GUIDE.md',
   'assets/manifest.json',
+  'index.html',
+  'generated/qa/run.log',
   'generated/qa/validation-report.json',
   'package.json',
   'package-lock.json',
@@ -46,10 +55,15 @@ const sharedRollout = new Set([
 const files = gitDiffFiles();
 const noseOnly = files && files.length > 0 && files.some(noseSpecific) &&
   files.every(file => noseSpecific(file) || sharedRollout.has(file) || file === 'docs/V10-NOSE-SNOUT-PACK.md');
+const crownOnly = files && files.length > 0 && files.some(crownSpecific) &&
+  files.every(file => crownSpecific(file) || sharedRollout.has(file) || file === 'docs/V10-CROWN-PACK.md');
 
 if (noseOnly) {
   console.log(`CI QA plan: V10 nose-only (${files.length} changed files).`);
   run(['-r', './scripts/sharp-svg-sanitize.js', 'scripts/v10-nose-qa.js', '--write'], 'Render V10 nose review sheets');
+} else if (crownOnly) {
+  console.log(`CI QA plan: V10 crown-only (${files.length} changed files).`);
+  run(['-r', './scripts/sharp-svg-sanitize.js', 'scripts/v10-crown-qa.js', '--write'], 'Render V10 crown review sheets');
 } else {
   console.log(files ? `CI QA plan: full (${files.length} changed files).` : 'CI QA plan: full (no reliable diff base).');
   const result = spawnSync('npm', ['run', 'qa:full'], { stdio: 'inherit' });

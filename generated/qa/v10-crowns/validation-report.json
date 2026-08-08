@@ -1,0 +1,43 @@
+{
+  "version": 10,
+  "issue": 43,
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "status": "pass",
+  "sourceDigest": "0e7d7977cff69a66ae4868c18bed64b76c268b4160681e7c0d9393860d8dd789",
+  "counts": {
+    "baseline": 9,
+    "candidates": 18,
+    "total": 27,
+    "approvedBasePairs": 94,
+    "exactRootFixtures": 18
+  },
+  "review": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "96px",
+      "48px"
+    ],
+    "outputs": [
+      "generated/qa/v10-crowns/integration-cream.svg",
+      "generated/qa/v10-crowns/integration-cream.png",
+      "generated/qa/v10-crowns/integration-white.svg",
+      "generated/qa/v10-crowns/integration-white.png",
+      "generated/qa/v10-crowns/integration-black.svg",
+      "generated/qa/v10-crowns/integration-black.png",
+      "generated/qa/v10-crowns/integration-transparent.svg",
+      "generated/qa/v10-crowns/integration-transparent.png"
+    ]
+  },
+  "errors": []
+}
