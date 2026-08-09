@@ -1,9 +1,9 @@
 
 > monster-face-gen-qa@10.4.0 qa:ci
-> node scripts/run-qa-ci.js --base 2c71540c6b51162d4230a60aa3413bb987abf7a9 --head f6cab0d6887cbf69e506384ac819ee9416a74305
+> node scripts/run-qa-ci.js --base origin/main --head 34c4997708e082bf931516b96f1c0e92ae595d1b
 
-CI QA plan: V10 nose-only (28 changed files).
-::group::Render V10 nose review sheets
+CI QA plan: V10 crown-only (31 changed files).
+::group::Render V10 crown review sheets
 Fontconfig warning: using without calling FcInit()
-Wrote V10 nose QA to generated/qa/v10-noses
+V10 crown QA passed: 18 candidates, 94 approved pairs, 18 exact root fixtures.
 ::endgroup::

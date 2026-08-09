@@ -242,3 +242,9 @@ Issue #40 adds 12 structurally distinct head bases, bringing the authored librar
 
 Issue #42 adds **18 structurally distinct nose and snout candidates**, bringing the authored library to the V10 target of **27**. The range includes tiny button, broad animal, hooked, pig-like, skull cavity, beak-adjacent, wrinkled, flat, long, asymmetrical, stitched, soft/cute, and sharp/creepy families. Every asset carries a stable ID, anchor, authored bounds, z-order, complete 18-base compatibility classification, and a reviewed rigid-placement fixture. Runtime registers and places literal SVG objects only; it does not draw or deform anatomy. See [docs/V10-NOSE-SNOUT-PACK.md](docs/V10-NOSE-SNOUT-PACK.md). All additions remain candidates pending human Art Director approval.
 <!-- V10-NOSE-SNOUT-PACK:END -->
+
+<!-- V10-CROWN-PACK:START -->
+## V10 authored horn and ear crown expansion
+
+Issue #43 adds **18 structurally distinct horn and ear candidates**, bringing the authored library to the V10 target of **27 crown systems**. The range includes broken, curled, stubby, spiked, antler-like, soft ear, bat ear, drooping, asymmetrical, single-horn, crown-cluster, bone-like, furry-root, compact-imp, fin, goblin, thorn-halo, and moth directions. Every candidate has a stable ID, root profile, complete 18-base compatibility classification, rigid placement fixture, exact non-anatomical root plate, and flip-safe review contract. See [docs/V10-CROWN-PACK.md](docs/V10-CROWN-PACK.md). All additions remain candidates pending human Art Director approval.
+<!-- V10-CROWN-PACK:END -->

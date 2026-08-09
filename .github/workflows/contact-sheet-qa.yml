@@ -10,6 +10,7 @@ on:
   push:
     branches:
       - main
+      - 'agent/**'
     paths:
       - 'assets/**'
       - 'reviews/**'
@@ -82,7 +83,7 @@ jobs:
         id: qa
         shell: bash
         env:
-          QA_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || '' }}
+          QA_BASE_SHA: ${{ github.event.pull_request.base.sha || (github.ref_name != 'main' && 'origin/main') || github.event.before || '' }}
           QA_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -o pipefail
@@ -108,7 +109,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md generated/qa
+          git add package-lock.json assets/manifest.json README.md docs/ASSET-GUIDE.md index.html generated/qa
           if git diff --cached --quiet; then
             echo "Generated artifacts are already current."
           else

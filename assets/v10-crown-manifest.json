@@ -1,0 +1,121 @@
+{
+  "version": 10,
+  "revision": "10.5.0",
+  "issue": 43,
+  "status": "candidate",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "baseline": 9,
+  "added": 18,
+  "target": 27,
+  "assetIds": [
+    "horn-v10-broken-forks",
+    "horn-v10-curl-coil",
+    "horn-v10-stubby-pegs",
+    "horn-v10-spike-saw",
+    "horn-v10-antler-thicket",
+    "horn-v10-ear-soft-round",
+    "horn-v10-ear-bat-ragged",
+    "horn-v10-ear-droop",
+    "horn-v10-asym-mismatch",
+    "horn-v10-single-crook",
+    "horn-v10-crown-cluster",
+    "horn-v10-bone-prongs",
+    "horn-v10-furry-root",
+    "horn-v10-imp-nubs",
+    "horn-v10-ear-fin",
+    "horn-v10-ear-goblin",
+    "horn-v10-halo-thorns",
+    "horn-v10-ear-moth"
+  ],
+  "families": [
+    "broken",
+    "curled",
+    "stubby",
+    "spiked",
+    "antler-like",
+    "soft-ear",
+    "bat-ear",
+    "drooping",
+    "asymmetrical",
+    "single-horn",
+    "crown-cluster",
+    "bone-like",
+    "furry-root",
+    "compact-imp",
+    "fin-ear",
+    "goblin-ear",
+    "thorn-halo",
+    "moth-ear"
+  ],
+  "kinds": [
+    "ears",
+    "horns",
+    "mixed"
+  ],
+  "baseIds": [
+    "base-bog",
+    "base-fuzz",
+    "base-skull",
+    "base-imp",
+    "base-moss",
+    "base-blue",
+    "base-cyclops-dome",
+    "base-multi-eye-cluster",
+    "base-skull-cracked",
+    "base-furry-mane",
+    "base-blob-melt",
+    "base-imp-compact",
+    "base-long-face",
+    "base-squat-slab",
+    "base-soft-pillow",
+    "base-sharp-shard",
+    "base-calm-stone",
+    "base-wild-bramble"
+  ],
+  "compatibilityStates": [
+    "approved",
+    "acceptable",
+    "blocked"
+  ],
+  "exactRootPairKeys": [
+    "base-skull-cracked|horn-v10-broken-forks",
+    "base-squat-slab|horn-v10-curl-coil",
+    "base-soft-pillow|horn-v10-stubby-pegs",
+    "base-sharp-shard|horn-v10-spike-saw",
+    "base-wild-bramble|horn-v10-antler-thicket",
+    "base-soft-pillow|horn-v10-ear-soft-round",
+    "base-imp-compact|horn-v10-ear-bat-ragged",
+    "base-long-face|horn-v10-ear-droop",
+    "base-blob-melt|horn-v10-asym-mismatch",
+    "base-cyclops-dome|horn-v10-single-crook",
+    "base-multi-eye-cluster|horn-v10-crown-cluster",
+    "base-skull|horn-v10-bone-prongs",
+    "base-furry-mane|horn-v10-furry-root",
+    "base-imp-compact|horn-v10-imp-nubs",
+    "base-blue|horn-v10-ear-fin",
+    "base-long-face|horn-v10-ear-goblin",
+    "base-calm-stone|horn-v10-halo-thorns",
+    "base-cyclops-dome|horn-v10-ear-moth"
+  ],
+  "review": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "96px",
+      "48px"
+    ]
+  },
+  "sourceOfTruth": "supplied-mvp-reference-boards",
+  "candidateApprovalBoundary": "Automated validation confirms contract compliance only; human Art Director approval is required for production promotion."
+}

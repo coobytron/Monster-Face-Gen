@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coobytron.github.io/Monster-Face-Gen/schemas/v10-crown-validation-report.schema.json",
+  "title": "V10 Crown Validation Report",
+  "type": "object",
+  "required": [
+    "version",
+    "issue",
+    "generatedAt",
+    "status",
+    "sourceDigest",
+    "counts",
+    "review",
+    "errors"
+  ],
+  "properties": {
+    "version": {"const": 10},
+    "issue": {"const": 43},
+    "generatedAt": {"const": "1970-01-01T00:00:00.000Z"},
+    "status": {"enum": ["pass", "fail"]},
+    "sourceDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "counts": {
+      "type": "object",
+      "required": ["baseline", "candidates", "total", "approvedBasePairs", "exactRootFixtures"],
+      "properties": {
+        "baseline": {"const": 9},
+        "candidates": {"const": 18},
+        "total": {"const": 27},
+        "approvedBasePairs": {"type": "integer", "minimum": 90},
+        "exactRootFixtures": {"const": 18}
+      },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "required": ["backgrounds", "states", "scales", "outputs"],
+      "properties": {
+        "backgrounds": {"type": "array", "const": ["cream", "white", "black", "transparent"]},
+        "states": {"type": "array", "const": ["normal", "flipped"]},
+        "scales": {"type": "array", "const": ["100%", "25%", "96px", "48px"]},
+        "outputs": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
