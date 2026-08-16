@@ -248,3 +248,9 @@ Issue #42 adds **18 structurally distinct nose and snout candidates**, bringing 
 
 Issue #43 adds **18 structurally distinct horn and ear candidates**, bringing the authored library to the V10 target of **27 crown systems**. The range includes broken, curled, stubby, spiked, antler-like, soft ear, bat ear, drooping, asymmetrical, single-horn, crown-cluster, bone-like, furry-root, compact-imp, fin, goblin, thorn-halo, and moth directions. Every candidate has a stable ID, root profile, complete 18-base compatibility classification, rigid placement fixture, exact non-anatomical root plate, and flip-safe review contract. See [docs/V10-CROWN-PACK.md](docs/V10-CROWN-PACK.md). All additions remain candidates pending human Art Director approval.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-EXTRAS-FINISHES:START -->
+## V10 extras and deterministic finish expansion
+
+Issue #45 adds **18 structurally distinct authored extras** and **7 authored finish plates**, reaching the V10 targets of **27 extras** and **12 finishes**. Extras include jewellery, stitches, bolts, tags, tufts, piercings, bandages, drool, slime, cheek marks, scars, small creatures, badges, pins, stickers, and sprouts. New finishes add halftone pulp, dry-brush masking, chromatic edge split, metallic highlights, paper-cut shadow, soft airbrush underpaint, and limited-palette risograph. Every addition is a fixed authored object with stable IDs and deterministic composition metadata; no runtime anatomy is generated. See [docs/V10-EXTRAS-FINISHES-PACK.md](docs/V10-EXTRAS-FINISHES-PACK.md). Human Art Director approval remains separate.
+<!-- V10-EXTRAS-FINISHES:END -->

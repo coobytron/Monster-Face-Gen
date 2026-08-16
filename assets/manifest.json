@@ -52,7 +52,12 @@
       "assets/v10-crown-assets-02.js",
       "assets/v10-crown-assets-03.js",
       "assets/v10-crowns.js",
-      "assets/v10-crown-manifest.json"
+      "assets/v10-crown-manifest.json",
+      "assets/v10-extra-assets-01.js",
+      "assets/v10-extra-assets-02.js",
+      "assets/v10-extra-assets-03.js",
+      "assets/v10-extras.js",
+      "assets/v10-extras-finishes-manifest.json"
     ],
     "hybridBundles": [
       "assets/hybrid-bundles.js"
@@ -66,7 +71,9 @@
       "assets/hybrid-fixture/base-bog-texture.svg"
     ],
     "finishes": [
-      "assets/finishes.js"
+      "assets/finishes.js",
+      "assets/v10-finish-assets.js",
+      "assets/v10-finishes.js"
     ],
     "junctions": [
       "assets/junctions.js"
@@ -118,7 +125,8 @@
       "docs/V10-MOUTH-PACK.md",
       "docs/V10-HEAD-BASE-PACK.md",
       "docs/V10-NOSE-SNOUT-PACK.md",
-      "docs/V10-CROWN-PACK.md"
+      "docs/V10-CROWN-PACK.md",
+      "docs/V10-EXTRAS-FINISHES-PACK.md"
     ],
     "runtime": [
       "v8-compatibility.js",
@@ -157,7 +165,10 @@
       "schemas/v10-nose-validation-report.schema.json",
       "tests/v10-crowns.test.js",
       "scripts/v10-crown-qa.js",
-      "schemas/v10-crown-validation-report.schema.json"
+      "schemas/v10-crown-validation-report.schema.json",
+      "tests/v10-extras-finishes.test.js",
+      "scripts/v10-extras-finishes-qa.js",
+      "schemas/v10-extras-finishes-validation-report.schema.json"
     ],
     "workflows": [
       ".github/workflows/contact-sheet-qa.yml"
@@ -194,9 +205,9 @@
     "mouths": 27,
     "horns": 27,
     "patterns": 9,
-    "extras": 9,
+    "extras": 27,
     "composableAnatomyObjects": 61,
-    "finishes": 5,
+    "finishes": 12,
     "mouthSeams": 6,
     "hornSeams": 8,
     "junctions": 14,
@@ -227,7 +238,13 @@
     "v10NoseRigidOverrides": 18,
     "v10CrownCandidates": 18,
     "v10CrownApprovedBasePairs": 94,
-    "v10CrownExactRootPairs": 18
+    "v10CrownExactRootPairs": 18,
+    "v10ExtraCandidates": 18,
+    "v10FinishCandidates": 7,
+    "v10ExtraFamilies": 16,
+    "v10FinishFamilies": 7,
+    "v10ExtrasTransparentSafe": 18,
+    "v10FinishesTransparentSafe": 7
   },
   "layerOrder": [
     "horns",
@@ -881,7 +898,10 @@
       "node scripts/v10-nose-qa.js --write",
       "node tests/v10-crowns.test.js",
       "node scripts/v10-crown-qa.js --validate-only",
-      "node scripts/v10-crown-qa.js --write"
+      "node scripts/v10-crown-qa.js --write",
+      "node tests/v10-extras-finishes.test.js",
+      "node scripts/v10-extras-finishes-qa.js --validate-only",
+      "node scripts/v10-extras-finishes-qa.js --write"
     ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
@@ -916,7 +936,9 @@
     "v10NoseReport": "generated/qa/v10-noses/validation-report.json",
     "requiresV10NoseValidation": true,
     "v10CrownReport": "generated/qa/v10-crowns/validation-report.json",
-    "requiresV10CrownValidation": true
+    "requiresV10CrownValidation": true,
+    "v10ExtrasFinishesReport": "generated/qa/v10-extras-finishes-validation.json",
+    "requiresV10ExtrasFinishesValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
@@ -974,7 +996,8 @@
     "v10MouthReview": "18 candidate mouths with exact base-pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px",
     "v10HeadReview": "12 candidate head bases with exact mouth and crown pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px",
     "v10NoseReview": "18 authored nose candidates on approved base fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds",
-    "v10CrownReview": "18 authored horn and ear candidates on approved exact-root fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds"
+    "v10CrownReview": "18 authored horn and ear candidates on approved exact-root fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds",
+    "v10ExtrasFinishesReview": "18 authored extras and 7 authored finish plates, normal and flipped, at 100%, 25%, 192 px, 96 px, and 48 px across cream, white, black, and transparent backgrounds"
   },
   "heroFidelityContract": {
     "version": 9,
@@ -1406,5 +1429,75 @@
     "placements": "assets/v10-crown-placements.js",
     "integration": "assets/v10-crown-integration.js",
     "report": "generated/qa/v10-crowns/validation-report.json"
+  },
+  "v10ExtrasFinishesContract": {
+    "version": 10,
+    "revision": "10.7.0",
+    "issue": 45,
+    "status": "candidate",
+    "humanApprovalRequired": true,
+    "runtimeGeometry": false,
+    "extras": {
+      "baseline": 9,
+      "added": 18,
+      "target": 27,
+      "families": [
+        "jewellery",
+        "stitches",
+        "bolts",
+        "tag",
+        "tuft",
+        "piercing",
+        "bandage",
+        "drool",
+        "slime",
+        "cheek-mark",
+        "scar",
+        "small-creature",
+        "badge",
+        "pin",
+        "sticker",
+        "sprout"
+      ]
+    },
+    "finishes": {
+      "baseline": 5,
+      "added": 7,
+      "target": 12,
+      "families": [
+        "halftone-pulp",
+        "dry-brush",
+        "chromatic-edge",
+        "metallic-highlight",
+        "paper-cut-shadow",
+        "soft-airbrush",
+        "riso-limited"
+      ],
+      "allowedBlendModes": [
+        "multiply",
+        "source-over",
+        "screen"
+      ]
+    },
+    "reviewScales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ],
+    "reviewStates": [
+      "normal",
+      "flipped"
+    ],
+    "reviewBackgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "manifest": "assets/v10-extras-finishes-manifest.json",
+    "report": "generated/qa/v10-extras-finishes-validation.json",
+    "contactSheet": "generated/qa/v10-extras-finishes-contact-sheet.html"
   }
 }
