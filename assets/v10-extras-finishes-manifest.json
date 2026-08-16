@@ -1,0 +1,101 @@
+{
+  "version": 10,
+  "revision": "10.7.0",
+  "issue": 45,
+  "status": "candidate",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "extras": {
+    "baseline": 9,
+    "added": 18,
+    "target": 27,
+    "assetIds": [
+      "extra-v10-earring-chain",
+      "extra-v10-stitch-cross",
+      "extra-v10-bolt-pair",
+      "extra-v10-tag-dangle",
+      "extra-v10-tuft-side",
+      "extra-v10-piercing-triple",
+      "extra-v10-bandage-cross",
+      "extra-v10-drool-string",
+      "extra-v10-slime-bubble",
+      "extra-v10-cheek-mark-star",
+      "extra-v10-scar-ladder",
+      "extra-v10-creature-tick",
+      "extra-v10-badge-skull",
+      "extra-v10-nose-ring",
+      "extra-v10-fly-orbit",
+      "extra-v10-safety-pin",
+      "extra-v10-sticker-bolt",
+      "extra-v10-mushroom-sprout"
+    ],
+    "families": [
+      "badge",
+      "bandage",
+      "bolts",
+      "cheek-mark",
+      "drool",
+      "jewellery",
+      "piercing",
+      "pin",
+      "scar",
+      "slime",
+      "small-creature",
+      "sprout",
+      "sticker",
+      "stitches",
+      "tag",
+      "tuft"
+    ]
+  },
+  "finishes": {
+    "baseline": 5,
+    "added": 7,
+    "target": 12,
+    "assetIds": [
+      "finish-v10-halftone-pulp",
+      "finish-v10-dry-brush",
+      "finish-v10-chromatic-edge",
+      "finish-v10-metallic-highlight",
+      "finish-v10-paper-cut-shadow",
+      "finish-v10-soft-airbrush",
+      "finish-v10-riso-limited"
+    ],
+    "families": [
+      "halftone-pulp",
+      "dry-brush",
+      "chromatic-edge",
+      "metallic-highlight",
+      "paper-cut-shadow",
+      "soft-airbrush",
+      "riso-limited"
+    ]
+  },
+  "baseIds": [
+    "base-bog",
+    "base-fuzz",
+    "base-skull",
+    "base-imp",
+    "base-moss",
+    "base-blue",
+    "base-cyclops-dome",
+    "base-multi-eye-cluster",
+    "base-skull-cracked",
+    "base-furry-mane",
+    "base-blob-melt",
+    "base-imp-compact",
+    "base-long-face",
+    "base-squat-slab",
+    "base-soft-pillow",
+    "base-sharp-shard",
+    "base-calm-stone",
+    "base-wild-bramble"
+  ],
+  "backgrounds": ["cream", "white", "black", "transparent"],
+  "review": {
+    "states": ["normal", "flipped"],
+    "scales": ["100%", "25%", "192px", "96px", "48px"]
+  },
+  "sourceOfTruth": "supplied-mvp-reference-boards",
+  "candidateApprovalBoundary": "Automated validation confirms deterministic authored-object contracts only; human Art Director approval is required for production promotion."
+}
