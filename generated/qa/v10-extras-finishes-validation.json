@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "issue": 45,
+  "revision": "10.7.0",
+  "status": "pass",
+  "runtimeGeometry": false,
+  "humanApprovalRequired": true,
+  "extras": {
+    "baseline": 9,
+    "added": 18,
+    "target": 27,
+    "total": 27,
+    "assets": [
+      {
+        "id": "extra-v10-earring-chain",
+        "family": "jewellery",
+        "attachmentZone": "ear-side",
+        "bounds": [
+          420,
+          320,
+          100,
+          180
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "5d199111b1ccd1fe286b94c0da2316b70a4028bf304386c1a99cac2caa88c73f"
+      },
+      {
+        "id": "extra-v10-stitch-cross",
+        "family": "stitches",
+        "attachmentZone": "cheek-left",
+        "bounds": [
+          145,
+          325,
+          110,
+          90
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "2ee2c1bc203b3cee2695e5740677ca7272ad8f0a7a3696069388c5b65166f359"
+      },
+      {
+        "id": "extra-v10-bolt-pair",
+        "family": "bolts",
+        "attachmentZone": "temples",
+        "bounds": [
+          95,
+          275,
+          410,
+          90
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "f241cb90e11e8563a110f6dbdca7f7c8afa1f888e93b854de0c5b0198feb524b"
+      },
+      {
+        "id": "extra-v10-tag-dangle",
+        "family": "tag",
+        "attachmentZone": "ear-right",
+        "bounds": [
+          420,
+          330,
+          100,
+          190
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "172d7819cf3095f154398e110eafc6bc97d293c4db813277b72b0490b5090a4f"
+      },
+      {
+        "id": "extra-v10-tuft-side",
+        "family": "tuft",
+        "attachmentZone": "temple-left",
+        "bounds": [
+          105,
+          170,
+          120,
+          150
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "d41c4e6585145ed711de91d30a84c79f654ad6c8ab042a000c9e931c492655e4"
+      },
+      {
+        "id": "extra-v10-piercing-triple",
+        "family": "piercing",
+        "attachmentZone": "cheek-right",
+        "bounds": [
+          410,
+          270,
+          95,
+          95
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "9849b461d5ad89d3bed7dbcb2133e58819d4ba7220187bada720094cced914ee"
+      },
+      {
+        "id": "extra-v10-bandage-cross",
+        "family": "bandage",
+        "attachmentZone": "forehead",
+        "bounds": [
+          325,
+          170,
+          145,
+          115
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "410fce431fc3cb5dc500836e8f6fadabce5095f93caf24dde53737ac545f1a56"
+      },
+      {
+        "id": "extra-v10-drool-string",
+        "family": "drool",
+        "attachmentZone": "mouth-right",
+        "bounds": [
+          360,
+          405,
+          105,
+          150
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "38b194d4b3156da70d0d9c0b8d50a1d2c8f9218066a67d6d5c4b9b85acad861f"
+      },
+      {
+        "id": "extra-v10-slime-bubble",
+        "family": "slime",
+        "attachmentZone": "cheek-left",
+        "bounds": [
+          120,
+          360,
+          125,
+          120
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "4958fb1697a66ee2386c0a594885159dde9998a91a6cefad607e3814585aa38b"
+      },
+      {
+        "id": "extra-v10-cheek-mark-star",
+        "family": "cheek-mark",
+        "attachmentZone": "cheek-right",
+        "bounds": [
+          405,
+          320,
+          100,
+          100
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "3e94d867858314d45d31b68589a25fa04c4d41f0527fcdfecab144e7ac873b88"
+      },
+      {
+        "id": "extra-v10-scar-ladder",
+        "family": "scar",
+        "attachmentZone": "cheek-left",
+        "bounds": [
+          145,
+          310,
+          120,
+          135
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "ba043af434929f70e4f23f9ce612506a39a2fee0a47ab9c271438ec062be4584"
+      },
+      {
+        "id": "extra-v10-creature-tick",
+        "family": "small-creature",
+        "attachmentZone": "forehead",
+        "bounds": [
+          255,
+          125,
+          105,
+          105
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "bf302ebc027fd731168b3316a3520f1578bb7ed6bb196c974d93fd6e6097f4d4"
+      },
+      {
+        "id": "extra-v10-badge-skull",
+        "family": "badge",
+        "attachmentZone": "cheek-right",
+        "bounds": [
+          398,
+          352,
+          115,
+          115
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "d11d293591553e3b3a1a4d0fce702ec4d7de4bc4e0e138b2340ba320a337425c"
+      },
+      {
+        "id": "extra-v10-nose-ring",
+        "family": "piercing",
+        "attachmentZone": "nose",
+        "bounds": [
+          265,
+          315,
+          75,
+          90
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "b0dff8ab2cabcb07f4e883361550c141018f96822cd793e9f4eef5bc0005edf6"
+      },
+      {
+        "id": "extra-v10-fly-orbit",
+        "family": "small-creature",
+        "attachmentZone": "temple-right",
+        "bounds": [
+          405,
+          180,
+          105,
+          120
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "0186a682fa58123029d21654252331531cad430d612e379acc4e24da10ffbaf4"
+      },
+      {
+        "id": "extra-v10-safety-pin",
+        "family": "pin",
+        "attachmentZone": "cheek-left",
+        "bounds": [
+          130,
+          330,
+          125,
+          140
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "f959380dc1095c8e6c1e1271c0a80a5e8032fad635dfee5fb7f789914b3c934b"
+      },
+      {
+        "id": "extra-v10-sticker-bolt",
+        "family": "sticker",
+        "attachmentZone": "forehead",
+        "bounds": [
+          330,
+          175,
+          115,
+          110
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "0da4be641293c8dff95847eca01484380d8e9a33fe4b20689bdcfb87b4c237b8"
+      },
+      {
+        "id": "extra-v10-mushroom-sprout",
+        "family": "sprout",
+        "attachmentZone": "crown",
+        "bounds": [
+          250,
+          105,
+          105,
+          130
+        ],
+        "supportedBaseCount": 18,
+        "transparentSafe": true,
+        "svgSha256": "8050ab4ec2ce40e53d165eb81423b89c404cd442ca6477d027ed76d15611b638"
+      }
+    ]
+  },
+  "finishes": {
+    "baseline": 5,
+    "added": 7,
+    "target": 12,
+    "total": 12,
+    "assets": [
+      {
+        "id": "finish-v10-halftone-pulp",
+        "family": "halftone-pulp",
+        "blendMode": "multiply",
+        "opacity": 0.46,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "78859efbd97906df0a040178b584597777e5c96e6a6e5a9efc2e7215633ffaea"
+      },
+      {
+        "id": "finish-v10-dry-brush",
+        "family": "dry-brush",
+        "blendMode": "multiply",
+        "opacity": 0.43,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "2820f72de7379012fd659219e08faf5ed27fda82bc5e3be54b125b3dd16cc584"
+      },
+      {
+        "id": "finish-v10-chromatic-edge",
+        "family": "chromatic-edge",
+        "blendMode": "source-over",
+        "opacity": 0.4,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "910412920271d6941698750b1ecf71d44b1de5a97b91f0dcfda6dbdf91c0d087"
+      },
+      {
+        "id": "finish-v10-metallic-highlight",
+        "family": "metallic-highlight",
+        "blendMode": "screen",
+        "opacity": 0.34,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "035545cfc4d664fcacdc01a95d0c7b781db8451419d2f4afacea20c4d90bf6e7"
+      },
+      {
+        "id": "finish-v10-paper-cut-shadow",
+        "family": "paper-cut-shadow",
+        "blendMode": "multiply",
+        "opacity": 0.31,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "fe416979581140df33689a9b1041051708117aa0b211c29dcf772ff6a890732d"
+      },
+      {
+        "id": "finish-v10-soft-airbrush",
+        "family": "soft-airbrush",
+        "blendMode": "source-over",
+        "opacity": 0.28,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "cfe2abfa049adcaa693deeb71aaddb6d78b0dcd7e1102c007587c0c6a56fd4ce"
+      },
+      {
+        "id": "finish-v10-riso-limited",
+        "family": "riso-limited",
+        "blendMode": "multiply",
+        "opacity": 0.44,
+        "supportedBackgrounds": [
+          "cream",
+          "white",
+          "black",
+          "transparent"
+        ],
+        "transparentSafe": true,
+        "maskContract": "alpha-mask-to-composed-art",
+        "svgSha256": "6c5ff7f8b263b20c89eebe230dbfaa8cd06c34d519ec38f3d99d01989e70843b"
+      }
+    ]
+  },
+  "review": {
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ]
+  },
+  "backgrounds": [
+    "cream",
+    "white",
+    "black",
+    "transparent"
+  ],
+  "checks": {
+    "extraQuota": true,
+    "finishQuota": true,
+    "uniqueExtras": true,
+    "uniqueFinishes": true,
+    "allExtrasTransparentSafe": true,
+    "allFinishesTransparentSafe": true,
+    "allExtrasCoverBases": true,
+    "allFinishesCoverBackgrounds": true
+  }
+}

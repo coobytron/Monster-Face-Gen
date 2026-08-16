@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v10-extras-finishes-validation-report.schema.json",
+  "title": "V10 extras and finishes validation report",
+  "type": "object",
+  "required": ["schemaVersion", "issue", "revision", "status", "runtimeGeometry", "humanApprovalRequired", "extras", "finishes", "checks"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "issue": {"const": 45},
+    "revision": {"type": "string"},
+    "status": {"enum": ["pass", "fail"]},
+    "runtimeGeometry": {"const": false},
+    "humanApprovalRequired": {"const": true},
+    "extras": {"type": "object", "required": ["baseline", "added", "target", "total", "assets"]},
+    "finishes": {"type": "object", "required": ["baseline", "added", "target", "total", "assets"]},
+    "checks": {"type": "object", "additionalProperties": {"type": "boolean"}}
+  }
+}

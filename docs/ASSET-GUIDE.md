@@ -301,3 +301,9 @@ Load the two `assets/v10-nose-assets-*` chunks before `assets/v10-noses.js`. Com
 
 Load the three `assets/v10-crown-assets-*` chunks before `assets/v10-crowns.js`. Load compatibility and exact-root fixtures after the existing compatibility object, then install `assets/v10-crown-integration.js`. Every crown is a literal full-canvas SVG with stable `horn-v10-*` ID, crown kind, family, root profile, authored bounds, rigid review placement, flip-safe flag, runtime geometry disabled, and candidate status. Every candidate must classify all 18 current bases exactly once and publish one approved exact root fixture whose transition plate declares `standaloneAnatomy: false`.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-EXTRAS-FINISHES:START -->
+## V10 extras and finish candidate contract
+
+Load the three `assets/v10-extra-assets-*` chunks before `assets/v10-extras.js`; load `assets/v10-finish-assets.js` and `assets/v10-finishes.js` after the baseline `assets/finishes.js`. Extras are literal 600 × 600 authored SVG objects with stable `extra-v10-*` IDs, attachment zones, full current-base support metadata, fixed bounds, source-over composition, z-order 80, flip safety, and transparent-export safety. Finish candidates are literal 600 × 600 authored plates with stable `finish-v10-*` IDs, fixed blend/opacity, alpha-mask-to-composed-art contract, explicit supported backgrounds, flip safety, and transparent-export safety. Runtime may place, mirror, mask, blend, and export these sources; it may not infer landmarks, morph paths, or generate anatomy.
+<!-- V10-EXTRAS-FINISHES:END -->
