@@ -1,8 +1,8 @@
 
 > monster-face-gen-qa@10.6.0 qa:ci
-> node scripts/run-qa-ci.js --base origin/main --head 9b03fafa95fccb1a3dbb23f267a3e7b8587a46e0
+> node scripts/run-qa-ci.js --base 3a35112486e80b70039a96c312ff906c7cb454ab --head 13b48004c77a325c622dd9e714515ad878541133
 
-CI QA plan: V10 pattern-only (12 changed files).
+CI QA plan: V10 pattern-only (21 changed files).
 ::group::Render V10 pattern review sheet
 V10 pattern QA pass: 18 authored overlays; total pattern count 27.
 ::endgroup::
