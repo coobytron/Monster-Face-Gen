@@ -301,3 +301,9 @@ Load the two `assets/v10-nose-assets-*` chunks before `assets/v10-noses.js`. Com
 
 Load the three `assets/v10-crown-assets-*` chunks before `assets/v10-crowns.js`. Load compatibility and exact-root fixtures after the existing compatibility object, then install `assets/v10-crown-integration.js`. Every crown is a literal full-canvas SVG with stable `horn-v10-*` ID, crown kind, family, root profile, authored bounds, rigid review placement, flip-safe flag, runtime geometry disabled, and candidate status. Every candidate must classify all 18 current bases exactly once and publish one approved exact root fixture whose transition plate declares `standaloneAnatomy: false`.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-EYE-PACK:START -->
+## V10 eye candidate contract
+
+Load the two `assets/v10-eye-assets-*` chunks, then `assets/v10-eye-compatibility.js`, `assets/v10-eye-placements.js`, and `assets/v10-eyes.js`. After the base compatibility matrix is available, load `assets/v10-eye-integration.js`. Every V10 eye is a literal full-canvas SVG with stable `eye-v10-*` ID, expression/family tags, complete 18-base compatibility classification, one approved rigid review placement, flip-safe and thumbnail-safe metadata, runtime geometry disabled, and candidate approval status. The integration mutates compatibility lists and fixed placement overrides only; it never generates or deforms eye anatomy.
+<!-- V10-EYE-PACK:END -->

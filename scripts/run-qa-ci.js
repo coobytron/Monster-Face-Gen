@@ -25,6 +25,13 @@ function gitDiffFiles() {
   return result.stdout.split(/\r?\n/).filter(Boolean);
 }
 
+const eyeSpecific = file =>
+  /^assets\/v10-eye/.test(file) ||
+  /^scripts\/(?:update-)?v10-eye/.test(file) ||
+  /^tests\/v10-eyes\.test\.js$/.test(file) ||
+  /^schemas\/v10-eye/.test(file) ||
+  /^generated\/qa\/v10-eyes\//.test(file);
+
 const noseSpecific = file =>
   /^assets\/v10-nose/.test(file) ||
   /^scripts\/(?:update-)?v10-nose/.test(file) ||
@@ -53,12 +60,17 @@ const sharedRollout = new Set([
 ]);
 
 const files = gitDiffFiles();
+const eyeOnly = files && files.length > 0 && files.some(eyeSpecific) &&
+  files.every(file => eyeSpecific(file) || sharedRollout.has(file) || file === 'docs/V10-EYE-PACK.md');
 const noseOnly = files && files.length > 0 && files.some(noseSpecific) &&
   files.every(file => noseSpecific(file) || sharedRollout.has(file) || file === 'docs/V10-NOSE-SNOUT-PACK.md');
 const crownOnly = files && files.length > 0 && files.some(crownSpecific) &&
   files.every(file => crownSpecific(file) || sharedRollout.has(file) || file === 'docs/V10-CROWN-PACK.md');
 
-if (noseOnly) {
+if (eyeOnly) {
+  console.log(`CI QA plan: V10 eye-only (${files.length} changed files).`);
+  run(['scripts/v10-eye-qa.js', '--write'], 'Render V10 eye review sheet');
+} else if (noseOnly) {
   console.log(`CI QA plan: V10 nose-only (${files.length} changed files).`);
   run(['-r', './scripts/sharp-svg-sanitize.js', 'scripts/v10-nose-qa.js', '--write'], 'Render V10 nose review sheets');
 } else if (crownOnly) {

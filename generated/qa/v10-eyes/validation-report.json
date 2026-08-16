@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "issue": 41,
+  "revision": "10.3.1",
+  "status": "pass",
+  "runtimeGeometry": false,
+  "humanApprovalRequired": true,
+  "baseline": 10,
+  "added": 20,
+  "target": 30,
+  "totalAfterPack": 30,
+  "approvedBasePairs": 147,
+  "rigidPlacementCount": 20,
+  "review": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "96px",
+      "48px"
+    ]
+  },
+  "sourceOfTruth": "supplied-mvp-reference-boards",
+  "checks": {
+    "quotaReached": true,
+    "stableIds": true,
+    "distinctSources": true,
+    "familyCoverage": true,
+    "expressionCoverage": true,
+    "compatibilityComplete": true,
+    "rigidPlacements": true,
+    "placementBasesApproved": true,
+    "allThumbnailSafe": true,
+    "allTransparentSafe": true,
+    "runtimeGeometryDisabled": true
+  },
+  "assets": [
+    {
+      "id": "eye-v10-cyclops-slit",
+      "family": "cyclops",
+      "expression": "feral",
+      "approvedBaseCount": 6,
+      "blockedBaseCount": 12,
+      "placementKey": "base-cyclops-dome|eye-v10-cyclops-slit",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "3361abd218ce212bde7ef4e2890722ed5c2f3e4ba58bc91e9d30e23806d6cc1f"
+    },
+    {
+      "id": "eye-v10-cyclops-glassy",
+      "family": "cyclops",
+      "expression": "uneasy",
+      "approvedBaseCount": 6,
+      "blockedBaseCount": 12,
+      "placementKey": "base-soft-pillow|eye-v10-cyclops-glassy",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "5689bb6d6e164bdccd27baa20728dcaf19bc6259d31b21448d3a602b5d835c7a"
+    },
+    {
+      "id": "eye-v10-droop-heavy",
+      "family": "drooping",
+      "expression": "sleepy",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-long-face|eye-v10-droop-heavy",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "3989eeebd551487e9e678fdd1185cc08f2f947347ececae7918db5a95f8db597"
+    },
+    {
+      "id": "eye-v10-wide-starburst",
+      "family": "wide-startled",
+      "expression": "startled",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-blob-melt|eye-v10-wide-starburst",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "da2c7b7e2d53c43ded2d5b670e83e0119c49dab6ec74e31226acc626ad801bd0"
+    },
+    {
+      "id": "eye-v10-beady-offset",
+      "family": "tiny-beady",
+      "expression": "uneasy",
+      "approvedBaseCount": 11,
+      "blockedBaseCount": 7,
+      "placementKey": "base-imp-compact|eye-v10-beady-offset",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "cf60909702243ef0bc0ad189549bcf0e80246a14d639b24ec67cf12f87507e13"
+    },
+    {
+      "id": "eye-v10-mismatch-tall",
+      "family": "mismatched",
+      "expression": "goofy",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-wild-bramble|eye-v10-mismatch-tall",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "cdf2a95af597490d36a590c49d73454694d06756e59b80f8c0b65ec0f47fe559"
+    },
+    {
+      "id": "eye-v10-half-lid-flat",
+      "family": "half-lidded",
+      "expression": "stern",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-calm-stone|eye-v10-half-lid-flat",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "19f04ed31f18c2b72a2c80247449979817be6140ddfaddc2211b1e90a2e6124c"
+    },
+    {
+      "id": "eye-v10-feral-chevron",
+      "family": "feral",
+      "expression": "feral",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-sharp-shard|eye-v10-feral-chevron",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "bd66b05faacc758e3b0f64f910fa658074b08008a0b94e8e70883b6c7fa20362"
+    },
+    {
+      "id": "eye-v10-sleepy-fold",
+      "family": "sleepy",
+      "expression": "sleepy",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-soft-pillow|eye-v10-sleepy-fold",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "ac0e3f73d4ec3785e7776efe28d39fc0c178bd24778e4dd11fa7cd8723de5b41"
+    },
+    {
+      "id": "eye-v10-stern-block",
+      "family": "stern",
+      "expression": "stern",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-squat-slab|eye-v10-stern-block",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "20496a7127b9a330f097aaf4762c47db6605e78d9818f9e26482276437c24284"
+    },
+    {
+      "id": "eye-v10-goofy-swivel",
+      "family": "goofy",
+      "expression": "goofy",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-fuzz|eye-v10-goofy-swivel",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "933bc55068d6b61d58ee1f97e270ebdc6452f812112810725e21bd5077a6d8bc"
+    },
+    {
+      "id": "eye-v10-uneasy-pin",
+      "family": "uneasy",
+      "expression": "uneasy",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-skull-cracked|eye-v10-uneasy-pin",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "c7294fd2689f743d1eb6f0fc875b3af1d878efbb77198658e3cff5c4f14e02da"
+    },
+    {
+      "id": "eye-v10-glassy-pair",
+      "family": "glassy",
+      "expression": "startled",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-blue|eye-v10-glassy-pair",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "a2dc2f68ae666fdd3b3439d66e68721d9e79a0c9fa9fb8b206c16dd0860840ea"
+    },
+    {
+      "id": "eye-v10-scarred-left",
+      "family": "scarred",
+      "expression": "stern",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-skull|eye-v10-scarred-left",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "ca4b1c5121352ec009fc5bfb22afaa76b242cbafddcd8b2801f2460de818041f"
+    },
+    {
+      "id": "eye-v10-mech-rivet",
+      "family": "mechanical-adjacent",
+      "expression": "stern",
+      "approvedBaseCount": 7,
+      "blockedBaseCount": 11,
+      "placementKey": "base-imp-compact|eye-v10-mech-rivet",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "1c4658f93a12f10914cdd7de57a54250efe4b85b19fc486876aec291358fd85e"
+    },
+    {
+      "id": "eye-v10-bat-lid",
+      "family": "mismatched",
+      "expression": "feral",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-imp|eye-v10-bat-lid",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "be11bb6ad5c1b730d31bb8905dcdaeb5175ba84c0c4159a154f26f7ad9821a26"
+    },
+    {
+      "id": "eye-v10-triad-high",
+      "family": "multi-eye",
+      "expression": "startled",
+      "approvedBaseCount": 6,
+      "blockedBaseCount": 12,
+      "placementKey": "base-multi-eye-cluster|eye-v10-triad-high",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "8b0e6de332685ac26a70e4b60a86e164c8bc898c076d7f2b0ed26f46a04a3bac"
+    },
+    {
+      "id": "eye-v10-quad-beady",
+      "family": "multi-eye",
+      "expression": "goofy",
+      "approvedBaseCount": 6,
+      "blockedBaseCount": 12,
+      "placementKey": "base-furry-mane|eye-v10-quad-beady",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "2ad2a1d561e75aec8166630de131fd3274d9cc2ac26de144a291ed5096bfb098"
+    },
+    {
+      "id": "eye-v10-six-bead",
+      "family": "multi-eye",
+      "expression": "uneasy",
+      "approvedBaseCount": 6,
+      "blockedBaseCount": 12,
+      "placementKey": "base-bog|eye-v10-six-bead",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "c9362566687a27e8b614ac71e017ddeee870f252ccb4952402ef1d7a52cebb2a"
+    },
+    {
+      "id": "eye-v10-spiral-daze",
+      "family": "goofy",
+      "expression": "goofy",
+      "approvedBaseCount": 8,
+      "blockedBaseCount": 10,
+      "placementKey": "base-blob-melt|eye-v10-spiral-daze",
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "7e51b25f103f3824a9d10307152499c705763e23aba4591b0aaeb7795265ad80"
+    }
+  ]
+}
