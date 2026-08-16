@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v10-pattern-validation-report.schema.json",
+  "title": "V10 pattern validation report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "issue",
+    "revision",
+    "status",
+    "runtimeGeometry",
+    "humanApprovalRequired",
+    "baseline",
+    "added",
+    "target",
+    "totalAfterPack",
+    "checks",
+    "assets"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "issue": {"const": 44},
+    "revision": {"type": "string"},
+    "status": {"enum": ["pass", "fail"]},
+    "runtimeGeometry": {"const": false},
+    "humanApprovalRequired": {"const": true},
+    "baseline": {"type": "integer", "minimum": 0},
+    "added": {"type": "integer", "minimum": 18},
+    "target": {"type": "integer", "minimum": 27},
+    "totalAfterPack": {"type": "integer", "minimum": 27},
+    "checks": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "assets": {
+      "type": "array",
+      "minItems": 18,
+      "items": {
+        "type": "object",
+        "required": ["id", "family", "blendMode", "opacity", "zOrder", "bounds", "supportedBaseCount", "thumbnailSafe", "transparentSafe", "svgSha256"]
+      }
+    }
+  }
+}

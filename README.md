@@ -248,3 +248,9 @@ Issue #42 adds **18 structurally distinct nose and snout candidates**, bringing 
 
 Issue #43 adds **18 structurally distinct horn and ear candidates**, bringing the authored library to the V10 target of **27 crown systems**. The range includes broken, curled, stubby, spiked, antler-like, soft ear, bat ear, drooping, asymmetrical, single-horn, crown-cluster, bone-like, furry-root, compact-imp, fin, goblin, thorn-halo, and moth directions. Every candidate has a stable ID, root profile, complete 18-base compatibility classification, rigid placement fixture, exact non-anatomical root plate, and flip-safe review contract. See [docs/V10-CROWN-PACK.md](docs/V10-CROWN-PACK.md). All additions remain candidates pending human Art Director approval.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-PATTERN-PACK:START -->
+## V10 authored pattern and surface-detail expansion
+
+Issue #44 adds **18 structurally distinct authored surface overlays**, bringing the selectable pattern library from 9 to the V10 target of **27**. The pack covers contour hatching, stipple, scratches, scars, patches, wrinkles, ink fills, registration offsets, fur marks, scales, freckles, crackle, stripes, pores, halftone-like dot fields, dry-brush plates, and asymmetric graphic marks. Each candidate has a stable ID, supported-base contract, fixed opacity/blend/z-order metadata, fixed export bounds, literal 600 × 600 SVG source, and transparent/background review flags. See [docs/V10-PATTERN-PACK.md](docs/V10-PATTERN-PACK.md). All additions remain candidates pending human Art Director approval.
+<!-- V10-PATTERN-PACK:END -->

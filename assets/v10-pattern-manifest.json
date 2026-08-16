@@ -1,0 +1,102 @@
+{
+  "version": 10,
+  "revision": "10.6.0",
+  "issue": 44,
+  "status": "candidate",
+  "humanApprovalRequired": true,
+  "runtimeGeometry": false,
+  "baseline": 9,
+  "added": 18,
+  "target": 27,
+  "assetIds": [
+    "pattern-v10-contour-hatch",
+    "pattern-v10-stipple-cloud",
+    "pattern-v10-scratch-field",
+    "pattern-v10-scar-stitches",
+    "pattern-v10-patch-blocks",
+    "pattern-v10-wrinkle-rings",
+    "pattern-v10-ink-puddles",
+    "pattern-v10-registration-echo",
+    "pattern-v10-fur-chevrons",
+    "pattern-v10-pebble-scales",
+    "pattern-v10-rake-lines",
+    "pattern-v10-freckle-clusters",
+    "pattern-v10-halftone-burst",
+    "pattern-v10-crackle-web",
+    "pattern-v10-cheek-stripes",
+    "pattern-v10-porous-speckle",
+    "pattern-v10-dry-brush-plate",
+    "pattern-v10-asym-dot-bars"
+  ],
+  "families": [
+    "contour-hatching",
+    "cracks",
+    "freckles",
+    "fur-marks",
+    "ink-fills",
+    "patches",
+    "pores",
+    "registration",
+    "scales",
+    "scars",
+    "scratches",
+    "stipple",
+    "stripes",
+    "wrinkles"
+  ],
+  "baseIds": [
+    "base-bog",
+    "base-fuzz",
+    "base-skull",
+    "base-imp",
+    "base-moss",
+    "base-blue",
+    "base-cyclops-dome",
+    "base-multi-eye-cluster",
+    "base-skull-cracked",
+    "base-furry-mane",
+    "base-blob-melt",
+    "base-imp-compact",
+    "base-long-face",
+    "base-squat-slab",
+    "base-soft-pillow",
+    "base-sharp-shard",
+    "base-calm-stone",
+    "base-wild-bramble"
+  ],
+  "allowedBlendModes": [
+    "multiply",
+    "source-over"
+  ],
+  "requiredMetadata": [
+    "family",
+    "supportedBaseIds",
+    "blendMode",
+    "opacity",
+    "zOrder",
+    "bounds",
+    "thumbnailSafe",
+    "transparentSafe"
+  ],
+  "review": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ]
+  },
+  "sourceOfTruth": "supplied-mvp-reference-boards",
+  "candidateApprovalBoundary": "Automated validation confirms authored-overlay contract compliance only; human Art Director approval is required for production promotion."
+}

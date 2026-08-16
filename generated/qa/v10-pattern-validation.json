@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "issue": 44,
+  "revision": "10.6.0",
+  "status": "pass",
+  "runtimeGeometry": false,
+  "humanApprovalRequired": true,
+  "baseline": 9,
+  "added": 18,
+  "target": 27,
+  "totalAfterPack": 27,
+  "deterministicAssetOrder": [
+    "pattern-v10-contour-hatch",
+    "pattern-v10-stipple-cloud",
+    "pattern-v10-scratch-field",
+    "pattern-v10-scar-stitches",
+    "pattern-v10-patch-blocks",
+    "pattern-v10-wrinkle-rings",
+    "pattern-v10-ink-puddles",
+    "pattern-v10-registration-echo",
+    "pattern-v10-fur-chevrons",
+    "pattern-v10-pebble-scales",
+    "pattern-v10-rake-lines",
+    "pattern-v10-freckle-clusters",
+    "pattern-v10-halftone-burst",
+    "pattern-v10-crackle-web",
+    "pattern-v10-cheek-stripes",
+    "pattern-v10-porous-speckle",
+    "pattern-v10-dry-brush-plate",
+    "pattern-v10-asym-dot-bars"
+  ],
+  "sourceOfTruth": "supplied-mvp-reference-boards",
+  "reviewMatrix": {
+    "backgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "states": [
+      "normal",
+      "flipped"
+    ],
+    "scales": [
+      "100%",
+      "25%",
+      "192px",
+      "96px",
+      "48px"
+    ]
+  },
+  "checks": {
+    "stableIds": true,
+    "quotaReached": true,
+    "allTransparentSafe": true,
+    "allThumbnailSafe": true,
+    "allBasesCovered": true,
+    "distinctSourceDigests": true
+  },
+  "assets": [
+    {
+      "id": "pattern-v10-contour-hatch",
+      "family": "contour-hatching",
+      "blendMode": "multiply",
+      "opacity": 0.38,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "d8dedf4174f05adc698a8e9e1def8b6a1e757d416295c2c8c8e8575f23e8fca2"
+    },
+    {
+      "id": "pattern-v10-stipple-cloud",
+      "family": "stipple",
+      "blendMode": "multiply",
+      "opacity": 0.34,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "dde5a410c47c3763ed81a3885a6e502f316279357be8906efd3f1db0ac007ca0"
+    },
+    {
+      "id": "pattern-v10-scratch-field",
+      "family": "scratches",
+      "blendMode": "multiply",
+      "opacity": 0.46,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "2b58a46ef8949feb6eb95fcea59d0097165b879ab26d93de0177fac99b517b0d"
+    },
+    {
+      "id": "pattern-v10-scar-stitches",
+      "family": "scars",
+      "blendMode": "multiply",
+      "opacity": 0.55,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "53b2d125ad75a703b8804670d83d3cb4411b65489cbdcbbdad1b801b31b8c604"
+    },
+    {
+      "id": "pattern-v10-patch-blocks",
+      "family": "patches",
+      "blendMode": "multiply",
+      "opacity": 0.4,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "12e1d269629682e2ab15eb3220c4f7370fb7dba7c8cc5483761f0a7ea563e9ec"
+    },
+    {
+      "id": "pattern-v10-wrinkle-rings",
+      "family": "wrinkles",
+      "blendMode": "multiply",
+      "opacity": 0.33,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "328edae50074e9e5cd43af494401bd60f055b22313fcae2cfa196426cc9147ee"
+    },
+    {
+      "id": "pattern-v10-ink-puddles",
+      "family": "ink-fills",
+      "blendMode": "multiply",
+      "opacity": 0.28,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "eac8e6cb386d0880ef9ff7e7381954a2fa5066229ef8410736b1fd020d610fc0"
+    },
+    {
+      "id": "pattern-v10-registration-echo",
+      "family": "registration",
+      "blendMode": "source-over",
+      "opacity": 0.42,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "36532893a946007dd4df1743dac593f17dc386130545c609aa8e96227df5d2f6"
+    },
+    {
+      "id": "pattern-v10-fur-chevrons",
+      "family": "fur-marks",
+      "blendMode": "multiply",
+      "opacity": 0.37,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "b20e24457735a792862685201ee3f9559594f922c3b155f234faf42e3dcecc3f"
+    },
+    {
+      "id": "pattern-v10-pebble-scales",
+      "family": "scales",
+      "blendMode": "multiply",
+      "opacity": 0.42,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "f5399a2eb4cb33113923020c496c7e519f3059f012d2a6ccb2a13a78a5a1bb04"
+    },
+    {
+      "id": "pattern-v10-rake-lines",
+      "family": "contour-hatching",
+      "blendMode": "multiply",
+      "opacity": 0.3,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "f2c8e79cc4684bd7ced3de1c0cae6764dee957953aa1071da9655e8b74e89df5"
+    },
+    {
+      "id": "pattern-v10-freckle-clusters",
+      "family": "freckles",
+      "blendMode": "multiply",
+      "opacity": 0.45,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "d34b4b27220836d3134f4e6ec45ceba342d6a2b8f510a5bc1bfb78b1dfd14c23"
+    },
+    {
+      "id": "pattern-v10-halftone-burst",
+      "family": "stipple",
+      "blendMode": "multiply",
+      "opacity": 0.38,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "bec93c8d6a85b7171607fd1f71f36d90a7fd41ed902d0821a8f800ad8f8f5a25"
+    },
+    {
+      "id": "pattern-v10-crackle-web",
+      "family": "cracks",
+      "blendMode": "multiply",
+      "opacity": 0.4,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "db2250aba947ab8e018edc82f9935beb27a71dc7c4b8df11f62a9b29c56619f9"
+    },
+    {
+      "id": "pattern-v10-cheek-stripes",
+      "family": "stripes",
+      "blendMode": "multiply",
+      "opacity": 0.28,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "2c6f4ed2f7bdcf85bdde3f723b14afa50f95ca39b51736e319665bd7bc05510d"
+    },
+    {
+      "id": "pattern-v10-porous-speckle",
+      "family": "pores",
+      "blendMode": "multiply",
+      "opacity": 0.32,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "c37e3571c1adf5c588ee86946ccf534150c1e808ee2cbc7f0b7f2334ebae09d3"
+    },
+    {
+      "id": "pattern-v10-dry-brush-plate",
+      "family": "ink-fills",
+      "blendMode": "multiply",
+      "opacity": 0.18,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "ae625828b1599a5fa9815e791cedf9aac7686cc6a7c9ca1ddfd9b1f178777c38"
+    },
+    {
+      "id": "pattern-v10-asym-dot-bars",
+      "family": "registration",
+      "blendMode": "source-over",
+      "opacity": 0.4,
+      "zOrder": 35,
+      "bounds": [
+        100,
+        110,
+        400,
+        425
+      ],
+      "supportedBaseCount": 18,
+      "thumbnailSafe": true,
+      "transparentSafe": true,
+      "svgSha256": "887eabbd769cfa5fc621075ab8d63cdef149d1b5f807435056decb3092c855f7"
+    }
+  ]
+}
