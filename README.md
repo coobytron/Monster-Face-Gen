@@ -248,3 +248,9 @@ Issue #42 adds **18 structurally distinct nose and snout candidates**, bringing 
 
 Issue #43 adds **18 structurally distinct horn and ear candidates**, bringing the authored library to the V10 target of **27 crown systems**. The range includes broken, curled, stubby, spiked, antler-like, soft ear, bat ear, drooping, asymmetrical, single-horn, crown-cluster, bone-like, furry-root, compact-imp, fin, goblin, thorn-halo, and moth directions. Every candidate has a stable ID, root profile, complete 18-base compatibility classification, rigid placement fixture, exact non-anatomical root plate, and flip-safe review contract. See [docs/V10-CROWN-PACK.md](docs/V10-CROWN-PACK.md). All additions remain candidates pending human Art Director approval.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-EYE-PACK:START -->
+## V10 authored expressive eye expansion
+
+Issue #41 provides **20 structurally distinct pre-drawn eye candidates**, bringing the eye library from 10 to the V10 target of **30**. The rollout covers cyclops, multi-eye, drooping, wide-startled, tiny-beady, mismatched, half-lidded, feral, sleepy, stern, goofy, uneasy, glassy, scarred, and mechanical-adjacent systems. This integration completes the missing browser loader, complete 18-base compatibility classifications, rigid review placements, deterministic QA, and manifest contract from the original eye PR. See [docs/V10-EYE-PACK.md](docs/V10-EYE-PACK.md). All V10 eyes remain candidates pending human Art Director approval.
+<!-- V10-EYE-PACK:END -->

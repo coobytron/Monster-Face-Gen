@@ -52,7 +52,11 @@
       "assets/v10-crown-assets-02.js",
       "assets/v10-crown-assets-03.js",
       "assets/v10-crowns.js",
-      "assets/v10-crown-manifest.json"
+      "assets/v10-crown-manifest.json",
+      "assets/v10-eye-assets-01.js",
+      "assets/v10-eye-assets-02.js",
+      "assets/v10-eyes.js",
+      "assets/v10-eye-manifest.json"
     ],
     "hybridBundles": [
       "assets/hybrid-bundles.js"
@@ -101,7 +105,10 @@
       "assets/v10-nose-placements.js",
       "assets/v10-crown-compatibility.js",
       "assets/v10-crown-placements.js",
-      "assets/v10-crown-integration.js"
+      "assets/v10-crown-integration.js",
+      "assets/v10-eye-compatibility.js",
+      "assets/v10-eye-placements.js",
+      "assets/v10-eye-integration.js"
     ],
     "compatibility": [
       "assets/compatibility.js"
@@ -118,7 +125,8 @@
       "docs/V10-MOUTH-PACK.md",
       "docs/V10-HEAD-BASE-PACK.md",
       "docs/V10-NOSE-SNOUT-PACK.md",
-      "docs/V10-CROWN-PACK.md"
+      "docs/V10-CROWN-PACK.md",
+      "docs/V10-EYE-PACK.md"
     ],
     "runtime": [
       "v8-compatibility.js",
@@ -157,7 +165,10 @@
       "schemas/v10-nose-validation-report.schema.json",
       "tests/v10-crowns.test.js",
       "scripts/v10-crown-qa.js",
-      "schemas/v10-crown-validation-report.schema.json"
+      "schemas/v10-crown-validation-report.schema.json",
+      "tests/v10-eyes.test.js",
+      "scripts/v10-eye-qa.js",
+      "schemas/v10-eye-validation-report.schema.json"
     ],
     "workflows": [
       ".github/workflows/contact-sheet-qa.yml"
@@ -189,7 +200,7 @@
   "counts": {
     "completeFaces": 10,
     "bases": 18,
-    "eyes": 10,
+    "eyes": 30,
     "noses": 27,
     "mouths": 27,
     "horns": 27,
@@ -227,7 +238,11 @@
     "v10NoseRigidOverrides": 18,
     "v10CrownCandidates": 18,
     "v10CrownApprovedBasePairs": 94,
-    "v10CrownExactRootPairs": 18
+    "v10CrownExactRootPairs": 18,
+    "v10EyeCandidates": 20,
+    "v10EyeApprovedBasePairs": 147,
+    "v10EyeRigidPlacements": 20,
+    "v10EyeFamilies": 15
   },
   "layerOrder": [
     "horns",
@@ -881,7 +896,10 @@
       "node scripts/v10-nose-qa.js --write",
       "node tests/v10-crowns.test.js",
       "node scripts/v10-crown-qa.js --validate-only",
-      "node scripts/v10-crown-qa.js --write"
+      "node scripts/v10-crown-qa.js --write",
+      "node tests/v10-eyes.test.js",
+      "node scripts/v10-eye-qa.js --validate-only",
+      "node scripts/v10-eye-qa.js --write"
     ],
     "report": "generated/qa/validation-report.json",
     "reportSchema": "schemas/qa-validation-report.schema.json",
@@ -916,7 +934,9 @@
     "v10NoseReport": "generated/qa/v10-noses/validation-report.json",
     "requiresV10NoseValidation": true,
     "v10CrownReport": "generated/qa/v10-crowns/validation-report.json",
-    "requiresV10CrownValidation": true
+    "requiresV10CrownValidation": true,
+    "v10EyeReport": "generated/qa/v10-eyes/validation-report.json",
+    "requiresV10EyeValidation": true
   },
   "contactSheetContract": {
     "deterministic": true,
@@ -974,7 +994,8 @@
     "v10MouthReview": "18 candidate mouths with exact base-pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px",
     "v10HeadReview": "12 candidate head bases with exact mouth and crown pair plates, normal and flipped, on cream, white, black, and transparent at 100 percent, 25 percent, 192 px, 96 px, and 48 px",
     "v10NoseReview": "18 authored nose candidates on approved base fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds",
-    "v10CrownReview": "18 authored horn and ear candidates on approved exact-root fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds"
+    "v10CrownReview": "18 authored horn and ear candidates on approved exact-root fixtures, normal and flipped, with 96 px and 48 px reads on cream, white, black, and transparent backgrounds",
+    "v10EyeReview": "20 authored eye candidates with complete base classifications and rigid review fixtures, normal and flipped, at 100%, 96 px, and 48 px on cream, white, black, and transparent backgrounds"
   },
   "heroFidelityContract": {
     "version": 9,
@@ -1406,5 +1427,61 @@
     "placements": "assets/v10-crown-placements.js",
     "integration": "assets/v10-crown-integration.js",
     "report": "generated/qa/v10-crowns/validation-report.json"
+  },
+  "v10EyeContract": {
+    "version": 10,
+    "revision": "10.3.1",
+    "issue": 41,
+    "status": "candidate",
+    "humanApprovalRequired": true,
+    "runtimeGeometry": false,
+    "baseline": 10,
+    "added": 20,
+    "target": 30,
+    "families": [
+      "cyclops",
+      "multi-eye",
+      "drooping",
+      "wide-startled",
+      "tiny-beady",
+      "mismatched",
+      "half-lidded",
+      "feral",
+      "sleepy",
+      "stern",
+      "goofy",
+      "uneasy",
+      "glassy",
+      "scarred",
+      "mechanical-adjacent"
+    ],
+    "expressions": [
+      "sleepy",
+      "uneasy",
+      "feral",
+      "goofy",
+      "stern",
+      "startled"
+    ],
+    "reviewScales": [
+      "100%",
+      "96px",
+      "48px"
+    ],
+    "reviewBackgrounds": [
+      "cream",
+      "white",
+      "black",
+      "transparent"
+    ],
+    "reviewStates": [
+      "normal",
+      "flipped"
+    ],
+    "compatibility": "assets/v10-eye-compatibility.js",
+    "placements": "assets/v10-eye-placements.js",
+    "integration": "assets/v10-eye-integration.js",
+    "report": "generated/qa/v10-eyes/validation-report.json",
+    "contactSheet": "generated/qa/v10-eyes/contact-sheet.html"
   }
 }
