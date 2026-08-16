@@ -301,3 +301,9 @@ Load the two `assets/v10-nose-assets-*` chunks before `assets/v10-noses.js`. Com
 
 Load the three `assets/v10-crown-assets-*` chunks before `assets/v10-crowns.js`. Load compatibility and exact-root fixtures after the existing compatibility object, then install `assets/v10-crown-integration.js`. Every crown is a literal full-canvas SVG with stable `horn-v10-*` ID, crown kind, family, root profile, authored bounds, rigid review placement, flip-safe flag, runtime geometry disabled, and candidate status. Every candidate must classify all 18 current bases exactly once and publish one approved exact root fixture whose transition plate declares `standaloneAnatomy: false`.
 <!-- V10-CROWN-PACK:END -->
+
+<!-- V10-PATTERN-PACK:START -->
+## V10 pattern candidate contract
+
+Load the three `assets/v10-pattern-assets-*` chunks after the baseline pattern library and before `assets/v10-patterns.js`. Every candidate is a literal full-canvas SVG overlay with stable `pattern-v10-*` ID, surface family, complete current-base support metadata, fixed blend mode and opacity, z-order 35, authored bounds, thumbnail and transparent-export safety declarations, flip-safe composition behavior, runtime geometry disabled, and candidate status. The renderer may composite, clip, mirror, and export these authored plates; it may not synthesize marks, infer facial landmarks, generate anatomy, or deform the underlying character.
+<!-- V10-PATTERN-PACK:END -->

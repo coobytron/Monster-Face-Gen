@@ -1,9 +1,8 @@
 
-> monster-face-gen-qa@10.4.0 qa:ci
-> node scripts/run-qa-ci.js --base 6a6eb0c906bb3d9286623347fdb19b2996e84e2a --head 1b583a78554d6bab4d5fa03ee4aa45ad6b2c3429
+> monster-face-gen-qa@10.6.0 qa:ci
+> node scripts/run-qa-ci.js --base origin/main --head 9b03fafa95fccb1a3dbb23f267a3e7b8587a46e0
 
-CI QA plan: V10 crown-only (31 changed files).
-::group::Render V10 crown review sheets
-Fontconfig warning: using without calling FcInit()
-V10 crown QA passed: 18 candidates, 94 approved pairs, 18 exact root fixtures.
+CI QA plan: V10 pattern-only (12 changed files).
+::group::Render V10 pattern review sheet
+V10 pattern QA pass: 18 authored overlays; total pattern count 27.
 ::endgroup::
